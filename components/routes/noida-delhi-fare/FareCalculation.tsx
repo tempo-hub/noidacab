@@ -48,7 +48,7 @@ const fareFactors = [
 
 export default function FareCalculation() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
@@ -78,15 +78,17 @@ export default function FareCalculation() {
                 key={item.title}
                 className="group rounded-3xl border border-gray-200 bg-[#FFFDF5] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-lg"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-amber-600 transition-colors group-hover:bg-amber-500 group-hover:text-white">
-                  <Icon size={26} />
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {item.title}
+                  </h3>
+
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-amber-600 transition-colors group-hover:bg-amber-500 group-hover:text-white">
+                    <Icon size={26} />
+                  </div>
                 </div>
 
-                <h3 className="mt-6 text-xl font-bold text-gray-900">
-                  {item.title}
-                </h3>
-
-                <p className="mt-3 leading-7 text-gray-600">
+                <p className="flex mt-3 leading-7 items-center justify-center  text-gray-600">
                   {item.description}
                 </p>
               </div>

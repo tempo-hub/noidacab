@@ -4,7 +4,7 @@ export const destinations: Destination[] = [
   {
     slug: "agra",
     name: "Agra",
-    image: "/agra.jpg",
+    image: "/city/agra.jpg",
     icon: "🏛️",
     distance: "230 km",
     description:
@@ -13,7 +13,7 @@ export const destinations: Destination[] = [
   {
     slug: "delhi",
     name: "Delhi",
-    image: "/destinations/delhi.jpg",
+    image: "/city/delhi.webp",
     icon: "�️",
     distance: "280 km",
     description:
@@ -22,7 +22,7 @@ export const destinations: Destination[] = [
   {
     slug: "noida",
     name: "Noida-Airport",
-    image: "/airport_noida.webp",
+    image: "/city/airport_noida.webp",
     icon: "🏙️",
     distance: "50 km",
     description:
@@ -31,7 +31,7 @@ export const destinations: Destination[] = [
   {
     slug: "Gurgaon",
     name: "Gurgaon",
-    image: "/destinations/gurgaon.jpg",
+    image: "/city/gurgaon.webp",
     icon: "�️",
     distance: "40 km",
     description:

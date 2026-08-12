@@ -58,34 +58,38 @@ export default function TripFareComparison() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-3">
           {fareOptions.map((option) => {
             const Icon = option.icon;
 
             return (
               <div
                 key={option.type}
-                className={`relative rounded-3xl border bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  option.highlight
+                className={`relative rounded-3xl border bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${option.highlight
                     ? "border-amber-400"
                     : "border-gray-200"
-                }`}
+                  }`}
               >
                 {/* Recommended */}
                 {option.highlight && (
-                  <span className="absolute right-6 top-6 rounded-full bg-amber-100 px-4 py-1.5 text-xs font-bold text-amber-700">
+                  <span className="absolute left-6 top-6 rounded-full bg-amber-100 px-4 py-1.5 text-xs font-bold text-amber-700">
                     Popular Choice
                   </span>
                 )}
 
                 {/* Icon */}
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-amber-600">
-                  <Icon size={27} />
+                <div className="flex items-center justify-between">
+                  
+
+                  <h3 className="mt-6 text-2xl font-bold text-gray-900">
+                    {option.type}
+                  </h3>
+
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-amber-600">
+                    <Icon size={27} />
+                  </div>
                 </div>
 
-                <h3 className="mt-6 text-2xl font-bold text-gray-900">
-                  {option.type}
-                </h3>
 
                 <p className="mt-3 leading-7 text-gray-600">
                   {option.description}

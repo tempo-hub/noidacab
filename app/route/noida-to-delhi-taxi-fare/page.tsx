@@ -23,7 +23,7 @@ export default function NoidaToDelhiTaxiFarePage() {
 
       <NoidaDelhiFareTable />  
 
-       <HourlyCabPackages />
+       {/* <HourlyCabPackages /> */}
 
         <FareInclusions />
 

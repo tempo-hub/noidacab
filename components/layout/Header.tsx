@@ -9,7 +9,15 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Taxi", href: "/route/noida-to-delhi-taxi" },
   { label: "fare", href: "/route/noida-to-delhi-taxi-fare" },
-  { label: "Airport", href: "/airport-transfer" },
+  {
+    label: "Cabs",
+    dropdown: [
+      { label: "Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
+      { label: "SUV", href: "/suv-cabs" },
+      { label: "Innova", href: "/innova-cabs" },
+      { label: "Tempo Traveller", href: "/tempo-traveller" },
+    ],
+  },
   { label: "Fleet", href: "/fleet" },
   { label: "Contact", href: "/contact" },
 ];
@@ -65,13 +73,36 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
           {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="font-semibold text-gray-700 transition hover:text-amber-500"
-            >
-              {item.label}
-            </Link>
+            <div key={item.label} className="group relative">
+              {item.dropdown ? (
+                <>
+                  <button className="flex items-center gap-1 font-semibold text-gray-700 transition hover:text-amber-500">
+                    {item.label}
+                    <span className="text-xs">▼</span>
+                  </button>
+
+                  {/* Dropdown */}
+                  <div className="invisible absolute left-0 top-full z-50 mt-3 w-52 rounded-xl bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    {item.dropdown.map((dropdownItem) => (
+                      <Link
+                        key={dropdownItem.label}
+                        href={dropdownItem.href}
+                        className="block rounded-lg px-4 py-3 font-medium text-gray-700 transition hover:bg-amber-50 hover:text-amber-500"
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="font-semibold text-gray-700 transition hover:text-amber-500"
+                >
+                  {item.label}
+                </Link>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -105,14 +136,36 @@ export default function Header() {
         <div className={`min-h-0 space-y-1 overflow-y-auto transition-all duration-300 ${menuOpen ? "p-4 sm:p-6" : "p-2"
           }`}>
           {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="block rounded-lg px-3 py-2.5 font-medium text-gray-700 transition hover:bg-amber-100 hover:text-amber-500"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
+            <div key={item.label}>
+              {item.dropdown ? (
+                <div className="rounded-lg">
+                  <div className="px-3 py-2.5 font-semibold text-gray-800">
+                    {item.label}
+                  </div>
+
+                  <div className="ml-3 space-y-1 border-l-2 border-amber-300 pl-3">
+                    {item.dropdown.map((dropdownItem) => (
+                      <Link
+                        key={dropdownItem.label}
+                        href={dropdownItem.href}
+                        className="block rounded-lg px-3 py-2 font-medium text-gray-600 transition hover:bg-amber-100 hover:text-amber-500"
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="block rounded-lg px-3 py-2.5 font-medium text-gray-700 transition hover:bg-amber-100 hover:text-amber-500"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
+            </div>
           ))}
 
           <Link

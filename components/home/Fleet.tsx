@@ -32,7 +32,7 @@ export default function Fleet() {
 
         {/* Cards */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {vehicles.slice(0,6).map((vehicle) => (
+          {vehicles.slice(0, 6).map((vehicle) => (
             <Link
               key={vehicle.slug}
               href={`/fleet/${vehicle.slug}`}
@@ -51,58 +51,68 @@ export default function Fleet() {
               <div className="p-4">
                 <div className="">
                   <h3 className="text-2xl flex justify-center font-bold">
-                  {vehicle.name}
+                    {vehicle.name}
                   </h3>
 
-                 <p className="text-xl flex justify-center font-bold text-amber-600">
-                  {vehicle.price}
-                 </p>
+                  <p className="text-xl flex justify-center font-bold text-amber-600">
+                    {vehicle.price}
+                  </p>
 
                 </div>
-                <div className="mt-2 border-t pt-4 space-y-4">
-
-                  <div className="flex justify-between">
-                    <CarFront size={18} />
-                    <span>Taxi Doors:</span>
+                <div className="mt-2 space-y-2 border-t pt-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <CarFront size={18} className="text-yellow-500"  />
+                      <span>Taxi Doors:</span>
+                    </div>
                     <span>{vehicle.doors}</span>
                   </div>
 
-                  <div className="flex justify-between">
-                    <Users size={18} />
-                    <span>Passengers:</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Users size={18} className="text-yellow-500"  />
+                      <span>Passengers:</span>
+                    </div>
                     <span>{vehicle.seats}</span>
                   </div>
 
-                  <div className="flex justify-between">
-                    <Briefcase size={18} />
-                    <span>Luggage Carry:</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Briefcase size={18} className="text-yellow-500"  />
+                      <span>Luggage Carry:</span>
+                    </div>
                     <span>{vehicle.luggage}</span>
                   </div>
 
-                  <div className="flex justify-between">
-                    <Snowflake size={18} />
-                    <span>Air Condition:</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Snowflake size={18} className="text-yellow-500"  />
+                      <span>Air Condition:</span>
+                    </div>
                     <span>Yes</span>
                   </div>
 
-                  <div className="flex justify-between">
-                    <MapPinned size={18} />
-                    <span>GPS Navigation:</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <MapPinned size={18} className="text-yellow-500"  />
+                      <span>GPS Navigation:</span>
+                    </div>
                     <span>Yes</span>
                   </div>
 
-                  <div className="flex justify-between">
-                    <UserCheck size={18} />
-                    <span>Driver Choosing:</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <UserCheck size={18} className="text-yellow-500"  />
+                      <span>Driver Choosing:</span>
+                    </div>
                     <span>Yes</span>
                   </div>
-
                 </div>
 
                 <div className="mt-2 flex items-center justify-between">
 
 
-                  <span className="mt-8 w-full flex justify-center rounded-full bg-[#ffb300] py-4 font-semibold text-white hover:bg-amber-500 transition">
+                  <span className="mt-4 w-full flex justify-center rounded-full bg-[#ffb300] py-4 font-semibold text-black hover:bg-amber-500 transition">
                     Book Taxi Now →
                   </span>
                 </div>

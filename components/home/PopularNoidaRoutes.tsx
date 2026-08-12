@@ -117,60 +117,64 @@ export default function PopularNoidaRoutes() {
             <Link
               key={`${route.from}-${route.to}`}
               href={route.href}
-              className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                route.featured
+              className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${route.featured
                   ? "border-amber-300 shadow-[0_10px_35px_rgba(245,158,11,0.12)]"
                   : "border-slate-200 hover:border-amber-200"
-              }`}
+                }`}
             >
               {/* Top Accent */}
               <div
-                className={`absolute inset-x-0 top-0 h-1 ${
-                  route.featured
+                className={`absolute inset-x-0 top-0 h-1 ${route.featured
                     ? "bg-amber-400"
                     : "bg-amber-200 group-hover:bg-amber-400"
-                }`}
+                  }`}
               />
+              <div>
 
-              {/* Route Icon */}
-              <div className="flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-400 text-slate-950">
+              </div>
+              <div className="flex items-start gap-4">
+                {/* Left Icon */}
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-slate-950">
                   <CarFront size={21} />
                 </div>
 
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-400 transition group-hover:bg-amber-50 group-hover:text-amber-600">
-                  <ArrowRight size={17} />
+                {/* Right Content */}
+                <div className="flex-1">
+                  {/* Route + Arrow */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-lg font-bold text-slate-950">
+                      <span>{route.from}</span>
+
+                      <span className="text-amber-500">→</span>
+
+                      <span>{route.to}</span>
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-50 text-slate-400 transition group-hover:bg-amber-50 group-hover:text-amber-600">
+                      <ArrowRight size={17} />
+                    </div>
+                  </div>
+
+                  {/* Distance / Time */}
+                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin
+                        size={15}
+                        className="text-amber-500"
+                      />
+                      {route.distance}
+                    </span>
+
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock3
+                        size={15}
+                        className="text-amber-500"
+                      />
+                      {route.time}
+                    </span>
+                  </div>
                 </div>
-              </div>
-
-              {/* Route */}
-              <div className="mt-5 flex items-center gap-2 text-lg font-bold text-slate-950">
-                <span>{route.from}</span>
-
-                <span className="text-amber-500">
-                  →
-                </span>
-
-                <span>{route.to}</span>
-              </div>
-
-              {/* Distance / Time */}
-              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
-                <span className="inline-flex items-center gap-1.5">
-                  <MapPin
-                    size={15}
-                    className="text-amber-500"
-                  />
-                  {route.distance}
-                </span>
-
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock3
-                    size={15}
-                    className="text-amber-500"
-                  />
-                  {route.time}
-                </span>
               </div>
 
               {/* Divider */}

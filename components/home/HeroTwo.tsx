@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { Car, ShieldCheck, Tag } from "lucide-react";
+import { Car, Clock, Shield } from "lucide-react";
 import BookingCard from "./BookingCard";
 
 const features = [
-  { icon: Car, title: "15,000+", subtitle: "Rides Completed" },
-  { icon: ShieldCheck, title: "Verified Drivers", subtitle: "Background Checked" },
-  { icon: Tag, title: "Fixed Pricing", subtitle: "No Hidden Charges" },
+  { icon: Car, title: "4,000+ Tips", subtitle: "Rides Completed" },
+  { icon: Shield, title: "100% Safe", subtitle: "Background Checked" },
+  { icon: Clock, title: "24/7 Support", subtitle: "No Hidden Charges" },
 ];
 
 export default function Hero() {
@@ -37,9 +37,9 @@ export default function Hero() {
                       <p className="text-sm font-bold leading-tight text-gray-900">
                         {title}
                       </p>
-                      <p className="text-xs leading-tight text-gray-500">
+                      {/* <p className="text-xs leading-tight text-gray-500">
                         {subtitle}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 ))}

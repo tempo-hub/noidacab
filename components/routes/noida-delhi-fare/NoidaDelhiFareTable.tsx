@@ -2,7 +2,7 @@ import { noidaDelhiCabs } from "@/data/routes/noida-delhi-cabs";
 
 export default function NoidaDelhiFareTable() {
   return (
-    <section className="py-20">
+    <section className="py-12">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
