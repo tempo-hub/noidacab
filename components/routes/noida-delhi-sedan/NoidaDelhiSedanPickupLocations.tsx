@@ -1,3 +1,4 @@
+import { serviceAreas } from "@/data/serviceAreas";
 import {
   Building2,
   MapPin,
@@ -61,7 +62,9 @@ const transferOptions = [
 ];
 
 export default function NoidaDelhiSedanPickupLocations() {
-    
+
+    const servicesarea = serviceAreas;
+
   return (
     <section className="bg-slate-50 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <div className="mx-auto max-w-7xl">
@@ -81,8 +84,8 @@ export default function NoidaDelhiSedanPickupLocations() {
 
         {/* Locations */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {pickupLocations.map((location) => {
-            const Icon = location.icon;
+          {servicesarea.map((location) => {
+            // const Icon = location.icon;
 
             return (
               <div
@@ -98,9 +101,9 @@ export default function NoidaDelhiSedanPickupLocations() {
                   hover:shadow-sm
                 "
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-50 text-amber-600">
+                {/* <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-50 text-amber-600">
                   <Icon size={20} />
-                </div>
+                </div> */}
 
                 <h3 className="mt-4 text-base font-bold text-slate-900">
                   {location.name}

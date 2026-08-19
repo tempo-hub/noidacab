@@ -40,8 +40,8 @@ const quickLinks = [
 ];
 
 const services = [
-  { name: "Local Cab", href: "/local-cab" },
-  { name: "Airport Transfer", href: "/airport-transfer" },
+  { name: "Local Noida", href: "/local-noida" },
+  { name: "Local Delhi", href: "/local-delhi" },
   { name: "Outstation Cab", href: "/outstation-cab" },
   { name: "Corporate Cab", href: "/corporate-cab" },
   { name: "Hourly Rental", href: "/hourly-rental" },

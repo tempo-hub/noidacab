@@ -58,14 +58,14 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-          <div className="relative h-10 w-32 sm:h-12 sm:w-40 ">
+          <div className="relative h-10 w-32 sm:h-12 sm:w-40 bg-white rounded-2xl">
             <Image
-              src="/logo1.webp"
+              src="/noidacab.png"
               alt="NoidaCab"
               fill
               priority
               sizes="(max-width: 640px) 128px, 160px"
-              className="object-contain rounded-3xl object-left "
+              className="object-contain rounded-3xl "
             />
           </div>
         </Link>

@@ -3,6 +3,7 @@ export type Vehicle = {
   slug: string;
   image: string;
   price: string;
+  
 
   seats: number;
   doors: number;
@@ -45,6 +46,22 @@ export const vehicles: Vehicle[] = [
   {
     name: "Swift",
     slug: "swift",
+    image: "/cabs/dziremain.webp",
+    price: "₹12/km",
+
+    seats: 4,
+    doors: 4,
+    luggage: 2,
+
+    airCondition: true,
+    gps: true,
+    driverChoice: true,
+
+    category: "Hatchback",
+  },
+  {
+    name: "Dzire",
+    slug: "dzire",
     image: "/cabs/dziremain.webp",
     price: "₹12/km",
 
