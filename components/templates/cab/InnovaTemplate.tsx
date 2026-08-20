@@ -17,54 +17,37 @@ import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
 import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
 
-export function InnovaTemplate({ route, vehicle, url }: CabTemplateProps) {
+export function InnovaTemplate({ location, vehicle, url }: CabTemplateProps) {
   return (
      <>
           
-          <HeroSection route={route} vehicle={vehicle} tagline="Spacious MPV, ideal for families up to 6" />
-            
-          <FareEstimate route={route} vehicle={vehicle} />
-          <VehicleFeatures vehicle={vehicle} highlights={["Extra legroom", "Boot space for luggage", "AC"]} />
-          <RouteInfo route={route} />
-          <VehicleSummary  route={route} vehicle={vehicle} />
-          {/* <JourneyInfo route={route} vehicle={vehicle} /> */}
-          <PickupDropLocations
-      route={{
-        fromName: route.fromName,
-        toName: route.toName,
-      }}
-      vehicle={{
-        name: vehicle.name,
-      }}
+         <HeroSection location={location} vehicle={vehicle} tagline="Spacious sedan, ideal for comfortable city and outstation travel" />
+
+      <FareEstimate location={location} vehicle={vehicle} />
+      <VehicleFeatures vehicle={vehicle} highlights={["Extra legroom", "Boot space for luggage", "AC"]} />
+      <RouteInfo
+        location={location}
+        vehicle={vehicle}
+      />
+      <VehicleSummary location={location} vehicle={vehicle} />
+      <JourneyInfo location={location} vehicle={vehicle} />
+      <PickupDropLocations
+        location={location}
+        vehicle={vehicle}
+      />
+      <WhyChooseUs
+       location={location}
+        vehicle={vehicle}
     />
-    <WhyChooseUs
-      route={{
-        fromName: route.fromName,
-        toName: route.toName,
-      }}
-      vehicle={{
-        name: vehicle.name,
-      }}
+      <WhatsIncluded
+      location={location}
+        vehicle={vehicle}
     />
-    <WhatsIncluded
-      route={{
-        fromName: route.fromName,
-        toName: route.toName,
-      }}
-      vehicle={{
-        name: vehicle.name,
-      }}
+      <BookingProcess
+      location={location}
+        vehicle={vehicle}
     />
-    <BookingProcess
-      route={{
-        fromName: route.fromName,
-        toName: route.toName,
-      }}
-      vehicle={{
-        name: vehicle.name,
-      }}
-    />
-    {/* <ServiceAreas
+      {/* <ServiceAreas
       route={{
         fromName: route.fromName,
         toName: route.toName,
@@ -73,26 +56,16 @@ export function InnovaTemplate({ route, vehicle, url }: CabTemplateProps) {
         name: vehicle.name,
       }}
     /> */}
-    
-    <TravelTips
-      route={{
-        fromName: route.fromName,
-        toName: route.toName,
-      }}
-      vehicle={{
-        name: vehicle.name,
-      }}
+
+      <TravelTips
+      location={location}
+        vehicle={vehicle}
     />
-    <TravelPlanning
-      route={{
-        fromName: route.fromName,
-        toName: route.toName,
-      }}
-      vehicle={{
-        name: vehicle.name,
-      }}
-    />
-    {/* <StructuredData
+      <TravelPlanning
+         location={location}
+        vehicle={vehicle}
+        />
+      {/* <StructuredData
       route={{
         fromName: route.fromName,
         toName: route.toName,
@@ -102,8 +75,8 @@ export function InnovaTemplate({ route, vehicle, url }: CabTemplateProps) {
       }}
       url={url}
     /> */}
-          <FAQSection route={route} vehicle={vehicle} />
-          <BookingCTA route={route} vehicle={vehicle} url={url} />
+      <FAQSection location={location} vehicle={vehicle} />
+      <BookingCTA location={location} vehicle={vehicle} url={url} />
         </>
   );
 }

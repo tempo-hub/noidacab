@@ -65,9 +65,9 @@ export default function PopularDestinations() {
                 {active.description}
               </p>
 
-              <button className="mt-4 w-fit rounded-xl bg-amber-400 px-8 py-3 font-semibold text-white transition hover:bg-amber-500">
+              {/* <button className="mt-4 w-fit rounded-xl bg-amber-400 px-8 py-3 font-semibold text-white transition hover:bg-amber-500">
                 Book Now
-              </button>
+              </button> */}
             </div>
 
             {/* Right */}

@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
+
 import {
-  parseRouteUrl,
+  parseLocalRouteUrl,
   getAllUrlSlugs,
 } from "@/lib/parse-route";
+
 import { cabTemplates } from "@/components/templates/cab";
 
 export function generateStaticParams() {
@@ -22,13 +24,14 @@ export async function generateMetadata({
 
   const url = "/" + slug.join("/");
 
-  const parsed = parseRouteUrl(url);
+  const parsed = parseLocalRouteUrl(url);
 
   if (!parsed) return {};
 
   return {
-    title: `${parsed.vehicle.name} Cab: ${parsed.fromName} to ${parsed.toName} | NoidaCab`,
-    description: `Book a ${parsed.vehicle.name} cab from ${parsed.fromName} to ${parsed.toName}. Comfortable and reliable cab service.`,
+    title: `${parsed.vehicle.name} Cab in ${parsed.locationName} | NoidaCab`,
+
+    description: `Book a ${parsed.vehicle.name} cab in ${parsed.locationName}. Comfortable and reliable cab service.`,
   };
 }
 
@@ -41,7 +44,7 @@ export default async function CabPage({
 
   const url = "/" + slug.join("/");
 
-  const parsed = parseRouteUrl(url);
+  const parsed = parseLocalRouteUrl(url);
 
   if (!parsed) {
     notFound();
@@ -49,7 +52,7 @@ export default async function CabPage({
 
   const Template =
     cabTemplates[
-      parsed.template as keyof typeof cabTemplates
+    parsed.template as keyof typeof cabTemplates
     ];
 
   if (!Template) {
@@ -58,12 +61,9 @@ export default async function CabPage({
 
   return (
     <Template
-      route={{
-        fromSlug: parsed.fromSlug,
-        fromName: parsed.fromName,
-        toSlug: parsed.toSlug,
-        toName: parsed.toName,
-        distanceKm: parsed.distanceKm,
+      location={{
+        slug: parsed.locationSlug,
+        name: parsed.locationName,
       }}
       vehicle={parsed.vehicle}
       url={url}

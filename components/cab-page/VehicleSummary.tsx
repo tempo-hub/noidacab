@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   CarFront,
-  CheckCircle2,
   Luggage,
   Snowflake,
   UserRound,
@@ -10,19 +9,17 @@ import {
 import type { Vehicle } from "@/data/vehicles";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
-    distanceKm: number;
+  location: {
+    slug: string;
+    name: string;
   };
+
   vehicle: Vehicle;
-  fare?: number;
 };
 
 export function VehicleSummary({
-  route,
+  location,
   vehicle,
-  fare,
 }: Props) {
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-12">
@@ -59,6 +56,7 @@ export function VehicleSummary({
 
               {/* Vehicle Badge */}
               <div className="absolute bottom-5 left-5 z-20 rounded-xl border border-white/80 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm sm:bottom-7 sm:left-7">
+
                 <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                   Selected Vehicle
                 </p>
@@ -66,6 +64,7 @@ export function VehicleSummary({
                 <p className="text-sm font-bold text-slate-950">
                   {vehicle.name}
                 </p>
+
               </div>
 
             </div>
@@ -74,119 +73,124 @@ export function VehicleSummary({
             <div className="p-6 sm:p-8 lg:p-10">
 
               <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-700">
+
                 <CarFront className="h-4 w-4" />
+
                 VEHICLE SUMMARY
+
               </span>
 
               <h2 className="mt-5 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-                {vehicle.name}
+                {vehicle.name} Cab in {location.name}
               </h2>
 
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                A comfortable and practical choice for your{" "}
+                A comfortable and practical{" "}
                 <span className="font-semibold text-slate-950">
-                  {route.fromName} → {route.toName}
+                  {vehicle.name}
                 </span>{" "}
-                journey.
+                cab option available in{" "}
+                <span className="font-semibold text-slate-950">
+                  {location.name}
+                </span>
+                .
               </p>
 
               {/* Vehicle Details */}
               <div className="mt-6 grid grid-cols-2 gap-3">
 
+                {/* Passengers */}
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
+
                   <div className="flex items-center gap-2">
+
                     <UserRound className="h-4 w-4 text-amber-600" />
 
                     <span className="text-xs text-slate-500">
                       Passengers
                     </span>
+
                   </div>
 
                   <p className="mt-1 text-sm font-bold text-slate-950">
                     {vehicle.seats} Seats
                   </p>
+
                 </div>
 
+                {/* Luggage */}
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
+
                   <div className="flex items-center gap-2">
+
                     <Luggage className="h-4 w-4 text-amber-600" />
 
                     <span className="text-xs text-slate-500">
                       Luggage
                     </span>
+
                   </div>
 
                   <p className="mt-1 text-sm font-bold text-slate-950">
                     {vehicle.luggage} Bags
                   </p>
+
                 </div>
 
+                {/* AC */}
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
+
                   <div className="flex items-center gap-2">
+
                     <Snowflake className="h-4 w-4 text-amber-600" />
 
                     <span className="text-xs text-slate-500">
                       Comfort
                     </span>
+
                   </div>
 
                   <p className="mt-1 text-sm font-bold text-slate-950">
-                    {vehicle.airCondition ? "AC Available" : "Non AC"}
+                    {vehicle.airCondition
+                      ? "AC Available"
+                      : "Non AC"}
                   </p>
+
                 </div>
 
+                {/* Doors */}
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
+
                   <div className="flex items-center gap-2">
+
                     <CarFront className="h-4 w-4 text-amber-600" />
 
                     <span className="text-xs text-slate-500">
                       Doors
                     </span>
+
                   </div>
 
                   <p className="mt-1 text-sm font-bold text-slate-950">
                     {vehicle.doors} Doors
                   </p>
+
                 </div>
 
               </div>
 
-              {/* Route */}
-              {/* <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4">
+              {/* Location */}
+              <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4">
 
-                <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-900">
-                  <span>{route.fromName}</span>
-
-                  <ArrowRight className="h-4 w-4 text-amber-600" />
-
-                  <span>{route.toName}</span>
-                </div>
-
-                <p className="mt-1 text-xs text-slate-600">
-                  {route.distanceKm} km · One Way
-                  {fare ? ` · From ₹${fare.toLocaleString("en-IN")}` : ""}
+                <p className="text-xs text-slate-500">
+                  Available Location
                 </p>
 
-              </div> */}
+                <p className="mt-1 text-sm font-semibold text-slate-950">
+                  {location.name}
+                </p>
 
-              {/* Benefits */}
-              {/* <div className="mt-5 space-y-2.5">
-
-                {[
-                  "Professional driver",
-                  "Clean and comfortable vehicle",
-                  "Transparent fare estimate",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-2.5 text-sm text-slate-600"
-                  >
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-amber-600" />
-                    {item}
-                  </div>
-                ))}
-
-              </div> */}
+              </div>
 
               {/* CTA */}
               <button
@@ -213,13 +217,16 @@ export function VehicleSummary({
                   sm:w-auto
                 "
               >
+
                 Book {vehicle.name}
 
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+
               </button>
 
             </div>
           </div>
+
         </div>
 
       </div>

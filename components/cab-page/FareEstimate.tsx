@@ -2,35 +2,27 @@ import {
   Calculator,
   CheckCircle2,
   MapPin,
-  Route,
 } from "lucide-react";
 
 import {
-  calculateFare,
   getPerKmRate,
 } from "@/lib/pricing";
 
 import type { Vehicle } from "@/data/vehicles";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
-    distanceKm: number;
+  location: {
+    slug: string;
+    name: string;
   };
 
   vehicle: Vehicle;
 };
 
 export function FareEstimate({
-  route,
+  location,
   vehicle,
 }: Props) {
-  const fare = calculateFare(
-    vehicle,
-    route.distanceKm
-  );
-
   const rate = getPerKmRate(vehicle);
 
   return (
@@ -44,7 +36,7 @@ export function FareEstimate({
 
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-700">
               <Calculator className="h-4 w-4" />
-              FARE ESTIMATE
+              FARE INFORMATION
             </div>
 
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -52,29 +44,33 @@ export function FareEstimate({
             </h2>
 
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-              Get an estimated fare for your{" "}
+              Book a{" "}
               <span className="font-semibold text-slate-900">
                 {vehicle.name}
               </span>{" "}
-              cab based on the total route distance.
+              cab in{" "}
+              <span className="font-semibold text-slate-900">
+                {location.name}
+              </span>{" "}
+              with transparent pricing and no hidden charges.
             </p>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
 
-              {/* Distance */}
+              {/* Location */}
               <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
 
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100">
-                  <Route className="h-5 w-5 text-slate-700" />
+                  <MapPin className="h-5 w-5 text-slate-700" />
                 </div>
 
                 <div>
                   <p className="text-xs text-slate-500">
-                    Total Distance
+                    Location
                   </p>
 
                   <p className="font-semibold text-slate-900">
-                    {route.distanceKm} km
+                    {location.name}
                   </p>
                 </div>
 
@@ -84,7 +80,7 @@ export function FareEstimate({
               <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
 
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100">
-                  <MapPin className="h-5 w-5 text-slate-700" />
+                  <Calculator className="h-5 w-5 text-slate-700" />
                 </div>
 
                 <div>
@@ -110,53 +106,52 @@ export function FareEstimate({
 
             <div className="p-6 sm:p-7">
 
-              {/* Fare */}
+              {/* Rate */}
               <div className="flex items-start justify-between gap-4">
 
                 <div>
                   <p className="text-sm font-medium text-slate-500">
-                    Estimated fare
+                    Starting rate
                   </p>
 
                   <div className="mt-1 flex items-baseline gap-2">
 
                     <span className="text-4xl font-extrabold tracking-tight text-slate-900">
-                      ₹{fare.toLocaleString("en-IN")}
+                      ₹{rate}
                     </span>
 
                     <span className="text-sm text-slate-500">
-                      approx.
+                      / km
                     </span>
 
                   </div>
                 </div>
 
-                {/* Rate */}
                 <div className="rounded-2xl bg-amber-50 px-4 py-3 text-center">
 
                   <p className="text-xs text-slate-500">
-                    Rate
+                    Vehicle
                   </p>
 
                   <p className="font-bold text-slate-900">
-                    ₹{rate}/km
+                    {vehicle.name}
                   </p>
 
                 </div>
 
               </div>
 
-              {/* CALCULATION */}
+              {/* INFORMATION */}
               <div className="mt-6 rounded-2xl bg-slate-50 p-4">
 
                 <div className="flex items-center justify-between text-sm">
 
                   <span className="text-slate-500">
-                    Distance
+                    Location
                   </span>
 
                   <span className="font-semibold text-slate-900">
-                    {route.distanceKm} km
+                    {location.name}
                   </span>
 
                 </div>
@@ -180,11 +175,11 @@ export function FareEstimate({
                 <div className="flex items-center justify-between">
 
                   <span className="font-semibold text-slate-900">
-                    Estimated total
+                    Booking
                   </span>
 
                   <span className="text-xl font-bold text-slate-900">
-                    ₹{fare.toLocaleString("en-IN")}
+                    Available
                   </span>
 
                 </div>
@@ -197,8 +192,9 @@ export function FareEstimate({
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
 
                 <p>
-                  Final fare may vary depending on tolls,
-                  parking and other applicable charges.
+                  Final fare depends on the trip distance,
+                  duration, tolls, parking and other applicable
+                  charges.
                 </p>
 
               </div>

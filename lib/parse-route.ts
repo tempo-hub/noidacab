@@ -26,70 +26,72 @@ export type ParsedRoute = {
   template: string;
 };
 
+export type ParsedLocalRoute = {
+  city: string;
+
+  locationSlug: string;
+  locationName: string;
+
+  vehicle: Vehicle;
+
+  template: string;
+};
+
 export function getAllUrlSlugs(): { slug: string[] }[] {
   return urlRoutes.map((entry) => ({
     slug: entry.url.split("/").filter(Boolean),
   }));
 }
 
-export function parseRouteUrl(
+/**
+ * Local URLs:
+ *
+ * /noida/sector-18/dzire
+ * /noida/sector-62/innova
+ * /noida/sector-75/ertiga
+ */
+export function parseLocalRouteUrl(
   url: string
-): ParsedRoute | null {
+): ParsedLocalRoute | null {
   const parts = url.split("/").filter(Boolean);
 
-  if (parts.length !== 2) {
+  if (parts.length !== 3) {
     return null;
   }
 
-  const [cityPair, combinedSlug] = parts;
+  const [city, locationSlug, vehicleSlug] = parts;
 
-  if (!(cityPair in cityPairRoutes)) {
+  // Check city
+  if (!(city in cityPairRoutes)) {
     return null;
   }
 
-  const routes =
-    cityPairRoutes[cityPair as CityPairSlug];
+  const locations =
+    cityPairRoutes[city as CityPairSlug];
 
-  // Find vehicle from the end of the URL
-  const matchedVehicle = [...vehicles]
-    .sort((a, b) => b.slug.length - a.slug.length)
-    .find((vehicle) =>
-      combinedSlug.endsWith(`-${vehicle.slug}`)
-    );
+  // Find location
+  const location = locations.find(
+    (item) => item.slug === locationSlug
+  );
+
+  if (!location) {
+    return null;
+  }
+
+  // Find vehicle
+  const matchedVehicle = vehicles.find(
+    (vehicle) => vehicle.slug === vehicleSlug
+  );
 
   if (!matchedVehicle) {
     return null;
   }
 
-  // Remove vehicle slug
-  const routeSlug = combinedSlug.slice(
-    0,
-    combinedSlug.length -
-      matchedVehicle.slug.length -
-      1
-  );
-
-  // Find route in the correct route file
-  const matchedRoute = routes.find(
-    (route) =>
-      `${route.fromSlug}-to-${route.toSlug}` ===
-      routeSlug
-  );
-
-  if (!matchedRoute) {
-    return null;
-  }
-
   return {
-    cityPair,
+    city,
 
-    fromSlug: matchedRoute.fromSlug,
-    fromName: matchedRoute.fromName,
-
-    toSlug: matchedRoute.toSlug,
-    toName: matchedRoute.toName,
-
-    distanceKm: matchedRoute.distanceKm,
+    locationSlug: location.slug,
+    locationName: location.name,
 
     vehicle: matchedVehicle,
 

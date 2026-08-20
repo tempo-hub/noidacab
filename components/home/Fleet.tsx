@@ -35,7 +35,7 @@ export default function Fleet() {
           {vehicles.slice(0, 6).map((vehicle) => (
             <Link
               key={vehicle.slug}
-              href={`/fleet/${vehicle.slug}`}
+              href={`/taxi/${vehicle.slug}`}
               className="group overflow-hidden rounded-3xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-amber-500 hover:shadow-xl"
             >
               <div className="relative h-60 bg-gray-100 overflow-hidden rounded-3xl">

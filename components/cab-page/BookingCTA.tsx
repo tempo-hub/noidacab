@@ -9,18 +9,20 @@ import {
 } from "lucide-react";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
+  location: {
+    slug: string;
+    name: string;
   };
+
   vehicle: {
     name: string;
   };
+
   url?: string;
 };
 
 export function BookingCTA({
-  route,
+  location,
   vehicle,
   url,
 }: Props) {
@@ -61,64 +63,75 @@ export function BookingCTA({
               </h2>
 
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base sm:leading-7">
-                Travel comfortably from{" "}
+                Book a comfortable{" "}
                 <span className="font-semibold text-white">
-                  {route.fromName}
+                  {vehicle.name}
                 </span>{" "}
-                to{" "}
+                cab from{" "}
                 <span className="font-semibold text-white">
-                  {route.toName}
+                  {location.name}
                 </span>{" "}
                 with a professional driver and a comfortable vehicle.
               </p>
+
             </div>
 
-            {/* Journey */}
+            {/* Booking Information */}
             <div className="mx-auto mt-8 max-w-4xl rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:p-5">
 
               <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
 
                 {/* Pickup */}
                 <div className="flex items-center gap-3">
+
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-400/10">
                     <MapPin className="h-5 w-5 text-amber-400" />
                   </div>
 
                   <div className="min-w-0">
+
                     <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                      Pickup
+                      Pickup Location
                     </p>
 
                     <p className="truncate text-sm font-bold text-white sm:text-base">
-                      {route.fromName}
+                      {location.name}
                     </p>
+
                   </div>
+
                 </div>
 
                 {/* Vehicle */}
                 <div className="flex items-center justify-center gap-2 sm:flex-col sm:gap-1">
+
                   <Car className="h-5 w-5 text-amber-400" />
 
                   <span className="text-xs font-semibold text-slate-400">
                     {vehicle.name}
                   </span>
+
                 </div>
 
-                {/* Drop */}
+                {/* Destination */}
                 <div className="flex items-center gap-3 sm:justify-end">
+
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-400/10">
                     <MapPin className="h-5 w-5 text-amber-400" />
                   </div>
 
                   <div className="min-w-0">
+
                     <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                      Drop
+                      Destination
                     </p>
 
                     <p className="truncate text-sm font-bold text-white sm:text-base">
-                      {route.toName}
+                      Select Destination
                     </p>
+
                   </div>
+
                 </div>
 
               </div>

@@ -8,21 +8,25 @@ import {
 } from "lucide-react";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
+  location: {
+    slug: string;
+    name: string;
   };
+
   vehicle: {
     name: string;
   };
 };
 
-export function WhyChooseUs({ route, vehicle }: Props) {
+export function WhyChooseUs({
+  location,
+  vehicle,
+}: Props) {
   const benefits = [
     {
       icon: ShieldCheck,
       title: "Safe & Reliable Journey",
-      description: `Travel confidently from ${route.fromName} to ${route.toName} with a professional driver and a well-maintained ${vehicle.name}.`,
+      description: `Travel confidently from ${location.name} with a professional driver and a well-maintained ${vehicle.name}.`,
       points: [
         "Professional drivers",
         "Well-maintained vehicles",
@@ -35,23 +39,31 @@ export function WhyChooseUs({ route, vehicle }: Props) {
       icon: IndianRupee,
       title: "Transparent Pricing",
       description:
-        "Know your estimated fare before booking with simple and transparent per-kilometre pricing.",
-      points: ["Clear fare estimate", "No complicated pricing"],
+        "Know your estimated fare before booking with simple and transparent pricing.",
+      points: [
+        "Clear fare estimate",
+        "No complicated pricing",
+      ],
       featured: false,
     },
     {
       icon: Car,
       title: "Comfortable Fleet",
-      description: `Enjoy a clean and comfortable ${vehicle.name} for your journey.`,
-      points: ["Clean vehicles", "Regular maintenance"],
+      description: `Enjoy a clean and comfortable ${vehicle.name} for your local travel.`,
+      points: [
+        "Clean vehicles",
+        "Regular maintenance",
+      ],
       featured: false,
     },
     {
       icon: Clock3,
       title: "Convenient Pickup",
-      description:
-        "Choose a convenient pickup time and location according to your travel plans.",
-      points: ["Flexible pickup", "Easy scheduling"],
+      description: `Choose a convenient pickup time and location in ${location.name} according to your travel plans.`,
+      points: [
+        "Flexible pickup",
+        "Easy scheduling",
+      ],
       featured: false,
     },
     {
@@ -59,7 +71,10 @@ export function WhyChooseUs({ route, vehicle }: Props) {
       title: "Professional Drivers",
       description:
         "Experienced drivers focused on providing a smooth and comfortable journey.",
-      points: ["Experienced drivers", "Customer focused"],
+      points: [
+        "Experienced drivers",
+        "Customer focused",
+      ],
       featured: false,
     },
     {
@@ -67,7 +82,10 @@ export function WhyChooseUs({ route, vehicle }: Props) {
       title: "Easy Booking",
       description:
         "Book your cab with a simple process and get ready for your journey.",
-      points: ["Simple booking", "Quick confirmation"],
+      points: [
+        "Simple booking",
+        "Quick confirmation",
+      ],
       featured: false,
     },
   ];
@@ -89,17 +107,18 @@ export function WhyChooseUs({ route, vehicle }: Props) {
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-            From{" "}
+            Enjoy a comfortable{" "}
             <span className="font-semibold text-slate-950">
-              {route.fromName}
+              {vehicle.name}
             </span>{" "}
-            to{" "}
+            cab service in{" "}
             <span className="font-semibold text-slate-950">
-              {route.toName}
-            </span>
-            , enjoy a comfortable {vehicle.name} journey with reliable
-            service and transparent pricing.
+              {location.name}
+            </span>{" "}
+            with reliable drivers, comfortable vehicles and transparent
+            pricing.
           </p>
+
         </div>
 
         {/* Bento Grid */}
@@ -121,21 +140,26 @@ export function WhyChooseUs({ route, vehicle }: Props) {
                 lg:min-h-[270px]
               "
             >
-              {/* Decorative shape */}
+
+              {/* Decorative shapes */}
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-300/50" />
+
               <div className="absolute -bottom-20 right-20 h-36 w-36 rounded-full bg-amber-500/30" />
 
               <div className="relative z-10 flex h-full flex-col">
 
                 {/* Icon */}
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/25">
+
                   <ShieldCheck
                     className="h-6 w-6 text-slate-950"
                     strokeWidth={2}
                   />
+
                 </div>
 
                 <div className="mt-6 max-w-xl">
+
                   <h3 className="text-xl font-extrabold tracking-tight text-slate-950 sm:text-2xl">
                     {benefits[0].title}
                   </h3>
@@ -143,10 +167,12 @@ export function WhyChooseUs({ route, vehicle }: Props) {
                   <p className="mt-2 max-w-lg text-sm leading-6 text-slate-800">
                     {benefits[0].description}
                   </p>
+
                 </div>
 
                 {/* Points */}
                 <div className="mt-auto flex flex-wrap gap-2 pt-6">
+
                   {benefits[0].points.map((point) => (
                     <span
                       key={point}
@@ -155,7 +181,9 @@ export function WhyChooseUs({ route, vehicle }: Props) {
                       {point}
                     </span>
                   ))}
+
                 </div>
+
               </div>
             </div>
 
@@ -179,8 +207,11 @@ export function WhyChooseUs({ route, vehicle }: Props) {
                 lg:min-h-[270px]
               "
             >
+
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100">
+
                 <IndianRupee className="h-5 w-5 text-amber-600" />
+
               </div>
 
               <h3 className="mt-5 text-lg font-bold text-slate-950">
@@ -192,9 +223,13 @@ export function WhyChooseUs({ route, vehicle }: Props) {
               </p>
 
               <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-amber-600">
+
                 <BadgeCheck className="h-4 w-4" />
+
                 Clear fare estimate
+
               </div>
+
             </div>
 
             {/* Bottom Cards */}
@@ -220,8 +255,11 @@ export function WhyChooseUs({ route, vehicle }: Props) {
                     sm:p-6
                   "
                 >
+
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 transition-colors group-hover:bg-amber-100">
+
                     <Icon className="h-5 w-5 text-amber-600" />
+
                   </div>
 
                   <h3 className="mt-5 text-base font-bold text-slate-950 sm:text-lg">
@@ -233,45 +271,64 @@ export function WhyChooseUs({ route, vehicle }: Props) {
                   </p>
 
                   <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-slate-500">
+
                     <BadgeCheck className="h-4 w-4 text-amber-500" />
+
                     {benefit.points[0]}
+
                   </div>
+
                 </div>
               );
             })}
+
           </div>
 
           {/* Bottom Trust Bar */}
           <div className="mt-4 flex flex-col gap-4 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
 
             <div>
+
               <p className="text-sm font-bold text-slate-950 sm:text-base">
                 Ready to travel with {vehicle.name}?
               </p>
 
               <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">
-                Comfortable travel from {route.fromName} to {route.toName}.
+                Comfortable cab service available in {location.name}.
               </p>
+
             </div>
 
             <div className="flex flex-wrap gap-x-5 gap-y-2">
+
               <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
+
                 <ShieldCheck className="h-4 w-4 text-amber-600" />
+
                 Safe
+
               </div>
 
               <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
+
                 <BadgeCheck className="h-4 w-4 text-amber-600" />
+
                 Reliable
+
               </div>
 
               <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
+
                 <IndianRupee className="h-4 w-4 text-amber-600" />
+
                 Transparent
+
               </div>
+
             </div>
 
           </div>
+
         </div>
       </div>
     </section>

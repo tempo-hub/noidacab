@@ -11,8 +11,9 @@ import NoidaDelhiSedanFeatures from "@/components/routes/noida-delhi-sedan/Noida
 import NoidaDelhiSedanWhyChoose from "@/components/routes/noida-delhi-sedan/NoidaDelhiSedanWhyChoose";
 import NoidaDelhiSedanRoute from "@/components/routes/noida-delhi-sedan/NoidaDelhiSedanRoute";
 import NoidaDelhiSedanPickupLocations from "@/components/routes/noida-delhi-sedan/NoidaDelhiSedanPickupLocations";
-import NoidaDelhiFareFAQ from "@/components/routes/noida-delhi-fare/NoidaDelhiFareFAQ";
 import NoidaDelhiBookingCTA from "@/components/routes/noida-to-delhi/NoidaDelhiBookingCTA";
+import NoidaDelhiTripTypes from "@/components/routes/noida-delhi-sedan/NoidaDelhiTripTypes";
+import NoidaDelhiSedanFAQ from "@/components/routes/noida-delhi-sedan/NoidaDelhiSedanFAQ";
 
 export const metadata: Metadata = {
   title: "Noida to Delhi Sedan Taxi | Book Sedan Cab",
@@ -41,7 +42,9 @@ export default function NoidaToDelhiSedanTaxiPage() {
 
         <NoidaDelhiSedanPickupLocations />
 
-        <NoidaDelhiFareFAQ />
+        <NoidaDelhiTripTypes />
+
+        <NoidaDelhiSedanFAQ />
         
         <NoidaDelhiBookingCTA />
     </main>

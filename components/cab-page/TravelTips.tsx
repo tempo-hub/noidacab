@@ -7,30 +7,31 @@ import {
 } from "lucide-react";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
+  location: {
+    slug: string;
+    name: string;
   };
+
   vehicle: {
     name: string;
   };
 };
 
 export function TravelTips({
-  route,
+  location,
   vehicle,
 }: Props) {
   const tips = [
     {
       icon: Clock3,
       title: "Plan Your Pickup Time",
-      description: `Choose a pickup time that gives you enough flexibility for your journey from ${route.fromName} to ${route.toName}.`,
+      description: `Choose a pickup time that gives you enough flexibility when booking your ${vehicle.name} from ${location.name}.`,
     },
     {
       icon: Navigation,
       title: "Share the Exact Location",
       description:
-        "Providing the exact pickup and drop location helps the driver reach you easily.",
+        "Providing the exact pickup location helps the driver reach you easily and avoids unnecessary delays.",
     },
     {
       icon: Luggage,
@@ -39,8 +40,8 @@ export function TravelTips({
     },
     {
       icon: MapPinned,
-      title: "Keep Route Details Ready",
-      description: `Keep your pickup and destination details handy when booking your cab from ${route.fromName} to ${route.toName}.`,
+      title: "Keep Destination Details Ready",
+      description: `Keep your destination details handy when booking your ${vehicle.name} cab from ${location.name}.`,
     },
     {
       icon: ShieldCheck,
@@ -63,13 +64,14 @@ export function TravelTips({
           </div>
 
           <h2 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
-            Tips for Your {route.fromName} to {route.toName} Journey
+            Tips for Booking a {vehicle.name} in {location.name}
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-            A few simple tips can make your {vehicle.name} journey smoother,
-            more comfortable and convenient.
+            A few simple tips can make your {vehicle.name} journey
+            smoother, more comfortable and convenient.
           </p>
+
         </div>
 
         {/* Tips Grid */}
@@ -100,6 +102,7 @@ export function TravelTips({
                     sm:p-6
                   "
                 >
+
                   {/* Number */}
                   <span className="absolute right-5 top-5 text-xs font-bold text-slate-200 transition-colors group-hover:text-amber-200">
                     0{index + 1}
@@ -121,6 +124,7 @@ export function TravelTips({
 
                   {/* Bottom accent */}
                   <div className="mt-5 h-0.5 w-8 rounded-full bg-amber-400 transition-all duration-300 group-hover:w-14" />
+
                 </div>
               );
             })}
@@ -131,24 +135,30 @@ export function TravelTips({
           <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 sm:items-center sm:px-6">
 
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400">
+
               <ShieldCheck
                 className="h-4 w-4 text-slate-950"
                 strokeWidth={2.5}
               />
+
             </div>
 
             <div>
+
               <p className="text-sm font-bold text-slate-950">
                 Quick reminder
               </p>
 
               <p className="mt-0.5 text-xs leading-5 text-slate-600 sm:text-sm">
-                Keep your booking confirmation, pickup location and driver
-                details handy before starting your journey.
+                Keep your booking confirmation, pickup location and
+                driver details handy before starting your journey from{" "}
+                {location.name}.
               </p>
+
             </div>
 
           </div>
+
         </div>
 
       </div>

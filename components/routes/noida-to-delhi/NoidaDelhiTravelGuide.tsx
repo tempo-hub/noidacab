@@ -51,10 +51,10 @@ export default function NoidaDelhiTravelGuide() {
           </h2>
 
           <p className="mt-3 text-base leading-7 text-slate-600">
-            The distance and travel time between Noida and Delhi depend
-            on your exact pickup and drop locations. A private taxi gives
-            you the flexibility to travel directly from your location in
-            Noida to your destination in Delhi without changing vehicles.
+            Book a one way cab from Noida to Delhi when you only need a single drop, 
+            no return trip included. This works well for office commutes, airport drops, 
+            or a one-time visit where you'll arrange your own way back. You pay only for the distance covered on that single drop, 
+            with no charge added for a return you're not taking.
           </p>
         </div>
 

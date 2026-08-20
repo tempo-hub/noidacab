@@ -10,26 +10,26 @@ import {
 
 const sedanFares = [
   {
-    name: "Maruti Dzire",
+    name: "Dzire",
     type: "Sedan",
     passengers: "Up to 4",
-    fare: "₹XXX",
+    fare: "₹500",
     extraKm: "₹XX/km",
     href: "/noida-to-delhi-dzire-taxi",
   },
   {
-    name: "Toyota Etios",
+    name: "Etios",
     type: "Sedan",
     passengers: "Up to 4",
-    fare: "₹XXX",
+    fare: "₹800",
     extraKm: "₹XX/km",
     href: "/noida-to-delhi-etios-taxi",
   },
   {
-    name: "Honda Amaze",
+    name: "Amaze",
     type: "Sedan",
     passengers: "Up to 4",
-    fare: "₹XXX",
+    fare: "₹800",
     extraKm: "₹XX/km",
     href: "/noida-to-delhi-amaze-taxi",
   },
@@ -47,9 +47,9 @@ export default function NoidaDelhiSedanFare() {
           </h2>
 
           <p className="mt-3 text-base leading-7 text-slate-600">
-            Compare sedan taxi fares for travelling from Noida to Delhi.
-            Choose a car based on your budget, passenger count and
-            comfort requirements.
+            Sedan fares on this route stay low because the distance is short and the drive rarely needs an overnight stop. 
+            Every quote breaks down fuel, driver allowance, and applicable toll, 
+            so you see what you're paying for before you confirm the Noida to Delhi sedan cab fare.
           </p>
         </div>
 

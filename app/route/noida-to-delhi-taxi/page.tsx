@@ -9,6 +9,7 @@ import NoidaDelhiPickupLocations from "@/components/routes/noida-to-delhi/NoidaD
 import NoidaDelhiRatings from "@/components/routes/noida-to-delhi/NoidaDelhiRatings";
 import NoidaDelhiRelatedServices from "@/components/routes/noida-to-delhi/NoidaDelhiRelatedServices";
 import NoidaDelhiRouteInfo from "@/components/routes/noida-to-delhi/NoidaDelhiRouteInfo";
+import NoidaDelhiTaxiOptions from "@/components/routes/noida-to-delhi/NoidaDelhiTaxiOptions";
 import NoidaDelhiTravelGuide from "@/components/routes/noida-to-delhi/NoidaDelhiTravelGuide";
 import NoidaDelhiVehicleComparison from "@/components/routes/noida-to-delhi/NoidaDelhiVehicleComparison";
 import NoidaDelhiWhyBook from "@/components/routes/noida-to-delhi/NoidaDelhiWhyBook";
@@ -30,6 +31,8 @@ export default function NoidaToDelhiTaxiPage() {
       <NoidaDelhiAbout />
 
       <NoidaDelhiFare />
+
+      <NoidaDelhiTaxiOptions />
 
       <NoidaDelhiVehicleComparison />
 

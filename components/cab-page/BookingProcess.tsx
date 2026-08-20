@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   CalendarCheck,
   CheckCircle2,
   Car,
@@ -7,17 +6,18 @@ import {
 } from "lucide-react";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
+  location: {
+    slug: string;
+    name: string;
   };
+
   vehicle: {
     name: string;
   };
 };
 
 export function BookingProcess({
-  route,
+  location,
   vehicle,
 }: Props) {
   const steps = [
@@ -25,13 +25,13 @@ export function BookingProcess({
       number: "01",
       icon: Car,
       title: "Choose Your Cab",
-      description: `Select the ${vehicle.name} that fits your journey.`,
+      description: `Select the ${vehicle.name} that fits your travel needs.`,
     },
     {
       number: "02",
       icon: ClipboardCheck,
       title: "Enter Travel Details",
-      description: `Add your pickup from ${route.fromName} and drop at ${route.toName}.`,
+      description: `Add your pickup location in ${location.name} and your destination.`,
     },
     {
       number: "03",
@@ -45,7 +45,7 @@ export function BookingProcess({
       icon: CheckCircle2,
       title: "Start Your Journey",
       description:
-        "Meet your driver at the pickup point and enjoy your journey.",
+        "Meet your driver at the pickup point and enjoy a comfortable journey.",
     },
   ];
 
@@ -66,9 +66,13 @@ export function BookingProcess({
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-            Booking your cab from {route.fromName} to {route.toName} takes
-            just a few simple steps.
+            Booking your cab from{" "}
+            <span className="font-semibold text-slate-950">
+              {location.name}
+            </span>{" "}
+            takes just a few simple steps.
           </p>
+
         </div>
 
         {/* Steps */}
@@ -102,16 +106,20 @@ export function BookingProcess({
                     sm:p-6
                   "
                 >
-                  {/* Step number */}
+
+                  {/* Step icon */}
                   <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border-4 border-white bg-amber-400 shadow-md">
+
                     <Icon
                       className="h-5 w-5 text-slate-950"
                       strokeWidth={2}
                     />
+
                   </div>
 
                   {/* Step label */}
                   <div className="mt-5">
+
                     <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">
                       Step {step.number}
                     </span>
@@ -123,50 +131,63 @@ export function BookingProcess({
                     <p className="mt-2 text-xs leading-5 text-slate-600 sm:text-sm sm:leading-6">
                       {step.description}
                     </p>
+
                   </div>
+
                 </div>
               );
             })}
+
           </div>
 
-          {/* Journey Summary */}
+          {/* Booking Summary */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-amber-200 bg-amber-50">
 
             <div className="flex flex-col gap-4 px-5 py-5 sm:px-6 sm:py-6 lg:flex-row lg:items-center lg:justify-between">
 
-              {/* Journey */}
+              {/* Booking */}
               <div>
+
                 <p className="text-[10px] font-bold uppercase tracking-wider text-amber-700">
-                  Your Journey
+                  Your Booking
                 </p>
 
                 <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="text-sm font-bold text-slate-950 sm:text-base">
-                    {route.fromName}
-                  </span>
-
-                  <ArrowRight className="h-4 w-4 text-amber-600" />
 
                   <span className="text-sm font-bold text-slate-950 sm:text-base">
-                    {route.toName}
+                    {vehicle.name}
                   </span>
+
+                  <span className="text-slate-400">
+                    ·
+                  </span>
+
+                  <span className="text-sm font-bold text-slate-950 sm:text-base">
+                    {location.name}
+                  </span>
+
                 </div>
 
                 <p className="mt-1 text-xs text-slate-600 sm:text-sm">
-                  {vehicle.name} · Simple and convenient booking
+                  Simple and convenient local cab booking
                 </p>
+
               </div>
 
               {/* Ready indicator */}
               <div className="flex w-fit items-center gap-2 rounded-xl bg-white px-4 py-3 shadow-sm">
+
                 <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-400">
+
                   <CheckCircle2
                     className="h-4 w-4 text-slate-950"
                     strokeWidth={2.5}
                   />
+
                 </div>
 
                 <div>
+
                   <p className="text-xs font-bold text-slate-950">
                     Ready to book
                   </p>
@@ -174,10 +195,13 @@ export function BookingProcess({
                   <p className="text-[10px] text-slate-500">
                     Just a few simple steps
                   </p>
+
                 </div>
+
               </div>
 
             </div>
+
           </div>
 
         </div>

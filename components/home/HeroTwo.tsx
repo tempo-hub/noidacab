@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Car, Clock, Shield } from "lucide-react";
 import BookingCard from "./BookingCard";
+import Link from "next/link";
 
 const features = [
   { icon: Car, title: "4,000+ Tips", subtitle: "Rides Completed" },
@@ -44,7 +45,7 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
-              
+
               <h1 className="text-3xl font-black leading-[1.05] tracking-tight text-gray-900 sm:text-4xl lg:text-6xl">
                 Find Your Perfect Ride,
                 <span className="block text-amber-600">Travel With Confidence</span>
@@ -57,15 +58,22 @@ export default function Hero() {
               </p>
 
               <div className="mt-4 flex flex-wrap gap-4">
-                <button className="rounded-xl bg-amber-400 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-600/25 transition hover:bg-amber-500">
+                <a
+                  href="https://wa.me/918448445504"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-amber-400 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-600/25 transition hover:bg-amber-500"
+                >
                   Book Now
-                </button>
-                <button className="rounded-xl border border-gray-300 bg-white px-7 py-3.5 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50">
+                </a>
+                <Link
+                href="/taxi"
+                className="rounded-xl border border-gray-300 bg-white px-7 py-3.5 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50">
                   View Fleet
-                </button>
+                </Link>
               </div>
 
-              
+
 
               {/* Mobile-only image — the inset side panel is hidden below md, so show a contained photo here instead */}
               <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-2xl md:hidden">

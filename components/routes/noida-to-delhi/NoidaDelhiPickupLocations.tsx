@@ -62,13 +62,13 @@ const specialLocations = [
   {
     title: "Noida Airport Transfers",
     description:
-      "Book a private cab from Noida for airport pickup or drop services.",
+      "Our airport taxi service tracks your flight timing and adjusts the pickup accordingly, so your driver is waiting when you land instead of the other way around. This cuts out the wait for a cab at the terminal exit after a long flight.",
     icon: Plane,
   },
   {
     title: "Railway Station Transfers",
     description:
-      "Arrange a taxi from Noida to nearby railway stations according to your travel schedule.",
+      "The same applies for train travel. Book a cab from Noida to Delhi railway stations including New Delhi Railway Station, Hazrat Nizamuddin, or Old Delhi Railway Station, and your driver meets you right outside the designated pickup point. No circling the station looking for your ride with bags in hand.",
     icon: TrainFront,
   },
 ];

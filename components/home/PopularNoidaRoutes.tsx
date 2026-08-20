@@ -15,7 +15,7 @@ const routes = [
     distance: "25 km",
     time: "1–2 hours",
     price: "₹1,000",
-    href: "/server/taxi/noida-to-delhi",
+    href: "/taxi",
     featured: true,
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     distance: "35 km",
     time: "1–2 hours",
     price: "₹1,200",
-    href: "/server/taxi/noida-to-delhi-airport",
+    href: "/taxi",
   },
   {
     from: "Noida",
@@ -32,7 +32,7 @@ const routes = [
     distance: "30 km",
     time: "1–1.5 hours",
     price: "₹900",
-    href: "/server/taxi/noida-to-greater-noida",
+    href: "/taxi",
   },
   {
     from: "Noida",
@@ -40,7 +40,7 @@ const routes = [
     distance: "25 km",
     time: "1–1.5 hours",
     price: "₹850",
-    href: "/server/taxi/noida-to-ghaziabad",
+    href: "/taxi",
   },
   {
     from: "Noida",
@@ -48,7 +48,7 @@ const routes = [
     distance: "55 km",
     time: "1.5–2.5 hours",
     price: "₹1,600",
-    href: "/server/taxi/noida-to-gurugram",
+    href: "/taxi",
   },
   {
     from: "Noida",
@@ -56,7 +56,7 @@ const routes = [
     distance: "200 km",
     time: "3.5–4.5 hours",
     price: "₹2,800",
-    href: "/server/taxi/noida-to-agra",
+    href: "/taxi",
   },
   {
     from: "Noida",
@@ -64,7 +64,7 @@ const routes = [
     distance: "220 km",
     time: "4–5 hours",
     price: "₹3,000",
-    href: "/server/taxi/noida-to-haridwar",
+    href: "/taxi",
   },
   {
     from: "Noida",
@@ -72,7 +72,7 @@ const routes = [
     distance: "280 km",
     time: "5–6 hours",
     price: "₹3,600",
-    href: "/server/taxi/noida-to-jaipur",
+    href: "/taxi",
   },
 ];
 
@@ -116,7 +116,7 @@ export default function PopularNoidaRoutes() {
           {routes.map((route) => (
             <Link
               key={`${route.from}-${route.to}`}
-              href="/route/noida-to-delhi-taxi"
+              href="/taxi"
               className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${route.featured
                   ? "border-amber-300 shadow-[0_10px_35px_rgba(245,158,11,0.12)]"
                   : "border-slate-200 hover:border-amber-200"

@@ -1,15 +1,12 @@
-import { Vehicle } from "@/data/vehicles";
+import type { Vehicle } from "@/data/vehicles";
 
 export type CabTemplateProps = {
-  route: {
-    fromSlug: string;
-    fromName: string;
-    toSlug: string;
-    toName: string;
-    distanceKm: number;
+  location: {
+    slug: string;
+    name: string;
   };
 
-  vehicle:Vehicle;
+  vehicle: Vehicle;
 
   url: string;
 };

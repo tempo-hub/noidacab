@@ -11,30 +11,30 @@ import {
 
 const sedanComparison = [
   {
-    name: "Maruti Dzire",
+    name: "Dzire",
     bestFor: "Budget travel",
     passengers: "Up to 4 passengers",
-    luggage: "2 bags",
+    luggage: "2 bags 1 cabin bag",
     comfort: "Good",
     description:
-      "A practical choice for individuals, couples and small families looking for an economical sedan.",
+      "The Dzire is the standard sedan on this route, and it works well for small groups who want comfort without paying for an SUV.",
     href: "/noida-to-delhi-dzire-taxi",
   },
   {
-    name: "Toyota Etios",
+    name: "Etios",
     bestFor: "Everyday travel",
     passengers: "Up to 4 passengers",
-    luggage: "2 bags",
+    luggage: "2 bags 1 cabin bag",
     comfort: "Good",
     description:
       "A reliable sedan for family trips, business travel and regular journeys between Noida and Delhi.",
     href: "/noida-to-delhi-etios-taxi",
   },
   {
-    name: "Honda Amaze",
+    name: "Amaze",
     bestFor: "Comfortable travel",
     passengers: "Up to 4 passengers",
-    luggage: "2 bags",
+    luggage: "2 bags 1 cabin bag",
     comfort: "Good",
     description:
       "A comfortable sedan option for passengers who want a smooth and convenient private journey.",

@@ -33,16 +33,16 @@ const socialLinks = [
 
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Fleet", href: "/fleet" },
-  { name: "FAQ", href: "/faq" },
+  { name: "About Us", href: "/about-us" },
+  { name: "Terms & Conditions", href: "/terms-and-conditions" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
   { name: "Contact", href: "/contact" },
 ];
 
 const services = [
-  { name: "Local Noida", href: "/local-noida" },
+  { name: "Local Noida", href: "/noida" },
   { name: "Local Delhi", href: "/local-delhi" },
-  { name: "Outstation Cab", href: "/outstation-cab" },
+  { name: "Noida-to-Delhi", href: "/route/noida-to-delhi-taxi" },
   { name: "Corporate Cab", href: "/corporate-cab" },
   { name: "Hourly Rental", href: "/hourly-rental" },
 ];
@@ -160,7 +160,7 @@ export default function Footer() {
               <div className="flex gap-3">
                 <MapPin className="mt-1 text-amber-500" size={18} />
                 <span className="text-gray-400">
-                  Sector 18, Noida,
+                  Sector 2, Noida,
                   <br />
                   Uttar Pradesh
                 </span>

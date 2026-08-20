@@ -17,13 +17,13 @@ export default function FAQ() {
         {/* Heading */}
 
         <div className="mb-16 text-center">
-          <span className="inline-flex rounded-full bg-red-100 px-5 py-2 text-sm font-semibold text-red-600">
+          <span className="inline-flex rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-600">
             FAQ
           </span>
 
           <h2 className="mt-5 text-4xl font-bold text-gray-900 md:text-5xl">
             Frequently Asked
-            <span className="block text-red-600">
+            <span className="block text-amber-600">
               Questions
             </span>
           </h2>
@@ -52,7 +52,7 @@ export default function FAQ() {
                     {faq.question}
                   </h3>
 
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
                     {open ? (
                       <Minus size={20} />
                     ) : (

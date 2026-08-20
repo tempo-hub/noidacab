@@ -2,28 +2,28 @@ import { FAQ } from "@/types/faq";
 
 export const faqs: FAQ[] = [
   {
-    question: "How can I book a cab in Noida?",
+    question: "How much does a Noida to Delhi taxi cost?",
     answer:
-      "You can easily book a cab by selecting your pickup and drop location, choosing your preferred vehicle, and confirming your booking through our website.",
+      "The Noida to Delhi taxi cost starts from ₹9 per km and goes up depending on the vehicle you choose, with hatchbacks at the lower end and SUVs at the top. Every quote includes fuel, toll, and driver charges upfront, so you know the full amount before the ride starts.",
   },
   {
-    question: "Do you provide airport transfer services?",
+    question: "How can I book a Noida to Delhi taxi?",
     answer:
-      "Yes. We offer 24×7 airport pickup and drop services to and from Delhi Airport, Jewar Airport, and nearby locations.",
+      "Booking a Noida to Delhi cab takes just a few steps online or over a call. Pick your vehicle type based on group size, confirm your pickup sector, and pick a one way drop or a round trip. Your driver details and fare breakup arrive before the car reaches you.",
   },
   {
-    question: "Which vehicles are available?",
+    question: "How long does a taxi take from Noida to Delhi?",
     answer:
-      "We offer Hatchback, Sedan, Ertiga, Innova Crysta, SUVs, and Tempo Travellers for local, airport, and outstation travel.",
+      "Travel time depends on your pickup point and route, but most trips land between 35 minutes and 1 hour 20 minutes. A drop near South Delhi via DND Flyway is quicker, while a trip to Old Delhi via Outer Ring Road takes longer given the added distance and traffic.",
   },
   {
-    question: "Are your drivers verified?",
+    question: "Can I book a Noida to Delhi taxi for airport transfer?",
     answer:
-      "Yes. Every NoidaCab driver is professionally verified and experienced to ensure a safe and comfortable journey.",
+      "Yes, airport pickup and drop is a regular part of this route. Your driver tracks the flight schedule so the car is ready outside the terminal when you land, and the same works in reverse for a drop to Indira Gandhi International Airport ahead of your flight.",
   },
   {
-    question: "Do you provide outstation cab services?",
+    question: "Is Noida to Delhi taxi available for one-way travel?",
     answer:
-      "Yes. You can book one-way or round-trip taxis from Noida to Agra, Jaipur, Haridwar, Rishikesh, Chandigarh, Lucknow, and many more destinations.",
+      "Yes, a one way cab is available and priced only for the distance you actually travel, no return charge added. This option suits a single drop such as a work meeting, an airport run, or a visit where you'll sort your own way back to Noida.",
   },
 ];

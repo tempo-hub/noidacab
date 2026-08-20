@@ -69,8 +69,8 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
   // --------------------------------------------------
 
   {
-    id: "swift-dzire",
-    name: "Swift Dzire",
+    id: "dzire",
+    name: "Dzire",
     category: "Sedan",
     models: ["Swift Dzire"],
     seats: 4,
@@ -89,8 +89,8 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
   },
 
   {
-    id: "toyota-etios",
-    name: "Toyota Etios",
+    id: "etios",
+    name: "Etios",
     category: "Sedan",
     models: ["Toyota Etios"],
     seats: 4,
@@ -109,8 +109,8 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
   },
 
   {
-    id: "honda-amaze",
-    name: "Honda Amaze",
+    id: "amaze",
+    name: "Amaze",
     category: "Sedan",
     models: ["Honda Amaze"],
     seats: 4,

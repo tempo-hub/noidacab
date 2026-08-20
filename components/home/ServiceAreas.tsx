@@ -43,7 +43,7 @@ export default function ServiceAreas() {
             return (
               <Link
                 key={area.slug}
-                href="/route/noida-to-delhi-taxi"
+                href="/taxi"
                 className="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-amber-600 hover:shadow-xl"
               >
                 <div className="flex items-start gap-5">

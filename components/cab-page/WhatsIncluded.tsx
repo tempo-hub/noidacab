@@ -8,47 +8,48 @@ import {
 } from "lucide-react";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
+  location: {
+    slug: string;
+    name: string;
   };
+
   vehicle: {
     name: string;
   };
 };
 
 export function WhatsIncluded({
-  route,
+  location,
   vehicle,
 }: Props) {
   const included = [
     {
       icon: Car,
       title: vehicle.name,
-      description: "The vehicle selected for your journey.",
+      description: `The ${vehicle.name} selected for your journey from ${location.name}.`,
     },
     {
       icon: UserCheck,
       title: "Professional Driver",
       description:
-        "Experienced driver focused on a smooth and comfortable journey.",
+        "Experienced driver focused on providing a smooth and comfortable journey.",
     },
     {
       icon: MapPin,
       title: "Pickup & Drop",
-      description: `Pickup from ${route.fromName} and drop at ${route.toName}.`,
+      description: `Convenient pickup from ${location.name} and drop at your selected destination.`,
     },
     {
       icon: ShieldCheck,
       title: "Comfortable Journey",
       description:
-        "Clean and well-maintained vehicle for a comfortable trip.",
+        "Clean and well-maintained vehicle for a comfortable local trip.",
     },
     {
       icon: CreditCard,
       title: "Transparent Fare",
       description:
-        "View your estimated fare before confirming the booking.",
+        "View your estimated fare and applicable charges before confirming your booking.",
     },
   ];
 
@@ -69,16 +70,17 @@ export function WhatsIncluded({
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-            Book a {vehicle.name} from{" "}
+            Book a{" "}
             <span className="font-semibold text-slate-950">
-              {route.fromName}
+              {vehicle.name}
             </span>{" "}
-            to{" "}
+            from{" "}
             <span className="font-semibold text-slate-950">
-              {route.toName}
+              {location.name}
             </span>{" "}
             with the essentials you need for a comfortable journey.
           </p>
+
         </div>
 
         {/* Included Grid */}
@@ -86,7 +88,7 @@ export function WhatsIncluded({
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
-            {included.map((item, index) => {
+            {included.map((item) => {
               const Icon = item.icon;
 
               return (
@@ -110,6 +112,7 @@ export function WhatsIncluded({
                     sm:p-6
                   "
                 >
+
                   {/* Top accent */}
                   <div className="absolute left-0 top-0 h-0.5 w-0 bg-amber-400 transition-all duration-300 group-hover:w-full" />
 
@@ -117,11 +120,14 @@ export function WhatsIncluded({
 
                     {/* Icon */}
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 transition-colors duration-300 group-hover:bg-amber-100">
+
                       <Icon className="h-5 w-5 text-slate-700 transition-colors group-hover:text-amber-600" />
+
                     </div>
 
                     {/* Content */}
                     <div className="min-w-0">
+
                       <h3 className="text-sm font-bold text-slate-950 sm:text-base">
                         {item.title}
                       </h3>
@@ -129,17 +135,22 @@ export function WhatsIncluded({
                       <p className="mt-1.5 text-xs leading-5 text-slate-600 sm:text-sm sm:leading-6">
                         {item.description}
                       </p>
+
                     </div>
+
                   </div>
 
                   {/* Included indicator */}
                   <div className="mt-5 flex items-center gap-1.5 border-t border-slate-100 pt-4">
+
                     <CheckCircle2 className="h-4 w-4 text-amber-500" />
 
                     <span className="text-xs font-semibold text-slate-500">
                       Included in your booking
                     </span>
+
                   </div>
+
                 </div>
               );
             })}
@@ -151,41 +162,45 @@ export function WhatsIncluded({
 
             <div className="flex flex-col gap-4 px-5 py-5 sm:px-6 sm:py-6 lg:flex-row lg:items-center lg:justify-between">
 
-              {/* Route */}
+              {/* Location / Vehicle */}
               <div className="min-w-0">
+
                 <p className="text-[10px] font-bold uppercase tracking-wider text-amber-700">
-                  Your Journey
+                  Your Booking
                 </p>
 
                 <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
+
                   <span className="text-sm font-bold text-slate-950 sm:text-base">
                     {vehicle.name}
                   </span>
 
-                  <span className="text-slate-400">·</span>
-
-                  <span className="text-sm font-medium text-slate-700">
-                    {route.fromName}
+                  <span className="text-slate-400">
+                    ·
                   </span>
 
-                  <span className="text-amber-500">→</span>
-
                   <span className="text-sm font-medium text-slate-700">
-                    {route.toName}
+                    {location.name}
                   </span>
+
                 </div>
+
               </div>
 
               {/* Included */}
               <div className="flex shrink-0 items-center gap-2">
+
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-400">
+
                   <CheckCircle2
                     className="h-4 w-4 text-slate-950"
                     strokeWidth={2.5}
                   />
+
                 </div>
 
                 <div>
+
                   <p className="text-xs font-bold text-slate-950">
                     Everything included
                   </p>
@@ -193,10 +208,13 @@ export function WhatsIncluded({
                   <p className="text-[11px] text-slate-600">
                     Ready for your journey
                   </p>
+
                 </div>
+
               </div>
 
             </div>
+
           </div>
 
         </div>

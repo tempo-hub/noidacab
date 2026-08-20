@@ -4,46 +4,44 @@ import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 
 type Props = {
-  route: {
-    fromName: string;
-    toName: string;
-    distanceKm?: number;
+  location: {
+    slug: string;
+    name: string;
   };
+
   vehicle: {
     name: string;
   };
 };
 
 export function FAQSection({
-  route,
+  location,
   vehicle,
 }: Props) {
   const faqs = [
     {
-      question: `How much does a ${vehicle.name} cost from ${route.fromName} to ${route.toName}?`,
-      answer: `The estimated fare for a ${vehicle.name} from ${route.fromName} to ${route.toName} is calculated based on the total route distance and the applicable per-kilometre rate. You can check the estimated fare in the fare section above.`,
+      question: `How much does a ${vehicle.name} cost in ${location.name}?`,
+      answer: `The estimated fare for a ${vehicle.name} from ${location.name} depends on the travel distance and the applicable per-kilometre rate. You can check the estimated fare in the fare section above.`,
     },
     {
-      question: `Can I book a ${vehicle.name} from ${route.fromName} to ${route.toName}?`,
-      answer: `Yes. You can book a ${vehicle.name} cab for travel from ${route.fromName} to ${route.toName}. The vehicle is suitable for comfortable local and outstation journeys.`,
+      question: `Can I book a ${vehicle.name} from ${location.name}?`,
+      answer: `Yes. You can book a ${vehicle.name} cab from ${location.name} for local, airport, railway station and outstation travel, subject to availability.`,
     },
     {
-      question: `How far is ${route.toName} from ${route.fromName}?`,
-      answer: route.distanceKm
-        ? `The approximate road distance from ${route.fromName} to ${route.toName} is ${route.distanceKm} km. Actual distance may vary depending on the selected route and traffic conditions.`
-        : `The distance may vary depending on the selected route and traffic conditions.`,
+      question: `Can I get pickup from ${location.name}?`,
+      answer: `Yes. Pickup can be arranged from ${location.name}. Enter your preferred pickup location and destination while booking your cab.`,
     },
     {
       question: `Is the ${vehicle.name} suitable for family travel?`,
       answer: `Yes. The ${vehicle.name} is a comfortable option for family travel. You can select the vehicle based on your group size and luggage requirements.`,
     },
     {
-      question: `Can I get pickup from ${route.fromName}?`,
-      answer: `Yes. Pickup can be arranged from ${route.fromName}. Enter your preferred pickup location and travel details while booking your cab.`,
+      question: `Can I book a ${vehicle.name} for local travel in ${location.name}?`,
+      answer: `Yes. You can book a ${vehicle.name} for local travel from ${location.name}. Enter your pickup location, destination and travel details while booking.`,
     },
     {
-      question: `Can I book a cab from ${route.toName} to ${route.fromName}?`,
-      answer: `Yes. You can also book a return journey from ${route.toName} to ${route.fromName}, subject to cab availability.`,
+      question: `Can I book a ${vehicle.name} for airport or railway station pickup?`,
+      answer: `Yes. You can use a ${vehicle.name} for airport and railway station transfers from ${location.name}. Availability may depend on the selected date and time.`,
     },
   ];
 
@@ -67,7 +65,7 @@ export function FAQSection({
 
           <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-slate-600">
             Find answers to common questions about booking a{" "}
-            {vehicle.name} from {route.fromName} to {route.toName}.
+            {vehicle.name} in {location.name}.
           </p>
 
         </div>
@@ -96,6 +94,7 @@ export function FAQSection({
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left sm:px-6"
                 >
+
                   <span className="font-semibold leading-6 text-slate-900">
                     {faq.question}
                   </span>
@@ -113,6 +112,7 @@ export function FAQSection({
                       }`}
                     />
                   </span>
+
                 </button>
 
                 <div
@@ -123,9 +123,11 @@ export function FAQSection({
                   }`}
                 >
                   <div className="overflow-hidden">
+
                     <div className="border-t border-slate-100 px-5 pb-5 pt-4 text-sm leading-7 text-slate-600 sm:px-6">
                       {faq.answer}
                     </div>
+
                   </div>
                 </div>
 

@@ -48,27 +48,20 @@ export default function NoidaDelhiAbout() {
         {/* Content */}
         <div className="mt-5 max-w-5xl space-y-4 text-base leading-7 text-slate-600">
           <p>
-            A Noida to Delhi taxi is a convenient option for travellers
-            looking for private and comfortable transportation between
-            Noida and different parts of Delhi. You can book a cab for
-            business travel, family trips, airport transfers, shopping,
-            sightseeing or other personal journeys.
+            Our Noida to Delhi cab service gives you a fixed, upfront fare before you step into the car,
+             so you know exactly what you're paying and why. You get to pick from hatchbacks,
+             sedans, SUVs, and tempo travellers depending on your group size and luggage.
           </p>
 
           <p>
-            Depending on your travel requirements, you can choose from
-            different vehicle options including hatchbacks, sedans, SUVs
-            and larger vehicles. For individual or small-group travel,
-            a sedan can be a practical choice, while families and larger
-            groups can select vehicles such as the Ertiga, Innova Crysta
-            or Tempo Traveller.
+            Need a taxi from Noida to Delhi for a single drop,
+            or a round trip cab that waits and brings you back home? Both are available.
+            We also handle direct airport and railway station pickup and drop.
           </p>
 
           <p>
-            The pickup and drop location can be selected according to
-            your journey. Before booking, you can compare available
-            vehicles, seating capacity, fuel type and fare information
-            to choose a cab that suits your trip.
+            Our drivers know the DND Flyway, the Outer Ring Road, and every shortcut in between, 
+            which keeps you moving even when the city traffic doesn't.
           </p>
         </div>
 

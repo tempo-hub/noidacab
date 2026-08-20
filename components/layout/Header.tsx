@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Taxi", href: "/route/noida-to-delhi-taxi" },
+  { label: "Taxi", href: "/taxi" },
   { label: "fare", href: "/route/noida-to-delhi-taxi-fare" },
   {
     label: "Cabs",
@@ -18,7 +18,7 @@ const navLinks = [
       { label: "Tempo Traveller", href: "/tempo-traveller" },
     ],
   },
-  { label: "Fleet", href: "/fleet" },
+  { label: "About", href: "/about-us" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -109,7 +109,7 @@ export default function Header() {
         {/* Right */}
         <div className="hidden lg:flex">
           <Link
-            href="tel:+919999999999"
+            href="https://wa.me/918448445504"
             className="inline-flex items-center gap-2 rounded-full bg-[white] px-5 xl:px-6 py-2.5 xl:py-3 font-semibold text-black transition hover:bg-amber-500"
           >
             <Phone size={18} />
@@ -169,7 +169,7 @@ export default function Header() {
           ))}
 
           <Link
-            href="tel:+919999999999"
+            href="https://wa.me/918448445504"
             className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-[#ffb300] py-3 font-semibold text-white transition hover:bg-amber-500"
             onClick={() => setMenuOpen(false)}
           >

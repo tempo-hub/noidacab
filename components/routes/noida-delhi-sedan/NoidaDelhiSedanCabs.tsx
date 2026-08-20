@@ -147,7 +147,7 @@ export default function NoidaDelhiSedanCabs() {
 
                 {/* CTA */}
                 <Link
-                  href={cab.href || "#"}
+                  href="/taxi/{vehicle}"
                   className="
                     mt-6
                     inline-flex

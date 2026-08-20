@@ -54,7 +54,7 @@ export default function NoidaDelhiFareCTA() {
               {/* Buttons */}
               <div className="mt-9 flex flex-wrap gap-4">
                 <Link
-                  href="/"
+                  href="https://wa.me/918448445504"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-bold text-gray-900 transition hover:bg-gray-100"
                 >
                   Book Your Cab
@@ -62,7 +62,7 @@ export default function NoidaDelhiFareCTA() {
                 </Link>
 
                 <a
-                  href="tel:+919999999999"
+                  href="tel:+918448445504"
                   className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-3.5 font-bold text-white transition hover:bg-white/10"
                 >
                   <Phone size={18} />
