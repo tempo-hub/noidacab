@@ -152,22 +152,22 @@ export const vehicles: Vehicle[] = [
     category: "SUV",
   },
 
-  {
-    name: "Innova Crysta",
-    slug: "innova",
-    image: "/cabs/innovamain.webp",
-    price: "₹18/km",
+  // {
+  //   name: "Innova Crysta",
+  //   slug: "innova",
+  //   image: "/cabs/innovamain.webp",
+  //   price: "₹18/km",
 
-    seats: 6,
-    doors: 4,
-    luggage: 4,
+  //   seats: 6,
+  //   doors: 4,
+  //   luggage: 4,
 
-    airCondition: true,
-    gps: true,
-    driverChoice: true,
+  //   airCondition: true,
+  //   gps: true,
+  //   driverChoice: true,
 
-    category: "SUV",
-  },
+  //   category: "SUV",
+  // },
   {
     name: "Innova Crysta",
     slug: "innova-crysta",

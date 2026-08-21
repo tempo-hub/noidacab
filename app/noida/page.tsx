@@ -16,7 +16,7 @@ export const metadata = {
 const vehicleSections = [
   {
     name: "Innova Crysta",
-    slug: "innova",
+    slug: "innova-crysta",
     description:
       "Book an Innova Crysta from your Noida locality for family trips, airport transfers and comfortable travel.",
   },

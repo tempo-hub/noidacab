@@ -196,6 +196,7 @@ export function parseLocalRouteUrl(
     if (!location) {
       return null;
     }
+    
 
     /*
      * Find vehicle
@@ -247,7 +248,7 @@ export function parseLocalRouteUrl(
      * Extract vehicle slug
      */
     const vehicleMatch = slug.match(
-      /^(.+)-to-(.+)-(dzire|ertiga|innova|amaze|etios|innova-crysta)-taxi$/
+      /^(.+)-to-(.+)-(dzire|ertiga|amaze|etios|innova-crysta)-taxi$/
     );
 
     if (!vehicleMatch) {
@@ -258,13 +259,10 @@ export function parseLocalRouteUrl(
       ,
       fromSlug,
       toSlug,
-      vehicleSlugFromUrl,
+      vehicleSlug,
     ] = vehicleMatch;
 
-      const vehicleSlug =
-    vehicleSlugFromUrl === "innova-crysta"
-      ? "innova"
-      : vehicleSlugFromUrl;
+      ;
     /*
      * Find vehicle
      */
@@ -272,7 +270,7 @@ export function parseLocalRouteUrl(
       vehicles.find(
         (vehicle) =>
           vehicle.slug.toLowerCase() ===
-          vehicleSlug
+          vehicleSlug.toLowerCase()
       );
 
     if (!matchedVehicle) {

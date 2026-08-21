@@ -7,7 +7,7 @@ import { InnovaTemplate } from "./InnovaTemplate";
 export const cabTemplates = {
   dzire: DzireTemplate,
   ertiga: ErtigaTemplate,
-  innova: InnovaTemplate,
+  "innova-crysta": InnovaTemplate,
   amaze: AmazeTemplate,
   etios: EtiosTemplate,
 } as const;
