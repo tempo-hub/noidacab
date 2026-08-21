@@ -136,7 +136,7 @@ export const vehicles: Vehicle[] = [
   // -----------------------------
 
   {
-    name: "Maruti Ertiga",
+    name: "Ertiga",
     slug: "ertiga",
     image: "/cabs/ertigamain.webp",
     price: "₹16/km",
@@ -186,22 +186,22 @@ export const vehicles: Vehicle[] = [
   //   category: "SUV",
   // },
 
-  {
-    name: "MG ZS",
-    slug: "mg-zs",
-    image: "/cabs/mgzsmain.webp",
-    price: "₹20/km",
+  // {
+  //   name: "MG ZS",
+  //   slug: "mg-zs",
+  //   image: "/cabs/mgzsmain.webp",
+  //   price: "₹20/km",
 
-    seats: 5,
-    doors: 5,
-    luggage: 3,
+  //   seats: 5,
+  //   doors: 5,
+  //   luggage: 3,
 
-    airCondition: true,
-    gps: true,
-    driverChoice: true,
+  //   airCondition: true,
+  //   gps: true,
+  //   driverChoice: true,
 
-    category: "SUV",
-  },
+  //   category: "SUV",
+  // },
 
   // -----------------------------
   // URBANIA

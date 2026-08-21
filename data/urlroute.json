@@ -225,6 +225,28 @@
   { "url": "/noida/noida-extension/amaze" },
   { "url": "/noida/noida-extension/dzire" },
   { "url": "/noida/noida-extension/ertiga" },
-  { "url": "/noida/noida-extension/innova" }
+  { "url": "/noida/noida-extension/innova" },
+  { "url": "/noida-to-delhi-one-way-cab" },
+  { "url": "/noida-to-gurgaon-one-way-cab" },
+  { "url": "/noida-to-agra-one-way-cab" },
+  { "url": "/noida-to-jaipur-one-way-cab" },
+  { "url": "/noida-to-lucknow-one-way-cab" },
+  { "url": "/noida-to-delhi-suv-taxi" },
+  { "url": "/noida-to-gurgaon-suv-taxi" },
+  { "url": "/noida-to-agra-suv-taxi" },
+  { "url": "/noida-to-jaipur-suv-taxi" },
+
+  {
+    "url": "/noida-to-delhi-dzire-taxi"
+  },
+  {
+    "url": "/noida-to-delhi-ertiga-taxi"
+  },
+  {
+    "url": "/noida-to-delhi-innova-taxi"
+  },
+  {
+    "url": "/noida-to-delhi-amaze-taxi"
+  }
 
 ]

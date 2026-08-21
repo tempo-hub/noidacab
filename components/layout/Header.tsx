@@ -13,13 +13,13 @@ const navLinks = [
     label: "Cabs",
     dropdown: [
       { label: "Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
-      { label: "SUV", href: "/suv-cabs" },
+      { label: "SUV", href: "/route/suv" },
       { label: "Innova", href: "/innova-cabs" },
       { label: "Tempo Traveller", href: "/tempo-traveller" },
     ],
   },
   { label: "About", href: "/about-us" },
-  { label: "Contact", href: "/contact" },
+  { label: "One Way", href: "/one-way" },
 ];
 
 export default function Header() {
