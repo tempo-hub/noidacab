@@ -25,9 +25,9 @@ export default function LegalHero({
 
   return (
     <section className="relative overflow-hidden bg-slate-950 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.20),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(253, 166, 15, 0.2),transparent_35%)]" />
 
-      <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-amber-500/10 blur-3xl" />
+      <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-amber-500 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl">
         <div className="max-w-3xl">

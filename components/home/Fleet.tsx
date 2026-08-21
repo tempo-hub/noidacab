@@ -12,7 +12,7 @@ import { vehicles } from "@/data/vehicles";
 
 export default function Fleet() {
   return (
-    <section className=" py-12">
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-16 text-center">
@@ -20,11 +20,11 @@ export default function Fleet() {
             Our Fleet
           </span>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-5 text-gray-800 text-4xl font-bold md:text-5xl">
             Choose Your Perfect Ride
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600">
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-900">
             From affordable hatchbacks to spacious tempo travellers, we have
             the perfect vehicle for every journey.
           </p>
@@ -50,7 +50,7 @@ export default function Fleet() {
 
               <div className="p-4">
                 <div className="">
-                  <h3 className="text-2xl flex justify-center font-bold">
+                  <h3 className="text-2xl flex justify-center font-bold text-slate-900">
                     {vehicle.name}
                   </h3>
 
@@ -63,49 +63,49 @@ export default function Fleet() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <CarFront size={18} className="text-yellow-500"  />
-                      <span>Taxi Doors:</span>
+                      <span className="text-slate-900">Taxi Doors:</span>
                     </div>
-                    <span>{vehicle.doors}</span>
+                    <span className="text-slate-900">{vehicle.doors}</span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Users size={18} className="text-yellow-500"  />
-                      <span>Passengers:</span>
+                      <span className="text-slate-900">Passengers:</span>
                     </div>
-                    <span>{vehicle.seats}</span>
+                    <span className="text-slate-900">{vehicle.seats}</span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Briefcase size={18} className="text-yellow-500"  />
-                      <span>Luggage Carry:</span>
+                      <span className="text-slate-900">Luggage Carry:</span>
                     </div>
-                    <span>{vehicle.luggage}</span>
+                    <span className="text-slate-900">{vehicle.luggage}</span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Snowflake size={18} className="text-yellow-500"  />
-                      <span>Air Condition:</span>
+                      <span className="text-slate-900">Air Condition:</span>
                     </div>
-                    <span>Yes</span>
+                    <span className="text-slate-900">Yes</span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <MapPinned size={18} className="text-yellow-500"  />
-                      <span>GPS Navigation:</span>
+                      <span className="text-slate-900">GPS Navigation:</span>
                     </div>
-                    <span>Yes</span>
+                    <span className="text-slate-900">Yes</span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <UserCheck size={18} className="text-yellow-500"  />
-                      <span>Driver Choosing:</span>
+                      <span className="text-slate-900">Driver Choosing:</span>
                     </div>
-                    <span>Yes</span>
+                    <span className="text-slate-900">Yes</span>
                   </div>
                 </div>
 

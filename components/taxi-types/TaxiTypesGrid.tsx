@@ -32,7 +32,7 @@ const taxiTypes = [
       "Spacious vehicles for families and small groups travelling with additional luggage.",
     capacity: "6 to 7 passengers",
     examples: "Ertiga, Innova",
-    href: "/taxi-types/suv",
+    href: "/route/suv",
     icon: Users,
   },
   {

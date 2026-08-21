@@ -3,7 +3,7 @@ import { howItWorks } from "@/data/howItWorks";
 
 export default function HowItWorks() {
   return (
-    <section className=" py-6 lg:py-12">
+    <section className="bg-white/95 py-6 lg:py-12">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-4 text-center">

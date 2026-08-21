@@ -21,7 +21,7 @@ export function SUVRouteHero({ route }: Props) {
 
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         {/* Breadcrumb */}
-        <div className="mb-8 flex items-center gap-2 text-sm text-slate-500">
+        {/* <div className="mb-8 flex items-center gap-2 text-sm text-slate-500">
           <Link
             href="/"
             className="transition hover:text-orange-600"
@@ -43,12 +43,12 @@ export function SUVRouteHero({ route }: Props) {
           <span className="text-slate-700">
             {route.fromName} to {route.toName}
           </span>
-        </div>
+        </div> */}
 
         <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           {/* LEFT */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-100 bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-100 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-500">
               <CarFront className="h-4 w-4" />
               SUV Taxi Service
             </div>

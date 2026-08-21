@@ -2,13 +2,13 @@ import { ArrowRight, Phone } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-slate-950 py-20">
+    <section className="relative overflow-hidden bg-slate-950 py-6">
       {/* Background Glow */}
-      <div className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-red-600/20 blur-[120px]" />
-      <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-red-500/10 blur-[150px]" />
+      <div className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-amber-600 blur-[120px]" />
+      <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-amber-500 blur-[150px]" />
 
       <div className="relative mx-auto max-w-7xl px-4">
-        <div className="overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-r from-red-600 to-red-500 p-10 lg:p-16 shadow-2xl">
+        <div className="overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-r from-amber-600 to-amber-500 p-10 lg:p-16 shadow-2xl">
           <div className="flex flex-col items-center text-center">
             <span className="rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur">
               Trusted by 15,000+ Riders
@@ -27,7 +27,7 @@ export default function CTASection() {
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <button className="flex items-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-red-600 transition hover:scale-105">
+              <button className="flex items-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-amber-600 transition hover:scale-105">
                 Book Your Ride
                 <ArrowRight size={20} />
               </button>

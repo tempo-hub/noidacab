@@ -9,7 +9,7 @@ export type OneWayRoute = {
 
 export const noidaOneWayRoutes: OneWayRoute[] = [
   {
-    slug: "noida-to-delhi-one-way-cab",
+    slug: "noida-to-delhi-one-way-taxi",
     from: "Noida",
     to: "Delhi",
     distance: "35–45 km",
@@ -19,7 +19,7 @@ export const noidaOneWayRoutes: OneWayRoute[] = [
   },
 
   {
-    slug: "noida-to-gurgaon-one-way-cab",
+    slug: "noida-to-gurgaon-one-way-taxi",
     from: "Noida",
     to: "Gurgaon",
     distance: "55–65 km",
@@ -29,7 +29,7 @@ export const noidaOneWayRoutes: OneWayRoute[] = [
   },
 
   {
-    slug: "noida-to-agra-one-way-cab",
+    slug: "noida-to-agra-one-way-taxi",
     from: "Noida",
     to: "Agra",
     distance: "165–180 km",
@@ -39,7 +39,7 @@ export const noidaOneWayRoutes: OneWayRoute[] = [
   },
 
   {
-    slug: "noida-to-jaipur-one-way-cab",
+    slug: "noida-to-jaipur-one-way-taxi",
     from: "Noida",
     to: "Jaipur",
     distance: "280–300 km",
@@ -49,7 +49,7 @@ export const noidaOneWayRoutes: OneWayRoute[] = [
   },
 
   {
-    slug: "noida-to-lucknow-one-way-cab",
+    slug: "noida-to-lucknow-one-way-taxi",
     from: "Noida",
     to: "Lucknow",
     distance: "500–550 km",

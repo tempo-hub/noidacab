@@ -5,40 +5,44 @@ import {
   MapPin,
   Route,
 } from "lucide-react";
+import WhyChooseCards from "@/components/home/WhyChooseCards";
+import FAQ from "@/components/home/FAQ";
+import { BookingCTA } from "@/components/cab-page";
+import CTASection from "@/components/home/CTA";
 
 const oneWayRoutes = [
   {
     from: "Noida",
     to: "Delhi",
-    slug: "/noida-to-delhi-one-way-cab",
+    slug: "/noida-to-delhi-one-way-taxi",
     distance: "35–45 km",
     time: "1–2 Hours",
   },
   {
     from: "Noida",
     to: "Gurgaon",
-    slug: "/noida-to-gurgaon-one-way-cab",
+    slug: "/noida-to-gurgaon-one-way-taxi",
     distance: "55–65 km",
     time: "1.5–2.5 Hours",
   },
   {
     from: "Noida",
     to: "Agra",
-    slug: "/noida-to-agra-one-way-cab",
+    slug: "/noida-to-agra-one-way-taxi",
     distance: "165–180 km",
     time: "3–4 Hours",
   },
   {
     from: "Noida",
     to: "Jaipur",
-    slug: "/noida-to-jaipur-one-way-cab",
+    slug: "/noida-to-jaipur-one-way-taxi",
     distance: "280–300 km",
     time: "5–6 Hours",
   },
   {
     from: "Noida",
     to: "Lucknow",
-    slug: "/noida-to-lucknow-one-way-cab",
+    slug: "/noida-to-lucknow-one-way-taxi",
     distance: "500–550 km",
     time: "8–10 Hours",
   },
@@ -52,16 +56,16 @@ export const metadata = {
 
 export default function OneWayPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50 ">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-amber-50 via-white to-orange-50">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <section className="py-18 bg-gradient-to-br  from-amber-400 via-amber-600 to-orange-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100">
               <CarFront className="h-7 w-7 text-amber-600" />
             </div>
 
-            <p className="mt-5 text-sm font-semibold uppercase tracking-wider text-amber-600">
+            <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-black">
               Noida One Way Cab
             </p>
 
@@ -69,7 +73,7 @@ export default function OneWayPage() {
               One Way Cab from Noida
             </h1>
 
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600">
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-800">
               Book a comfortable and reliable one-way taxi from Noida to
               popular cities with professional drivers and transparent fares.
             </p>
@@ -170,6 +174,17 @@ export default function OneWayPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section>
+        <WhyChooseCards />
+      </section>
+      <section>
+        <FAQ />
+      </section>
+
+      <section>
+        <CTASection />
       </section>
     </main>
   );

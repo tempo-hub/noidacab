@@ -27,7 +27,7 @@ export default function ServiceAreas() {
             Popular Locations
           </span>
 
-          <h2 className="mt-5 text-4xl font-bold">
+          <h2 className="mt-5 text-4xl font-bold text-slate-900">
             Service Areas in Noida
           </h2>
 

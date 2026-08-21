@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutNoidaCab() {
   return (
-    <section className=" lg:pt-28 pt-96">
+    <section className="bg-white lg:pt-28 pt-96">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-4 text-center">

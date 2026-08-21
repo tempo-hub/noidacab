@@ -169,7 +169,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-4 py-10 sm:px-6 lg:px-8">
+      <section className="bg-[#ffb400] px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl rounded-2xl bg-amber-50 p-8 text-center">
           <h2 className="text-2xl font-bold text-slate-900">
             Looking for a Taxi from Noida?

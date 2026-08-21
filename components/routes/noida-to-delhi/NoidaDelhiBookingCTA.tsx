@@ -9,7 +9,7 @@ import {
 
 export default function NoidaDelhiBookingCTA() {
   return (
-    <section className="px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
+    <section className="bg-white px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
       <div className="mx-auto max-w-7xl">
         <div className="relative overflow-hidden rounded-2xl bg-[#ffb300] px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-16">
 

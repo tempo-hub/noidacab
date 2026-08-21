@@ -9,7 +9,7 @@ export default function VehicleCTA({
   vehicle: Vehicle;
 }) {
   return (
-    <section className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <section className="bg-[#ffb400] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <div className="mx-auto max-w-7xl">
         <div className="rounded-2xl border border-amber-100 bg-amber-50 px-6 py-9 text-center sm:px-10">
           <p className="text-sm font-semibold text-amber-700">

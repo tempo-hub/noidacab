@@ -8,7 +8,7 @@ export default function PopularDestinations() {
   const [active, setActive] = useState(destinations[0]);
 
   return (
-    <section className=" py-6 lg:py-12">
+    <section className="bg-white py-6 lg:py-12">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-4 text-center">
@@ -16,7 +16,7 @@ export default function PopularDestinations() {
             Popular Routes
           </span>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl text-slate-900">
             Explore Popular Destinations
             <span className="block text-amber-600">
               from Noida
@@ -53,7 +53,7 @@ export default function PopularDestinations() {
             <div className="flex flex-col justify-center items-center">
               <div className="mb-6 text-5xl">{active.icon}</div>
 
-              <h3 className="text-4xl font-bold">
+              <h3 className="text-4xl font-bold text-slate-900">
                 {active.name}
               </h3>
 

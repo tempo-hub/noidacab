@@ -17,7 +17,7 @@ type Props = {
 
 export function OneWayHero({ route }: Props) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50">
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-500 via-white to-amber-500">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           
@@ -39,27 +39,7 @@ export function OneWayHero({ route }: Props) {
               fares.
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 rounded-xl bg-white px-4 py-3 shadow-sm ring-1 ring-gray-200">
-                <MapPin className="h-5 w-5 text-amber-600" />
-                <div>
-                  <p className="text-xs text-gray-500">Distance</p>
-                  <p className="font-semibold text-gray-900">
-                    {route.distance}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-xl bg-white px-4 py-3 shadow-sm ring-1 ring-gray-200">
-                <ArrowRight className="h-5 w-5 text-amber-600" />
-                <div>
-                  <p className="text-xs text-gray-500">Travel Time</p>
-                  <p className="font-semibold text-gray-900">
-                    {route.travelTime}
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* */}
 
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-600">
               <span className="flex items-center gap-2">
