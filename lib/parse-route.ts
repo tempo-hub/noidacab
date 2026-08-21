@@ -209,7 +209,7 @@ export function parseLocalRouteUrl(
     if (!matchedVehicle) {
       return null;
     }
-
+    
     return {
       city,
 
@@ -245,13 +245,9 @@ export function parseLocalRouteUrl(
 
     /*
      * Extract vehicle slug
-     *
-     * noida-to-delhi-dzire-taxi
-     *              ↓
-     *            dzire
      */
     const vehicleMatch = slug.match(
-      /^(.+)-to-(.+)-(dzire|ertiga|innova|amaze)-taxi$/
+      /^(.+)-to-(.+)-(dzire|ertiga|innova|amaze|etios|innova-crysta)-taxi$/
     );
 
     if (!vehicleMatch) {
@@ -262,9 +258,13 @@ export function parseLocalRouteUrl(
       ,
       fromSlug,
       toSlug,
-      vehicleSlug,
+      vehicleSlugFromUrl,
     ] = vehicleMatch;
 
+      const vehicleSlug =
+    vehicleSlugFromUrl === "innova-crysta"
+      ? "innova"
+      : vehicleSlugFromUrl;
     /*
      * Find vehicle
      */

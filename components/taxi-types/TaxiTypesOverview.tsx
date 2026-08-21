@@ -142,12 +142,8 @@ export default function TaxiTypesOverview() {
 
                 {/* Bottom CTA */}
                 <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
-                  <span className="text-sm font-semibold text-slate-900">
+                  <span className="text-sm font-semibold text-amber-600">
                     View Taxi Details
-                  </span>
-
-                  <span className="text-xs font-medium text-amber-600">
-                    Noida → Delhi
                   </span>
                 </div>
               </div>

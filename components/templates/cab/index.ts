@@ -1,6 +1,7 @@
 import { AmazeTemplate } from "./AmazeTemplate";
 import { DzireTemplate } from "./DzireTemplate";
 import { ErtigaTemplate } from "./ErtigaTemplate";
+import { EtiosTemplate } from "./EtiosTemplate";
 import { InnovaTemplate } from "./InnovaTemplate";
 
 export const cabTemplates = {
@@ -8,6 +9,7 @@ export const cabTemplates = {
   ertiga: ErtigaTemplate,
   innova: InnovaTemplate,
   amaze: AmazeTemplate,
+  etios: EtiosTemplate,
 } as const;
 
 export type CabTemplateKey = keyof typeof cabTemplates;
