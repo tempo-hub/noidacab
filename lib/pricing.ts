@@ -16,13 +16,8 @@ export function getPerKmRate(vehicle: Vehicle): number {
   return Number.isFinite(rate) ? rate : 0;
 }
 
-export function calculateFare(
-  vehicle: Vehicle,
-  distanceKm: number
-): number {
-  const rate = getPerKmRate(vehicle);
-
-  const fare = distanceKm * rate;
+export function calculateFare(distanceKm: number, pricePerKm: number): number {
+  const fare = distanceKm * 1.5 * pricePerKm + 500;
 
   return Math.round(fare / 10) * 10;
 }

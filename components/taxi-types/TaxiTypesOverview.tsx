@@ -5,7 +5,7 @@ import { ArrowRight, Users, BriefcaseBusiness } from "lucide-react";
 const vehicles = [
   {
     name: "Dzire",
-    type: "Compact Sedan",
+    type: "11/km",
     description:
       "A comfortable and economical choice for couples, small families and everyday travel from Noida to Delhi.",
     passengers: "4 Passengers",
@@ -15,7 +15,7 @@ const vehicles = [
   },
   {
     name: "Amaze",
-    type: "Comfortable Amaze",
+    type: "11/km",
     description:
       "A practical choice for business travel, airport transfers and comfortable city-to-city journeys.",
     passengers: "4 Passengers",
@@ -25,7 +25,7 @@ const vehicles = [
   },
   {
     name: "Ertiga",
-    type: "Premium MPV",
+    type: "16/km",
     description:
       "Spacious seating and extra luggage room make Ertiga suitable for families and small groups.",
     passengers: "6–7 Passengers",
@@ -35,7 +35,7 @@ const vehicles = [
   },
   {
     name: "Innova Crysta",
-    type: "Premium SUV",
+    type: "17/km",
     description:
       "Enjoy a spacious and premium ride for family trips, corporate travel and longer journeys.",
     passengers: "6–7 Passengers",

@@ -207,7 +207,7 @@ function Feature({
     icon,
     label,
     value,
-    valueClassName = "",
+    valueClassName = "text-gray-900",
 }: {
     icon: React.ReactNode;
     label: string;
@@ -227,7 +227,7 @@ function Feature({
                     {label}
                 </span>
 
-                <span className="mx-2 text-gray-300">
+                <span className="mx-2 text-gray-900">
                     |
                 </span>
 

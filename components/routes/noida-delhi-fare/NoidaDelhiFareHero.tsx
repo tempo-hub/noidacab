@@ -21,7 +21,7 @@ export default function NoidaDelhiFareHero() {
               Noida to Delhi Taxi Fare
 
               <span className="mt-2 block text-amber-400">
-                Starting From ₹1,000
+                Starting From ₹1,100
               </span>
             </h1>
 

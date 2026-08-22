@@ -14,7 +14,7 @@ const routes = [
     to: "Delhi",
     distance: "25 km",
     time: "1–2 hours",
-    price: "₹1,000",
+    price: "₹1,100",
     href: "/taxi",
     featured: true,
   },
