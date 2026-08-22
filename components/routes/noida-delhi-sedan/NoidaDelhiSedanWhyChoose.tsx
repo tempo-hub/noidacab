@@ -86,13 +86,18 @@ export default function NoidaDelhiSedanWhyChoose() {
                   sm:p-6
                 "
               >
+                <div className="flex items-center justify-between">
+                  <h3 className="mt-4 text-lg font-bold text-slate-900">
+                  {reason.title}
+                </h3>
+
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-amber-50 text-amber-600">
                   <Icon size={21} strokeWidth={1.8} />
                 </div>
+                </div>
+                
 
-                <h3 className="mt-4 text-lg font-bold text-slate-900">
-                  {reason.title}
-                </h3>
+                
 
                 <p className="mt-2 text-sm leading-6 text-slate-600">
                   {reason.description}

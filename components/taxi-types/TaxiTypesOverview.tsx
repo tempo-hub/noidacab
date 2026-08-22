@@ -75,7 +75,7 @@ export default function TaxiTypesOverview() {
               className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-200 hover:shadow-xl"
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden bg-slate-100">
+              <div className="relative h-56  overflow-hidden bg-slate-100">
                 <Image
                   src={vehicle.image}
                   alt={`${vehicle.name} taxi from Noida to Delhi`}

@@ -34,8 +34,8 @@ export default function SUVPage() {
       {/* =====================================================
           HERO
       ===================================================== */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <section className="relative overflow-hidden py-20 bg-white lg:py-20">
+        <div className="mx-auto max-w-7xl px-4  sm:px-6 lg:px-8 ">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-600">
@@ -43,20 +43,20 @@ export default function SUVPage() {
                 Noida SUV Taxi Service
               </div>
 
-              <h1 className="mt-5 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
                 SUV Taxi in Noida
                 <span className="block text-orange-500">
                   Ertiga &amp; Innova
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
                 Book comfortable SUV taxis in Noida for local travel,
                 airport transfers, family trips and outstation journeys.
                 Choose from our Ertiga and Innova taxi options.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-2">
                 <Link
                   href="/noida-to-delhi-suv-taxi"
                   className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 font-semibold text-white transition hover:bg-orange-600"
@@ -98,12 +98,13 @@ export default function SUVPage() {
                   key={vehicle.slug}
                   className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm"
                 >
-                  <div className="relative aspect-[4/3]">
+                  <div className="relative h-40 w-full overflow-hidden rounded-xl sm:h-44">
                     <Image
                       src={vehicle.image}
                       alt={`${vehicle.name} SUV taxi in Noida`}
                       fill
-                      className="object-contain p-4"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover"
                     />
                   </div>
 
@@ -192,11 +193,11 @@ export default function SUVPage() {
       {/* =====================================================
           NOIDA TO DELHI SUV
       ===================================================== */}
-      <section className="bg-slate-950 py-20 text-white">
+      <section className="bg-[#ffb300] py-20 text-gray-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-wider text-orange-400">
+              <span className="text-sm font-semibold uppercase tracking-wider text-amber-900">
                 Popular Route
               </span>
 
@@ -204,14 +205,14 @@ export default function SUVPage() {
                 Noida to Delhi SUV Taxi
               </h2>
 
-              <p className="mt-5 max-w-2xl leading-7 text-slate-300">
+              <p className="mt-5 max-w-2xl leading-7 text-slate-900">
                 Travel comfortably from Noida to Delhi with an Ertiga
                 or Innova SUV taxi. SUV cabs are a practical choice
                 for families, business travellers, airport transfers
                 and passengers carrying additional luggage.
               </p>
 
-              <div className="mt-7 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="mt-7 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-4 ">
                 <RouteFeature text="Ertiga" />
                 <RouteFeature text="Innova" />
                 <RouteFeature text="AC Cab" />
@@ -244,7 +245,7 @@ export default function SUVPage() {
                         {vehicle.name}
                       </p>
 
-                      <p className="mt-1 text-sm text-slate-400">
+                      <p className="mt-1 text-sm text-slate-900">
                         {vehicle.seats} seats • {vehicle.luggage} bags
                       </p>
                     </div>
@@ -544,7 +545,7 @@ function SUVCard({
           src={vehicle.image}
           alt={`${vehicle.name} SUV taxi in Noida`}
           fill
-          className="object-contain p-8"
+          className="object-cover h-12"
         />
 
         <div className="absolute left-5 top-5 rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-white">
@@ -711,7 +712,7 @@ function RouteFeature({
   text: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm font-medium text-slate-200">
+    <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm font-medium text-slate-900">
       {text}
     </div>
   );
@@ -731,18 +732,22 @@ function Benefit({
   text: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 text-orange-600">
-        {icon}
-      </div>
+    <div className="flex justify-between item-center rounded-2xl border border-slate-200 bg-white p-6">
+      
 
-      <h3 className="mt-4 font-semibold text-slate-900">
+      <div className="">
+        <h3 className="mt-4 font-semibold text-slate-900">
         {title}
       </h3>
 
       <p className="mt-2 text-sm leading-6 text-slate-600">
         {text}
       </p>
+      </div>
+
+      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 text-orange-600">
+        {icon}
+      </div>
     </div>
   );
 }

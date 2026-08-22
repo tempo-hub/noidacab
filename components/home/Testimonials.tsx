@@ -46,14 +46,14 @@ export default function Testimonials() {
 
               {/* Header */}
               <div className="relative flex items-center gap-4">
-                <div className="relative h-16 w-16 overflow-hidden rounded-full ring-4 ring-amber-400/20">
+                {/* <div className="relative h-16 w-16 overflow-hidden rounded-full ring-4 ring-amber-400/20">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
                     fill
                     className="object-cover"
                   />
-                </div>
+                </div> */}
 
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900">

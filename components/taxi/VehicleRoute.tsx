@@ -33,11 +33,12 @@ export default function VehicleRoute({
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-            <MapPin className="h-5 w-5 text-amber-600" />
-
-            <h3 className="mt-4 font-semibold text-slate-900">
-              Noida Local
-            </h3>
+            <div className="flex justify-between item-center">
+              <h3 className="mt-4 font-semibold text-slate-900">
+                Noida Local
+              </h3>
+              <MapPin className="h-5 w-5 text-amber-600" />
+            </div>
 
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Travel between Noida sectors, residential areas, offices and
@@ -46,12 +47,14 @@ export default function VehicleRoute({
           </div>
 
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-            <RouteIcon className="h-5 w-5 text-amber-600" />
+            <div className="flex justify-between item-center">
 
-            <h3 className="mt-4 font-semibold text-slate-900">
-              Noida to Delhi
-            </h3>
 
+              <h3 className="mt-4 font-semibold text-slate-900">
+                Noida to Delhi
+              </h3>
+              <RouteIcon className="h-5 w-5 text-amber-600" />
+            </div>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Comfortable taxi travel from Noida to different parts of Delhi
               through suitable routes.
@@ -59,12 +62,16 @@ export default function VehicleRoute({
           </div>
 
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-            <Clock3 className="h-5 w-5 text-amber-600" />
 
-            <h3 className="mt-4 font-semibold text-slate-900">
-              Airport Transfers
-            </h3>
+            <div className="flex justify-between item-center">
 
+
+              <h3 className="mt-4 font-semibold text-slate-900">
+                Airport Transfers
+              </h3>
+
+              <Clock3 className="h-5 w-5 text-amber-600" />
+            </div>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Use this vehicle for airport pickup and drop services from Noida.
             </p>

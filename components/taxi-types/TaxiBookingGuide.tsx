@@ -29,7 +29,7 @@ export default function TaxiBookingGuide() {
   return (
     <section className="bg-slate-50 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
       <div className="mx-auto max-w-7xl">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
             How to Choose and Book a Taxi
           </h2>

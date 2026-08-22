@@ -102,13 +102,17 @@ export default function NoidaDelhiSedanFeatures() {
                 key={feature.title}
                 className="rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:border-amber-300 hover:bg-amber-50/40"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-amber-100 text-amber-700">
-                  <Icon size={21} strokeWidth={1.8} />
-                </div>
-
+                
+                <div className="flex items-center justify-between">
                 <p className="mt-4 text-sm font-medium text-slate-500">
                   {feature.title}
                 </p>
+
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+                  <Icon size={21} strokeWidth={1.8} />
+                </div>
+                </div>
+                
 
                 <h3 className="mt-1 text-lg font-bold text-slate-900">
                   {feature.value}

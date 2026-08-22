@@ -59,7 +59,7 @@ export default function TaxiTypesGrid() {
   return (
     <section className="bg-slate-50 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
       <div className="mx-auto max-w-7xl">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mx-auto text-center ">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
             Taxi Types Available in Noida
           </h2>
@@ -80,19 +80,23 @@ export default function TaxiTypesGrid() {
                 href={taxi.href}
                 className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+
+                <div className="flex item-center gap-8">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
                   <Icon className="h-5 w-5" />
                 </div>
 
-                <h3 className="mt-5 text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-slate-900">
                   {taxi.name}
                 </h3>
+                </div>
 
-                <p className="mt-2 text-sm leading-6 text-slate-600">
+                <p className="mt-4 text-sm leading-6 text-slate-600">
                   {taxi.description}
                 </p>
+                
 
-                <div className="mt-5 border-t border-slate-100 pt-4">
+                <div className="mt-2 border-t border-slate-100 pt-4">
                   <p className="text-xs text-slate-500">Capacity</p>
                   <p className="mt-1 text-sm font-semibold text-slate-900">
                     {taxi.capacity}

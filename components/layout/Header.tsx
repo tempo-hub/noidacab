@@ -14,7 +14,7 @@ const navLinks = [
     dropdown: [
       { label: "Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
       { label: "SUV", href: "/route/suv" },
-      { label: "Innova", href: "/innova-cabs" },
+      { label: "Innova", href: "/noida-to-delhi-innova-crysta-taxi" },
       { label: "Tempo Traveller", href: "/tempo-traveller" },
     ],
   },
@@ -73,10 +73,10 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
           {navLinks.map((item) => (
-            <div key={item.label} className="group relative">
+            <div key={item.label} className="group relative ">
               {item.dropdown ? (
                 <>
-                  <button className="flex items-center gap-1 font-semibold text-gray-700 transition hover:text-amber-500">
+                  <button className="flex items-center gap-1 font-semibold text-gray-700 transition hover:text-white/80">
                     {item.label}
                     <span className="text-xs">▼</span>
                   </button>
@@ -97,7 +97,7 @@ export default function Header() {
               ) : (
                 <Link
                   href={item.href}
-                  className="font-semibold text-gray-700 transition hover:text-amber-500"
+                  className="font-semibold text-gray-700 transition hover:text-white/80"
                 >
                   {item.label}
                 </Link>

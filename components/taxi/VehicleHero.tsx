@@ -36,7 +36,7 @@ export default function VehicleHero({
   return (
     <section
       id="booking"
-      className="relative overflow-hidden py-16 sm:py-20 lg:py-22"
+      className="relative overflow-hidden py-22 sm:py-20 lg:py-20"
     >
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
@@ -72,7 +72,7 @@ export default function VehicleHero({
             </div>
 
             {/* Heading */}
-            <h1 className="mt-4 max-w-2xl text-4xl font-extrabold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+            <h1 className="mt-2 max-w-2xl text-4xl font-extrabold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
               {vehicle.name}
               <span className="block text-slate-800">
                 Taxi in Noida

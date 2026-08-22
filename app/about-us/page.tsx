@@ -118,13 +118,16 @@ export default function AboutUsPage() {
                   key={service.title}
                   className="rounded-2xl border border-slate-200 bg-white p-6"
                 >
+                  
+
+                  <div className="flex justify-between item-center">
+                    <h3 className="mt-5 font-bold text-slate-900">
+                    {service.title}
+                  </h3>
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
                     <Icon className="h-5 w-5" />
                   </div>
-
-                  <h3 className="mt-5 font-bold text-slate-900">
-                    {service.title}
-                  </h3>
+                  </div>
 
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     {service.description}

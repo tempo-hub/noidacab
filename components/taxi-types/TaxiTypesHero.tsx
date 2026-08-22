@@ -64,45 +64,7 @@ export default function TaxiTypesHero() {
             </Link>
           </div>
         </div>
-
-        {/* Hero Stats */}
-        <div className="mt-12 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
-          <div className="rounded-xl border border-white/15 bg-black/20 p-4 backdrop-blur-md">
-            <CarFront className="h-5 w-5 text-amber-400" />
-
-            <p className="mt-3 text-sm font-semibold text-black">
-              Multiple Taxi Types
-            </p>
-
-            <p className="mt-1 text-xs text-slate-300">
-              Choose according to your group size
-            </p>
-          </div>
-
-          <div className="rounded-xl border border-white/15 bg-black/20 p-4 backdrop-blur-md">
-            <MapPin className="h-5 w-5 text-amber-400" />
-
-            <p className="mt-3 text-sm font-semibold text-black">
-              Local & Outstation
-            </p>
-
-            <p className="mt-1 text-xs text-slate-300">
-              Travel across Noida and nearby cities
-            </p>
-          </div>
-
-          <div className="rounded-xl border border-white/15 bg-black/20 p-4 backdrop-blur-md">
-            <ShieldCheck className="h-5 w-5 text-amber-900" />
-
-            <p className="mt-3 text-sm font-semibold text-black">
-              Reliable Service
-            </p>
-
-            <p className="mt-1 text-xs text-slate-300">
-              Comfortable and convenient travel
-            </p>
-          </div>
-        </div>
+       
       </div>
     </section>
   );

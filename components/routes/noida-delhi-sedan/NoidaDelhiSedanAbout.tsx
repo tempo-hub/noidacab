@@ -78,14 +78,15 @@ export default function NoidaDelhiSedanAbout() {
                 key={item.title}
                 className="rounded-xl border border-slate-200 bg-white p-5"
               >
+
+                <div className="flex items-center justify-between">
+                  <h3 className="mt-4 text-base font-bold text-slate-900">
+                  {item.title}
+                </h3>
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-amber-50 text-amber-600">
                   <Icon size={21} strokeWidth={1.8} />
                 </div>
-
-                <h3 className="mt-4 text-base font-bold text-slate-900">
-                  {item.title}
-                </h3>
-
+                </div>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
                   {item.description}
                 </p>

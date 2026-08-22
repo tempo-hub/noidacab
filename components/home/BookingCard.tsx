@@ -31,7 +31,7 @@ export default function BookingCard() {
       {/* Form */}
       <div className="grid grid-cols-1 gap-4 sm:gap-6 p-5 sm:p-8 sm:grid-cols-2 lg:grid-cols-5">
         {/* Pickup */}
-        <div>
+        <div className="">
           <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-700">
             <MapPin className="h-4 w-4 text-amber-400" />
             Pickup
@@ -40,7 +40,7 @@ export default function BookingCard() {
           <input
             type="text"
             placeholder="Enter Pickup Location"
-            className="h-12 sm:h-14 w-full rounded-xl border border-gray-200 px-4 text-sm sm:text-base outline-none transition focus:border-amber-400"
+            className="h-12 sm:h-14 w-full  rounded-xl border border-gray-200 px-4 text-sm text-gray-700 outline-none transition focus:border-amber-400"
           />
         </div>
 
@@ -54,7 +54,7 @@ export default function BookingCard() {
           <input
             type="text"
             placeholder="Enter Destination"
-            className="h-12 sm:h-14 w-full rounded-xl border border-gray-200 px-4 text-sm sm:text-base outline-none transition focus:border-amber-400"
+            className="h-12 sm:h-14 w-full rounded-xl border border-gray-200 px-4 text-sm text-gray-700 outline-none transition focus:border-amber-400"
           />
         </div>
 
@@ -67,7 +67,7 @@ export default function BookingCard() {
 
           <input
             type="date"
-            className="h-12 sm:h-14 w-full rounded-xl border border-gray-200 px-4 text-sm sm:text-base outline-none transition focus:border-amber-400"
+            className="h-12 sm:h-14 w-full rounded-xl border border-gray-200 px-4 text-sm text-gray-700 outline-none transition focus:border-amber-400"
           />
         </div>
 
@@ -79,7 +79,7 @@ export default function BookingCard() {
           </label>
 
           <div className="relative">
-            <select className="h-12 sm:h-14 w-full appearance-none rounded-xl border border-gray-200 px-4 pr-10 text-sm sm:text-base outline-none transition focus:border-amber-400">
+            <select className="h-12 sm:h-14 w-full text-gray-700 appearance-none rounded-xl border border-gray-800 px-4 pr-10 text-sm sm:text-base outline-none transition focus:border-amber-400">
               <option>Sedan</option>
               <option>SUV</option>
               <option>Innova Crysta</option>

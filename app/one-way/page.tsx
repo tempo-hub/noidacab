@@ -58,7 +58,7 @@ export default function OneWayPage() {
   return (
     <main className="min-h-screen bg-gray-50 ">
       {/* Hero */}
-      <section className="py-18 bg-gradient-to-br  from-amber-400 via-amber-600 to-orange-50">
+      <section className="py-22 bg-gradient-to-br  from-amber-400 via-amber-600 to-orange-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100">
