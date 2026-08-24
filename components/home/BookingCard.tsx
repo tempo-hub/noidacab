@@ -9,7 +9,7 @@ export default function BookingCard() {
   const [activeTrip, setActiveTrip] = useState("Local");
 
   return (
-    <div className="rounded-2xl sm:rounded-[32px] bg-white shadow-[0_25px_80px_rgba(0,0,0,0.15)] overflow-hidden">
+    <div className="rounded-2xl sm:rounded-[32px] bg-white/95 shadow-[0_25px_80px_rgba(0,0,0,0.15)] overflow-hidden ">
       {/* Trip Type */}
       <div className="grid grid-cols-2 sm:flex border-b bg-gray-50">
         {tripTypes.map((trip) => (
@@ -19,7 +19,7 @@ export default function BookingCard() {
             className={`whitespace-nowrap px-3 sm:px-6 py-3.5 sm:py-5 text-xs sm:text-sm font-semibold transition-all duration-300 sm:flex-1
               ${
                 activeTrip === trip
-                  ? "bg-amber-400 text-white"
+                  ? "bg-amber-600 text-white"
                   : "text-gray-600 hover:bg-red-50 hover:text-amber-400"
               }`}
           >
@@ -91,7 +91,7 @@ export default function BookingCard() {
 
         {/* Button */}
         <div className="flex items-end sm:col-span-2 lg:col-span-1">
-          <button className="h-12 sm:h-14 w-full rounded-xl bg-amber-400 text-base sm:text-lg font-semibold text-white transition hover:bg-amber-500">
+          <button className="h-12 sm:h-14 w-full rounded-xl bg-amber-600 text-base sm:text-lg font-semibold text-white transition hover:bg-amber-500">
             Search Cabs
           </button>
         </div>

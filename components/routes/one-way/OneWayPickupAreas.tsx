@@ -18,7 +18,7 @@ const pickupAreas = [
 
 export function OneWayPickupAreas({ route }: Props) {
   return (
-    <section className="py-16">
+    <section className="bg-white/95 py-16 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-gray-900 p-7 sm:p-10">
           <div className="max-w-2xl">

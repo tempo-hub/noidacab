@@ -17,7 +17,7 @@ type Props = {
 
 export function OneWayHero({ route }: Props) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-amber-500 via-white to-amber-500">
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-500 via-white to-amber-500 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           

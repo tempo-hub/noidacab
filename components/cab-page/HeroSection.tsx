@@ -71,7 +71,7 @@ export function HeroSection({
             {/* Location */}
             <h1 className="mt-5 text-4xl font-black leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl xl:text-7xl">
 
-              {vehicle.name} Cab
+              {vehicle.name} Taxi
 
               <span className="mx-2 inline-flex align-middle text-amber-600 sm:mx-4">
                 <ArrowRight className="h-8 w-8 sm:h-12 sm:w-12 lg:h-14 lg:w-14" />
@@ -87,13 +87,13 @@ export function HeroSection({
             <div className="mt-5 flex flex-wrap items-center gap-3">
 
               <h2 className="text-xl font-bold text-slate-950 sm:text-2xl">
-                {vehicle.name} Cab in {location.name}
+                {vehicle.name} Taxi in {location.name}
               </h2>
 
               <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
 
               <span className="text-sm font-medium text-slate-700 sm:text-base">
-                Local Cab Booking
+                Local Taxi Booking
               </span>
 
             </div>

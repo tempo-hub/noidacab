@@ -5,7 +5,7 @@ import { services } from "@/data/services";
 
 export default function Services() {
   return (
-    <section className="py-12 bg-[#FFFDF5]">
+    <section className="py-12 bg-white/95 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-16 text-center">

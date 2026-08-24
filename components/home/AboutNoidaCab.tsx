@@ -2,18 +2,18 @@ import Image from "next/image";
 
 export default function AboutNoidaCab() {
   return (
-    <section className="bg-white lg:pt-28 pt-96">
+    <section className="bg-white/95 lg:pt-28 pt-96 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-4 text-center">
-          <span className="inline-flex mt-6 rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-400">
+          <span className="inline-flex mt-6 rounded-full bg-amber-200 px-5 py-2 text-sm font-semibold text-amber-900">
             About NoidaCab
           </span>
 
           <h2 className="mt-5 text-4xl font-bold text-gray-900 md:text-5xl">
             Reliable Cab Service
             <br />
-            <span className="text-amber-400">
+            <span className="text-amber-600">
               Across Noida & Greater Noida
             </span>
           </h2>
@@ -36,19 +36,19 @@ export default function AboutNoidaCab() {
 
             <div className="mt-8 grid grid-cols-2 gap-6">
               <div>
-                <h4 className="text-3xl font-bold text-amber-400">24×7</h4>
+                <h4 className="text-3xl font-bold text-amber-600">24×7</h4>
                 <p className="text-gray-500">Cab Availability</p>
               </div>
 
               <div>
-                <h4 className="text-3xl font-bold text-amber-400">100%</h4>
+                <h4 className="text-3xl font-bold text-amber-600">100%</h4>
                 <p className="text-gray-500">Verified Drivers</p>
               </div>
             </div>
           </div>
 
           {/* Right Card */}
-          <div className="relative overflow-hidden rounded-3xl shadow-lg">
+          <div className="relative overflow-hidden rounded-3xl shadow-lg mb-2">
             <Image
               src="/noida.png"
               alt="Noida City"

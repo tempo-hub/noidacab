@@ -56,9 +56,9 @@ export const metadata = {
 
 export default function OneWayPage() {
   return (
-    <main className="min-h-screen bg-gray-50 ">
+    <main className="min-h-screen  ">
       {/* Hero */}
-      <section className="py-22 bg-gradient-to-br  from-amber-400 via-amber-600 to-orange-50">
+      <section className="py-22 bg-gradient-to-br  from-amber-400 via-amber-600 to-orange-50 border-b border-gray-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100">
@@ -82,7 +82,7 @@ export default function OneWayPage() {
       </section>
 
       {/* Route Section */}
-      <section className="py-14 sm:py-16">
+      <section className="bg-white/95 py-14 sm:py-16 border-b border-gray-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <p className="text-sm font-semibold uppercase tracking-wider text-amber-600">

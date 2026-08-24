@@ -48,7 +48,7 @@ const fareDetails = [
 
 export default function FareInclusions() {
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white/95 py-12">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}

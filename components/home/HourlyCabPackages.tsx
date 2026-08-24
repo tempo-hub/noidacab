@@ -72,7 +72,7 @@ export default function HourlyCabPackages() {
     packages.find((pkg) => pkg.id === selectedPackage) ?? packages[0];
 
   return (
-    <section className="bg-[#f8fafc] py-12 sm:py-12">
+    <section className="bg-white/95 py-12 sm:py-12 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}

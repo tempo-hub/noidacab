@@ -19,6 +19,11 @@ import {
   getNoidaCityRoute,
 } from "@/data/routes/noida-city-routes";
 
+import {
+  noidaRoutes,
+  type RouteData,
+} from "@/data/routes/noidaRoutes";
+
 /* =========================================================
    TYPES
 ========================================================= */
@@ -27,6 +32,10 @@ export type VehicleCategory =
   | "sedan"
   | "suv"
   | "tempo-traveller";
+
+/* =========================================================
+   NORMAL / CITY ROUTE
+========================================================= */
 
 export type ParsedRoute = {
   cityPair: string;
@@ -49,6 +58,10 @@ export type ParsedRoute = {
   description?: string;
 };
 
+/* =========================================================
+   LOCAL ROUTE
+========================================================= */
+
 export type ParsedLocalRoute = {
   city: string;
 
@@ -60,11 +73,42 @@ export type ParsedLocalRoute = {
   template: string;
 };
 
-/**
- * One Way Route
- */
+/* =========================================================
+   CITY → CITY + VEHICLE ROUTE
+========================================================= */
+
+export type ParsedCityToCityVehicleRoute = {
+  cityPair: string;
+
+  fromSlug: string;
+  fromName: string;
+
+  toSlug: string;
+  toName: string;
+
+  distance: string;
+  travelTime: string;
+
+  vehicle: Vehicle;
+
+  template: string;
+
+  description?: string;
+};
+
+/* =========================================================
+   ONE WAY ROUTE
+========================================================= */
+
 export type ParsedOneWayRoute = OneWayRoute;
 
+/* =========================================================
+   DISTANCE & TRAVEL TIME ROUTE
+========================================================= */
+
+export type ParsedDistanceRoute = RouteData & {
+  template: "distance";
+};
 
 /* =========================================================
    ALL URL SLUGS
@@ -78,6 +122,61 @@ export function getAllUrlSlugs(): { slug: string[] }[] {
   }));
 }
 
+/* =========================================================
+   DISTANCE & TRAVEL TIME URLs
+========================================================= */
+
+export function parseDistanceRouteUrl(
+  url: string
+): ParsedDistanceRoute | null {
+  const slug = url
+    .split("/")
+    .filter(Boolean)
+    .join("-")
+    .toLowerCase();
+
+  // Check distance URL
+  if (!slug.endsWith("-distance-travel-time")) {
+    return null;
+  }
+
+  const normalizedUrl = `/${slug}`;
+
+  const urlExists = urlRoutes.some(
+    (entry) =>
+      entry.url
+        .replace(/\/+$/, "")
+        .toLowerCase() === normalizedUrl
+  );
+
+  if (!urlExists) {
+    return null;
+  }
+
+
+  const routeSlug = slug.replace(
+    "-distance-travel-time",
+    ""
+  );
+  const route = noidaRoutes[routeSlug];
+
+  if (!route) {
+    return null;
+  }
+
+  return {
+    ...route,
+    template: "distance",
+  };
+}
+
+export function getNearbyDistanceRoutes(
+  currentSlug: string
+): RouteData[] {
+  return Object.values(noidaRoutes).filter(
+    (route) => route.slug !== currentSlug
+  );
+}
 
 /* =========================================================
    NORMAL CITY ROUTES
@@ -91,10 +190,6 @@ export function parseRouteUrl(
     .filter(Boolean)
     .join("-")
     .toLowerCase();
-
-  /*
-   * Check SUV route first.
-   */
   const suvMatch = slug.match(
     /^(.+)-to-(.+)-suv-taxi$/
   );
@@ -133,6 +228,66 @@ export function parseRouteUrl(
   return null;
 }
 
+/* =========================================================
+   CITY → CITY + VEHICLE URLs
+========================================================= */
+export function parseCityToCityVehicleUrl(
+  url: string
+): ParsedCityToCityVehicleRoute | null {
+  const slug = url
+    .split("/")
+    .filter(Boolean)
+    .join("-")
+    .toLowerCase();
+  const matchedVehicle = vehicles.find(
+    (vehicle) =>
+      slug.endsWith(
+        `-${vehicle.slug.toLowerCase()}-taxi`
+      )
+  );
+
+  if (!matchedVehicle) {
+    return null;
+  }
+  const vehicleSuffix =
+    `-${matchedVehicle.slug.toLowerCase()}-taxi`;
+
+  const cityPair = slug.slice(
+    0,
+    -vehicleSuffix.length
+  );
+  const route = getNoidaCityRoute(cityPair);
+
+  if (!route) {
+    return null;
+  }
+  const routeParts = cityPair.split("-to-");
+
+  if (routeParts.length !== 2) {
+    return null;
+  }
+
+  const [fromSlug, toSlug] = routeParts;
+
+  return {
+    cityPair,
+
+    fromSlug,
+    fromName: route.from,
+
+    toSlug,
+    toName: route.to,
+
+    distance: route.distance,
+    travelTime: route.travelTime,
+
+    vehicle: matchedVehicle,
+
+    template: "route-vehicle",
+
+    description: route.description,
+  };
+}
 
 /* =========================================================
    ONE WAY URLs
@@ -149,7 +304,6 @@ export function parseOneWayRouteUrl(
   return getNoidaOneWayRoute(slug) ?? null;
 }
 
-
 /* =========================================================
    LOCAL URLs
 ========================================================= */
@@ -161,21 +315,12 @@ export function parseLocalRouteUrl(
     .split("/")
     .filter(Boolean)
     .map((part) => part.toLowerCase());
-
-  /* =======================================================
-     EXISTING LOCAL URL
-  ======================================================= */
-
   if (parts.length === 3) {
     const [
       city,
       locationSlug,
       vehicleSlug,
     ] = parts;
-
-    /*
-     * Check city
-     */
     if (!(city in cityPairRoutes)) {
       return null;
     }
@@ -184,10 +329,6 @@ export function parseLocalRouteUrl(
       cityPairRoutes[
         city as CityPairSlug
       ];
-
-    /*
-     * Find location
-     */
     const location = locations.find(
       (item) =>
         item.slug === locationSlug
@@ -196,11 +337,6 @@ export function parseLocalRouteUrl(
     if (!location) {
       return null;
     }
-    
-
-    /*
-     * Find vehicle
-     */
     const matchedVehicle =
       vehicles.find(
         (vehicle) =>
@@ -210,7 +346,7 @@ export function parseLocalRouteUrl(
     if (!matchedVehicle) {
       return null;
     }
-    
+
     return {
       city,
 
@@ -224,15 +360,11 @@ export function parseLocalRouteUrl(
   }
 
   /* =======================================================
-     NEW SEO VEHICLE URL
+     EXISTING SEO VEHICLE URL
   ======================================================= */
 
   if (parts.length === 1) {
     const slug = parts[0];
-
-    /*
-     * Find matching URL from JSON
-     */
     const matchedUrl = urlRoutes.find(
       (entry) =>
         entry.url
@@ -243,10 +375,6 @@ export function parseLocalRouteUrl(
     if (!matchedUrl) {
       return null;
     }
-
-    /*
-     * Extract vehicle slug
-     */
     const vehicleMatch = slug.match(
       /^(.+)-to-(.+)-(dzire|ertiga|amaze|etios|innova-crysta)-taxi$/
     );
@@ -261,11 +389,6 @@ export function parseLocalRouteUrl(
       toSlug,
       vehicleSlug,
     ] = vehicleMatch;
-
-      ;
-    /*
-     * Find vehicle
-     */
     const matchedVehicle =
       vehicles.find(
         (vehicle) =>
@@ -281,6 +404,7 @@ export function parseLocalRouteUrl(
       city: fromSlug,
 
       locationSlug: toSlug,
+
       locationName: toSlug
         .split("-")
         .map(
@@ -299,14 +423,9 @@ export function parseLocalRouteUrl(
   return null;
 }
 
-
 /* =========================================================
    VEHICLE HELPERS
 ========================================================= */
-
-/**
- * Get vehicles by category.
- */
 export function getVehiclesByCategory(
   category: VehicleCategory
 ): Vehicle[] {
@@ -316,19 +435,9 @@ export function getVehiclesByCategory(
       category
   );
 }
-
-
-/**
- * Get SUV vehicles.
- */
 export function getSUVVehicles(): Vehicle[] {
   return getVehiclesByCategory("suv");
 }
-
-
-/**
- * Get vehicle by slug.
- */
 export function getVehicleBySlug(
   slug: string
 ): Vehicle | null {

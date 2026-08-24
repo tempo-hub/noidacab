@@ -9,7 +9,7 @@ export default function BookingCard() {
   const [activeTrip, setActiveTrip] = useState("Local");
 
   return (
-    <div className="rounded-2xl sm:rounded-[32px] bg-white shadow-[0_25px_80px_rgba(0,0,0,0.15)] overflow-hidden">
+    <div className="rounded-2xl sm:rounded-[32px] bg-white/95 shadow-[0_25px_80px_rgba(0,0,0,0.15)] overflow-hidden border-b border-gray-300">
       {/* Trip Type */}
       <div className="grid grid-cols-2 sm:flex border-b bg-gray-50">
         {tripTypes.map((trip) => (

@@ -19,7 +19,7 @@ export default function VehicleOverview({
   };
 
   return (
-    <section className="bg-white px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <section className="bg-white/95 border-b border-gray-300 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-4xl">
           <p className="text-sm font-semibold text-amber-600">

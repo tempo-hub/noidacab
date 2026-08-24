@@ -55,7 +55,7 @@ const locations = [
 
 export default function PopularPickupLocations() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white/95 py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}

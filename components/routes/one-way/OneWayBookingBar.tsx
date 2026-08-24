@@ -16,7 +16,7 @@ type Props = {
 
 export function OneWayBookingBar({ route }: Props) {
   return (
-    <section className="relative z-10 -mt-8 px-4 sm:-mt-10">
+    <section className="bg-slate-100 relative z-10 -mt-8 px-4 sm:-mt-10 ">
       <div className="mx-auto max-w-6xl">
         <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-xl sm:p-5">
           <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr_1fr_auto] md:items-center">

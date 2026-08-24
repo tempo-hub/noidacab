@@ -54,7 +54,7 @@ export function WhatsIncluded({
   ];
 
   return (
-    <section className="bg-white py-12 sm:py-16 lg:py-20">
+    <section className="bg-white/95 border-b border-gray-300 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

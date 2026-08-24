@@ -10,7 +10,7 @@ export default function Hero() {
   const [trip, setTrip] = useState("Local");
 
   return (
-    <section className="relative overflow-hidden bg-slate-50">
+    <section className="relative overflow-hidden bg-white/95">
       <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-amber-200/40 blur-[120px]" />
       <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-amber-200/40 blur-[150px]" />
       <div className="absolute inset-0 opacity-[0.04]"

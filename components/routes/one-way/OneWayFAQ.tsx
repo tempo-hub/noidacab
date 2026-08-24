@@ -34,7 +34,7 @@ export function OneWayFAQ({ route }: Props) {
   ];
 
   return (
-    <section className="bg-gray-50 py-16 sm:py-20">
+    <section className="bg-white/95 py-16 sm:py-20 border-b border-gray-300">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-amber-600">

@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function TaxiTypesCTA() {
   return (
-    <section className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 bg-[#ffb300]">
+    <section className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16 bg-white/95 border-b border-gray-300">
       <div className="mx-auto max-w-7xl">
         <div className="rounded-2xl bg-slate-950 px-6 py-10 sm:px-10">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">

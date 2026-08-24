@@ -43,22 +43,22 @@ export const vehicles: Vehicle[] = [
     category: "Hatchback",
   },
 
-  {
-    name: "Swift",
-    slug: "swift",
-    image: "/cabs/dziremain.webp",
-    price: "₹12/km",
+  // {
+  //   name: "Swift",
+  //   slug: "swift",
+  //   image: "/cabs/dziremain.webp",
+  //   price: "₹12/km",
 
-    seats: 4,
-    doors: 4,
-    luggage: 2,
+  //   seats: 4,
+  //   doors: 4,
+  //   luggage: 2,
 
-    airCondition: true,
-    gps: true,
-    driverChoice: true,
+  //   airCondition: true,
+  //   gps: true,
+  //   driverChoice: true,
 
-    category: "Hatchback",
-  },
+  //   category: "Hatchback",
+  // },
   {
     name: "Dzire",
     slug: "dzire",
@@ -73,7 +73,7 @@ export const vehicles: Vehicle[] = [
     gps: true,
     driverChoice: true,
 
-    category: "Hatchback",
+    category: "Sedan",
   },
 
   // -----------------------------

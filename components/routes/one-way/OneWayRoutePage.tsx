@@ -27,7 +27,7 @@ type Props = {
 
 export function OneWayRoutePage({ route }: Props) {
   return (
-    <main className="bg-white">
+    <main className="">
       {/* 1. Hero */}
       <OneWayHero route={route} />
 

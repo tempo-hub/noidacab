@@ -56,7 +56,7 @@ export default function AboutUsPage() {
       />
 
       {/* Introduction */}
-      <section className="bg-white px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <section className="bg-slate-100 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-4xl">
           <p className="text-sm font-semibold text-amber-600">
             About Us
@@ -92,7 +92,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Services */}
-      <section className="bg-slate-50 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <section className="bg-slate-100 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold text-amber-600">
@@ -140,7 +140,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Vehicle Categories */}
-      <section className="bg-white px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <section className="bg-slate-100 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
             Our Taxi Fleet

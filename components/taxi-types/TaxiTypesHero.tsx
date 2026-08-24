@@ -26,24 +26,30 @@ const featuredVehicles = taxiCategories
       Boolean(vehicle)
   );
   return (
-    <section className="relative overflow-hidden px-4 py-12 sm:px-6 lg:px-8 lg:py-24">
+<section className="relative overflow-hidden bg-gradient-to-br from-amber-400 via-amber-300 to-amber-100 py-18 sm:py-16 lg:py-20">
+
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-white/30 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
+     
       {/* Background Image */}
-      <div
+      {/* <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: "url('/hero3.webp')",
         }}
-      />
+      /> */}
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-amber-300/95 via-amber-400/85 to-amber-500/70" />
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-amber-300/95 via-amber-400/85 to-amber-500/70" /> */}
 
       {/* Decorative Blur */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-40 top-0 h-[450px] w-[450px] rounded-full bg-yellow-300/30 blur-3xl" />
 
         <div className="absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full bg-amber-500/20 blur-3xl" />
-      </div>
+      </div> */}
 
       <div className="relative mx-auto max-w-7xl">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_440px] lg:gap-16">

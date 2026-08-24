@@ -12,7 +12,7 @@ import { vehicles } from "@/data/vehicles";
 
 export default function Fleet() {
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white/95 py-12 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-16 text-center">

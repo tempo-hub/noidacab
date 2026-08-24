@@ -20,7 +20,7 @@ const icons = [
 
 export default function ServiceAreas() {
   return (
-    <section className="py-6 lg:py-6 bg-[#FFFDF5]">
+    <section className="py-6 lg:py-6 bg-white/95 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mb-14 text-center pt-8">
           <span className="rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-600">

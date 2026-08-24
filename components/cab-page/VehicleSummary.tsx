@@ -22,7 +22,7 @@ export function VehicleSummary({
   vehicle,
 }: Props) {
   return (
-    <section className="bg-white py-12 sm:py-16 lg:py-12">
+    <section className="bg-white/95 border-b border-gray-300 py-12 sm:py-16 lg:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">

@@ -8,7 +8,7 @@ export default function PopularDestinations() {
   const [active, setActive] = useState(destinations[0]);
 
   return (
-    <section className="bg-white py-6 lg:py-12">
+    <section className="bg-white/95 py-6 lg:py-12 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
         <div className="mb-4 text-center">

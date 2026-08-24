@@ -12,7 +12,7 @@ const features = [
 export default function Hero() {
   return (
     <section className="relative overflow-visible">
-      <div className="relative min-h-[560px] overflow-hidden bg-white pb-28 pt-24 sm:min-h-[640px] sm:pb-32 sm:pt-28 lg:min-h-[720px] lg:pb-40 lg:pt-32">
+      <div className="relative min-h-[560px] overflow-hidden bg-white/95 pb-28 pt-24 sm:min-h-[640px] sm:pb-32 sm:pt-28 lg:min-h-[720px] lg:pb-40 lg:pt-32">
         {/* Background photo — inset to the right ~55-60%, not full-bleed */}
         <div className="absolute inset-y-0 right-0 hidden w-full md:block md:w-[65%] lg:w-[58%] xl:w-[55%]">
           <Image
@@ -62,7 +62,7 @@ export default function Hero() {
                   href="https://wa.me/918448445504"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl bg-amber-400 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-600/25 transition hover:bg-amber-500"
+                  className="inline-flex items-center justify-center rounded-xl bg-amber-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-600/25 transition hover:bg-amber-500"
                 >
                   Book Now
                 </a>

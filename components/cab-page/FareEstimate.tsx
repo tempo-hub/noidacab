@@ -26,7 +26,7 @@ export function FareEstimate({
   const rate = getPerKmRate(vehicle);
 
   return (
-    <section className="bg-slate-50 px-4 py-12 sm:px-6 lg:px-8">
+    <section className="bg-white/95 border-b border-gray-300 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
 
         <div className="grid gap-6 lg:grid-cols-[1fr_420px] lg:items-center">

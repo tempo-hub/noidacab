@@ -12,7 +12,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-[#FFFDF5] py-12">
+    <section className="bg-white/95 py-12 border-b border-gray-300">
       <div className="mx-auto max-w-5xl px-5">
         {/* Heading */}
 
@@ -42,7 +42,7 @@ export default function FAQ() {
             return (
               <div
                 key={faq.question}
-                className="overflow-hidden rounded-3xl bg-white shadow-md"
+                className="overflow-hidden rounded-3xl bg-white/95 shadow-md"
               >
                 <button
                   onClick={() => toggle(index)}

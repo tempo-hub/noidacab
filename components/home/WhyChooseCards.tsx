@@ -2,7 +2,7 @@ import { whyChoose } from "@/data/whyChoose";
 
 export default function WhyChooseCards() {
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white/95 py-12 border-b border-gray-300">
       <div className="container-custom">
         {/* Heading */}
         <div className="mx-auto mb-4 max-w-3xl text-center">

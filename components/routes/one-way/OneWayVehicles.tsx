@@ -29,7 +29,7 @@ const vehicles = [
 
 export function OneWayVehicles() {
   return (
-    <section className="py-14 sm:py-16">
+    <section className="bg-white/95 py-14 sm:py-16 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-amber-600">

@@ -31,7 +31,7 @@ const items = [
 
 export function OneWayFareHighlights({ route }: Props) {
   return (
-    <section className="bg-amber-50/60 py-16">
+    <section className="bg-white/95 py-16 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-amber-600">

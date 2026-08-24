@@ -34,7 +34,7 @@ const stats = [
 
 export default function TaxiStats() {
   return (
-    <section className="px-4 py-6 sm:px-6 sm:py-6 lg:px-8 bg-white">
+    <section className="px-4 py-6 sm:px-6 sm:py-6 lg:px-8 bg-white/95 border-b border-gray-300">
       <div className="mx-auto max-w-7xl">
         <div className="relative overflow-hidden rounded-3xl bg-slate-600 shadow-xl">
           {/* Decorative background */}

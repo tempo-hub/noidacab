@@ -72,7 +72,7 @@ const taxiRoutes = [
 
 export default function PopularTaxiRoutes() {
   return (
-    <section className="bg-slate-50 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <section className="bg-white/95 px-4 py-12 sm:px-6 lg:px-8 lg:py-16 border-b border-gray-300">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">

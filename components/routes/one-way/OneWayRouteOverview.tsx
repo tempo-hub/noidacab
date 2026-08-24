@@ -12,7 +12,7 @@ type Props = {
 
 export function OneWayRouteOverview({ route }: Props) {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="bg-white/95 py-16 sm:py-20 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_380px] lg:items-center">
           <div>
