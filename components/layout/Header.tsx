@@ -7,17 +7,24 @@ import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Taxi", href: "/taxi" },
-  { label: "fare", href: "/route/noida-to-delhi-taxi-fare" },
   {
     label: "Cabs",
     dropdown: [
-      { label: "Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
-      { label: "SUV", href: "/route/suv" },
-      { label: "Innova", href: "/noida-to-delhi-innova-crysta-taxi" },
-      { label: "Tempo Traveller", href: "/tempo-traveller" },
+      { label: "Dzire", href: "/taxi/dzire" },
+      { label: "Amaze", href: "/taxi/amaze" },
+      { label: "Ertiga", href: "/taxi/ertiga" },
+      { label: "Innova Crysta", href: "/taxi/innova-crysta" },
+      
     ],
   },
+  
+  { label: "Taxi fare", href: "/route/noida-to-delhi-taxi-fare" },
+  { label: "Route", dropdown: [
+      { label: "Noida to Delhi", href: "/route/noida-to-delhi-taxi" },
+      { label: "Noida to Delhi Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
+      { label: "Noida to Delhi Fare", href: "/route/noida-to-delhi-taxi-fare" },
+    ], },
+  
   { label: "About", href: "/about-us" },
   { label: "One Way", href: "/one-way" },
 ];

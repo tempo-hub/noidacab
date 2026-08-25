@@ -42,7 +42,7 @@ const guideItems = [
 
 export default function NoidaDelhiBookingGuide() {
   return (
-    <section className="bg-slate-50 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <section className="bg-white/95 px-4 py-8 sm:px-6 lg:px-8 lg:py-10 border-b border-gray-300">
       <div className="mx-auto max-w-7xl rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7 lg:p-8">
 
         {/* Heading */}

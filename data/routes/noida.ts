@@ -8,6 +8,14 @@ export const noidaLocalities = [
     name: "Sector 16",
   },
   {
+    slug: "pari-chowk",
+    name: "Pari Chowk",
+  },
+  {
+    slug: "jewar-airport",
+    name: "Jewar Airport",
+  },
+  {
     slug: "sector-18",
     name: "Sector 18",
   },

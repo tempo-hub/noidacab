@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
         description="This Privacy Policy explains how NoidaCab may collect, use and protect information when you use our website and taxi booking services."
       />
 
-      <section className="bg-white px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="bg-white/90 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="mx-auto max-w-4xl">
 
           <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-slate-700">

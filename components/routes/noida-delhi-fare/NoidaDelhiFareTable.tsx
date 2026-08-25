@@ -1,4 +1,5 @@
 import { noidaDelhiCabs } from "@/data/routes/noida-delhi-cabs";
+import Link from "next/link";
 
 export default function NoidaDelhiFareTable() {
   return (
@@ -88,12 +89,12 @@ export default function NoidaDelhiFareTable() {
                     </td>
 
                     <td className="px-6 py-5">
-                      {/* <a
-                        href="/"
+                      <Link
+                        href={`/taxi/${cab.id}`}
                         className="inline-flex rounded-full bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600"
                       >
                         Book Now
-                      </a> */}
+                      </Link>
                     </td>
                   </tr>
                 ))}

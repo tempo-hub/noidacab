@@ -32,7 +32,7 @@ export default function ServiceAreas() {
           </h2>
 
           <p className="mt-4 text-gray-600">
-            Book reliable cab services from the most popular areas in Noida.
+            Book reliable Taxi services from the most popular areas in Noida.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export default function ServiceAreas() {
             return (
               <Link
                 key={area.slug}
-                href="/taxi"
+                href={`/noida/${area.slug}/dzire`}
                 className="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-amber-600 hover:shadow-xl"
               >
                 <div className="flex items-start gap-5">
@@ -59,9 +59,9 @@ export default function ServiceAreas() {
                     <p className="mt-2 text-sm leading-6 text-gray-500">
                       {area.description}
                     </p>
-
+                    
                     <span className="mt-4 inline-flex font-semibold text-amber-600">
-                      Book Cab →
+                      Book Taxi →
                     </span>
                   </div>
                 </div>

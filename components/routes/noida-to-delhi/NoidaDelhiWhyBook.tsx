@@ -27,7 +27,7 @@ const benefits = [
 
 export default function NoidaDelhiWhyBook() {
   return (
-    <section className="bg-slate-50 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <section className="bg-white/95 px-4 py-8 sm:px-6 lg:px-8 lg:py-10 border-b border-gray-300">
       <div className="mx-auto max-w-7xl">
         {/* Heading */}
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">

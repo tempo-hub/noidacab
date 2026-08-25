@@ -186,12 +186,12 @@ function CabCard({
                     </div>
 
                     {/* Book Button */}
-                    <button
-                        type="button"
-                        className="shrink-0 rounded-full bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600"
-                    >
-                        BOOK NOW
-                    </button>
+                   <a
+            href="tel:+918448445504"
+            className="mt-5 inline-flex items-center justify-center w-full rounded-full bg-amber-500 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600 sm:w-auto"
+          >
+            BOOK NOW
+          </a>
                 </div>
 
             </div>

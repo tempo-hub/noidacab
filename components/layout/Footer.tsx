@@ -33,18 +33,17 @@ const socialLinks = [
 
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/about-us" },
-  { name: "Terms & Conditions", href: "/terms-and-conditions" },
-  { name: "Privacy Policy", href: "/privacy-policy" },
+  // { name: "About Us", href: "/about-us" },
+  // { name: "Terms & Conditions", href: "/terms-and-conditions" },
+  // { name: "Privacy Policy", href: "/privacy-policy" },
   { name: "Contact", href: "/contact" },
 ];
 
 const services = [
   { name: "Local Noida", href: "/noida" },
-  { name: "Local Delhi", href: "/noida-to-delhi-dzire-taxi" },
+  { name: "NOida-to-Delhi-fare", href: "/noida-to-delhi-taxi-fare" },
   { name: "Noida-to-Delhi", href: "/route/noida-to-delhi-taxi" },
   { name: "Distance", href: "/distance" },
-  { name: "Hourly Rental", href: "/hourly-rental" },
 ];
 
 const vehicles = [
@@ -146,7 +145,7 @@ export default function Footer() {
               <div className="flex gap-3">
                 <Phone className="mt-1 text-amber-500" size={18} />
                 <span className="text-gray-400">
-                  +91 98765 43210
+                  +91-8448445504
                 </span>
               </div>
 
@@ -202,8 +201,8 @@ export default function Footer() {
               Terms & Conditions
             </Link>
 
-            <Link href="/refund-policy">
-              Refund Policy
+            <Link href="/about">
+              About
             </Link>
           </div>
         </div>

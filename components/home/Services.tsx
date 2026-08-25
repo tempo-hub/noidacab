@@ -62,10 +62,10 @@ export default function Services() {
                     {service.description}
                   </p>
 
-                  <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-amber-100 px-5 py-3 font-semibold text-amber-600 transition group-hover:bg-amber-600 group-hover:text-white">
+                  {/* <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-amber-100 px-5 py-3 font-semibold text-amber-600 transition group-hover:bg-amber-600 group-hover:text-white">
                     Learn More
                     <ArrowRight size={18} />
-                  </div>
+                  </div> */}
                 </div>
               </Link>
             );

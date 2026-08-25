@@ -32,7 +32,7 @@ const servicePoints = [
 
 export default function NoidaDelhiRatings() {
   return (
-    <section className="bg-slate-50 py-6 sm:py-12 lg:py-12">
+    <section className="bg-white/95 py-6 sm:py-12 lg:py-12 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}

@@ -11,7 +11,13 @@ import PopularPickupLocations from "@/components/routes/noida-delhi-fare/Popular
 import TripFareComparison from "@/components/routes/noida-delhi-fare/TripFareComparison";
 import WhyChooseNoidaCab from "@/components/routes/noida-delhi-fare/WhyChooseNoidaCab";
 import NoidaDelhiBookingCTA from "@/components/routes/noida-to-delhi/NoidaDelhiBookingCTA";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Noida to Delhi Taxi Fare | Cab Fare & Tariff",
+  description:
+    "Check Noida to Delhi taxi fare for Sedan, SUV and other cabs. Compare cab prices, fare details and choose an affordable taxi for your journey.",
+};
 export default function NoidaToDelhiTaxiFarePage() {
   return (
     <main className="bg-[#FFFDF5]">

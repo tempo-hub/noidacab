@@ -30,7 +30,7 @@ export const vehicles: Vehicle[] = [
     name: "WagonR",
     slug: "wagonr",
     image: "/cabs/wagonrmain.webp",
-    price: "₹11/km",
+    price: "₹10/km",
 
     seats: 4,
     doors: 4,
@@ -63,7 +63,7 @@ export const vehicles: Vehicle[] = [
     name: "Dzire",
     slug: "dzire",
     image: "/cabs/dziremain.webp",
-    price: "₹12/km",
+    price: "₹10/km",
 
     seats: 4,
     doors: 4,
@@ -101,7 +101,7 @@ export const vehicles: Vehicle[] = [
     name: "Etios",
     slug: "etios",
     image: "/cabs/etiosmain.webp",
-    price: "₹13/km",
+    price: "₹10/km",
 
     seats: 4,
     doors: 4,
@@ -118,7 +118,7 @@ export const vehicles: Vehicle[] = [
     name: "Amaze",
     slug: "amaze",
     image: "/cabs/amazemain.webp",
-    price: "₹13/km",
+    price: "₹10/km",
 
     seats: 4,
     doors: 4,
@@ -139,7 +139,7 @@ export const vehicles: Vehicle[] = [
     name: "Ertiga",
     slug: "ertiga",
     image: "/cabs/ertigamain.webp",
-    price: "₹16/km",
+    price: "₹13/km",
 
     seats: 6,
     doors: 4,
@@ -172,7 +172,7 @@ export const vehicles: Vehicle[] = [
     name: "Innova Crysta",
     slug: "innova-crysta",
     image: "/cabs/innovamain.webp",
-    price: "₹18/km",
+    price: "₹16/km",
 
     seats: 6,
     doors: 4,
@@ -227,7 +227,7 @@ export const vehicles: Vehicle[] = [
     name: "Force Urbania",
     slug: "urbania",
     image: "/cabs/urbaniamain.webp",
-    price: "₹28/km",
+    price: "₹20/km",
 
     seats: 12,
     doors: 4,
@@ -248,7 +248,7 @@ export const vehicles: Vehicle[] = [
     name: "Luxury Tempo Traveller",
     slug: "luxury-tempo-traveller",
     image: "/cabs/luxurytempomain.webp",
-    price: "₹30/km",
+    price: "₹25/km",
 
     seats: 12,
     doors: 4,
@@ -265,7 +265,7 @@ export const vehicles: Vehicle[] = [
     name: "12 Seater Tempo Traveller",
     slug: "12-seater-tempo-traveller",
     image: "/cabs/tempo12main.webp",
-    price: "₹28/km",
+    price: "₹20/km",
 
     seats: 12,
     doors: 4,
@@ -282,7 +282,7 @@ export const vehicles: Vehicle[] = [
     name: "16 Seater Tempo Traveller",
     slug: "16-seater-tempo-traveller",
     image: "/cabs/tempo16main.webp",
-    price: "₹32/km",
+    price: "₹20/km",
 
     seats: 16,
     doors: 4,
@@ -299,7 +299,7 @@ export const vehicles: Vehicle[] = [
     name: "20 Seater Tempo Traveller",
     slug: "20-seater-tempo-traveller",
     image: "/cabs/tempo20main.webp",
-    price: "₹36/km",
+    price: "₹20/km",
 
     seats: 20,
     doors: 4,
@@ -316,7 +316,7 @@ export const vehicles: Vehicle[] = [
     name: "24 Seater Tempo Traveller",
     slug: "24-seater-tempo-traveller",
     image: "/cabs/tempo24main.webp",
-    price: "₹40/km",
+    price: "₹20/km",
 
     seats: 24,
     doors: 4,

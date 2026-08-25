@@ -8,7 +8,13 @@ import TaxiTypesCTA from "@/components/taxi-types/TaxiTypesCTA";
 import TaxiTypesGrid from "@/components/taxi-types/TaxiTypesGrid";
 import TaxiTypesHero from "@/components/taxi-types/TaxiTypesHero";
 import TaxiTypesOverview from "@/components/taxi-types/TaxiTypesOverview";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Taxi Types in Noida | Sedan, SUV & Hatchback Cabs",
+  description:
+    "Explore taxi types in Noida including Sedan, SUV and Hatchback cabs. Compare different cab options and choose the right taxi for your local or outstation journey.",
+};
 export default function TaxiTypesPage() {
   return (
     <main>

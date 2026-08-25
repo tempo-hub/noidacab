@@ -44,7 +44,7 @@ const sedanComparison = [
 
 export default function NoidaDelhiSedanComparison() {
   return (
-    <section className="bg-white px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <section className="bg-white/95 border-b border-gray-300 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <div className="mx-auto max-w-7xl">
 
         {/* Heading */}

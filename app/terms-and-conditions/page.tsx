@@ -21,7 +21,7 @@ export default function TermsAndConditionsPage() {
         description="Please read these terms carefully before using the NoidaCab website or booking a taxi service."
       />
 
-      <section className="bg-white px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="bg-white/90 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="mx-auto max-w-4xl">
 
           <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-slate-700">

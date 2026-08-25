@@ -47,14 +47,15 @@ export default function Hero() {
               </div>
 
               <h1 className="text-3xl font-black leading-[1.05] tracking-tight text-gray-900 sm:text-4xl lg:text-6xl">
-                Find Your Perfect Ride,
-                <span className="block text-amber-600">Travel With Confidence</span>
+                Reliable Cab
+                <span className="block text-amber-600">Booking in Noida</span>
               </h1>
 
+
               <p className="mt-5 max-w-lg text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
-                Book verified cabs for local trips, Delhi transfers, and
-                outstation journeys. Fixed fares, no surge, support around
-                the clock.
+                Book a reliable taxi for local travel, airport transfers, Delhi trips, and
+                outstation journeys. Choose from comfortable vehicles, transparent fares,
+                and convenient booking with NoidaCab.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-4">
@@ -67,9 +68,9 @@ export default function Hero() {
                   Book Now
                 </a>
                 <Link
-                href="/taxi"
-                className="rounded-xl border border-gray-300 bg-white px-7 py-3.5 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50">
-                  View Fleet
+                  href="tel:+918448445504"
+                  className="rounded-xl border border-gray-300 bg-white px-7 py-3.5 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50">
+                  Call Now
                 </Link>
               </div>
 

@@ -222,6 +222,16 @@
   { "url": "/noida/kondli/ertiga" },
   { "url": "/noida/kondli/innova-crysta" },
 
+  { "url": "/noida/pari-chowk/amaze" },
+  { "url": "/noida/pari-chowk/dzire" },
+  { "url": "/noida/pari-chowk/ertiga" },
+  { "url": "/noida/pari-chowk/innova-crysta" },
+
+  { "url": "/noida/jewar-airport/amaze" },
+  { "url": "/noida/jewar-airport/dzire" },
+  { "url": "/noida/jewar-airport/ertiga" },
+  { "url": "/noida/jewar-airport/innova-crysta" },
+
   { "url": "/noida/noida-extension/amaze" },
   { "url": "/noida/noida-extension/dzire" },
   { "url": "/noida/noida-extension/ertiga" },

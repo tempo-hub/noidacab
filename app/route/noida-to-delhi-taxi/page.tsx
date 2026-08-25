@@ -14,6 +14,13 @@ import NoidaDelhiTravelGuide from "@/components/routes/noida-to-delhi/NoidaDelhi
 import NoidaDelhiVehicleComparison from "@/components/routes/noida-to-delhi/NoidaDelhiVehicleComparison";
 import NoidaDelhiWhyBook from "@/components/routes/noida-to-delhi/NoidaDelhiWhyBook";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Noida to Delhi Taxi | Cab Booking & Affordable Fare",
+  description:
+    "Book a reliable Noida to Delhi taxi for one-way and round trips. Choose from Sedan, SUV and other cabs with comfortable rides and affordable fares.",
+};
 
 export default function NoidaToDelhiTaxiPage() {
   return (

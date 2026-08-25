@@ -82,10 +82,10 @@ export default function PopularNoidaRoutes() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col items-center justify-center gap-5 text-center sm:flex-row sm:items-center sm:justify-center">
           <div>
             <span className="text-sm font-bold uppercase tracking-[0.18em] text-amber-600">
-              Popular Cab Routes
+              Popular Taxi Routes
             </span>
 
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
@@ -98,7 +98,7 @@ export default function PopularNoidaRoutes() {
             </p>
           </div>
 
-          <Link
+          {/* <Link
             href="/route/noida-to-delhi-taxi"
             className="group inline-flex w-fit items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-500"
           >
@@ -108,25 +108,24 @@ export default function PopularNoidaRoutes() {
               size={17}
               className="transition-transform group-hover:translate-x-1"
             />
-          </Link>
+          </Link> */}
         </div>
 
         {/* Route Grid */}
         <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {routes.map((route) => (
-            <Link
+            <div
               key={`${route.from}-${route.to}`}
-              href="/taxi"
               className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${route.featured
-                  ? "border-amber-300 shadow-[0_10px_35px_rgba(245,158,11,0.12)]"
-                  : "border-slate-200 hover:border-amber-200"
+                ? "border-amber-300 shadow-[0_10px_35px_rgba(245,158,11,0.12)]"
+                : "border-slate-200 hover:border-amber-200"
                 }`}
             >
               {/* Top Accent */}
               <div
                 className={`absolute inset-x-0 top-0 h-1 ${route.featured
-                    ? "bg-amber-400"
-                    : "bg-amber-200 group-hover:bg-amber-400"
+                  ? "bg-amber-400"
+                  : "bg-amber-200 group-hover:bg-amber-400"
                   }`}
               />
               <div>
@@ -189,12 +188,14 @@ export default function PopularNoidaRoutes() {
                 <span className="text-2xl font-extrabold text-slate-950">
                   {route.price}
                 </span>
+                <Link
+                  href="tel:+918448445504">
+                  <span className="text-sm font-semibold text-amber-600 opacity-0 transition group-hover:opacity-100">
+                    Book →
+                  </span></Link>
 
-                <span className="text-sm font-semibold text-amber-600 opacity-0 transition group-hover:opacity-100">
-                  Book →
-                </span>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 

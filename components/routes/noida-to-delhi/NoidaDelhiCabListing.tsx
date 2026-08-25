@@ -157,7 +157,7 @@ export default function NoidaDelhiCabListing() {
 
   return (
     <section id="available-cabs"
-     className="bg-white px-4 py-8 sm:px-6 lg:px-8 lg:py-12 ">
+      className="bg-white/95 px-4 py-8 sm:px-6 lg:px-8 lg:py-12 border-b border-gray-300">
       <div className="mx-auto max-w-7xl">
 
         {/* Mobile Filter Button */}
@@ -217,33 +217,33 @@ export default function NoidaDelhiCabListing() {
             {(selectedCabTypes.length > 0 ||
               selectedModels.length > 0 ||
               selectedFuelTypes.length > 0) && (
-              <div className="mb-5 flex flex-wrap items-center gap-2">
-                <span className="text-sm font-medium text-gray-600">
-                  Filters:
-                </span>
-
-                {[
-                  ...selectedCabTypes,
-                  ...selectedModels,
-                  ...selectedFuelTypes,
-                ].map((filter) => (
-                  <span
-                    key={filter}
-                    className="rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-600"
-                  >
-                    {filter}
+                <div className="mb-5 flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-medium text-gray-600">
+                    Filters:
                   </span>
-                ))}
 
-                <button
-                  type="button"
-                  onClick={clearFilters}
-                  className="text-xs font-semibold text-red-500 hover:underline"
-                >
-                  Clear all
-                </button>
-              </div>
-            )}
+                  {[
+                    ...selectedCabTypes,
+                    ...selectedModels,
+                    ...selectedFuelTypes,
+                  ].map((filter) => (
+                    <span
+                      key={filter}
+                      className="rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-600"
+                    >
+                      {filter}
+                    </span>
+                  ))}
+
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="text-xs font-semibold text-red-500 hover:underline"
+                  >
+                    Clear all
+                  </button>
+                </div>
+              )}
 
             {/* Cab Cards */}
             <div className="space-y-4">
@@ -360,14 +360,14 @@ function FilterPanel({
         {(selectedCabTypes.length > 0 ||
           selectedModels.length > 0 ||
           selectedFuelTypes.length > 0) && (
-          <button
-            type="button"
-            onClick={clearFilters}
-            className="text-xs font-semibold text-amber-500"
-          >
-            Clear
-          </button>
-        )}
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="text-xs font-semibold text-amber-500"
+            >
+              Clear
+            </button>
+          )}
       </div>
 
       {/* Cab Type */}
@@ -542,10 +542,9 @@ function DateSelector() {
               whitespace-nowrap
               transition
               last:border-r-0
-              ${
-                date.active
-                  ? "border-b-2 border-b-amber-500 bg-amber-50/30 text-amber-500"
-                  : "text-gray-700 hover:bg-gray-50"
+              ${date.active
+                ? "border-b-2 border-b-amber-500 bg-amber-50/30 text-amber-500"
+                : "text-gray-700 hover:bg-gray-50"
               }
             `}
           >
@@ -609,7 +608,7 @@ function CabCard({
               </h3>
             )}
 
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-600">
               specific model
             </span>
 
@@ -685,12 +684,13 @@ function CabCard({
             + ₹{cab.taxes} (Taxes & Charges)
           </p>
 
-          <button
-            type="button"
-            className="mt-5 w-full rounded-full bg-amber-500 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600 sm:w-auto"
+          <a
+            href="tel:+918448445504"
+            className="mt-5 inline-flex items-center justify-center w-full rounded-full bg-amber-500 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600 sm:w-auto"
           >
             BOOK NOW
-          </button>
+          </a>
+
         </div>
       </div>
     </article>
@@ -705,7 +705,7 @@ function Feature({
   icon,
   label,
   value,
-  valueClassName = "",
+  valueClassName = "text-slate-700",
 }: {
   icon: React.ReactNode;
   label: string;
@@ -723,7 +723,7 @@ function Feature({
           {label}
         </span>
 
-        <span className="mx-2 text-gray-300">
+        <span className="mx-2 text-gray-900">
           |
         </span>
 

@@ -91,7 +91,7 @@ export default function NoidaDelhiFareHero() {
               </Link>
 
               <a
-                href="tel:+98448445504"
+                href="tel:+918448445504"
                 className="inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-3.5 font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
               >
                 Call Now
