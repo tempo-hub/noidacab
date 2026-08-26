@@ -21,8 +21,13 @@ import {
 
 import {
   noidaRoutes,
-  type RouteData,
+  type NoidaRouteData,
 } from "@/data/routes/noidaRoutes";
+
+import {
+  routes,
+  type RouteData,
+} from "@/data/routes/taxiroutes";
 
 /* =========================================================
    TYPES
@@ -74,6 +79,14 @@ export type ParsedLocalRoute = {
 };
 
 /* =========================================================
+   NEARBY CITY ROUTE
+========================================================= */
+
+export type ParsedNearbyRoute = RouteData & {
+  template: "noida-nearby";
+};
+
+/* =========================================================
    CITY → CITY + VEHICLE ROUTE
 ========================================================= */
 
@@ -106,7 +119,7 @@ export type ParsedOneWayRoute = OneWayRoute;
    DISTANCE & TRAVEL TIME ROUTE
 ========================================================= */
 
-export type ParsedDistanceRoute = RouteData & {
+export type ParsedDistanceRoute = NoidaRouteData & {
   template: "distance";
 };
 
@@ -135,7 +148,6 @@ export function parseDistanceRouteUrl(
     .join("-")
     .toLowerCase();
 
-  // Check distance URL
   if (!slug.endsWith("-distance-travel-time")) {
     return null;
   }
@@ -153,11 +165,11 @@ export function parseDistanceRouteUrl(
     return null;
   }
 
-
   const routeSlug = slug.replace(
     "-distance-travel-time",
     ""
   );
+
   const route = noidaRoutes[routeSlug];
 
   if (!route) {
@@ -170,9 +182,75 @@ export function parseDistanceRouteUrl(
   };
 }
 
+/* =========================================================
+   NEARBY CITY ROUTES
+========================================================= */
+
+export function parseNoidaNearbyRouteUrl(
+  url: string
+): ParsedNearbyRoute | null {
+  const slug = url
+    .split("/")
+    .filter(Boolean)
+    .join("-")
+    .toLowerCase();
+
+  const normalizedUrl = `/${slug}`;
+
+  // 1. URL MUST exist in urlroute.json
+  const urlExists = urlRoutes.some(
+    (entry) =>
+      entry.url
+        .replace(/\/+$/, "")
+        .toLowerCase() === normalizedUrl
+  );
+
+  if (!urlExists) {
+    return null;
+  }
+
+  // 2. Only normal city-to-city taxi URLs
+  if (!slug.endsWith("-taxi")) {
+    return null;
+  }
+
+  // 3. Don't let vehicle URLs use nearby template
+  const isVehicleRoute = vehicles.some(
+    (vehicle) =>
+      slug.endsWith(
+        `-${vehicle.slug.toLowerCase()}-taxi`
+      )
+  );
+
+  if (isVehicleRoute) {
+    return null;
+  }
+
+  // 4. Find route data
+  const route = routes.find(
+    (item) =>
+      `${item.slug}-taxi`.toLowerCase() === slug
+  );
+
+  if (!route) {
+    return null;
+  }
+
+  // 5. Render nearby template
+  return {
+    ...route,
+    slug,
+    template: "noida-nearby",
+  };
+}
+
+/* =========================================================
+   NEARBY DISTANCE ROUTES
+========================================================= */
+
 export function getNearbyDistanceRoutes(
   currentSlug: string
-): RouteData[] {
+): NoidaRouteData[] {
   return Object.values(noidaRoutes).filter(
     (route) => route.slug !== currentSlug
   );
@@ -190,6 +268,7 @@ export function parseRouteUrl(
     .filter(Boolean)
     .join("-")
     .toLowerCase();
+
   const suvMatch = slug.match(
     /^(.+)-to-(.+)-suv-taxi$/
   );
@@ -231,6 +310,7 @@ export function parseRouteUrl(
 /* =========================================================
    CITY → CITY + VEHICLE URLs
 ========================================================= */
+
 export function parseCityToCityVehicleUrl(
   url: string
 ): ParsedCityToCityVehicleRoute | null {
@@ -239,6 +319,7 @@ export function parseCityToCityVehicleUrl(
     .filter(Boolean)
     .join("-")
     .toLowerCase();
+
   const matchedVehicle = vehicles.find(
     (vehicle) =>
       slug.endsWith(
@@ -249,6 +330,7 @@ export function parseCityToCityVehicleUrl(
   if (!matchedVehicle) {
     return null;
   }
+
   const vehicleSuffix =
     `-${matchedVehicle.slug.toLowerCase()}-taxi`;
 
@@ -256,11 +338,13 @@ export function parseCityToCityVehicleUrl(
     0,
     -vehicleSuffix.length
   );
+
   const route = getNoidaCityRoute(cityPair);
 
   if (!route) {
     return null;
   }
+
   const routeParts = cityPair.split("-to-");
 
   if (routeParts.length !== 2) {
@@ -315,12 +399,14 @@ export function parseLocalRouteUrl(
     .split("/")
     .filter(Boolean)
     .map((part) => part.toLowerCase());
+
   if (parts.length === 3) {
     const [
       city,
       locationSlug,
       vehicleSlug,
     ] = parts;
+
     if (!(city in cityPairRoutes)) {
       return null;
     }
@@ -329,6 +415,7 @@ export function parseLocalRouteUrl(
       cityPairRoutes[
         city as CityPairSlug
       ];
+
     const location = locations.find(
       (item) =>
         item.slug === locationSlug
@@ -337,6 +424,7 @@ export function parseLocalRouteUrl(
     if (!location) {
       return null;
     }
+
     const matchedVehicle =
       vehicles.find(
         (vehicle) =>
@@ -365,6 +453,7 @@ export function parseLocalRouteUrl(
 
   if (parts.length === 1) {
     const slug = parts[0];
+
     const matchedUrl = urlRoutes.find(
       (entry) =>
         entry.url
@@ -375,6 +464,7 @@ export function parseLocalRouteUrl(
     if (!matchedUrl) {
       return null;
     }
+
     const vehicleMatch = slug.match(
       /^(.+)-to-(.+)-(dzire|ertiga|amaze|etios|innova-crysta)-taxi$/
     );
@@ -389,6 +479,7 @@ export function parseLocalRouteUrl(
       toSlug,
       vehicleSlug,
     ] = vehicleMatch;
+
     const matchedVehicle =
       vehicles.find(
         (vehicle) =>
@@ -426,6 +517,7 @@ export function parseLocalRouteUrl(
 /* =========================================================
    VEHICLE HELPERS
 ========================================================= */
+
 export function getVehiclesByCategory(
   category: VehicleCategory
 ): Vehicle[] {
@@ -435,9 +527,11 @@ export function getVehiclesByCategory(
       category
   );
 }
+
 export function getSUVVehicles(): Vehicle[] {
   return getVehiclesByCategory("suv");
 }
+
 export function getVehicleBySlug(
   slug: string
 ): Vehicle | null {

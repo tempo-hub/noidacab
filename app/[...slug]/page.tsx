@@ -5,6 +5,7 @@ import {
   parseOneWayRouteUrl,
   parseRouteUrl,
   parseCityToCityVehicleUrl,
+  parseNoidaNearbyRouteUrl,
   getAllUrlSlugs,
   parseDistanceRouteUrl,
 } from "@/lib/parse-route";
@@ -14,6 +15,11 @@ import { OneWayRoutePage } from "@/components/routes/one-way/OneWayRoutePage";
 import { SUVRoutePage } from "@/components/routes/suv/SUVRoutePage";
 import RouteVehicleTemplate from "@/components/routes/taxi-routes/RouteVehicleTemplate";
 import DistanceRoute from "@/components/distance/DistanceRoute";
+import NoidaNearbyTemplate from "@/components/routes/noida-nearby/NoidaNearbyTemplate";
+
+import {
+  vehicles,
+} from "@/data/vehicles";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -22,6 +28,10 @@ export function generateStaticParams() {
 type Params = Promise<{
   slug: string[];
 }>;
+
+/* =========================================================
+   METADATA
+========================================================= */
 
 export async function generateMetadata({
   params,
@@ -33,7 +43,7 @@ export async function generateMetadata({
   const url = "/" + slug.join("/");
 
   // ============================================
-  // DISTANCE & TRAVEL TIME ROUTE
+  // DISTANCE & TRAVEL TIME
   // ============================================
 
   const distanceRoute = parseDistanceRouteUrl(url);
@@ -48,7 +58,7 @@ export async function generateMetadata({
   }
 
   // ============================================
-  // ONE WAY ROUTE
+  // ONE WAY
   // ============================================
 
   const oneWayRoute = parseOneWayRouteUrl(url);
@@ -56,12 +66,14 @@ export async function generateMetadata({
   if (oneWayRoute) {
     return {
       title: `${oneWayRoute.from} to ${oneWayRoute.to} One Way Cab | NoidaCab`,
+
       description: oneWayRoute.description,
     };
   }
 
   // ============================================
-  // CITY → CITY + VEHICLE ROUTE
+  // CITY → CITY + VEHICLE
+  // IMPORTANT: Check BEFORE nearby route
   // ============================================
 
   const cityToCityVehicle =
@@ -74,6 +86,23 @@ export async function generateMetadata({
       description:
         cityToCityVehicle.description ??
         `Book a ${cityToCityVehicle.vehicle.name} taxi from ${cityToCityVehicle.fromName} to ${cityToCityVehicle.toName}. Comfortable and reliable cab service.`,
+    };
+  }
+
+  // ============================================
+  // NOIDA → NEARBY CITY
+  // ============================================
+
+  const nearbyRoute =
+    parseNoidaNearbyRouteUrl(url);
+
+  if (nearbyRoute) {
+    return {
+      title: `${nearbyRoute.from.name} to ${nearbyRoute.to.name} Taxi | NoidaCab`,
+
+      description:
+        nearbyRoute.description ??
+        `Book a taxi from ${nearbyRoute.from.name} to ${nearbyRoute.to.name}. Compare comfortable cabs, fares and travel options with NoidaCab.`,
     };
   }
 
@@ -100,7 +129,9 @@ export async function generateMetadata({
 
   const parsed = parseLocalRouteUrl(url);
 
-  if (!parsed) return {};
+  if (!parsed) {
+    return {};
+  }
 
   return {
     title: `${parsed.vehicle.name} Cab in ${parsed.locationName} | NoidaCab`,
@@ -109,6 +140,10 @@ export async function generateMetadata({
       `Book a ${parsed.vehicle.name} cab in ${parsed.locationName}. Comfortable and reliable cab service.`,
   };
 }
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 export default async function CabPage({
   params,
@@ -119,13 +154,12 @@ export default async function CabPage({
 
   const url = "/" + slug.join("/");
 
-
   // ============================================
-  // DISTANCE & TRAVEL TIME ROUTES
+  // DISTANCE & TRAVEL TIME
   // ============================================
 
-
-   const distanceRoute = parseDistanceRouteUrl(url);
+  const distanceRoute =
+    parseDistanceRouteUrl(url);
 
   if (distanceRoute) {
     return (
@@ -136,47 +170,74 @@ export default async function CabPage({
   }
 
   // ============================================
-  // ONE WAY ROUTES
+  // ONE WAY
   // ============================================
 
-  const oneWayRoute = parseOneWayRouteUrl(url);
+  const oneWayRoute =
+    parseOneWayRouteUrl(url);
 
   if (oneWayRoute) {
-    return <OneWayRoutePage route={oneWayRoute} />;
+    return (
+      <OneWayRoutePage
+        route={oneWayRoute}
+      />
+    );
   }
 
   // ============================================
-  // CITY → CITY + VEHICLE ROUTES
+  // CITY → CITY + VEHICLE
+  // IMPORTANT: BEFORE NEARBY ROUTE
   // ============================================
 
   const cityToCityVehicle =
-  parseCityToCityVehicleUrl(url);
+    parseCityToCityVehicleUrl(url);
 
-if (cityToCityVehicle) {
-  return (
-    <RouteVehicleTemplate
-      route={cityToCityVehicle}
-    />
-  );
-}
+  if (cityToCityVehicle) {
+    return (
+      <RouteVehicleTemplate
+        route={cityToCityVehicle}
+      />
+    );
+  }
 
   // ============================================
-  // SUV ROUTES
+  // NOIDA → NEARBY CITY
+  // ============================================
+
+  const nearbyRoute =
+    parseNoidaNearbyRouteUrl(url);
+
+  if (nearbyRoute) {
+    return (
+      <NoidaNearbyTemplate
+        route={nearbyRoute}
+        vehicles={vehicles}
+      />
+    );
+  }
+
+  // ============================================
+  // SUV
   // ============================================
 
   const route = parseRouteUrl(url);
 
   if (route) {
     if (route.vehicleCategory === "suv") {
-      return <SUVRoutePage route={route} />;
+      return (
+        <SUVRoutePage
+          route={route}
+        />
+      );
     }
   }
 
   // ============================================
-  // EXISTING LOCALITY ROUTES
+  // LOCALITY
   // ============================================
 
-  const parsed = parseLocalRouteUrl(url);
+  const parsed =
+    parseLocalRouteUrl(url);
 
   if (!parsed) {
     notFound();
@@ -190,8 +251,6 @@ if (cityToCityVehicle) {
   if (!Template) {
     notFound();
   }
-
-  
 
   return (
     <Template

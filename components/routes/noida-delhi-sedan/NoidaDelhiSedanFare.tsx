@@ -13,24 +13,24 @@ const sedanFares = [
     name: "Dzire",
     type: "Sedan",
     passengers: "Up to 4",
-    fare: "₹500",
-    extraKm: "₹XX/km",
+    fare: "₹1100",
+    perkm: "10/km",
     href: "/noida-to-delhi-dzire-taxi",
   },
   {
     name: "Etios",
     type: "Sedan",
     passengers: "Up to 4",
-    fare: "₹800",
-    extraKm: "₹XX/km",
+    fare: "₹1100",
+    perkm: "10/km",
     href: "/noida-to-delhi-etios-taxi",
   },
   {
     name: "Amaze",
     type: "Sedan",
     passengers: "Up to 4",
-    fare: "₹800",
-    extraKm: "₹XX/km",
+    fare: "₹1100",
+    perkm: "10/km",
     href: "/noida-to-delhi-amaze-taxi",
   },
 ];
@@ -46,7 +46,7 @@ export default function NoidaDelhiSedanFare() {
             Noida to Delhi Sedan Taxi Fare
           </h2>
 
-          <p className="mt-3 text-base leading-7 text-slate-600">
+          <p className="mt-2 text-base leading-7 text-slate-600">
             Sedan fares on this route stay low because the distance is short and the drive rarely needs an overnight stop. 
             Every quote breaks down fuel, driver allowance, and applicable toll, 
             so you see what you're paying for before you confirm the Noida to Delhi sedan cab fare.
@@ -101,11 +101,11 @@ export default function NoidaDelhiSedanFare() {
 
                 <div className="mt-4 flex items-center justify-between rounded-lg bg-slate-50 px-4 py-3">
                   <span className="text-sm text-slate-500">
-                    Extra distance
+                    Per Km
                   </span>
 
                   <span className="text-sm font-bold text-slate-800">
-                    {sedan.extraKm}
+                    {sedan.perkm}
                   </span>
                 </div>
 

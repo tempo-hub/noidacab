@@ -232,16 +232,20 @@
   { "url": "/noida/jewar-airport/ertiga" },
   { "url": "/noida/jewar-airport/innova-crysta" },
 
+
   { "url": "/noida/noida-extension/amaze" },
   { "url": "/noida/noida-extension/dzire" },
   { "url": "/noida/noida-extension/ertiga" },
   { "url": "/noida/noida-extension/innova-crysta" },
+
   { "url": "/noida-to-delhi-one-way-taxi" },
   { "url": "/noida-to-gurgaon-one-way-taxi" },
   { "url": "/noida-to-agra-one-way-taxi" },
   { "url": "/noida-to-jaipur-one-way-taxi" },
   { "url": "/noida-to-lucknow-one-way-taxi" },
+
   { "url": "/noida-to-delhi-suv-taxi" },
+  { "url": "/noida-to-delhi-airport-suv-taxi" },
   { "url": "/noida-to-gurgaon-suv-taxi" },
   { "url": "/noida-to-agra-suv-taxi" },
   { "url": "/noida-to-jaipur-suv-taxi" },
@@ -293,5 +297,14 @@
   },
   {
     "url": "/noida-to-agra-distance-travel-time"
+  },
+  {
+    "url": "/noida-to-delhi-taxi"
+  },
+  {
+    "url": "/noida-to-gurgaon-taxi"
+  },
+  {
+    "url": "/noida-to-ghaziabad-taxi"
   }
 ]

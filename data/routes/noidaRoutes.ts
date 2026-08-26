@@ -7,7 +7,7 @@ export interface CabOption {
   pricePerKm: number;
 }
 
-export interface RouteData {
+export interface NoidaRouteData {
   slug: string;
 
   from: {
@@ -30,7 +30,7 @@ export interface RouteData {
   cabs: CabOption[];
 }
 
-export const noidaRoutes: Record<string, RouteData> = {
+export const noidaRoutes: Record<string, NoidaRouteData> = {
   "noida-to-delhi": {
     slug: "noida-to-delhi",
 

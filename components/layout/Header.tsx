@@ -21,8 +21,8 @@ const navLinks = [
   { label: "Taxi fare", href: "/route/noida-to-delhi-taxi-fare" },
   { label: "Route", dropdown: [
       { label: "Noida to Delhi", href: "/route/noida-to-delhi-taxi" },
-      { label: "Noida to Delhi Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
-      { label: "Noida to Delhi Fare", href: "/route/noida-to-delhi-taxi-fare" },
+      { label: "Noida Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
+      { label: "Noida SUV", href: "/route/suv" },
     ], },
   
   { label: "About", href: "/about-us" },

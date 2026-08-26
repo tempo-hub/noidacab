@@ -14,42 +14,42 @@ const locations = [
     description:
       "Book a Noida to Delhi taxi from the popular shopping and business hub of Sector 18.",
     icon: ShoppingBag,
-    href: "/local-cab/sector-18",
+    href: "/noida/sector-18/innova-crysta",
   },
   {
     name: "Sector 62",
     description:
       "Convenient cab pickup from the IT and corporate hub of Noida Sector 62.",
     icon: BriefcaseBusiness,
-    href: "/local-cab/sector-62",
+    href: "/noida/sector-62/innov-crysta",
   },
   {
     name: "Sector 137",
     description:
       "Book a comfortable taxi from Sector 137 for your journey towards Delhi.",
     icon: Building2,
-    href: "/local-cab/sector-137",
+    href: "/noida/sector-137/innova-crysta",
   },
   {
     name: "Botanical Garden",
     description:
       "Easy taxi pickup from Botanical Garden and nearby residential areas.",
     icon: TrainFront,
-    href: "/local-cab/botanical-garden",
+    href: "/noida/botanical-garden/innova-crysta",
   },
   {
     name: "Noida Extension",
     description:
       "Book a cab from Noida Extension to Delhi for local and business travel.",
     icon: MapPin,
-    href: "/local-cab/noida-extension",
+    href: "/noida/noida-extension/innova-crysta",
   },
   {
     name: "Jewar Airport",
     description:
       "Arrange convenient airport and Delhi travel from the Jewar Airport area.",
     icon: Plane,
-    href: "/airport-transfer/jewar-airport",
+    href: "/noida/jewar-airport/innova-crysta",
   },
 ];
 

@@ -15,20 +15,20 @@ import {
 const socialLinks = [
   {
     icon: FaFacebookF,
-    href: "#",
+    href: "https://www.facebook.com/noidacab/",
   },
   {
     icon: FaInstagram,
-    href: "#",
+    href: "https://www.instagram.com/noida_cabs/",
   },
-  {
-    icon: FaXTwitter,
-    href: "#",
-  },
-  {
-    icon: FaLinkedinIn,
-    href: "#",
-  },
+  // {
+  //   icon: FaXTwitter,
+  //   href: "#",
+  // },
+  // {
+  //   icon: FaLinkedinIn,
+  //   href: "#",
+  // },
 ];
 
 const quickLinks = [
@@ -41,7 +41,7 @@ const quickLinks = [
 
 const services = [
   { name: "Local Noida", href: "/noida" },
-  { name: "NOida-to-Delhi-fare", href: "/noida-to-delhi-taxi-fare" },
+  { name: "Noida-to-Delhi-fare", href: "/route/noida-to-delhi-taxi-fare" },
   { name: "Noida-to-Delhi", href: "/route/noida-to-delhi-taxi" },
   { name: "Distance", href: "/distance" },
 ];
