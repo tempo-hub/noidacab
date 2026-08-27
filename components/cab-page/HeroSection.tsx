@@ -213,40 +213,41 @@ export function HeroSection({
               {/* CTA */}
               <div className="mt-4 grid gap-3">
 
-                <button
-                  type="button"
+                <a
+                  href="https://wa.me/918448445504"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="
-                    group
-                    inline-flex
-                    w-full
-                    items-center
-                    justify-center
-                    gap-2.5
-                    rounded-xl
-                    bg-slate-950
-                    px-6
-                    py-3.5
-                    text-sm
-                    font-bold
-                    text-white
-                    shadow-lg
-                    transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:bg-slate-800
-                  "
+    group
+    inline-flex
+    w-full
+    items-center
+    justify-center
+    gap-2.5
+    rounded-xl
+    bg-slate-950
+    px-6
+    py-3.5
+    text-sm
+    font-bold
+    text-white
+    shadow-lg
+    transition-all
+    duration-300
+    hover:-translate-y-0.5
+    hover:bg-slate-800
+  "
                 >
-
                   <Car className="h-5 w-5 text-amber-400" />
-
                   Book {vehicle.name}
-
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
 
-                </button>
 
-                <button
-                  type="button"
+                <a
+                  href="https://wa.me/918448445504"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="
                     inline-flex
                     w-full
@@ -270,9 +271,9 @@ export function HeroSection({
 
                   <MessageCircle className="h-5 w-5 text-amber-600" />
 
-                  WhatsApp Quote
+                  Call Now
 
-                </button>
+                </a>
 
               </div>
 

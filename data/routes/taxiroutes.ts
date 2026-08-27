@@ -105,6 +105,86 @@ export const routes: RouteData[] = [
     description:
       "Book a taxi from Noida to Faridabad with comfortable cabs and reliable service.",
   },
+
+  {
+    slug: "noida-to-meerut",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Meerut",
+      slug: "meerut",
+    },
+    distance: "65 km",
+    duration: "1 hr 30 min",
+    description:
+      "Book a reliable taxi from Noida to Meerut with comfortable cabs, professional drivers and affordable fares.",
+  },
+
+  {
+    slug: "noida-to-hapur",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Hapur",
+      slug: "hapur",
+    },
+    distance: "50 km",
+    duration: "1 hr 15 min",
+    description:
+      "Book a reliable taxi from Noida to Hapur with comfortable vehicles and professional drivers.",
+  },
+
+  {
+    slug: "noida-to-bulandshahr",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Bulandshahr",
+      slug: "bulandshahr",
+    },
+    distance: "65 km",
+    duration: "1 hr 30 min",
+    description:
+      "Book a reliable taxi from Noida to Bulandshahr with comfortable cabs and professional drivers.",
+  },
+
+  {
+    slug: "noida-to-mathura",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Mathura",
+      slug: "mathura",
+    },
+    distance: "145 km",
+    duration: "2 hr 30 min",
+    description:
+      "Book a comfortable taxi from Noida to Mathura with reliable drivers and convenient pickup service.",
+  },
+
+  {
+    slug: "noida-to-agra",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Agra",
+      slug: "agra",
+    },
+    distance: "165 km",
+    duration: "3 hr",
+    description:
+      "Book a reliable taxi from Noida to Agra with comfortable vehicles and professional drivers.",
+  },
 ];
 
 export function getRouteBySlug(slug: string) {

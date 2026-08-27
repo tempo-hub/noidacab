@@ -226,7 +226,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "Force Urbania",
     slug: "urbania",
-    image: "/cabs/urbaniamain.webp",
+    image: "/cabs/urbaniafirst.webp",
     price: "₹20/km",
 
     seats: 12,
@@ -247,7 +247,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "Luxury Tempo Traveller",
     slug: "luxury-tempo-traveller",
-    image: "/cabs/luxurytempomain.webp",
+    image: "/cabs/tempofirst.webp",
     price: "₹25/km",
 
     seats: 12,
@@ -264,7 +264,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "12 Seater Tempo Traveller",
     slug: "12-seater-tempo-traveller",
-    image: "/cabs/tempo12main.webp",
+    image: "/cabs/tempofirst.webp",
     price: "₹20/km",
 
     seats: 12,
@@ -281,7 +281,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "16 Seater Tempo Traveller",
     slug: "16-seater-tempo-traveller",
-    image: "/cabs/tempo16main.webp",
+    image: "/cabs/tempofirst.webp",
     price: "₹20/km",
 
     seats: 16,
@@ -298,7 +298,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "20 Seater Tempo Traveller",
     slug: "20-seater-tempo-traveller",
-    image: "/cabs/tempo20main.webp",
+    image: "/cabs/tempofirst.webp",
     price: "₹20/km",
 
     seats: 20,
@@ -315,7 +315,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "24 Seater Tempo Traveller",
     slug: "24-seater-tempo-traveller",
-    image: "/cabs/tempo24main.webp",
+    image: "/cabs/tempofirst.webp",
     price: "₹20/km",
 
     seats: 24,

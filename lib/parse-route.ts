@@ -87,6 +87,14 @@ export type ParsedNearbyRoute = RouteData & {
 };
 
 /* =========================================================
+   NEARBY TEMPO TRAVELLER ROUTE
+========================================================= */
+
+export type ParsedNearbyTempoRoute = RouteData & {
+  template: "noida-nearby-tempo";
+};
+
+/* =========================================================
    CITY → CITY + VEHICLE ROUTE
 ========================================================= */
 
@@ -133,6 +141,24 @@ export function getAllUrlSlugs(): { slug: string[] }[] {
       .split("/")
       .filter(Boolean),
   }));
+}
+
+function isUrlRouteAvailable(url: string): boolean {
+  const normalizedUrl =
+    "/" +
+    url
+      .split("/")
+      .filter(Boolean)
+      .join("/")
+      .toLowerCase();
+
+  return urlRoutes.some(
+    (entry) =>
+      entry.url
+        .replace(/\/+$/, "")
+        .toLowerCase() ===
+      normalizedUrl.replace(/\/+$/, "")
+  );
 }
 
 /* =========================================================
@@ -245,6 +271,73 @@ export function parseNoidaNearbyRouteUrl(
 }
 
 /* =========================================================
+   NEARBY TEMPO TRAVELLER ROUTES
+========================================================= */
+
+export function parseNoidaNearbyTempoRouteUrl(
+  url: string
+): ParsedNearbyTempoRoute | null {
+  const slug = url
+    .split("/")
+    .filter(Boolean)
+    .join("-")
+    .toLowerCase();
+
+  const normalizedUrl = `/${slug}`;
+
+  // 1. URL MUST exist in urlroute.json
+  const urlExists = urlRoutes.some(
+    (entry) =>
+      entry.url
+        .replace(/\/+$/, "")
+        .toLowerCase() === normalizedUrl
+  );
+
+  if (!urlExists) {
+    return null;
+  }
+
+  // 2. Supported Tempo Traveller URL suffixes
+  const tempoSuffixes = [
+    "-luxury-tempo-traveller",
+    "-urbania-traveller",
+    "-tempo-traveller",
+  ];
+
+  // 3. Find which suffix the URL uses
+  const matchedSuffix = tempoSuffixes.find((suffix) =>
+    slug.endsWith(suffix)
+  );
+
+  if (!matchedSuffix) {
+    return null;
+  }
+
+  // 4. Remove the complete suffix
+  const routeSlug = slug.slice(
+    0,
+    -matchedSuffix.length
+  );
+
+  // 5. Find route from existing taxi route data
+  const route = routes.find(
+    (item) =>
+      item.slug.toLowerCase() === routeSlug
+  );
+
+  if (!route) {
+    return null;
+  }
+
+  // 6. Render Nearby Tempo template
+  return {
+    ...route,
+    slug,
+    template: "noida-nearby-tempo",
+  };
+}
+
+/* =========================================================
    NEARBY DISTANCE ROUTES
 ========================================================= */
 
@@ -301,7 +394,7 @@ export function parseRouteUrl(
       template: "suv",
 
       description: route.description,
-    };
+    };  
   }
 
   return null;
@@ -319,6 +412,12 @@ export function parseCityToCityVehicleUrl(
     .filter(Boolean)
     .join("-")
     .toLowerCase();
+
+
+     // URL MUST exist in urlroute.json
+  if (!isUrlRouteAvailable(url)) {
+    return null;
+  }
 
   const matchedVehicle = vehicles.find(
     (vehicle) =>
@@ -367,8 +466,10 @@ export function parseCityToCityVehicleUrl(
 
     vehicle: matchedVehicle,
 
-    template: "route-vehicle",
-
+    template:
+      matchedVehicle.category === "Tempo Traveller"
+        ? "tempo-traveller"
+        : "route-vehicle",
     description: route.description,
   };
 }

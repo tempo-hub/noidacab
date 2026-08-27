@@ -35,7 +35,7 @@ const quickLinks = [
   { name: "Home", href: "/" },
   // { name: "About Us", href: "/about-us" },
   // { name: "Terms & Conditions", href: "/terms-and-conditions" },
-  // { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Tempo Traveller", href: "/tempo-traveller" },
   { name: "Contact", href: "/contact" },
 ];
 

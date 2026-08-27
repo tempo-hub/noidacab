@@ -69,7 +69,7 @@ export default function NoidaDelhiRatings() {
 
                 <div className="mt-4 flex items-end gap-2">
                   <span className="text-5xl font-bold tracking-tight">
-                    4.3
+                    4.9
                   </span>
 
                   <span className="mb-1 text-sm text-slate-400">

@@ -6,6 +6,7 @@ import {
   parseRouteUrl,
   parseCityToCityVehicleUrl,
   parseNoidaNearbyRouteUrl,
+  parseNoidaNearbyTempoRouteUrl,
   getAllUrlSlugs,
   parseDistanceRouteUrl,
 } from "@/lib/parse-route";
@@ -20,6 +21,7 @@ import NoidaNearbyTemplate from "@/components/routes/noida-nearby/NoidaNearbyTem
 import {
   vehicles,
 } from "@/data/vehicles";
+import NearbyTempoTemplate from "@/components/routes/noida-nearbytempo/NearbyTempoTemplate";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -89,6 +91,22 @@ export async function generateMetadata({
     };
   }
 
+// ============================================
+// NOIDA → NEARBY TEMPO TRAVELLER
+// ============================================
+
+const nearbyTempoRoute =
+  parseNoidaNearbyTempoRouteUrl(url);
+
+if (nearbyTempoRoute) {
+  return {
+    title: `${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} Tempo Traveller | NoidaCab`,
+
+    description:
+      nearbyTempoRoute.description ??
+      `Book a Tempo Traveller from ${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name}. Choose comfortable Tempo Traveller options for family trips, office groups, events and group travel.`,
+  };
+}
   // ============================================
   // NOIDA → NEARBY CITY
   // ============================================
@@ -199,6 +217,23 @@ export default async function CabPage({
       />
     );
   }
+
+  // ============================================
+// NOIDA → NEARBY TEMPO TRAVELLER
+// ============================================
+
+const nearbyTempoRoute =
+  parseNoidaNearbyTempoRouteUrl(url);
+
+if (nearbyTempoRoute) {
+  return (
+    <NearbyTempoTemplate
+      route={nearbyTempoRoute}
+      vehicles={vehicles}
+      url={url}
+    />
+  );
+}
 
   // ============================================
   // NOIDA → NEARBY CITY

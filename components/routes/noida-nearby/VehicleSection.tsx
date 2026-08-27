@@ -284,7 +284,7 @@ export default function VehicleSection({
                   setShowMobileFilters(false)
                 }
                 aria-label="Close filters"
-                className="rounded-full p-2 hover:bg-gray-100"
+                className="rounded-full p-2 bg-slate-700 hover:bg-gray-800"
               >
                 <X size={20} />
               </button>
@@ -472,104 +472,127 @@ function VehicleCard({
   return (
     <article className="overflow-hidden rounded-xl border border-gray-200 bg-white transition hover:shadow-md">
 
-      <div className="grid gap-5 p-5 lg:grid-cols-[135px_minmax(0,1fr)_150px] lg:items-center">
+      <div className="p-5">
 
-        {/* Vehicle Image */}
-        <div className="flex h-[100px] items-center justify-center rounded-lg bg-amber-50">
-          <div className="relative h-[75px] w-[115px]">
-            <Image
-              src={vehicle.image}
-              alt={`${vehicle.name} taxi from ${route.from.name} to ${route.to.name}`}
-              fill
-              sizes="115px"
-              className="object-contain"
-            />
-          </div>
-        </div>
+  {/* Mobile: Details Left + Image Right */}
+  <div className="grid grid-cols-[minmax(0,1fr)_120px] gap-4 lg:grid-cols-[135px_minmax(0,1fr)_150px] lg:items-center">
 
-        {/* Vehicle Details */}
-        <div className="min-w-0">
-
-          <h3 className="text-xl font-bold text-gray-900">
-            {vehicle.name}
-          </h3>
-
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
-            <span>
-              {vehicle.category}
-            </span>
-
-            <span>•</span>
-
-            <span>
-              {vehicle.airCondition
-                ? "AC"
-                : "Non AC"}
-            </span>
-
-            <span>•</span>
-
-            <span>
-              {vehicle.seats} Seats
-            </span>
-          </div>
-
-          {/* Features */}
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-
-            <VehicleFeature
-              icon={<Users size={17} />}
-              label="Seats"
-              value={`${vehicle.seats} passengers`}
-            />
-
-            <VehicleFeature
-              icon={<Luggage size={17} />}
-              label="Luggage"
-              value={`${vehicle.luggage} bags`}
-            />
-
-            <VehicleFeature
-              icon={<Check size={17} />}
-              label="GPS"
-              value={
-                vehicle.gps
-                  ? "Available"
-                  : "Not available"
-              }
-            />
-
-            <VehicleFeature
-              icon={<Check size={17} />}
-              label="Driver"
-              value={
-                vehicle.driverChoice
-                  ? "Driver included"
-                  : "Not included"
-              }
-            />
-          </div>
-        </div>
-
-        {/* Price */}
-        <div className="border-t pt-5 text-center lg:border-t-0 lg:pt-0 lg:text-right">
-
-          <p className="text-2xl font-bold text-gray-950">
-            {vehicle.price}
-          </p>
-
-          <p className="mt-1 text-xs text-gray-500">
-            Starting fare
-          </p>
-
-          <a
-            href="tel:+918448445504"
-            className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-amber-500 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600 sm:w-auto"
-          >
-            BOOK NOW
-          </a>
-        </div>
+    {/* Vehicle Image */}
+    <div className="order-2 flex h-[100px] items-center justify-center rounded-lg bg-amber-50 lg:order-1">
+      <div className="relative h-[75px] w-[115px]">
+        <Image
+          src={vehicle.image}
+          alt={`${vehicle.name} taxi from ${route.from.name} to ${route.to.name}`}
+          fill
+          sizes="115px"
+          className="object-cover"
+        />
       </div>
+    </div>
+
+    {/* Vehicle Details */}
+    <div className="order-1 min-w-0 lg:order-2">
+
+      <h3 className="text-xl font-bold text-gray-900">
+        {vehicle.name}
+      </h3>
+
+      <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
+        <span>{vehicle.category}</span>
+        <span>•</span>
+
+        <span>
+          {vehicle.airCondition ? "AC" : "Non AC"}
+        </span>
+
+        <span>•</span>
+
+        <span>{vehicle.seats} Seats</span>
+      </div>
+
+      {/* Features */}
+      <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:mt-5 lg:gap-3">
+
+        <VehicleFeature
+          icon={<Users size={17} />}
+          label="Seats"
+          value={`${vehicle.seats} passengers`}
+        />
+
+        <VehicleFeature
+          icon={<Luggage size={17} />}
+          label="Luggage"
+          value={`${vehicle.luggage} bags`}
+        />
+
+        <VehicleFeature
+          icon={<Check size={17} />}
+          label="GPS"
+          value={
+            vehicle.gps
+              ? "Available"
+              : "Not available"
+          }
+        />
+
+        <VehicleFeature
+          icon={<Check size={17} />}
+          label="Driver"
+          value={
+            vehicle.driverChoice
+              ? "Driver included"
+              : "Not included"
+          }
+        />
+      </div>
+    </div>
+
+    {/* Desktop Price */}
+    <div className="hidden lg:block lg:order-3 lg:border-t-0 lg:pt-0 lg:text-right">
+
+      <p className="text-2xl font-bold text-gray-950">
+        {vehicle.price}
+      </p>
+
+      <p className="mt-1 text-xs text-gray-500">
+        Starting fare
+      </p>
+
+      <a
+        href="tel:+918448445504"
+        className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-amber-500 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600"
+      >
+        BOOK NOW
+      </a>
+    </div>
+  </div>
+
+  {/* Mobile Booking Option - Bottom */}
+  <div className="mt-5 border-t border-gray-100 pt-5 lg:hidden">
+
+    <div className="flex items-center justify-between gap-4">
+
+      <div>
+        <p className="text-2xl font-bold text-gray-950">
+          {vehicle.price}
+        </p>
+
+        <p className="mt-1 text-xs text-gray-500">
+          Starting fare
+        </p>
+      </div>
+
+      <a
+        href="tel:+918448445504"
+        className="inline-flex items-center justify-center rounded-full bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600"
+      >
+        BOOK NOW
+      </a>
+
+    </div>
+  </div>
+
+</div>
     </article>
   );
 }

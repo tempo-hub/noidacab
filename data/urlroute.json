@@ -237,6 +237,7 @@
   { "url": "/noida/noida-extension/dzire" },
   { "url": "/noida/noida-extension/ertiga" },
   { "url": "/noida/noida-extension/innova-crysta" },
+  
 
   { "url": "/noida-to-delhi-one-way-taxi" },
   { "url": "/noida-to-gurgaon-one-way-taxi" },
@@ -306,5 +307,704 @@
   },
   {
     "url": "/noida-to-ghaziabad-taxi"
+  },
+  {
+    "url": "/noida/noida-extension/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/noida-extension/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/noida-extension/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/noida-extension/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/noida-extension/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-15/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-15/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-15/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-15/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-15/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-16/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-16/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-16/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-16/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-16/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-18/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-18/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-18/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-18/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-18/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-19/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-19/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-19/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-19/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-19/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-25/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-25/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-25/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-25/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-25/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-26/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-26/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-26/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-26/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-26/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-27/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-27/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-27/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-27/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-27/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-29/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-29/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-29/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-29/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-29/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-31/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-31/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-31/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-31/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-31/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-34/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-34/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-34/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-34/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-34/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-35/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-35/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-35/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-35/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-35/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-37/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-37/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-37/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-37/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-37/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-39/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-39/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-39/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-39/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-39/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-41/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-41/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-41/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-41/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-41/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-44/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-44/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-44/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-44/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-44/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-48/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-48/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-48/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-48/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-48/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-50/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-50/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-50/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-50/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-50/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-51/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-51/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-51/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-51/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-51/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-52/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-52/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-52/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-52/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-52/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-61/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-61/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-61/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-61/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-61/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-62/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-62/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-62/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-62/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-62/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-63/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-63/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-63/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-63/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-63/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-64/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-64/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-64/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-64/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-64/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-74/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-74/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-74/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-74/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-74/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-75/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-75/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-75/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-75/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-75/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-78/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-78/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-78/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-78/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-78/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-93/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-93/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-93/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-93/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-93/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-100/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-100/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-100/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-100/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-100/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-104/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-104/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-104/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-104/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-104/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-110/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-110/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-110/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-110/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-110/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-119/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-119/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-119/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-119/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-119/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-128/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-128/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-128/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-128/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-128/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-135/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-135/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-135/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-135/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-135/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-137/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-137/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-137/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-137/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-137/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-142/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-142/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-142/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-142/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-142/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-150/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-150/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-150/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-150/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/sector-150/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/botanical-garden/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/botanical-garden/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/botanical-garden/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/botanical-garden/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/botanical-garden/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/film-city/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/film-city/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/film-city/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/film-city/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/film-city/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/golf-course-noida/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/golf-course-noida/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/golf-course-noida/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/golf-course-noida/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/golf-course-noida/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida-west/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida-west/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida-west/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida-west/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/greater-noida-west/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/kondli/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/kondli/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/kondli/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/kondli/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/kondli/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/pari-chowk/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/pari-chowk/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/pari-chowk/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/pari-chowk/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/pari-chowk/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/jewar-airport/luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida/jewar-airport/12-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/jewar-airport/16-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/jewar-airport/20-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida/jewar-airport/24-seater-tempo-traveller"
+  },
+  {
+    "url": "/noida-to-faridabad-taxi"
+  },
+  {
+    "url": "/noida-to-greater-noida-taxi"
+  },
+  {
+    "url": "/noida-to-meerut-taxi"
+  },
+  {
+    "url": "/noida-to-hapur-taxi"
+  },
+  {
+    "url": "/noida-to-bulandshahr-taxi"
+  },
+  {
+    "url": "/noida-to-delhi-tempo-traveller"
+  },
+  {
+    "url": "/noida-to-delhi-luxury-tempo-traveller"
+  },
+  {
+    "url": "/noida-to-delhi-urbania-rental"
   }
 ]

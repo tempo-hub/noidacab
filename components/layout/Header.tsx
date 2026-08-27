@@ -176,7 +176,7 @@ export default function Header() {
           ))}
 
           <Link
-            href="https://wa.me/918448445504"
+            href="tel:+918448445504"
             className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-[#ffb300] py-3 font-semibold text-white transition hover:bg-amber-500"
             onClick={() => setMenuOpen(false)}
           >
