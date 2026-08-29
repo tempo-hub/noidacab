@@ -21,13 +21,13 @@ const socialLinks = [
     icon: FaInstagram,
     href: "https://www.instagram.com/noida_cabs/",
   },
-  // {
-  //   icon: FaXTwitter,
-  //   href: "#",
-  // },
+  {
+    icon: FaXTwitter,
+    href: "https://x.com/noidacabs/",
+  },
   {
     icon: FaLinkedinIn,
-    href: "https://www.linkedin.com/in/noidacab/https://x.com/noidacabs",
+    href: "https://www.linkedin.com/in/noidacab/",
   },
 ];
 
