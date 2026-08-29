@@ -25,10 +25,10 @@ const socialLinks = [
   //   icon: FaXTwitter,
   //   href: "#",
   // },
-  // {
-  //   icon: FaLinkedinIn,
-  //   href: "#",
-  // },
+  {
+    icon: FaLinkedinIn,
+    href: "https://www.linkedin.com/in/noidacab/https://x.com/noidacabs",
+  },
 ];
 
 const quickLinks = [

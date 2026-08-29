@@ -37,30 +37,28 @@ export default function PopularNoidaRoutes() {
 
         {/* Route Grid */}
         <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {routes.slice(0,8).map((route, index) => {
+          {routes.slice(0, 8).map((route, index) => {
             const href = `/${route.slug}-taxi`;
 
-            const price = `₹${(
-              route.distance * route.recommendedCab.pricePerKm
-            ).toLocaleString("en-IN")}`;
+            const calculatedPrice = (route.distance * 1.5 * 10) + 500;
+
+            const price = `₹${calculatedPrice.toLocaleString("en-IN")}`;
 
             return (
               <Link
                 key={route.slug}
                 href={href}
-                className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  index === 0
+                className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${index === 0
                     ? "border-amber-300 shadow-[0_10px_35px_rgba(245,158,11,0.12)]"
                     : "border-slate-200 hover:border-amber-200"
-                }`}
+                  }`}
               >
                 {/* Top Accent */}
                 <div
-                  className={`absolute inset-x-0 top-0 h-1 ${
-                    index === 0
+                  className={`absolute inset-x-0 top-0 h-1 ${index === 0
                       ? "bg-amber-400"
                       : "bg-amber-200 group-hover:bg-amber-400"
-                  }`}
+                    }`}
                 />
 
                 <div className="flex items-start gap-4">
