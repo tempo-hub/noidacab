@@ -9,13 +9,14 @@ import ServiceAreas from "@/components/home/ServiceAreas";
 import Services from "@/components/home/Services";
 import Testimonials from "@/components/home/Testimonials";
 import WhyChooseCards from "@/components/home/WhyChooseCards";
+import BottomOffer from "@/components/layout/BottomOffer";
 
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Noida Cab Booking | Noida Taxi Service & Outstation Cabs",
+  title: "Book Noida Cab Online | Reliable Taxi Service & Airport Cabs",
   description:
-    "Book reliable cabs and taxis in Noida for local, airport, outstation and one-way trips. Choose from Sedan, SUV and other cab options at affordable fares.",
+    "Book a Noida cab online for local, airport & outstation trips. Get reliable cabs, professional drivers and affordable fares. Book your ride now!",
 };
 
 export default function Home() {
@@ -53,7 +54,7 @@ export default function Home() {
       <FAQ />
       
 
-      
+      <BottomOffer />
     </>
   );
 }

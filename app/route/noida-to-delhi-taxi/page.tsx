@@ -17,7 +17,7 @@ import NoidaDelhiWhyBook from "@/components/routes/noida-to-delhi/NoidaDelhiWhyB
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Noida to Delhi Taxi | Cab Booking & Affordable Fare",
+  title: "Noida to Delhi Cab | From ₹1,100 + 10% OFF | Book Now",
   description:
     "Book a reliable Noida to Delhi taxi for one-way and round trips. Choose from Sedan, SUV and other cabs with comfortable rides and affordable fares.",
 };

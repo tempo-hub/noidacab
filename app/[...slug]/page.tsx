@@ -115,8 +115,14 @@ if (nearbyTempoRoute) {
     parseNoidaNearbyRouteUrl(url);
 
   if (nearbyRoute) {
+    const distance = parseFloat(
+    String(nearbyRoute.distance).replace(/,/g, "")
+  );
+
+  const calculatedPrice = Math.round(distance * 15 + 500);
+  
     return {
-      title: `${nearbyRoute.from.name} to ${nearbyRoute.to.name} Taxi | NoidaCab`,
+      title: `${nearbyRoute.from.name} to ${nearbyRoute.to.name} Taxi | From ${calculatedPrice} + 15% OFF | NoidaCab`,
 
       description:
         nearbyRoute.description ??
@@ -146,16 +152,17 @@ if (nearbyTempoRoute) {
   // ============================================
 
   const parsed = parseLocalRouteUrl(url);
-
+  
   if (!parsed) {
+    
     return {};
   }
 
   return {
-    title: `${parsed.vehicle.name} Cab in ${parsed.locationName} | NoidaCab`,
+    title: `${parsed.vehicle.name} Cab in ${parsed.locationName}, ${parsed.city} @ ${parsed.vehicle.price} | Book Now`,
 
     description:
-      `Book a ${parsed.vehicle.name} cab in ${parsed.locationName}. Comfortable and reliable cab service.`,
+      `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local sightseeing, airport transfers & corporate travel. City-expert drivers, clean AC cars. Call 8448445504.`,
   };
 }
 

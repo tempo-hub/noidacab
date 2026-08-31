@@ -300,7 +300,7 @@ export function parseNoidaNearbyTempoRouteUrl(
   // 2. Supported Tempo Traveller URL suffixes
   const tempoSuffixes = [
     "-luxury-tempo-traveller",
-    "-urbania-traveller",
+    "-urbania-rental",
     "-tempo-traveller",
   ];
 

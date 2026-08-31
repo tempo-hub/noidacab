@@ -19,11 +19,11 @@ import { vehicles } from "@/data/vehicles";
 import { noidaLocalities } from "@/data/routes/noida";
 
 export const metadata: Metadata = {
-  title: "SUV Taxi in Noida | Ertiga & Innova Taxi Booking",
-  description:
-    "Book SUV taxi in Noida with Ertiga and Innova. Comfortable AC cabs for local travel, airport transfers, Noida to Delhi and outstation journeys.",
-};
+  title: "SUV Taxi in Noida | From ₹1,650 + 10% OFF | Book Now",
 
+  description:
+    "Check Noida SUV cab fare. Complete rate options with Ertiga, Innova & SUV pricing. No hidden charges. Book now or call 8448445504.",
+};
 const suvVehicles = vehicles.filter(
   (vehicle) => vehicle.category?.toLowerCase() === "suv"
 );
