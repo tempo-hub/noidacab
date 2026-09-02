@@ -39,7 +39,7 @@ export default function NoidaDelhiBookingCTA() {
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
 
               <Link
-                href="tel:+918448445504"
+                href="tel:+918377809809"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3.5 text-sm font-bold text-amber-600 shadow-sm transition hover:bg-amber-50 sm:w-auto"
               >
                 Book a Taxi

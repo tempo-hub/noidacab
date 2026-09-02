@@ -54,7 +54,7 @@ export default function VehicleBooking({
             </div>
 
             <Link
-              href="https://wa.me/918448445504"
+              href="https://wa.me/918377809809"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-amber-400"
             >
               Book Now

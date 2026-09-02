@@ -109,10 +109,10 @@ export default function ContactPage() {
                   title="Phone"
                 >
                   <a
-                    href="tel:+918448445504"
+                    href="tel:+918377809809"
                     className="font-semibold text-slate-800 transition hover:text-amber-600"
                   >
-                    +91-8448445504
+                    +91-8377809809
                   </a>
                 </ContactItem>
 
@@ -182,7 +182,7 @@ export default function ContactPage() {
 
               {/* Call */}
               <a
-                href="tel:+918448445504"
+                href="tel:+918377809809"
                 className="mt-8 flex items-center justify-between rounded-xl border border-slate-200 p-5 transition hover:border-amber-300 hover:bg-amber-50"
               >
                 <div className="flex items-center gap-4">
@@ -197,7 +197,7 @@ export default function ContactPage() {
                     </p>
 
                     <p className="mt-1 text-sm text-slate-500">
-                      +91-8448445504
+                      +91-8377809809
                     </p>
                   </div>
 
@@ -208,7 +208,7 @@ export default function ContactPage() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/918448445504"
+                href="https://wa.me/918377809809"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 flex items-center justify-between rounded-xl border border-slate-200 p-5 transition hover:border-amber-300 hover:bg-amber-50"

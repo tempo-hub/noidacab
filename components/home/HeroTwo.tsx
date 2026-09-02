@@ -60,7 +60,7 @@ export default function Hero() {
 
               <div className="mt-4 flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/918448445504"
+                  href="https://wa.me/918377809809"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-xl bg-amber-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-600/25 transition hover:bg-amber-500"
@@ -68,7 +68,7 @@ export default function Hero() {
                   Book Now
                 </a>
                 <Link
-                  href="tel:+918448445504"
+                  href="tel:+918377809809"
                   className="rounded-xl border border-gray-300 bg-white px-7 py-3.5 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50">
                   Call Now
                 </Link>

@@ -19,7 +19,7 @@ export default function TaxiTypesCTA() {
             </div>
 
             <Link
-              href="https://wa.me/918448445504"
+              href="https://wa.me/918377809809"
               className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-amber-500 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-400"
             >
               Book a Taxi

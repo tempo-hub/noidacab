@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "SUV Taxi in Noida | From ₹1,650 + 10% OFF | Book Now",
 
   description:
-    "Check Noida SUV cab fare. Complete rate options with Ertiga, Innova & SUV pricing. No hidden charges. Book now or call 8448445504.",
+    "Check Noida SUV cab fare. Complete rate options with Ertiga, Innova & SUV pricing. No hidden charges. Book now or call 8377809809.",
 };
 const suvVehicles = vehicles.filter(
   (vehicle) => vehicle.category?.toLowerCase() === "suv"

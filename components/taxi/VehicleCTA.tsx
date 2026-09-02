@@ -26,7 +26,7 @@ export default function VehicleCTA({
           </p>
 
           <Link
-            href="https://wa.me/918448445504"
+            href="https://wa.me/918377809809"
             className="mt-6 inline-flex items-center gap-2 rounded-lg bg-amber-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-amber-700"
           >
             Book {vehicle.name}

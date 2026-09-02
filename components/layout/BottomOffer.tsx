@@ -70,7 +70,7 @@ export default function BottomOffer() {
 
           {/* Book */}
           <a
-            href="https://wa.me/918448445504"
+            href="https://wa.me/918377809809"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-500 sm:px-5"

@@ -5,7 +5,7 @@ export const howItWorks: HowItWorksStep[] = [
     number: "01",
     title: "Call or WhatsApp",
     description:
-      "Reach us at 8448445504 with your pickup, destination, and date. That's it!",
+      "Reach us at 8377809809 with your pickup, destination, and date. That's it!",
   },
   {
     number: "02",

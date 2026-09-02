@@ -214,7 +214,7 @@ export function HeroSection({
               <div className="mt-4 grid gap-3">
 
                 <a
-                  href="https://wa.me/918448445504"
+                  href="https://wa.me/918377809809"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -245,7 +245,7 @@ export function HeroSection({
 
 
                 <a
-                  href="https://wa.me/918448445504"
+                  href="https://wa.me/918377809809"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="

@@ -559,7 +559,7 @@ function VehicleCard({
       </p>
 
       <a
-        href="tel:+918448445504"
+        href="tel:+918377809809"
         className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-amber-500 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600"
       >
         BOOK NOW
@@ -583,7 +583,7 @@ function VehicleCard({
       </div>
 
       <a
-        href="tel:+918448445504"
+        href="tel:+918377809809"
         className="inline-flex items-center justify-center rounded-full bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-600"
       >
         BOOK NOW

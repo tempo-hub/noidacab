@@ -79,7 +79,7 @@ export default function NoidaDelhiFareHero() {
             <div className="mt-10 flex flex-wrap gap-4">
 
               <Link
-                href="https://wa.me/918448445504"
+                href="https://wa.me/918377809809"
                 className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-7 py-3.5 font-bold text-white shadow-lg shadow-amber-500/20 transition hover:bg-amber-600 hover:shadow-amber-500/30"
               >
                 Book Your Cab
@@ -91,7 +91,7 @@ export default function NoidaDelhiFareHero() {
               </Link>
 
               <a
-                href="tel:+918448445504"
+                href="tel:+918377809809"
                 className="inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-3.5 font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
               >
                 Call Now
