@@ -18,15 +18,15 @@
       ],
     },
     
-    { label: "Taxi fare", href: "/route/noida-to-delhi-taxi-fare" },
+    { label: "Taxi fare", href: "noida-taxi-fare" },
     { label: "Route", dropdown: [
-        { label: "Noida to Delhi", href: "/route/noida-to-delhi-taxi" },
-        { label: "Noida Sedan", href: "/route/noida-to-delhi-sedan-taxi" },
-        { label: "Noida SUV", href: "/route/suv" },
+        { label: "Tempo Traveller In Noida", href: "/tempo-traveller-in-noida" },
+        { label: "Sedan Taxi In Noida", href: "/sedan-taxi-in-noida" },
+        { label: "Suv Taxi In Noida", href: "/route/suv-taxi-in-noida" },
       ], },
     
-    { label: "Taxi Services", href: "/taxi-services" },
-    { label: "One Way", href: "/one-way" },
+    { label: "Taxi Services", href: "/taxi-service-in-noida" },
+    { label: "One Way", href: "/one-way-taxi-in-noida" },
   ];
 
   export default function Header() {

@@ -34,7 +34,7 @@ export default function SUVPage() {
       {/* =====================================================
           HERO
       ===================================================== */}
-      <section className="relative overflow-hidden py-20 bg-white lg:py-20">
+      <section className="relative overflow-hidden py-20 bg-amber-400 lg:py-20">
         <div className="mx-auto max-w-7xl px-4  sm:px-6 lg:px-8 ">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
@@ -50,7 +50,7 @@ export default function SUVPage() {
                 </span>
               </h1>
 
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-800">
                 Book comfortable SUV taxis in Noida for local travel,
                 airport transfers, family trips and outstation journeys.
                 Choose from our Ertiga and Innova taxi options.
@@ -73,7 +73,7 @@ export default function SUVPage() {
                 </a>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-5 text-sm text-slate-600">
+              <div className="mt-8 flex flex-wrap gap-5 text-sm text-slate-800">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-green-600" />
                   Ertiga
@@ -103,7 +103,7 @@ export default function SUVPage() {
                       src={vehicle.image}
                       alt={`${vehicle.name} SUV taxi in Noida`}
                       fill
-                      sizes="(max-width: 640px) 100vw, 50vw"
+                      sizes="(max-width: 540px) 100vw, 50vw"
                       className="object-cover"
                     />
                   </div>
@@ -262,65 +262,117 @@ export default function SUVPage() {
       {/* =====================================================
           NOIDA LOCATION SECTION
       ===================================================== */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="text-sm font-semibold uppercase tracking-wider text-orange-600">
-              SUV Taxi Locations
-            </span>
+     <section className="py-20">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-            <h2 className="mt-3 text-3xl font-bold text-slate-950 sm:text-4xl">
-              Book SUV Taxi from Popular Noida Locations
-            </h2>
+    {/* Header */}
+    <div className="max-w-3xl">
+      <span className="text-sm font-semibold uppercase tracking-wider text-orange-600">
+        SUV Taxi Locations
+      </span>
 
-            <p className="mt-4 leading-7 text-slate-600">
-              Book an Ertiga or Innova taxi from popular sectors and
-              localities across Noida for Delhi, airport and
-              outstation travel.
-            </p>
+      <h2 className="mt-3 text-3xl font-bold text-slate-950 sm:text-4xl">
+        Book SUV Taxi from Popular Noida Locations
+      </h2>
+
+      <p className="mt-4 leading-7 text-slate-600">
+        Book a comfortable Ertiga or Innova Crysta SUV taxi from
+        popular sectors and localities across Noida for Delhi,
+        airport and outstation travel.
+      </p>
+    </div>
+
+    {/* Locations */}
+    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {noidaLocalities.map((location) => {
+        const locationName = location.name ?? location.slug;
+        const locationSlug = location.slug;
+
+        return (
+          <div
+            key={locationSlug}
+            className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
+          >
+            {/* Location Header */}
+            <div className="flex items-start gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
+                <MapPin className="h-5 w-5" />
+              </div>
+
+              <div className="min-w-0">
+                <h3 className="font-bold text-slate-900">
+                  SUV Taxi from {locationName}
+                </h3>
+
+                <p className="mt-1 text-sm text-slate-500">
+                  Ertiga &amp; Innova Crysta available
+                </p>
+              </div>
+            </div>
+
+            {/* Vehicle Links */}
+            <div className="mt-5 grid grid-cols-2 gap-3">
+
+              {/* Ertiga */}
+              <Link
+                href={`/noida/${locationSlug}/ertiga`}
+                className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 transition hover:border-orange-300 hover:bg-orange-50"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">
+                    Ertiga
+                  </p>
+
+                  <p className="mt-0.5 text-xs text-slate-500">
+                    SUV Taxi
+                  </p>
+                </div>
+
+                <ArrowRight className="h-4 w-4 text-orange-500 transition group-hover:translate-x-0.5" />
+              </Link>
+
+              {/* Innova */}
+              <Link
+                href={`/noida/${locationSlug}/innova-crysta`}
+                className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 transition hover:border-orange-300 hover:bg-orange-50"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">
+                    Innova Crysta
+                  </p>
+
+                  <p className="mt-0.5 text-xs text-slate-500">
+                    Premium SUV
+                  </p>
+                </div>
+
+                <ArrowRight className="h-4 w-4 text-orange-500 transition group-hover:translate-x-0.5" />
+              </Link>
+
+            </div>
+
+            {/* Route CTA */}
+            <Link
+              href="/noida-to-delhi-suv-taxi"
+              className="mt-4 flex items-center justify-between rounded-xl bg-orange-50 px-4 py-3 text-sm font-semibold text-orange-700 transition hover:bg-orange-100"
+            >
+              <span>
+                Noida to Delhi SUV Taxi
+              </span>
+
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {noidaLocalities.map((location) => {
-              const locationName =
-                location.name ?? location.slug;
-
-              const locationSlug = location.slug;
-
-              return (
-                <Link
-                  key={locationSlug}
-                  href={`/noida/${locationSlug}/innova-crysta`}
-                  className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
-                        <MapPin className="h-5 w-5" />
-                      </div>
-
-                      <h3 className="mt-4 font-semibold text-slate-900">
-                        SUV Taxi from {locationName}
-                      </h3>
-
-                      <p className="mt-1 text-sm text-slate-500">
-                        Ertiga &amp; Innova available
-                      </p>
-                    </div>
-
-                    <ArrowRight className="mt-2 h-5 w-5 shrink-0 text-orange-500 transition group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* =====================================================
           WHY SUV
       ===================================================== */}
-      <section className="border-y border-slate-200 bg-white py-20">
+      <section className="border-y border-slate-200 bg-white/95 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-semibold uppercase tracking-wider text-orange-600">
@@ -465,7 +517,7 @@ export default function SUVPage() {
       {/* =====================================================
           FAQ
       ===================================================== */}
-      <section className="bg-white py-20">
+      <section className="bg-white/95 py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <span className="text-sm font-semibold uppercase tracking-wider text-orange-600">
@@ -504,13 +556,13 @@ export default function SUVPage() {
       {/* =====================================================
           FINAL CTA
       ===================================================== */}
-      <section className="py-20">
+      <section className="py-20 bg-amber-500">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-950 sm:text-4xl">
             Need an SUV Taxi from Noida?
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-600">
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-800">
             Choose Ertiga or Innova for comfortable local travel,
             airport transfers, Delhi trips and outstation journeys.
           </p>

@@ -9,19 +9,41 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
-import Link from "next/link";
+import { useState } from "react";
 
 export default function HeroSection() {
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-amber-400 via-amber-300 to-amber-100 py-18 sm:py-16 lg:py-20">
+  const [pickup, setPickup] = useState("");
+  const [drop, setDrop] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
+  const handleWhatsApp = () => {
+    const message = `Hi, I want to book a taxi from Noida.
+
+Pickup Location: ${pickup || "Not provided"}
+Drop Location: ${drop || "Not provided"}
+Pickup Date: ${date || "Not provided"}
+Pickup Time: ${time || "Not provided"}
+
+Please share the fare and booking details.`;
+
+    const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-400 via-amber-300 to-amber-100 py-12 sm:py-12 lg:py-12">
       {/* Background Glow */}
       <div className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-white/30 blur-3xl" />
 
       <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
-      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-12 ">
+
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-12">
         <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          
+
           {/* Left Content */}
           <div>
             {/* Trust Badge */}
@@ -53,13 +75,15 @@ export default function HeroSection() {
 
             {/* CTA */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="#booking"
+              <a
+                href="https://wa.me/918377809809"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
               >
                 Book a Taxi
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
 
               <a
                 href="tel:8377809809"
@@ -95,7 +119,7 @@ export default function HeroSection() {
             className="relative mx-auto w-full max-w-md lg:ml-auto"
           >
             <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_20px_60px_-20px_rgba(15,23,42,0.18)] sm:p-6">
-              
+
               {/* Card Header */}
               <div className="border-b border-slate-100 pb-5">
                 <div className="flex items-start justify-between gap-4">
@@ -124,27 +148,36 @@ export default function HeroSection() {
                 <LocationInput
                   label="Pickup Location"
                   placeholder="Enter pickup location"
+                  value={pickup}
+                  onChange={(e) => setPickup(e.target.value)}
                 />
 
                 <LocationInput
                   label="Drop Location"
                   placeholder="Enter destination"
+                  value={drop}
+                  onChange={(e) => setDrop(e.target.value)}
                 />
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <InputField
                     label="Pickup Date"
                     type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
                   />
 
                   <InputField
                     label="Pickup Time"
                     type="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
                   />
                 </div>
 
                 <button
                   type="button"
+                  onClick={handleWhatsApp}
                   className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-amber-500 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-600"
                 >
                   Get Fare Estimate
@@ -206,9 +239,13 @@ function TrustPoint({
 function LocationInput({
   label,
   placeholder,
+  value,
+  onChange,
 }: {
   label: string;
   placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div>
@@ -221,6 +258,8 @@ function LocationInput({
 
         <input
           type="text"
+          value={value}
+          onChange={onChange}
           placeholder={placeholder}
           className="h-11 w-full rounded-xl border border-slate-200 bg-white pl-10 pr-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-amber-400 focus:ring-2 focus:ring-amber-100"
         />
@@ -236,9 +275,13 @@ function LocationInput({
 function InputField({
   label,
   type,
+  value,
+  onChange,
 }: {
   label: string;
   type: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div>
@@ -248,6 +291,8 @@ function InputField({
 
       <input
         type={type}
+        value={value}
+        onChange={onChange}
         className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-100"
       />
     </div>

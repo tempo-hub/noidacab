@@ -35,7 +35,7 @@ const quickLinks = [
   { name: "Home", href: "/" },
   // { name: "About Us", href: "/about-us" },
   // { name: "Terms & Conditions", href: "/terms-and-conditions" },
-  { name: "Tempo Traveller", href: "/tempo-traveller" },
+  { name: "Tempo Traveller", href: "/tempo-traveller-in-noida" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -201,8 +201,8 @@ export default function Footer() {
               Terms & Conditions
             </Link>
 
-            <Link href="/about">
-              About
+            <Link href="/about-us">
+              About-Us
             </Link>
           </div>
         </div>

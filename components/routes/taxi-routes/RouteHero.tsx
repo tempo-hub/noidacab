@@ -45,7 +45,7 @@ export default function RouteHero({
 
             {/* Main heading */}
             <h1 className="max-w-4xl text-4xl font-black leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl">
-              {route.fromName} To 
+              {route.fromName} To
               <span className="px-1 text-orange-600">
                 {/* <span className="mr-2 inline-block">
                   →
@@ -165,26 +165,18 @@ export default function RouteHero({
               </div>
 
               {/* Main CTA */}
-              <button
-                type="button"
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-gray-950 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800"
-              >
-                <CarFront className="h-4 w-4 text-amber-400" />
-
-                Book {vehicle.name}
-
-                <ArrowRight className="h-4 w-4" />
-              </button>
-
-              {/* WhatsApp */}
-              <button
-                type="button"
+              <a
+                href={`https://wa.me/918377809809?text=${encodeURIComponent(
+                  `Hi, I want to book a ${vehicle.name}. Please share the details and fare.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-800 transition hover:bg-gray-50"
               >
                 <MessageCircle className="h-4 w-4 text-orange-600" />
 
-                WhatsApp Quote
-              </button>
+                Book Now
+              </a>
 
               {/* Divider */}
               <div className="my-4 h-px bg-gray-200" />

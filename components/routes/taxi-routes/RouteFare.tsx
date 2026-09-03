@@ -168,12 +168,16 @@ export default function RouteFare({
               </div>
             </div>
 
-            <button
-              type="button"
-              className="mt-6 w-full rounded-xl bg-gray-950 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800"
+            <a
+              href={`https://wa.me/918377809809?text=${encodeURIComponent(
+                `Hi, I want to know the fare for ${vehicle.name}. Please share the details.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 flex w-full items-center justify-center rounded-xl bg-gray-950 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800"
             >
               Get {vehicle.name} Fare
-            </button>
+            </a>
           </div>
         </div>
       </div>

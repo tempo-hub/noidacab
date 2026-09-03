@@ -18,7 +18,7 @@ const tripTypes = [
   "Hourly Rental",
 ];
 
-const WHATSAPP_NUMBER = "918377809809";
+const WHATSAPP_NUMBER = "+918377809809";
 
 function getTodayDate() {
   const today = new Date();

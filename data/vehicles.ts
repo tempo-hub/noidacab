@@ -224,7 +224,7 @@ export const vehicles: Vehicle[] = [
   // -----------------------------
 
   {
-    name: "Force Urbania",
+    name: "Urbania",
     slug: "urbania",
     image: "/cabs/urbaniafirst.webp",
     price: "₹20/km",
