@@ -13,9 +13,9 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Sedan Taxi in Noida | Book Dzire, Etios & Amaze Cabs",
+  title: "Sedan Taxi in Noida Starting @ ₹10/KM – Book Now",
   description:
-    "Book a sedan taxi in Noida for local travel, airport transfers and outstation trips. Choose from Dzire, Etios, Amaze and other comfortable sedan cabs.",
+    "Book Dzire, Etios & Amaze sedan taxi in Noida for local travel, airport transfers & outstation trips. Comfortable cars at the best rates. Call 8377809809.",
 };
 
 export default function SedanTaxiInNoidaPage() {

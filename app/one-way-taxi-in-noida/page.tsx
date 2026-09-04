@@ -179,9 +179,9 @@ const coverageCities = [
 ========================================================= */
 
 export const metadata = {
-  title: "One Way Cab from Noida | Affordable One Way Taxi | NoidaCab",
+  title: "One Way Cab from Noida Starting @ ₹10/KM – Book Now",
   description:
-    "Book affordable one way cabs from Noida to Delhi, Gurgaon, Agra, Jaipur, Lucknow and other cities. Comfortable cars, professional drivers and transparent fares.",
+    "Book affordable one way cabs from Noida to Delhi, Gurgaon, Agra, Jaipur & Lucknow. Comfortable cars, professional drivers. Call 8377809809.",
 };
 
 /* =========================================================

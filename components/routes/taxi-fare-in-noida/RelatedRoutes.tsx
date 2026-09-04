@@ -61,7 +61,7 @@ export default function RelatedRoutes({
           {relatedRoutes.map((route) => (
             <Link
               key={route.slug}
-              href={`/route/${route.slug}-taxi-fare`}
+              href={`/${route.slug}-taxi-fare`}
               className="group rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-lg"
             >
               {/* Top */}

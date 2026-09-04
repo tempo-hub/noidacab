@@ -616,6 +616,58 @@ export function parseLocalRouteUrl(
 }
 
 /* =========================================================
+   DIRECT VEHICLE URLs (e.g. /tempo-traveller/... or /taxi/...)
+========================================================= */
+
+export type ParsedDirectVehicleRoute = {
+  template: "vehicle-profile";
+  vehicle: Vehicle;
+};
+
+// Explicit mapping of allowed URLs to their vehicle slug in data/vehicles.ts
+const ALLOWED_VEHICLE_ROUTES: Record<string, string> = {
+  "/tempo-traveller/luxury-tempo-traveller": "luxury-tempo-traveller",
+  "/tempo-traveller/12-seater-tempo-traveller": "12-seater-tempo-traveller",
+  "/tempo-traveller/16-seater-tempo-traveller": "16-seater-tempo-traveller",
+  "/tempo-traveller/20-seater-tempo-traveller": "20-seater-tempo-traveller",
+  "/tempo-traveller/24-seater-tempo-traveller": "24-seater-tempo-traveller",
+  "/tempo-traveller/urbania": "urbania",
+};
+
+export function parseDirectVehicleUrl(
+  url: string
+): ParsedDirectVehicleRoute | null {
+  // Normalize the incoming path (remove trailing slash and lowercase)
+  const normalizedUrl =
+    "/" +
+    url
+      .split("/")
+      .filter(Boolean)
+      .join("/")
+      .toLowerCase();
+
+  // Check against the strict whitelist
+  const matchedSlug = ALLOWED_VEHICLE_ROUTES[normalizedUrl];
+  if (!matchedSlug) {
+    return null;
+  }
+
+  // Find vehicle details in data/vehicles.ts
+  const matchedVehicle = vehicles.find(
+    (v) => v.slug.toLowerCase() === matchedSlug.toLowerCase()
+  );
+
+  if (!matchedVehicle) {
+    return null;
+  }
+
+  return {
+    template: "vehicle-profile",
+    vehicle: matchedVehicle,
+  };
+}
+
+/* =========================================================
    VEHICLE HELPERS
 ========================================================= */
 

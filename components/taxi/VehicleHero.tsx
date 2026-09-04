@@ -8,10 +8,12 @@ import {
   CarFront,
   CheckCircle2,
   Clock3,
+  MapPin,
   Users,
 } from "lucide-react";
 
 import type { Vehicle } from "@/data/vehicles";
+import { useState } from "react";
 
 export default function VehicleHero({
   vehicle,
@@ -33,6 +35,39 @@ export default function VehicleHero({
       "Book a comfortable Tempo Traveller in Noida for family trips, group tours, events, weddings and outstation travel.",
   };
 
+  const [formData, setFormData] = useState({
+    pickup: "Noida",
+    drop: "Delhi",
+    date: "",
+    time: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleBooking = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Construct the formatted WhatsApp message
+    const message = `*New Booking Request - Noida Cab*
+--------------------------------
+*Vehicle:* ${vehicle.name}
+*Pickup:* ${formData.pickup}
+*Drop:* ${formData.drop}
+*Date:* ${formData.date || "Not specified"}
+*Time:* ${formData.time || "Not specified"}
+*Rate:* ${vehicle.price}
+--------------------------------`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = "918377809809";
+
+    // Direct redirect to WhatsApp with pre-filled details
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+  };
+
   return (
     <section
       id="booking"
@@ -40,14 +75,14 @@ export default function VehicleHero({
     >
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
-        <Image
+        {/* <Image
           src="/sedanbg.webp"
           alt=""
           fill
           priority
           sizes="100vw"
           className="object-cover"
-        />
+        /> */}
 
         {/* Amber Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-amber-300/90 via-amber-500/75 to-amber-500/60" />
@@ -139,108 +174,103 @@ export default function VehicleHero({
                 <p className="text-xs font-bold uppercase tracking-wide text-amber-600">
                   Book Your Ride
                 </p>
-
                 <h2 className="mt-1 text-xl font-bold text-slate-900">
                   {vehicle.name} Taxi Booking
                 </h2>
               </div>
 
-              {/* Locations */}
-              <div className="space-y-3">
+              <form onSubmit={handleBooking} className="space-y-3">
                 {/* From */}
-                <div className="rounded-xl border border-slate-200 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <div className="rounded-xl border border-slate-200 p-3.5 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-slate-400">
                     From
-                  </p>
-
-                  <p className="mt-1 text-lg font-bold text-slate-900">
-                    Noida
-                  </p>
-
-                  <p className="mt-1 text-xs text-slate-500">
-                    Noida, Uttar Pradesh, India
-                  </p>
+                  </label>
+                  <div className="mt-1 flex items-center gap-2">
+                    <MapPin size={16} className="text-slate-400" />
+                    <input
+                      type="text"
+                      name="pickup"
+                      required
+                      value={formData.pickup}
+                      onChange={handleChange}
+                      placeholder="Enter pickup location"
+                      className="w-full bg-transparent text-sm font-bold text-slate-900 outline-none placeholder:text-slate-400"
+                    />
+                  </div>
                 </div>
 
                 {/* To */}
-                <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-3.5 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-slate-400">
                     To
-                  </p>
-
-                  <p className="mt-1 text-lg font-bold text-slate-900">
-                    Delhi
-                  </p>
-
-                  <p className="mt-1 text-xs text-slate-500">
-                    Delhi, India
-                  </p>
-                </div>
-              </div>
-
-              {/* Date + Time */}
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-slate-200 p-4">
-                  <div className="flex items-center gap-2">
-                    <CalendarDays
-                      size={17}
-                      className="text-blue-600"
+                  </label>
+                  <div className="mt-1 flex items-center gap-2">
+                    <MapPin size={16} className="text-blue-500" />
+                    <input
+                      type="text"
+                      name="drop"
+                      required
+                      value={formData.drop}
+                      onChange={handleChange}
+                      placeholder="Enter drop location"
+                      className="w-full bg-transparent text-sm font-bold text-slate-900 outline-none placeholder:text-slate-400"
                     />
+                  </div>
+                </div>
 
-                    <span className="text-xs font-semibold text-slate-500">
-                      Pickup Date
-                    </span>
+                {/* Date + Time */}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-slate-200 p-3 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+                    <div className="flex items-center gap-2">
+                      <CalendarDays size={16} className="text-blue-600" />
+                      <span className="text-xs font-semibold text-slate-500">
+                        Pickup Date
+                      </span>
+                    </div>
+                    <input
+                      type="date"
+                      name="date"
+                      required
+                      value={formData.date}
+                      onChange={handleChange}
+                      className="mt-1.5 w-full bg-transparent text-xs font-bold text-slate-900 outline-none"
+                    />
                   </div>
 
-                  <p className="mt-2 text-sm font-bold text-slate-900">
-                    Select Date
-                  </p>
-                </div>
-
-                <div className="rounded-xl border border-slate-200 p-4">
-                  <div className="flex items-center gap-2">
-                    <Clock3
-                      size={17}
-                      className="text-blue-600"
+                  <div className="rounded-xl border border-slate-200 p-3 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+                    <div className="flex items-center gap-2">
+                      <Clock3 size={16} className="text-blue-600" />
+                      <span className="text-xs font-semibold text-slate-500">
+                        Pickup Time
+                      </span>
+                    </div>
+                    <input
+                      type="time"
+                      name="time"
+                      required
+                      value={formData.time}
+                      onChange={handleChange}
+                      className="mt-1.5 w-full bg-transparent text-xs font-bold text-slate-900 outline-none"
                     />
-
-                    <span className="text-xs font-semibold text-slate-500">
-                      Pickup Time
-                    </span>
                   </div>
-
-                  <p className="mt-2 text-sm font-bold text-slate-900">
-                    Select Time
-                  </p>
                 </div>
-              </div>
 
-              {/* Vehicle Info */}
-              <div className="mt-3 grid grid-cols-3 gap-2">
-                <InfoItem
-                  label="Seats"
-                  value={vehicle.seats.toString()}
-                />
+                {/* Vehicle Info */}
+                <div className="grid grid-cols-3 gap-2 pt-1">
+                  <InfoItem label="Seats" value={vehicle.seats.toString()} />
+                  <InfoItem label="Luggage" value={vehicle.luggage.toString()} />
+                  <InfoItem label="Rate" value={vehicle.price} />
+                </div>
 
-                <InfoItem
-                  label="Luggage"
-                  value={vehicle.luggage.toString()}
-                />
-
-                <InfoItem
-                  label="Rate"
-                  value={vehicle.price}
-                />
-              </div>
-
-              {/* Search */}
-              <Link
-                href="https://wa.me/918377809809"
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-4 text-sm font-extrabold tracking-wide text-white transition hover:bg-orange-600 active:scale-[0.99]"
-              >
-                BOOK {vehicle.name.toUpperCase()}
-                <ArrowRight size={17} />
-              </Link>
+                {/* Submit / Redirect Button */}
+                <button
+                  type="submit"
+                  className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3.5 text-sm font-extrabold tracking-wide text-white transition hover:bg-orange-600 active:scale-[0.99]"
+                >
+                  BOOK {vehicle.name.toUpperCase()}
+                  <ArrowRight size={17} />
+                </button>
+              </form>
             </div>
           </div>
         </div>

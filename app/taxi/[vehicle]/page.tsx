@@ -38,9 +38,9 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
-  const title = `${vehicle.name} Taxi in Noida | Fare, Booking & Details`;
+  const title = `${vehicle.name} Taxi in Noida Starting @ ${vehicle.price} – Book Now`;
 
-  const description = `Book ${vehicle.name} taxi in Noida. ${vehicle.name} offers ${vehicle.seats} seats, ${vehicle.luggage} luggage capacity and ${vehicle.airCondition ? "air conditioning" : "non-AC travel"}. Check fare and book your ride with NoidaCab.`;
+  const description = `Book a ${vehicle.name} taxi in Noida. Features ${vehicle.seats} seats, AC travel, spacious luggage capacity & transparent billing. Call 8377809809.`;
 
   return {
     title,

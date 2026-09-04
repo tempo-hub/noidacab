@@ -18,14 +18,14 @@
       ],
     },
     
-    { label: "Taxi fare", href: "noida-taxi-fare" },
-    { label: "Route", dropdown: [
-        { label: "Tempo Traveller In Noida", href: "/tempo-traveller-in-noida" },
+    { label: "Taxi fare", href: "/noida-taxi-fare" },
+    
+    { label: "Taxi Services", dropdown:[
+      {label: "Taxi Servces In Noida", href: "/taxi-service-in-noida"},
         { label: "Sedan Taxi In Noida", href: "/sedan-taxi-in-noida" },
         { label: "Suv Taxi In Noida", href: "/route/suv-taxi-in-noida" },
-      ], },
-    
-    { label: "Taxi Services", href: "/taxi-service-in-noida" },
+         { label: "Tempo Traveller In Noida", href: "/tempo-traveller-in-noida" },
+    ] },
     { label: "One Way", href: "/one-way-taxi-in-noida" },
   ];
 

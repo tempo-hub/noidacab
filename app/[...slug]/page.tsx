@@ -9,6 +9,7 @@ import {
   parseNoidaNearbyTempoRouteUrl,
   getAllUrlSlugs,
   parseDistanceRouteUrl,
+  parseDirectVehicleUrl,
 } from "@/lib/parse-route";
 
 import { cabTemplates } from "@/components/templates/cab";
@@ -22,6 +23,7 @@ import {
   vehicles,
 } from "@/data/vehicles";
 import NearbyTempoTemplate from "@/components/routes/noida-nearbytempo/NearbyTempoTemplate";
+import VehicleTemplate from "@/components/taxi/VehicleTemplate";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -43,6 +45,34 @@ export async function generateMetadata({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  // ============================================
+  // DIRECT VEHICLE PROFILE (TEMPO TRAVELLER / CABS)
+  // ============================================
+  const directVehicle = parseDirectVehicleUrl(url);
+
+  if (directVehicle) {
+    const { vehicle } = directVehicle;
+    return {
+      title: `${vehicle.name} Taxi in Noida Starting @ ${vehicle.price} – Book Now`,
+      description: `Book a ${vehicle.name} in Noida. Features ${vehicle.seats} seats, AC travel, spacious luggage capacity & transparent billing. Call 8377809809.`,
+      alternates: {
+        canonical: url,
+      },
+      openGraph: {
+        title: `${vehicle.name} Taxi in Noida | NoidaCab`,
+        description: `Book a ${vehicle.name} in Noida. Features ${vehicle.seats} seats. Call 8377809809.`,
+        url,
+        type: "website",
+        images: [
+          {
+            url: vehicle.image,
+            alt: `${vehicle.name} taxi`,
+          },
+        ],
+      },
+    };
+  }
 
   // ============================================
   // DISTANCE & TRAVEL TIME
@@ -178,6 +208,15 @@ export default async function CabPage({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  // ============================================
+  // DIRECT VEHICLE PROFILE (TEMPO TRAVELLER / CABS)
+  // ============================================
+  const directVehicle = parseDirectVehicleUrl(url);
+
+  if (directVehicle) {
+    return <VehicleTemplate vehicle={directVehicle.vehicle} />;
+  }
 
   // ============================================
   // DISTANCE & TRAVEL TIME

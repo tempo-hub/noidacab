@@ -10,8 +10,12 @@ import RelatedRoutes from "@/components/routes/taxi-fare-in-noida/RelatedRoutes"
 import TaxiFareFAQ from "@/components/routes/taxi-fare-in-noida/TaxiFareFAQ";
 import TripFareComparison from "@/components/routes/taxi-fare-in-noida/TripFareComparison";
 import WhyChooseUs from "@/components/routes/taxi-fare-in-noida/WhyChooseUs";
+import { Metadata } from "next";
 
-
+export const metadata: Metadata = {
+  title: "Taxi Fare in Noida Cabs Starting @ ₹1100 + 10% OFF - Book Now",
+  description: "Check affordable taxi fares in Noida. Book Hatchbacks, Sedans starting from ₹1100 and SUVs starting from ₹1280. Transparent pricing, no hidden costs. Call 8377809809.",
+}
 
 const fareCabs = [
   {

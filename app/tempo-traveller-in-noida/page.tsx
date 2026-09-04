@@ -18,6 +18,12 @@ import {
 import urlRoutes from "@/data/urlroute.json";
 import Image from "next/image";
 import { noidaLocalities } from "@/data/routes/noida";
+import { Metadata } from "next";
+
+export const metadata : Metadata = {
+title: "Tempo Traveller in Noida Starting @ 20/km - Book Now",
+  description: "Hire premium Tempo Travellers in Noida for luxury group tours, local sightseeing, outstation travel & weddings. 9 to 26 seater luxury caby. Call 8377809809.",
+}
 
 type Service = {
   title: string;
