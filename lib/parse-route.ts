@@ -616,6 +616,103 @@ export function parseLocalRouteUrl(
 }
 
 /* =========================================================
+   CUSTOM VEHICLE TEMPLATE ROUTES
+========================================================= */
+
+export type ParsedVehicleTemplateRoute = {
+  template: "vehicle-template";
+  vehicle: Vehicle;
+};
+
+const VEHICLE_SUFFIXES = [
+  "-luxury-tempo-traveller-in-noida",
+  "-tempo-traveller-in-noida",
+  "-traveller-in-noida",
+  "-rental-in-noida",
+  "-taxi-in-noida",
+  "-in-noida",
+];
+
+export function parseVehicleTemplateUrl(
+  url: string
+): ParsedVehicleTemplateRoute | null {
+  const normalizedUrl =
+    "/" +
+    url
+      .split("/")
+      .filter(Boolean)
+      .join("/")
+      .toLowerCase();
+
+  // Exclude contact page from matching vehicle routes
+  if (normalizedUrl === "/noida-taxi-contact-number") {
+    return null;
+  }
+
+  // 1. Verify existence in urlroutes.json
+  const existsInUrlRoute = urlRoutes.some(
+    (entry) =>
+      entry.url.replace(/\/+$/, "").toLowerCase() === normalizedUrl
+  );
+
+  if (!existsInUrlRoute) {
+    return null;
+  }
+
+  // 2. Extract base vehicle slug
+  const cleanPath = normalizedUrl.replace(/^\//, "");
+
+  // 2. Try direct match first (e.g., if URL is exactly /12-seater-tempo-traveller)
+  let matchedVehicle = vehicles.find(
+    (v) => v.slug.toLowerCase() === cleanPath
+  );
+
+  if (matchedVehicle) {
+    return {
+      template: "vehicle-template",
+      vehicle: matchedVehicle,
+    };
+  }
+
+  let extractedSlug = "";
+
+  for (const suffix of VEHICLE_SUFFIXES) {
+    if (cleanPath.endsWith(suffix)) {
+      extractedSlug = cleanPath.slice(0, -suffix.length);
+      break;
+    }
+  }
+
+  // Special handle for "/luxury-tempo-traveller-in-noida"
+  if (cleanPath === "luxury-tempo-traveller-in-noida") {
+    extractedSlug = "luxury-tempo-traveller";
+  }
+
+  if (!extractedSlug) {
+    return null;
+  }
+
+  // 4. Match vehicle record
+  matchedVehicle = vehicles.find((v) => {
+    const vSlug = v.slug.toLowerCase();
+    return (
+      vSlug === extractedSlug ||
+      vSlug === `${extractedSlug}-tempo-traveller` ||
+      extractedSlug === `${vSlug}-tempo-traveller`
+    );
+  });
+
+  if (!matchedVehicle) {
+    return null;
+  }
+
+  return {
+    template: "vehicle-template",
+    vehicle: matchedVehicle,
+  };
+}
+
+/* =========================================================
    DIRECT VEHICLE URLs (e.g. /tempo-traveller/... or /taxi/...)
 ========================================================= */
 

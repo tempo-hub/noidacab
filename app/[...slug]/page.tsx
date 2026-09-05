@@ -10,6 +10,7 @@ import {
   getAllUrlSlugs,
   parseDistanceRouteUrl,
   parseDirectVehicleUrl,
+  parseVehicleTemplateUrl,
 } from "@/lib/parse-route";
 
 import { cabTemplates } from "@/components/templates/cab";
@@ -45,6 +46,62 @@ export async function generateMetadata({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  // ============================================
+// VEHICLE TEMPLATE ROUTE (Locality + Vehicle)
+// ============================================
+const directVehicles = parseVehicleTemplateUrl(url);
+
+if (directVehicles) {
+  const { vehicle } = directVehicles;
+
+  const title = `${vehicle.name} in Noida Starting @ ${vehicle.price} | Noida Cab`;
+  
+  const description = `Book ${vehicle.name} (${vehicle.category}) taxi in Noida. Features ${vehicle.seats} pushback seats, dual AC, space for ${vehicle.luggage} bags, and verified commercial drivers. Call 8377809809.`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://noidacab.com${url}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://noidacab.com${url}`,
+      siteName: "Noida Cab",
+      type: "website",
+      images: [
+        {
+          url: vehicle.image.startsWith("http")
+            ? vehicle.image
+            : `https://noidacab.com${vehicle.image}`,
+          width: 1200,
+          height: 630,
+          alt: `${vehicle.name} Taxi Service in Noida`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [
+        vehicle.image.startsWith("http")
+          ? vehicle.image
+          : `https://noidacab.com${vehicle.image}`,
+      ],
+    },
+    keywords: [
+      `${vehicle.name} in Noida`,
+      `${vehicle.name} taxi Noida`,
+      `${vehicle.name} rental Noida`,
+      `${vehicle.category.toLowerCase()} cab Noida`,
+      "Noida taxi contact number",
+      "outstation cab from Noida",
+    ],
+  };
+}
 
   // ============================================
   // DIRECT VEHICLE PROFILE (TEMPO TRAVELLER / CABS)
@@ -208,6 +265,19 @@ export default async function CabPage({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  // ============================================
+  // vehicle template route (locality + vehicle)
+  // ============================================
+  const directVehicles = parseVehicleTemplateUrl(url);
+
+  if (directVehicles) {
+    return <VehicleTemplate vehicle={directVehicles.vehicle} />;
+  }
+  
+
+
+  // ============================================
 
   // ============================================
   // DIRECT VEHICLE PROFILE (TEMPO TRAVELLER / CABS)

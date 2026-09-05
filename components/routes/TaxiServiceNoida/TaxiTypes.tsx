@@ -79,7 +79,11 @@ function TaxiCard({
 }) {
   return (
     <Link
-      href={`/taxi/${vehicle.slug}`}
+      href={`/${vehicle.slug}${
+  vehicle.category === "Tempo Traveller" || vehicle.category === "Urbania" || vehicle.slug === "innova-crysta"
+    ? "-in-noida"
+    : "-taxi-in-noida"
+}`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_18px_45px_-22px_rgba(15,23,42,0.25)]"
     >
       {/* Vehicle Image */}
