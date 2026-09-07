@@ -765,6 +765,36 @@ export function parseDirectVehicleUrl(
 }
 
 /* =========================================================
+    Contact Page Route
+========================================================= */
+export type ParsedContactRoute = {
+  template: "contact-route";
+  type: "taxi-contact-number";
+};
+
+export function parseContactRouteUrl(url: string): ParsedContactRoute | null {
+  const normalizedUrl =
+    "/" +
+    url
+      .split("/")
+      .filter(Boolean)
+      .join("/")
+      .toLowerCase();
+
+  if (
+    normalizedUrl === "/noida-taxi-contact-number" ||
+    normalizedUrl === "/noida-cab-contact-number"
+  ) {
+    return {
+      template: "contact-route",
+      type: "taxi-contact-number",
+    };
+  }
+
+  return null;
+}
+
+/* =========================================================
    VEHICLE HELPERS
 ========================================================= */
 

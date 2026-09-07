@@ -11,6 +11,7 @@ import {
   parseDistanceRouteUrl,
   parseDirectVehicleUrl,
   parseVehicleTemplateUrl,
+  parseContactRouteUrl,
 } from "@/lib/parse-route";
 
 import { cabTemplates } from "@/components/templates/cab";
@@ -25,6 +26,7 @@ import {
 } from "@/data/vehicles";
 import NearbyTempoTemplate from "@/components/routes/noida-nearbytempo/NearbyTempoTemplate";
 import VehicleTemplate from "@/components/taxi/VehicleTemplate";
+import NoidaTaxiContactPage from "@/components/templates/NoidaTaxiContactPage";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -130,6 +132,21 @@ if (directVehicles) {
       },
     };
   }
+
+  /* =========================================================
+    Contact Route Metadata
+========================================================= */
+const contactRoute = parseContactRouteUrl(url);
+if (contactRoute) {
+  return {
+    title: "Noida Taxi Contact Number | 24x7 Cab Booking Helpline: 8377809809",
+    description:
+      "Call Noida Taxi Contact Number +91-8377809809 for immediate cab booking in Noida. Clean Dzire, Ertiga, Innova Crysta, and Tempo Travellers for local and outstation trips.",
+    alternates: {
+      canonical: `https://noidacab.com/noida-taxi-contact-number`,
+    },
+  };
+}
 
   // ============================================
   // DISTANCE & TRAVEL TIME
@@ -251,7 +268,11 @@ if (nearbyTempoRoute) {
     description:
       `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local sightseeing, airport transfers & corporate travel. City-expert drivers, clean AC cars. Call 8377809809.`,
   };
+
+  
 }
+
+
 
 /* =========================================================
    PAGE
@@ -265,6 +286,14 @@ export default async function CabPage({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  /* =========================================================
+    Content Routing Logic
+  ========================================================= */
+  const contactRoute = parseContactRouteUrl(url);
+if (contactRoute) {
+  return <NoidaTaxiContactPage />;
+}
 
   // ============================================
   // vehicle template route (locality + vehicle)

@@ -15,6 +15,7 @@ import VehicleCTA from "@/components/taxi/VehicleCTA";
 import VehicleShowcaseSpecs from "./VehicleShowcaseSpecs";
 import VehicleEstimatePrice from "./VehicleEstimatePrice";
 import VehicleLocalSectors from "./VehicleLocalSectors";
+import VehicleTrust from "./VehicleTrust";
 
 interface VehicleTemplateProps {
   vehicle: Vehicle;
@@ -63,6 +64,7 @@ export default function VehicleTemplate({ vehicle }: VehicleTemplateProps) {
       <VehicleUseCases vehicle={vehicle} />
       <VehicleBooking vehicle={vehicle} />
       <VehicleFAQ vehicle={vehicle} />
+      <VehicleTrust vehicle={vehicle} />
       <VehicleCTA vehicle={vehicle} />
     </main>
   );
