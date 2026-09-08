@@ -10,6 +10,8 @@ import {
   getAllUrlSlugs,
   parseDistanceRouteUrl,
   parseDirectVehicleUrl,
+  parseVehicleTemplateUrl,
+  parseContactRouteUrl,
 } from "@/lib/parse-route";
 
 import { cabTemplates } from "@/components/templates/cab";
@@ -24,6 +26,7 @@ import {
 } from "@/data/vehicles";
 import NearbyTempoTemplate from "@/components/routes/noida-nearbytempo/NearbyTempoTemplate";
 import VehicleTemplate from "@/components/taxi/VehicleTemplate";
+import NoidaTaxiContactPage from "@/components/templates/NoidaTaxiContactPage";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -45,6 +48,62 @@ export async function generateMetadata({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  // ============================================
+// VEHICLE TEMPLATE ROUTE (Locality + Vehicle)
+// ============================================
+const directVehicles = parseVehicleTemplateUrl(url);
+
+if (directVehicles) {
+  const { vehicle } = directVehicles;
+
+  const title = `${vehicle.name} in Noida Starting @ ${vehicle.price} | Noida Cab`;
+  
+  const description = `Book ${vehicle.name} (${vehicle.category}) taxi in Noida. Features ${vehicle.seats} pushback seats, dual AC, space for ${vehicle.luggage} bags, and verified commercial drivers. Call 8377809809.`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://noidacab.com${url}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://noidacab.com${url}`,
+      siteName: "Noida Cab",
+      type: "website",
+      images: [
+        {
+          url: vehicle.image.startsWith("http")
+            ? vehicle.image
+            : `https://noidacab.com${vehicle.image}`,
+          width: 1200,
+          height: 630,
+          alt: `${vehicle.name} Taxi Service in Noida`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [
+        vehicle.image.startsWith("http")
+          ? vehicle.image
+          : `https://noidacab.com${vehicle.image}`,
+      ],
+    },
+    keywords: [
+      `${vehicle.name} in Noida`,
+      `${vehicle.name} taxi Noida`,
+      `${vehicle.name} rental Noida`,
+      `${vehicle.category.toLowerCase()} cab Noida`,
+      "Noida taxi contact number",
+      "outstation cab from Noida",
+    ],
+  };
+}
 
   // ============================================
   // DIRECT VEHICLE PROFILE (TEMPO TRAVELLER / CABS)
@@ -73,6 +132,21 @@ export async function generateMetadata({
       },
     };
   }
+
+  /* =========================================================
+    Contact Route Metadata
+========================================================= */
+const contactRoute = parseContactRouteUrl(url);
+if (contactRoute) {
+  return {
+    title: "Noida Taxi Contact Number | 24x7 Cab Booking Helpline: 8377809809",
+    description:
+      "Call Noida Taxi Contact Number +91-8377809809 for immediate cab booking in Noida. Clean Dzire, Ertiga, Innova Crysta, and Tempo Travellers for local and outstation trips.",
+    alternates: {
+      canonical: `https://noidacab.com/noida-taxi-contact-number`,
+    },
+  };
+}
 
   // ============================================
   // DISTANCE & TRAVEL TIME
@@ -194,7 +268,11 @@ if (nearbyTempoRoute) {
     description:
       `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local sightseeing, airport transfers & corporate travel. City-expert drivers, clean AC cars. Call 8377809809.`,
   };
+
+  
 }
+
+
 
 /* =========================================================
    PAGE
@@ -208,6 +286,27 @@ export default async function CabPage({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  /* =========================================================
+    Content Routing Logic
+  ========================================================= */
+  const contactRoute = parseContactRouteUrl(url);
+if (contactRoute) {
+  return <NoidaTaxiContactPage />;
+}
+
+  // ============================================
+  // vehicle template route (locality + vehicle)
+  // ============================================
+  const directVehicles = parseVehicleTemplateUrl(url);
+
+  if (directVehicles) {
+    return <VehicleTemplate vehicle={directVehicles.vehicle} />;
+  }
+  
+
+
+  // ============================================
 
   // ============================================
   // DIRECT VEHICLE PROFILE (TEMPO TRAVELLER / CABS)

@@ -1,197 +1,205 @@
-  "use client";
+"use client";
 
-  import Link from "next/link";
-  import { useEffect, useState } from "react";
-  import { Menu, Phone, X } from "lucide-react";
-  import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Menu, Phone, X } from "lucide-react";
+import Image from "next/image";
 
-  const navLinks = [
-    { label: "Home", href: "/" },
-    {
-      label: "Cabs",
-      dropdown: [
-        { label: "Dzire", href: "/taxi/dzire" },
-        { label: "Amaze", href: "/taxi/amaze" },
-        { label: "Ertiga", href: "/taxi/ertiga" },
-        { label: "Innova Crysta", href: "/taxi/innova-crysta" },
-        
-      ],
-    },
-    
-    { label: "Taxi fare", href: "/noida-taxi-fare" },
-    
-    { label: "Taxi Services", dropdown:[
-      {label: "Taxi Servces In Noida", href: "/taxi-service-in-noida"},
-        { label: "Sedan Taxi In Noida", href: "/sedan-taxi-in-noida" },
-        { label: "Suv Taxi In Noida", href: "/route/suv-taxi-in-noida" },
-         { label: "Tempo Traveller In Noida", href: "/tempo-traveller-in-noida" },
-    ] },
-    { label: "One Way", href: "/one-way-taxi-in-noida" },
-  ];
+const navLinks = [
+  { label: "Home", href: "/" },
+  {
+    label: "Cabs",
+    dropdown: [
+      { label: "Wagonr In Noida", href: "/wagonr-taxi-in-noida" },
+      { label: "Dzire In Noida", href: "/dzire-taxi-in-noida" },
+      { label: "Etios In Noida", href: "/etios-taxi-in-noida" },
+      { label: "Amaze In Noida", href: "/amaze-taxi-in-noida" },
+      { label: "Ertiga In Noida", href: "/ertiga-taxi-in-noida" },
+      { label: "Innova Crysta In Noida", href: "/innova-crysta-in-noida" },
 
-  export default function Header() {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
+    ],
+  },
 
-    useEffect(() => {
-      const handleScroll = () => setIsScrolled(window.scrollY > 40);
-      handleScroll();
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  { label: "Taxi fare", href: "/noida-taxi-fare" },
 
-    // Lock page scroll behind the open mobile menu.
-    useEffect(() => {
-      document.body.style.overflow = menuOpen ? "hidden" : "";
-      return () => {
-        document.body.style.overflow = "";
-      };
-    }, [menuOpen]);
+  {
+    label: "Services", dropdown: [
+      { label: "Taxi Servces In Noida", href: "/taxi-service-in-noida" },
+      { label: "Sedan Taxi In Noida", href: "/sedan-taxi-in-noida" },
+      { label: "Suv Taxi In Noida", href: "/route/suv-taxi-in-noida" },
+      { label: "luxury-tempo-traveller In Noida", href: "/luxury-tempo-traveller-in-noida" },
+      { label: "12-seater-tempo-traveller In Noida", href: "/12-seater-tempo-traveller-in-noida" },
+      { label: "16-seater-tempo-traveller In Noida", href: "/16-seater-tempo-traveller-in-noida" },
+      { label: "20-seater-tempo-traveller In Noida", href: "/20-seater-tempo-traveller-in-noida" },
+      { label: "24-seater-tempo-traveller In Noida", href: "/24-seater-tempo-traveller-in-noida" },
+    ]
+  },
+  { label: "One Way", href: "/one-way-taxi-in-noida" },
+];
 
-    // Close on Escape.
-    useEffect(() => {
-      const onKey = (e: KeyboardEvent) => {
-        if (e.key === "Escape") setMenuOpen(false);
-      };
-      window.addEventListener("keydown", onKey);
-      return () => window.removeEventListener("keydown", onKey);
-    }, []);
+export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    return (
-      <header
-        className={`fixed left-0 top-0 z-50 w-full bg-[#ffb300] backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-lg" : "py-3 shadow-sm"
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Lock page scroll behind the open mobile menu.
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Close on Escape.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  return (
+    <header
+      className={`fixed left-0 top-0 z-50 w-full bg-[#ffb300] backdrop-blur-xl transition-all duration-300 ${isScrolled ? "py-2 shadow-lg" : "py-3 shadow-sm"
+        }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+          <div className="relative h-10 w-32 sm:h-12 sm:w-40 bg-white rounded-2xl">
+            <Image
+              src="/noidacab.png"
+              alt="NoidaCab"
+              fill
+              priority
+              sizes="(max-width: 640px) 128px, 160px"
+              className="object-contain rounded-3xl "
+            />
+          </div>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          {navLinks.map((item) => (
+            <div key={item.label} className="group relative ">
+              {item.dropdown ? (
+                <>
+                  <button className="flex items-center gap-1 font-semibold text-gray-700 transition hover:text-white/80">
+                    {item.label}
+                    <span className="text-xs">▼</span>
+                  </button>
+
+                  {/* Dropdown */}
+                  <div className="invisible absolute left-0 top-full z-50 mt-3 w-78 rounded-xl bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    {item.dropdown.map((dropdownItem) => (
+                      <Link
+                        key={dropdownItem.label}
+                        href={dropdownItem.href}
+                        className="block rounded-lg px-4 py-3 font-medium text-gray-700 transition hover:bg-amber-50 hover:text-amber-500"
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="font-semibold text-gray-700 transition hover:text-white/80"
+                >
+                  {item.label}
+                </Link>
+              )}
+            </div>
+          ))}
+        </nav>
+
+        {/* Right */}
+        <div className="hidden lg:flex">
+          <Link
+            href="tel:+918377809809"
+            className="inline-flex items-center gap-2 rounded-full bg-[white] px-5 xl:px-6 py-2.5 xl:py-3 font-semibold text-black transition hover:bg-amber-500"
+          >
+            <Phone size={18} />
+            Call Now
+          </Link>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          className="text-gray-900 lg:hidden"
+        >
+          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu — always mounted, animated open/closed */}
+      <div
+        className={`absolute left-0 top-full w-full bg-white shadow-xl transition-all duration-300 lg:hidden ${menuOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
           }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-            <div className="relative h-10 w-32 sm:h-12 sm:w-40 bg-white rounded-2xl">
-              <Image
-                src="/noidacab.png"
-                alt="NoidaCab"
-                fill
-                priority
-                sizes="(max-width: 640px) 128px, 160px"
-                className="object-contain rounded-3xl "
-              />
-            </div>
-          </Link>
+        <div className="max-h-[calc(100vh-72px)] overflow-y-auto overscroll-contain">
+          <div className="space-y-1 p-4 sm:p-6">
 
-          {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
             {navLinks.map((item) => (
-              <div key={item.label} className="group relative ">
+              <div key={item.label}>
                 {item.dropdown ? (
-                  <>
-                    <button className="flex items-center gap-1 font-semibold text-gray-700 transition hover:text-white/80">
-                      {item.label}
-                      <span className="text-xs">▼</span>
-                    </button>
+                  <div className="rounded-lg">
 
-                    {/* Dropdown */}
-                    <div className="invisible absolute left-0 top-full z-50 mt-3 w-52 rounded-xl bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    {/* Dropdown Heading */}
+                    <div className="px-3 py-2.5 font-semibold text-gray-800">
+                      {item.label}
+                    </div>
+
+                    {/* Dropdown Links */}
+                    <div className="ml-3 space-y-1 border-l-2 border-amber-300 pl-3">
                       {item.dropdown.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.label}
                           href={dropdownItem.href}
-                          className="block rounded-lg px-4 py-3 font-medium text-gray-700 transition hover:bg-amber-50 hover:text-amber-500"
+                          className="block rounded-lg px-3 py-2.5 font-medium text-gray-600 transition hover:bg-amber-100 hover:text-amber-500"
+                          onClick={() => setMenuOpen(false)}
                         >
                           {dropdownItem.label}
                         </Link>
                       ))}
                     </div>
-                  </>
+                  </div>
                 ) : (
                   <Link
                     href={item.href}
-                    className="font-semibold text-gray-700 transition hover:text-white/80"
+                    className="block rounded-lg px-3 py-2.5 font-medium text-gray-700 transition hover:bg-amber-100 hover:text-amber-500"
+                    onClick={() => setMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
                 )}
               </div>
             ))}
-          </nav>
 
-          {/* Right */}
-          <div className="hidden lg:flex">
+            {/* Call Now */}
             <Link
               href="tel:+918377809809"
-              className="inline-flex items-center gap-2 rounded-full bg-[white] px-5 xl:px-6 py-2.5 xl:py-3 font-semibold text-black transition hover:bg-amber-500"
+              className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-[#ffb300] py-3 font-semibold text-white transition hover:bg-amber-500"
+              onClick={() => setMenuOpen(false)}
             >
               <Phone size={18} />
               Call Now
             </Link>
+
           </div>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            className="text-gray-900 lg:hidden"
-          >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
         </div>
-
-        {/* Mobile Menu — always mounted, animated open/closed */}
-        <div
-          className={`absolute left-0 top-full w-full bg-white shadow-xl transition-all duration-300 lg:hidden ${menuOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
-            }`}
-        >
-          <div className="max-h-[calc(100vh-72px)] overflow-y-auto overscroll-contain">
-    <div className="space-y-1 p-4 sm:p-6">
-
-      {navLinks.map((item) => (
-        <div key={item.label}>
-          {item.dropdown ? (
-            <div className="rounded-lg">
-
-              {/* Dropdown Heading */}
-              <div className="px-3 py-2.5 font-semibold text-gray-800">
-                {item.label}
-              </div>
-
-              {/* Dropdown Links */}
-              <div className="ml-3 space-y-1 border-l-2 border-amber-300 pl-3">
-                {item.dropdown.map((dropdownItem) => (
-                  <Link
-                    key={dropdownItem.label}
-                    href={dropdownItem.href}
-                    className="block rounded-lg px-3 py-2.5 font-medium text-gray-600 transition hover:bg-amber-100 hover:text-amber-500"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {dropdownItem.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <Link
-              href={item.href}
-              className="block rounded-lg px-3 py-2.5 font-medium text-gray-700 transition hover:bg-amber-100 hover:text-amber-500"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          )}
-        </div>
-      ))}
-
-      {/* Call Now */}
-      <Link
-        href="tel:+918377809809"
-        className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-[#ffb300] py-3 font-semibold text-white transition hover:bg-amber-500"
-        onClick={() => setMenuOpen(false)}
-      >
-        <Phone size={18} />
-        Call Now
-      </Link>
-
-    </div>
-  </div>
-        </div>
-      </header>
-    );
-  }
+      </div>
+    </header>
+  );
+}
