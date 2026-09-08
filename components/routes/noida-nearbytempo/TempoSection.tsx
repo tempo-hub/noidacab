@@ -152,7 +152,7 @@ export default function TempoSection({
       <div className="mx-auto max-w-7xl">
 
         {/* ---------------------------------------------------------------- */}
-        {/* Mobile Header */}
+        {/* Mobile Headerr */}
         {/* ---------------------------------------------------------------- */}
 
         <div className="mb-5 flex items-center justify-between lg:hidden">
