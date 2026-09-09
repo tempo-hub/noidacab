@@ -36,7 +36,7 @@ export default function VehicleOverview({ vehicle }: { vehicle: Vehicle }) {
 
             <div>
               <h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-4xl">
-                Experience Comfort with {vehicle.name} Taxi in Noida
+                Experience Comfort with {vehicle.name} in Noida
               </h2>
               <p className="mt-2 text-sm font-medium text-slate-500">
                 Premium sanitized fleet &bull; Commercial verified drivers &bull; Transparent distance-based billing

@@ -45,7 +45,7 @@ export default function VehicleBooking({
   ];
 
   const waMessage = encodeURIComponent(
-    `Hello, I would like to book a ${vehicle.name} Taxi from Noida. Please share availability and best fare details.`
+    `Hello, I would like to book a ${vehicle.name} from Noida. Please share availability and best fare details.`
   );
 
   return (

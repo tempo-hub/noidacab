@@ -34,7 +34,7 @@ export default function VehicleFare({ vehicle }: { vehicle: Vehicle }) {
             Transparent Billing
           </div>
           <h2 className="text-2xl font-black text-slate-900 sm:text-4xl tracking-tight">
-            {vehicle.name} Taxi Fare in Noida & NCR
+            {vehicle.name} Fare in Noida & NCR
           </h2>
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600">
             Standard pricing model for {vehicle.name}. We guarantee no hidden midnight surge pricing or surprise convenience fees.

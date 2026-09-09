@@ -91,7 +91,7 @@ export default function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
 
             {/* Heading */}
             <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              {vehicle.name} Taxi 
+              {vehicle.name}
               <span className="block text-amber-600">Service in Noida</span>
             </h1>
 
@@ -111,7 +111,7 @@ export default function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
 >
   <Image
     src={vehicle.image}
-    alt={`${vehicle.name} taxi in Noida`}
+    alt={`${vehicle.name}in Noida`}
     fill
     priority
     sizes={

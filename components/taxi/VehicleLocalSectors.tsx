@@ -41,7 +41,7 @@ export default function VehicleLocalSectors({ vehicle }: { vehicle: Vehicle }) {
             Noida Pickup Locations
           </div>
           <h2 className="text-2xl font-black text-slate-900 sm:text-4xl tracking-tight">
-            {vehicle.name} Taxi Service Across All Noida Sectors
+            {vehicle.name} Service Across All Noida Sectors
           </h2>
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600">
             We provide doorstep pickups across every residential sector, metro terminal, and commercial tech park in Noida and Greater Noida within 30–45 minutes.
