@@ -5,6 +5,8 @@ import { EtiosTemplate } from "./EtiosTemplate";
 import { InnovaTemplate } from "./InnovaTemplate";
 import { SedanTemplate } from "./SedanTemplate";
 import { TempoTemplate } from "./TempoTemplate";
+import { WagonRTemplate } from "./WagonRTemplate";
+
 
 export const cabTemplates = {
   dzire: DzireTemplate,
@@ -14,6 +16,7 @@ export const cabTemplates = {
   etios: EtiosTemplate,
   "sedan-taxi": SedanTemplate,
   sedan: SedanTemplate,
+  wagonr: WagonRTemplate,
 
   // Tempo Traveller
   "luxury-tempo-traveller": TempoTemplate,
