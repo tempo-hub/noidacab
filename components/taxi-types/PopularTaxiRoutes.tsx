@@ -60,14 +60,14 @@ const taxiRoutes = [
   },
 
   {
-    from: "Noida",
-    to: "New Delhi Railway Station",
-    description:
-      "Book a private cab from Noida to New Delhi Railway Station with convenient pickup.",
-    distance: "25–35 km",
-    href: "/noida-to-new-delhi-railway-station-taxi",
-    icon: TrainFront,
-  },
+  from: "Noida",
+  to: "New Delhi",
+  description:
+    "Book a private cab from Noida to New Delhi with convenient doorstep pickup.",
+  distance: "20–30 km",
+  href: "/noida-to-new-delhi-taxi",
+  icon: MapPin, // or Building2 / Car depending on your icon imports
+},
 ];
 
 export default function PopularTaxiRoutes() {
@@ -93,13 +93,13 @@ export default function PopularTaxiRoutes() {
             </p>
           </div>
 
-          <Link
+          {/* <Link
             href="/taxi-routes"
             className="hidden shrink-0 items-center gap-2 text-sm font-semibold text-amber-700 transition hover:text-amber-800 sm:inline-flex"
           >
             View All Routes
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </Link> */}
         </div>
 
         {/* Routes */}

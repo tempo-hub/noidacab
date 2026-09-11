@@ -21,7 +21,7 @@ const locations = [
     description:
       "Convenient cab pickup from the IT and corporate hub of Noida Sector 62.",
     icon: BriefcaseBusiness,
-    href: "/noida/sector-62/innov-crysta",
+    href: "/noida/sector-62/innova-crysta",
   },
   {
     name: "Sector 137",

@@ -52,6 +52,7 @@ export default function RouteFareAvailableCabs({
     .filter(
       (vehicle) =>
         vehicle.category !== "Tempo Traveller" &&
+      vehicle.slug !== "sedan-taxi" &&
         vehicle.category !== "Urbania"
     )
     .map((vehicle) => (

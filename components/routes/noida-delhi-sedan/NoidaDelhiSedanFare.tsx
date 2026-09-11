@@ -145,7 +145,7 @@ export default function NoidaDelhiSedanFare() {
         {/* Internal Link */}
         <div className="mt-7 text-center">
           <Link
-            href="/route/noida-to-delhi-taxi-fare"
+            href="/noida-to-delhi-taxi-fare"
             className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-amber-400 hover:text-amber-600"
           >
             View Complete Noida to Delhi Taxi Fare

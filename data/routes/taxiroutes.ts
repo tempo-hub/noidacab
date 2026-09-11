@@ -56,6 +56,22 @@ export const routes: RouteData[] = [
       "Book a reliable taxi from Noida to Gurgaon with comfortable cabs and professional drivers.",
   },
   {
+  slug: "noida-to-new-delhi",
+  from: {
+    name: "Noida",
+    slug: "noida",
+  },
+  to: {
+    name: "New Delhi",
+    slug: "new-delhi",
+  },
+  distance: "25 km",
+  duration: "45 min",
+  popular: true,
+  description:
+    "Book a reliable taxi from Noida to New Delhi with comfortable cabs and professional drivers.",
+},
+  {
     slug: "noida-to-jaipur",
     from: {
       name: "Noida",

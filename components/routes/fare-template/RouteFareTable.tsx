@@ -60,7 +60,9 @@ export default function RouteFareTable({ route }: { route: RouteData }) {
               </thead>
 
               <tbody className="divide-y divide-slate-100 text-sm">
-                {vehicles.map((veh) => {
+                {vehicles
+  .filter((veh) => veh.slug !== "sedan-taxi")
+  .map((veh) => {
                   const estimatedFare = calculateFare(route.distance, veh.price);
                   const gst = Math.round(estimatedFare * 0.05);
 
@@ -84,16 +86,13 @@ export default function RouteFareTable({ route }: { route: RouteData }) {
                     >
                       {/* Vehicle Name */}
                       <td className="px-6 py-4.5">
-                        <Link
-                          href={vehicleHref}
-                          className="font-bold text-slate-900 hover:text-amber-600 transition"
-                        >
-                          {veh.name}
-                        </Link>
-                        <span className="block text-[11px] text-slate-400">
-                          {veh.price} base rate
-                        </span>
-                      </td>
+  <span className="font-bold text-slate-900">
+    {veh.name}
+  </span>
+  <span className="block text-[11px] text-slate-400">
+    {veh.price} base rate
+  </span>
+</td>
 
                       {/* Category */}
                       <td className="px-6 py-4.5 font-medium text-slate-600">

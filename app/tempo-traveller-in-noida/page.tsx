@@ -267,7 +267,7 @@ export default function TempoTravellerPage() {
       {/* =====================================================
           1. HERO
       ====================================================== */}
-      <section className="relative overflow-hidden border-b border-gray-300 bg-amber-400">
+      <section id="#tempo-traveller" className="relative overflow-hidden border-b border-gray-300 bg-amber-400">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
         <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-amber-500/30 blur-3xl" />
 
@@ -1222,19 +1222,19 @@ export default function TempoTravellerPage() {
               {[
                 {
                   title: "Tempo Traveller",
-                  href: "/tempo-traveller",
+                  href: "#tempo-traveller",
                 },
                 {
                   title: "Luxury Tempo Traveller",
-                  href: "/luxury-tempo-traveller",
+                  href: "#tempo-traveller",
                 },
                 {
                   title: "Urbania Rental",
-                  href: "/urbania-rental",
+                  href: "#tempo-traveller",
                 },
                 {
                   title: "Taxi Services",
-                  href: "/taxi-services",
+                  href: "/taxi-service-in-noida",
                 },
               ].map((item) => (
                 <Link

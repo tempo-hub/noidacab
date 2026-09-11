@@ -40,7 +40,6 @@ const tripTypes = [
     ],
 
     linkText: "Book Round Trip",
-    href: "/book-cab",
   },
 ];
 
@@ -128,11 +127,15 @@ export default function NoidaDelhiTripTypes() {
                   </div>
 
                   <a
-                    href={trip.href}
-                    className="inline-flex items-center justify-center rounded-lg bg-amber-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-700"
-                  >
-                    {trip.linkText}
-                  </a>
+  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+    `Hello NoidaCab, I would like to book a trip for:. Please share the fare details and availability.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center rounded-lg bg-amber-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-700"
+>
+  {trip.linkText}
+</a>
                 </div>
               </article>
             );
