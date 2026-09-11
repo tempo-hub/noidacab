@@ -291,7 +291,7 @@ export default function SUVPage() {
         return (
           <div
             key={locationSlug}
-            className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
+            className="group rounded-2xl border border-slate-200 bg-white/95 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
           >
             {/* Location Header */}
             <div className="flex items-start gap-4">
@@ -420,7 +420,7 @@ export default function SUVPage() {
       {/* =====================================================
           SUV FEATURES
       ===================================================== */}
-      <section className="py-20">
+      <section className="bg-white/95 border-b border-slate-300 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-semibold uppercase tracking-wider text-orange-600">
@@ -463,7 +463,7 @@ export default function SUVPage() {
       {/* =====================================================
           POPULAR ROUTES
       ===================================================== */}
-      <section className="bg-slate-100 py-20">
+      <section className="bg-white/95 border-b border-slate-300 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-sm font-semibold uppercase tracking-wider text-orange-600">
@@ -506,10 +506,10 @@ export default function SUVPage() {
               href="/noida-to-delhi-airport-suv-taxi"
             />
 
-            <RouteCard
+            {/* <RouteCard
               title="Noida Outstation SUV Taxi"
-              href="/noida-outstation-suv-taxi"
-            />
+              href="#outstation-suv-taxi"
+            /> */}
           </div>
         </div>
       </section>

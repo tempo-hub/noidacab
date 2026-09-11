@@ -97,7 +97,7 @@ export default function SedanTaxiNoidaFAQ() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-10 rounded-2xl border border-amber-100 bg-amber-50 p-5 text-center sm:p-6">
+        {/* <div className="mt-10 rounded-2xl border border-amber-100 bg-amber-50 p-5 text-center sm:p-6">
           <h3 className="text-lg font-bold text-slate-900">
             Still have a question?
           </h3>
@@ -113,7 +113,7 @@ export default function SedanTaxiNoidaFAQ() {
           >
             Call 8377809809
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -18,7 +18,8 @@ export type Vehicle = {
     | "Sedan"
     | "SUV"
     | "Urbania"
-    | "Tempo Traveller";
+    | "Tempo Traveller"
+    | "";
 };
 
 export const vehicles: Vehicle[] = [
@@ -130,6 +131,23 @@ export const vehicles: Vehicle[] = [
 
     category: "Sedan",
   },
+
+  {
+  name: "Sedan",
+  slug: "sedan-taxi",
+  image: "/cabs/amazemain.webp",
+  price: "₹10/km",
+
+  seats: 4,
+  doors: 4,
+  luggage: 3,
+
+  airCondition: true,
+  gps: true,
+  driverChoice: true,
+
+  category: "",
+},
 
   // -----------------------------
   // SUV
@@ -328,4 +346,7 @@ export const vehicles: Vehicle[] = [
 
     category: "Tempo Traveller",
   },
+
+  
+  
 ];

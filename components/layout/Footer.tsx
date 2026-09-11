@@ -37,6 +37,7 @@ const quickLinks = [
   // { name: "Terms & Conditions", href: "/terms-and-conditions" },
   { name: "Tempo Traveller", href: "/tempo-traveller-in-noida" },
   { name: "Contact", href: "/contact" },
+  {name: "Blog", href: "/blog"},
 ];
 
 const services = [

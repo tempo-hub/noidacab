@@ -526,6 +526,23 @@ export function parseLocalRouteUrl(
       return null;
     }
 
+    // 1. Check for generic "sedan-taxi" or "sedan"
+    if (vehicleSlug === "sedan-taxi" || vehicleSlug === "sedan") {
+  // Look specifically for the "sedan-taxi" object in data/vehicles.ts
+  const sedanVehicle =
+    vehicles.find((v) => v.slug === "sedan-taxi") ||
+    vehicles.find((v) => v.category?.toLowerCase() === "sedan") ||
+    vehicles[0];
+
+  return {
+    city,
+    locationSlug: location.slug,
+    locationName: location.name,
+    vehicle: sedanVehicle,
+    template: "sedan-taxi",
+  };
+}
+
     const matchedVehicle =
       vehicles.find(
         (vehicle) =>
@@ -761,6 +778,103 @@ export function parseDirectVehicleUrl(
   return {
     template: "vehicle-profile",
     vehicle: matchedVehicle,
+  };
+}
+
+/* =========================================================
+    Fair Vehicle Route
+========================================================= */
+export type ParsedRouteFare = {
+  template: "route-fare";
+  route: RouteData;
+};
+
+const FARE_SUFFIXES = [
+  "-taxi-fare",
+  "-cab-fare",
+  "-fare",
+];
+
+export function parseRouteFareUrl(url: string): ParsedRouteFare | null {
+  const normalizedUrl =
+    "/" +
+    url
+      .split("/")
+      .filter(Boolean)
+      .join("/")
+      .toLowerCase();
+
+  const cleanPath = normalizedUrl.replace(/^\//, "");
+
+  // Match suffixes like "-taxi-fare", "-cab-fare", "-fare"
+  for (const suffix of FARE_SUFFIXES) {
+    if (cleanPath.endsWith(suffix)) {
+      const baseSlug = cleanPath.slice(0, -suffix.length);
+      const matchedRoute = routes.find(
+        (r) => r.slug.toLowerCase() === baseSlug
+      );
+
+      if (matchedRoute) {
+        return {
+          template: "route-fare",
+          route: matchedRoute,
+        };
+      }
+    }
+  }
+
+  return null;
+}
+
+/* =========================================================
+   AIRPORT & NOIDA TAXI SERVICE ROUTE (Using urlroute.json)
+========================================================= */
+export type ParsedAirportTaxiRoute = {
+  template: "airport-taxi-service";
+  title: string;
+  serviceName: string;
+  url: string;
+};
+
+export function parseAirportTaxiRouteUrl(url: string): ParsedAirportTaxiRoute | null {
+  const normalizedUrl =
+    "/" +
+    url
+      .split("/")
+      .filter(Boolean)
+      .join("/")
+      .toLowerCase();
+
+  // 1. Check if the URL actually exists in your urlroute.json
+  const exists = urlRoutes.some(
+    (entry) => entry.url.replace(/\/+$/, "").toLowerCase() === normalizedUrl
+  );
+
+  if (!exists) {
+    return null;
+  }
+
+  const cleanSlug = normalizedUrl.replace(/^\//, "");
+
+  // 2. Identify if this URL is an airport/local taxi landing page
+  const isAirportRoute =
+    cleanSlug.includes("airport") || cleanSlug === "taxi-service-in-noida";
+
+  if (!isAirportRoute) {
+    return null;
+  }
+
+  // 3. Dynamically generate title and name from the slug itself
+  const formattedName = cleanSlug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  return {
+    template: "airport-taxi-service",
+    serviceName: formattedName,
+    title: `${formattedName} | 24x7 Cab Booking - NoidaCab`,
+    url: normalizedUrl,
   };
 }
 

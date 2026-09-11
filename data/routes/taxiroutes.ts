@@ -55,6 +55,70 @@ export const routes: RouteData[] = [
     description:
       "Book a reliable taxi from Noida to Gurgaon with comfortable cabs and professional drivers.",
   },
+  {
+    slug: "noida-to-jaipur",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Jaipur",
+      slug: "jaipur",
+    },
+    distance: "290 km",
+    duration: "4 hr 45 min",
+    popular: true,
+    description:
+      "Book a comfortable outstation taxi from Noida to Jaipur via the Delhi-Mumbai Expressway with verified drivers and flat pricing.",
+  },
+  {
+    slug: "noida-to-haridwar",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Haridwar",
+      slug: "haridwar",
+    },
+    distance: "215 km",
+    duration: "3 hr 45 min",
+    popular: true,
+    description:
+      "Plan your spiritual trip with reliable Noida to Haridwar cab service. Sanitized AC cabs with direct doorstep pickup.",
+  },
+  {
+    slug: "noida-to-lucknow",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Lucknow",
+      slug: "lucknow",
+    },
+    distance: "510 km",
+    duration: "6 hr 30 min",
+    popular: true,
+    description:
+      "Seamless highway travel from Noida to Lucknow via Agra-Lucknow Expressway. Clean Sedans, SUVs, and Tempo Travellers available.",
+  },
+  {
+    slug: "noida-to-vrindavan",
+    from: {
+      name: "Noida",
+      slug: "noida",
+    },
+    to: {
+      name: "Vrindavan",
+      slug: "vrindavan",
+    },
+    distance: "140 km",
+    duration: "2 hr 15 min",
+    popular: true,
+    description:
+      "Book a one-way or same-day round-trip taxi from Noida to Vrindavan via Yamuna Expressway for a peaceful pilgrimage journey.",
+  },
 
   {
     slug: "noida-to-ghaziabad",

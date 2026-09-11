@@ -188,17 +188,17 @@ export default function FinalBookingCTA() {
             />
 
             <QuickLink
-              href="/noida/airport-taxi"
+              href="#airport-taxi"
               title="Noida Airport Taxi"
             />
 
             <QuickLink
-              href="/noida/outstation-taxi"
+              href="#outstation-taxi"
               title="Outstation Taxi"
             />
 
             <QuickLink
-              href="/noida/fleet"
+              href="#fleet"
               title="View Taxi Fleet"
             />
           </div>

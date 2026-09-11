@@ -39,6 +39,8 @@ const suitedFor: Record<
 
     Urbania:
         "Large groups, corporate travel, events",
+    "":
+        "General use, flexible seating arrangements",
 };
 
 function getCategoryVehicles(

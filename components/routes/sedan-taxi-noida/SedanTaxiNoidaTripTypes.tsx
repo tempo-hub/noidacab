@@ -128,7 +128,7 @@ export default function SedanTaxiNoidaTripTypes() {
               {noidaRoutes.map((route) => (
                 <Link
                   key={route.slug}
-                  href={`/${route.slug}-sedan-taxi`}
+                  href={`/${route.slug}-taxi`}
                   className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 transition duration-300 hover:border-amber-300 hover:bg-white hover:shadow-md"
                 >
                   <div className="flex items-start justify-between gap-3">

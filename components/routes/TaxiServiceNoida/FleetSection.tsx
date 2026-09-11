@@ -49,7 +49,7 @@ const vehicles = [
 
 export default function FleetSection() {
   return (
-    <section className="bg-white/95 py-14 sm:py-16 lg:py-20">
+    <section id="fleet" className="bg-white/95 py-14 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

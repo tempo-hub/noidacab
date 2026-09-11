@@ -12,6 +12,8 @@ import {
   parseDirectVehicleUrl,
   parseVehicleTemplateUrl,
   parseContactRouteUrl,
+  parseRouteFareUrl,
+  parseAirportTaxiRouteUrl,
 } from "@/lib/parse-route";
 
 import { cabTemplates } from "@/components/templates/cab";
@@ -27,6 +29,8 @@ import {
 import NearbyTempoTemplate from "@/components/routes/noida-nearbytempo/NearbyTempoTemplate";
 import VehicleTemplate from "@/components/taxi/VehicleTemplate";
 import NoidaTaxiContactPage from "@/components/templates/NoidaTaxiContactPage";
+import RouteFareTemplate from "@/components/routes/fare-template/RouteFareTemplate";
+import TaxiServiceNoidaTemplate from "@/components/routes/TaxiServiceNoida/TaxiServiceNoidaTemplate";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -48,6 +52,53 @@ export async function generateMetadata({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  // ============================================
+  // AIRPORT & NOIDA TAXI SERVICE METADATA
+  // (noida-to-delhi-airport, airport-to-noida, airport-drop-taxi)
+  // ============================================
+  const airportTaxiRoute = parseAirportTaxiRouteUrl(url);
+  if (airportTaxiRoute) {
+    return {
+      title: airportTaxiRoute.title,
+      description: `Book 24x7 ${airportTaxiRoute.serviceName} with NoidaCab. Doorstep pickup across Noida sectors to IGI Terminal 1, 2, and 3. Clean AC Sedans & SUVs. Call 8377809809.`,
+      alternates: {
+        canonical: `https://noidacab.com${url}`,
+      },
+      openGraph: {
+        title: airportTaxiRoute.title,
+        description: `Book 24x7 ${airportTaxiRoute.serviceName} with NoidaCab. On-time doorstep pickup, professional drivers, and zero hidden charges.`,
+        url: `https://noidacab.com${url}`,
+        siteName: "Noida Cab",
+        type: "website",
+      },
+    };
+  }
+
+  // ============================================
+  // ROUTE FARE METADATA (e.g., noida-to-delhi-taxi-fare)
+  // ============================================
+  const routeFare = parseRouteFareUrl(url);
+  if (routeFare) {
+    const { route } = routeFare;
+    const title = `${route.from.name} to ${route.to.name} Taxi Fare @ Best Rates | NoidaCab`;
+    const description = `Check ${route.from.name} to ${route.to.name} cab fare for one-way and round trips. Distance: ${route.distance} (${route.duration}). Sedans, SUVs & Tempo Travellers available. Call 8377809809.`;
+
+    return {
+      title,
+      description,
+      alternates: {
+        canonical: `https://noidacab.com${url}`,
+      },
+      openGraph: {
+        title,
+        description,
+        url: `https://noidacab.com${url}`,
+        siteName: "Noida Cab",
+        type: "website",
+      },
+    };
+  }
 
   // ============================================
 // VEHICLE TEMPLATE ROUTE (Locality + Vehicle)
@@ -104,6 +155,8 @@ if (directVehicles) {
     ],
   };
 }
+
+
 
   // ============================================
   // DIRECT VEHICLE PROFILE (TEMPO TRAVELLER / CABS)
@@ -268,7 +321,7 @@ if (nearbyTempoRoute) {
     description:
       `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local sightseeing, airport transfers & corporate travel. City-expert drivers, clean AC cars. Call 8377809809.`,
   };
-
+   
   
 }
 
@@ -286,6 +339,34 @@ export default async function CabPage({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+
+  // ============================================
+  // AIRPORT & NOIDA TAXI SERVICE TEMPLATE
+  // (noida-to-delhi-airport, airport-to-noida, airport-drop-taxi)
+  // ============================================
+  const airportTaxiRoute = parseAirportTaxiRouteUrl(url);
+  if (airportTaxiRoute) {
+    return (
+      <TaxiServiceNoidaTemplate
+        serviceName={airportTaxiRoute.serviceName}
+        url={url}
+      />
+    );
+  }
+
+  // ============================================
+  // ROUTE FARE COMPONENT
+  // ============================================
+  const routeFare = parseRouteFareUrl(url);
+
+  if (routeFare) {
+    return (
+      <RouteFareTemplate
+        route={routeFare.route}
+      />
+    );
+  }
 
   /* =========================================================
     Content Routing Logic

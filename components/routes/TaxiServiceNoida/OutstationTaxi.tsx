@@ -77,7 +77,7 @@ const benefits = [
 
 export default function OutstationTaxi() {
   return (
-    <section className="bg-white/95 border-b border-gray-300 py-14 sm:py-16 lg:py-20">
+    <section id="outstation-taxi" className="bg-white/95 border-b border-gray-300 py-14 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -100,13 +100,13 @@ export default function OutstationTaxi() {
             </p>
           </div>
 
-          <Link
+          {/* <Link
             href="/noida/outstation-taxi"
             className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 text-sm font-semibold text-white transition hover:bg-amber-800"
           >
             Explore Outstation
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </Link> */}
         </div>
 
         {/* Benefits */}

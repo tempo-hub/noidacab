@@ -31,6 +31,8 @@ export default function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
       "Book a premium Force Urbania in Noida for comfortable group travel, events, tours and long-distance journeys.",
     "Tempo Traveller":
       "Book a comfortable Tempo Traveller in Noida for family trips, group tours, events, weddings and outstation travel.",
+    "":
+      "Book a vehicle in Noida for local travel, airport transfers, outstation trips and comfortable journeys.",
   };
 
   const [formData, setFormData] = useState({

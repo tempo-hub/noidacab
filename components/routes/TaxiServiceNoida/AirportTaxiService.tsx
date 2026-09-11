@@ -39,7 +39,7 @@ const benefits = [
 
 export default function AirportTaxiService() {
   return (
-    <section className="bg-white/95 border-b border-gray-300 py-14 sm:py-16 lg:py-20">
+    <section id="airport-taxi" className="bg-white/95 border-b border-gray-300 py-14 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Main Intro */}
@@ -80,13 +80,15 @@ export default function AirportTaxiService() {
 
             {/* CTA */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/noida/airport-taxi"
+              <a
+                href="https://wa.me/918377809809?text=Hello%20NoidaCab%2C%20I%20want%20to%20book%20an%20Airport%20Taxi.%20Please%20share%20fare%20and%20availability."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 text-sm font-semibold text-white transition hover:bg-amber-800"
               >
                 Book Airport Taxi
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
 
               <a
                 href="tel:8377809809"
@@ -183,9 +185,8 @@ export default function AirportTaxiService() {
         {/* Service Cards */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
           {airportServices.map((service) => (
-            <Link
+            <div
               key={service.title}
-              href={service.href}
               className="group rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_16px_40px_-20px_rgba(15,23,42,0.2)] sm:p-6"
             >
               <div className="flex items-center justify-between gap-4">
@@ -204,10 +205,10 @@ export default function AirportTaxiService() {
                 {service.description}
               </p>
 
-              <div className="mt-4 text-sm font-semibold text-slate-700 transition-colors group-hover:text-amber-600">
+              {/* <div className="mt-4 text-sm font-semibold text-slate-700 transition-colors group-hover:text-amber-600">
                 View Service
-              </div>
-            </Link>
+              </div> */}
+            </div>
           ))}
         </div>
       </div>

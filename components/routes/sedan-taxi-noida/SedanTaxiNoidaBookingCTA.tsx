@@ -100,14 +100,14 @@ export default function SedanTaxiNoidaBookingCTA() {
                 </a>
 
                 {/* WhatsApp */}
-                <a
+                {/* <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   WhatsApp Us
-                </a>
+                </a> */}
 
                 {/* Call */}
                 <a

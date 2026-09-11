@@ -133,13 +133,15 @@ export default function LocalSightseeing() {
 
               {/* CTA */}
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/noida/sightseeing-taxi"
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 text-sm font-semibold text-white transition hover:bg-amber-800"
-                >
-                  Book Sightseeing Taxi
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                <a
+                href="https://wa.me/918377809809?text=Hello%20NoidaCab%2C%20I%20want%20to%20book%20an%20Airport%20Taxi.%20Please%20share%20fare%20and%20availability."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 text-sm font-semibold text-white transition hover:bg-amber-800"
+              >
+                Book Sightseeing Taxi
+                <ArrowRight className="h-4 w-4" />
+              </a>
 
                 <a
                   href="tel:8377809809"
@@ -206,9 +208,9 @@ export default function LocalSightseeing() {
             const Icon = place.icon;
 
             return (
-              <Link
+              <div
                 key={place.title}
-                href={place.href}
+                // href={place.href}
                 className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_16px_40px_-20px_rgba(15,23,42,0.22)] sm:p-6"
               >
                 <div className="flex items-center justify-between">
@@ -230,7 +232,7 @@ export default function LocalSightseeing() {
                 <div className="mt-auto pt-5 text-sm font-semibold text-slate-700 transition-colors group-hover:text-amber-600">
                   Explore Service
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
