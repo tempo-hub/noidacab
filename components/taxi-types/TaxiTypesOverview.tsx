@@ -41,7 +41,7 @@ const vehicles = [
     passengers: "6–7 Passengers",
     luggage: "3–4 Bags",
     image: "/cabs/innovamain.webp",
-    href: "/taxi/innova",
+    href: "/taxi/innova-crysta",
   },
 ];
 

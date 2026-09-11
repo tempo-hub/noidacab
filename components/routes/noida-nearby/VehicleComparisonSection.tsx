@@ -144,12 +144,12 @@ export default function VehicleComparisonSection({
                 {/* Top */}
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <Link
-                      href={href}
+                    <h1
+                      // href={href}
                       className="text-xl font-bold text-slate-900 hover:text-amber-600 hover:underline"
                     >
                       {vehicle.name}
-                    </Link>
+                    </h1>
 
                     <p className="mt-1 text-sm text-slate-500">
                       {getVehicleCategoryLabel(

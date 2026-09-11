@@ -75,9 +75,9 @@ export default function TaxiTypesGrid() {
             const Icon = taxi.icon;
 
             return (
-              <Link
+              <div
                 key={taxi.name}
-                href={taxi.href}
+                // href={taxi.href}
                 className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
               >
 
@@ -108,11 +108,11 @@ export default function TaxiTypesGrid() {
                   </p>
                 </div>
 
-                <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-amber-600">
+                {/* <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-amber-600">
                   Explore Taxi
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                </div>
-              </Link>
+                </div> */}
+              </div>
             );
           })}
         </div>
