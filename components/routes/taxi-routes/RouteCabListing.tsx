@@ -26,7 +26,10 @@ export default function RouteCabListing({
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {vehicles.slice(0,6).map((vehicle) => {
+          {vehicles.slice(0,7)
+          .filter((veh) => veh.slug !== "sedan-taxi" &&
+           veh.slug !== currentVehicleSlug)
+          .map((vehicle) => {
             const href = `/${route.fromSlug}-to-${route.toSlug}-${vehicle.slug}-taxi`;
 
             const isActive =
