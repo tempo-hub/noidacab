@@ -826,9 +826,9 @@ export default function OneWayPage() {
     <div className="mt-10">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {noidaLocalities.map((locality) => (
-          <Link
+          <div
             key={locality.slug}
-            href={`/noida/${locality.slug}`}
+            // href={`/noida/${locality.slug}`}
             className="group flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 transition duration-200 hover:-translate-y-0.5 hover:border-amber-300 hover:bg-amber-50 hover:shadow-sm"
           >
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm transition group-hover:bg-amber-100">
@@ -840,7 +840,7 @@ export default function OneWayPage() {
             </span>
 
             <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-gray-300 transition group-hover:translate-x-0.5 group-hover:text-amber-600" />
-          </Link>
+          </div>
         ))}
       </div>
     </div>

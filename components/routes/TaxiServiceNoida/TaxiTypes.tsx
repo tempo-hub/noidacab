@@ -35,12 +35,15 @@ export default function TaxiTypes() {
 
         {/* Fleet Grid */}
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
-          {vehicles.slice(0,6).map((vehicle) => (
-            <TaxiCard
-              key={vehicle.slug}
-              vehicle={vehicle}
-            />
-          ))}
+          {vehicles
+  .filter((vehicle) => vehicle.slug !== "sedan-taxi")
+  .slice(0, 6)
+  .map((vehicle) => (
+    <TaxiCard
+      key={vehicle.slug}
+      vehicle={vehicle}
+    />
+  ))}
         </div>
 
         {/* Bottom CTA */}

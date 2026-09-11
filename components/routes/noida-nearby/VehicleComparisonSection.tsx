@@ -111,7 +111,11 @@ export default function VehicleComparisonSection({
 
         {/* Vehicle Cards */}
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {vehicles.map((vehicle) => {
+          {vehicles
+  .filter((vehicle) => vehicle.slug !== "sedan-taxi" &&vehicle.category !== "Tempo Traveller" &&
+      vehicle.category !== "Urbania" &&
+      vehicle.slug !== "urbania")
+  .map((vehicle) => {
             const href = getVehicleHref(
               route,
               vehicle

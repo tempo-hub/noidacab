@@ -60,7 +60,7 @@ export default function AvailableVehicles({ vehicles }: Props) {
 
                                     <div className="rounded-lg bg-amber-50 px-2.5 py-1">
                                         <span className="text-xs font-bold text-amber-700">
-                                            ₹{vehicle.price}/km
+                                            {vehicle.price}
                                         </span>
                                     </div>
                                 </div>
@@ -79,13 +79,14 @@ export default function AvailableVehicles({ vehicles }: Props) {
 
                                 <div className="mt-5 border-t border-gray-100 pt-4">
                                     <a
-                                        href="#fare-calculator"
-                                        className="flex items-center justify-between text-sm font-bold text-gray-900"
-                                    >
-                                        Calculate Fare
-
-                                        <ArrowRight className="h-4 w-4 text-amber-600 transition group-hover:translate-x-1" />
-                                    </a>
+  href="https://wa.me/918377809809?text=Hello%20NoidaCab%2C%20I%20want%20to%20calculate%20and%20check%20the%20taxi%20fare.%20Please%20assist%20me."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center justify-between text-sm font-bold text-gray-900"
+>
+  Calculate Fare
+  <ArrowRight className="h-4 w-4 text-amber-600 transition group-hover:translate-x-1" />
+</a>
                                 </div>
                             </div>
                         </div>
