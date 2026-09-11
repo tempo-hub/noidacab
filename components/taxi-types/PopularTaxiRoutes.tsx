@@ -160,7 +160,7 @@ export default function PopularTaxiRoutes() {
         </div>
 
         {/* Mobile All Routes */}
-        <div className="mt-6 sm:hidden">
+        {/* <div className="mt-6 sm:hidden">
           <Link
             href="/taxi-routes"
             className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-slate-800"
@@ -168,7 +168,7 @@ export default function PopularTaxiRoutes() {
             View All Taxi Routes
             <ArrowRight className="h-4 w-4" />
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

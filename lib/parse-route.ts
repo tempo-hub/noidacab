@@ -584,8 +584,8 @@ export function parseLocalRouteUrl(
     }
 
     const vehicleMatch = slug.match(
-      /^(.+)-to-(.+)-(dzire|ertiga|amaze|etios|innova-crysta)-taxi$/
-    );
+  /^(.+)-to-(.+)-(wagonr|dzire|ertiga|amaze|etios|innova-crysta|tempo-traveller)-taxi$/
+);
 
     if (!vehicleMatch) {
       return null;

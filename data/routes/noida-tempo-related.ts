@@ -14,19 +14,19 @@ export const nearbyNoidaTempoServices: RelatedLink[] = [
   },
   {
     title: "Tempo Traveller on Rent in Noida Extension",
-    href: "/noida/noida-extension/tempo-traveller-on-rent",
+    href: "/noida-extension/tempo-traveller-on-rent",
   },
   {
     title: "12 Seater Tempo Traveller in Noida",
-    href: "/noida/12-seater-tempo-traveller",
+    href: "/12-seater-tempo-traveller-in-noida",
   },
   {
     title: "16 Seater Tempo Traveller in Noida",
-    href: "/noida/16-seater-tempo-traveller",
+    href: "/16-seater-tempo-traveller-in-noida",
   },
   {
     title: "20 Seater Tempo Traveller in Noida",
-    href: "/noida/20-seater-tempo-traveller",
+    href: "/20-seater-tempo-traveller-in-noida",
   },
 ];
 

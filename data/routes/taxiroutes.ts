@@ -152,6 +152,22 @@ export const routes: RouteData[] = [
     description:
       "Book a reliable taxi from Noida to Ghaziabad with affordable fares and comfortable vehicles.",
   },
+  {
+  slug: "noida-to-rishikesh",
+  from: {
+    name: "Noida",
+    slug: "noida",
+  },
+  to: {
+    name: "Rishikesh",
+    slug: "rishikesh",
+  },
+  distance: "235 km",
+  duration: "4 hr 30 min",
+  popular: true,
+  description:
+    "Book a comfortable and reliable outstation taxi from Noida to Rishikesh with experienced drivers and clean cabs.",
+},
 
   {
     slug: "noida-to-greater-noida",

@@ -30,8 +30,8 @@ function LinkGroup({
         <ul className="divide-y divide-slate-100 px-5 py-2 sm:px-6">
           {links.map((link) => (
             <li key={link.href}>
-              <Link
-                href={link.href}
+              <div
+                // href={link.href}
                 className="
                   block
                   py-3.5
@@ -44,7 +44,7 @@ function LinkGroup({
                 "
               >
                 {link.title}
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
