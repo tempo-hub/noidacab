@@ -1,13 +1,17 @@
+"use client";
+
+import Image from "next/image";
 import {
   Calculator,
   CheckCircle2,
   MapPin,
+  Car,
+  Fuel,
+  ArrowRight,
+  ShieldCheck,
+  Zap,
 } from "lucide-react";
-
-import {
-  getPerKmRate,
-} from "@/lib/pricing";
-
+import { getPerKmRate } from "@/lib/pricing";
 import type { Vehicle } from "@/data/vehicles";
 
 type Props = {
@@ -15,190 +19,180 @@ type Props = {
     slug: string;
     name: string;
   };
-
   vehicle: Vehicle;
 };
 
-export function FareEstimate({
-  location,
-  vehicle,
-}: Props) {
+export function FareEstimate({ location, vehicle }: Props) {
   const rate = getPerKmRate(vehicle);
 
+  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+    `Hello NoidaCab, I want an exact fare quotation for a ${vehicle.name} cab in ${location.name}.`
+  )}`;
+
   return (
-    <section className="bg-white/95 border-b border-gray-300 px-4 py-12 sm:px-6 lg:px-8">
+    <section className="border-b border-gray-300 bg-white/95 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-
-        <div className="grid gap-6 lg:grid-cols-[1fr_420px] lg:items-center">
-
-          {/* LEFT CONTENT */}
+        <div className="grid gap-8 lg:grid-cols-[1fr_420px] lg:items-center">
+          
+          {/* ================= LEFT CONTENT ================= */}
           <div>
-
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-700">
-              <Calculator className="h-4 w-4" />
-              FARE INFORMATION
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-800">
+              <Calculator className="h-4 w-4 text-amber-600" />
+              Transparent Metering
             </div>
 
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Simple & Transparent Cab Fare
+            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+              Simple & Transparent Cab Fare in {location.name}
             </h2>
 
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-              Book a{" "}
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
+              Book a clean, sanitized{" "}
               <span className="font-semibold text-slate-900">
                 {vehicle.name}
               </span>{" "}
-              cab in{" "}
+              taxi in{" "}
               <span className="font-semibold text-slate-900">
                 {location.name}
               </span>{" "}
-              with transparent pricing and no hidden charges.
+              with straight per-kilometer billing and zero peak-hour surge fees.
             </p>
 
+            {/* Quick Metrics / Locality highlights */}
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-
-              {/* Location */}
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100">
-                  <MapPin className="h-5 w-5 text-slate-700" />
+              <div className="flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
+                  <MapPin className="h-5 w-5" />
                 </div>
-
                 <div>
-                  <p className="text-xs text-slate-500">
-                    Location
+                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">
+                    Pickup Zone
                   </p>
-
-                  <p className="font-semibold text-slate-900">
+                  <p className="font-bold text-slate-900">
                     {location.name}
                   </p>
                 </div>
-
               </div>
 
-              {/* Vehicle */}
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100">
-                  <Calculator className="h-5 w-5 text-slate-700" />
+              <div className="flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
+                  <Car className="h-5 w-5" />
                 </div>
-
                 <div>
-                  <p className="text-xs text-slate-500">
-                    Vehicle
+                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">
+                    Cab Model
                   </p>
-
-                  <p className="font-semibold text-slate-900">
-                    {vehicle.name}
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-          {/* FARE CARD */}
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
-
-            {/* Accent */}
-            <div className="h-1.5 bg-amber-400" />
-
-            <div className="p-6 sm:p-7">
-
-              {/* Rate */}
-              <div className="flex items-start justify-between gap-4">
-
-                <div>
-                  <p className="text-sm font-medium text-slate-500">
-                    Starting rate
-                  </p>
-
-                  <div className="mt-1 flex items-baseline gap-2">
-
-                    <span className="text-4xl font-extrabold tracking-tight text-slate-900">
-                      ₹{rate}
-                    </span>
-
-                    <span className="text-sm text-slate-500">
-                      / km
-                    </span>
-
-                  </div>
-                </div>
-
-                <div className="rounded-2xl bg-amber-50 px-4 py-3 text-center">
-
-                  <p className="text-xs text-slate-500">
-                    Vehicle
-                  </p>
-
                   <p className="font-bold text-slate-900">
                     {vehicle.name}
                   </p>
+                </div>
+              </div>
+            </div>
 
+            {/* Inclusions checklist */}
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium text-slate-600 sm:text-sm">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                GPS Metered Rides
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Fuel className="h-4 w-4 text-emerald-600" />
+                Fuel & Chauffeur Included
+              </span>
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                Zero Cancellation Fee
+              </span>
+            </div>
+          </div>
+
+          {/* ================= RIGHT FARE CARD ================= */}
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/70">
+            {/* Top accent line */}
+            <div className="h-1.5 bg-amber-400" />
+
+            {/* Vehicle image strip */}
+            {/* <div className="relative h-36 w-full border-b border-slate-100 bg-slate-50">
+              <Image
+                src={vehicle.image || "/cabs/amazemain.webp"}
+                alt={`${vehicle.name} taxi fare in ${location.name}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 420px"
+              />
+              <div className="absolute top-3 left-3 rounded-full bg-slate-950/80 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-xs">
+                {vehicle.category || "Economy AC"}
+              </div>
+              <div className="absolute bottom-2.5 right-3 flex items-center gap-1 rounded-md bg-emerald-500/90 px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-xs">
+                <Zap size={11} /> Ready for Dispatch
+              </div>
+            </div> */}
+
+            <div className="p-5 sm:p-6">
+              {/* Primary Rate Box */}
+              <div className="flex items-baseline justify-between">
+                <div>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                    Base Running Rate
+                  </p>
+                  <div className="mt-1 flex items-baseline gap-1.5">
+                    <span className="text-4xl font-black tracking-tight text-slate-900">
+                      ₹{rate}
+                    </span>
+                    <span className="text-sm font-semibold text-slate-500">
+                      / km
+                    </span>
+                  </div>
                 </div>
 
+                <div className="text-right">
+                  <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
+                    No Peak Surge
+                  </span>
+                  <p className="mt-1 text-[11px] text-slate-400">Fixed Tariff</p>
+                </div>
               </div>
 
-              {/* INFORMATION */}
-              <div className="mt-6 rounded-2xl bg-slate-50 p-4">
-
-                <div className="flex items-center justify-between text-sm">
-
-                  <span className="text-slate-500">
-                    Location
-                  </span>
-
-                  <span className="font-semibold text-slate-900">
-                    {location.name}
-                  </span>
-
-                </div>
-
-                <div className="my-3 h-px bg-slate-200" />
-
-                <div className="flex items-center justify-between text-sm">
-
-                  <span className="text-slate-500">
-                    {vehicle.name} rate
-                  </span>
-
-                  <span className="font-semibold text-slate-900">
-                    ₹{rate}/km
-                  </span>
-
-                </div>
-
-                <div className="my-3 h-px bg-slate-200" />
-
+              {/* Trip specs breakdown */}
+              <div className="mt-5 space-y-2.5 rounded-2xl bg-slate-50 p-4 text-xs sm:text-sm">
                 <div className="flex items-center justify-between">
-
-                  <span className="font-semibold text-slate-900">
-                    Booking
-                  </span>
-
-                  <span className="text-xl font-bold text-slate-900">
-                    Available
-                  </span>
-
+                  <span className="text-slate-500">Vehicle Type</span>
+                  <span className="font-semibold text-slate-900">{vehicle.name}</span>
                 </div>
-
+                <div className="h-px bg-slate-200/70" />
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500">Pickup Area</span>
+                  <span className="font-semibold text-slate-900">{location.name}</span>
+                </div>
+                <div className="h-px bg-slate-200/70" />
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500">Luggage Allowance</span>
+                  <span className="font-semibold text-slate-900">{vehicle.luggage || 2} Large Bags</span>
+                </div>
+                <div className="h-px bg-slate-200/70" />
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500">Seating Capacity</span>
+                  <span className="font-semibold text-slate-900">Up to {vehicle.seats || 4} Passengers</span>
+                </div>
               </div>
 
-              {/* NOTE */}
-              <div className="mt-5 flex gap-2 text-sm text-slate-500">
+              {/* Action Button */}
+              {/* <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-950 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-slate-800"
+              >
+                Get Instant Quote on WhatsApp
+                <ArrowRight className="h-4 w-4 text-amber-400" />
+              </a> */}
 
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
-
+              {/* Disclaimer */}
+              <div className="mt-4 flex items-start gap-2 text-[11px] leading-4 text-slate-500">
+                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
                 <p>
-                  Final fare depends on the trip distance,
-                  duration, tolls, parking and other applicable
-                  charges.
+                  State permits, expressway tolls, and parking tickets are billed directly as per actual FASTag receipts.
                 </p>
-
               </div>
-
             </div>
           </div>
 

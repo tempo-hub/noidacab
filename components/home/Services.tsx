@@ -32,9 +32,8 @@ export default function Services() {
             const Icon = service.icon;
 
             return (
-              <Link
+              <div
                 key={service.slug}
-                href="/route/noida-to-delhi-taxi"
                 className="group overflow-hidden rounded-3xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               >
                 {/* Image */}
@@ -67,7 +66,7 @@ export default function Services() {
                     <ArrowRight size={18} />
                   </div> */}
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

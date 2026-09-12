@@ -633,6 +633,49 @@ export function parseLocalRouteUrl(
 }
 
 /* =========================================================
+   local cabs eg outstation, airport, hourly, corporate
+========================================================= */
+
+export const SERVICE_SLUGS = [
+  "local-cab",
+  "airport-transfer",
+  "outstation-cab",
+  "corporate-cab",
+  "hourly-rental",
+  "chauffeur-service",
+] as const;
+
+export type ServiceSlug = (typeof SERVICE_SLUGS)[number];
+
+export interface ServiceRouteData {
+  type: "service";
+  serviceSlug: ServiceSlug;
+  targetTemplate: "taxi-service-in-noida";
+  location: {
+    name: string;
+    slug: string;
+  };
+}
+
+export function parseServiceRoute(url: string): ServiceRouteData | null {
+  const cleanSlug = url.replace(/^\/|\/$/g, "");
+
+  if (SERVICE_SLUGS.includes(cleanSlug as ServiceSlug)) {
+    return {
+      type: "service",
+      serviceSlug: cleanSlug as ServiceSlug,
+      targetTemplate: "taxi-service-in-noida",
+      location: {
+        name: "Noida",
+        slug: "noida",
+      },
+    };
+  }
+
+  return null;
+}
+
+/* =========================================================
    CUSTOM VEHICLE TEMPLATE ROUTES
 ========================================================= */
 
@@ -837,15 +880,16 @@ export type ParsedAirportTaxiRoute = {
 };
 
 export function parseAirportTaxiRouteUrl(url: string): ParsedAirportTaxiRoute | null {
-  const normalizedUrl =
-    "/" +
-    url
-      .split("/")
-      .filter(Boolean)
-      .join("/")
-      .toLowerCase();
+  const segments = url.split("/").filter(Boolean);
+  
+  // 1. Airport landing pages are single-level (e.g., /noida-to-delhi-airport, NOT /noida/jewar-airport/ertiga)
+  if (segments.length !== 1) {
+    return null;
+  }
 
-  // 1. Check if the URL actually exists in your urlroute.json
+  const normalizedUrl = "/" + segments.join("/").toLowerCase();
+
+  // 2. Check if the URL exists in urlroute.json
   const exists = urlRoutes.some(
     (entry) => entry.url.replace(/\/+$/, "").toLowerCase() === normalizedUrl
   );
@@ -854,17 +898,18 @@ export function parseAirportTaxiRouteUrl(url: string): ParsedAirportTaxiRoute | 
     return null;
   }
 
-  const cleanSlug = normalizedUrl.replace(/^\//, "");
+  const cleanSlug = segments[0].toLowerCase();
 
-  // 2. Identify if this URL is an airport/local taxi landing page
+  // 3. Match airport landing pages only (exclude vehicle routes like -dzire, -ertiga, etc.)
   const isAirportRoute =
-    cleanSlug.includes("airport") || cleanSlug === "taxi-service-in-noida";
+    (cleanSlug.includes("airport") && !cleanSlug.endsWith("-taxi") && !cleanSlug.match(/-(ertiga|dzire|wagonr|amaze|etios|innova-crysta)$/)) ||
+    cleanSlug === "taxi-service-in-noida";
 
   if (!isAirportRoute) {
     return null;
   }
 
-  // 3. Dynamically generate title and name from the slug itself
+  // 4. Dynamically generate title and name from the slug itself
   const formattedName = cleanSlug
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

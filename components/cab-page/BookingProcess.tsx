@@ -54,7 +54,7 @@ export function BookingProcess({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className=" max-w-7xl">
 
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-amber-700">
             <CalendarCheck className="h-4 w-4" />
@@ -65,7 +65,7 @@ export function BookingProcess({
             How to Book a {vehicle.name} Cab
           </h2>
 
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+          <p className="mt-3 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
             Booking your cab from{" "}
             <span className="font-semibold text-slate-950">
               {location.name}
@@ -76,7 +76,7 @@ export function BookingProcess({
         </div>
 
         {/* Steps */}
-        <div className="mx-auto mt-10 max-w-6xl">
+        <div className="mt-10 max-w-7xl">
 
           <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
 

@@ -56,7 +56,7 @@ export function TravelTips({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-7xl">
 
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-amber-700">
             <Navigation className="h-4 w-4" />
@@ -67,7 +67,7 @@ export function TravelTips({
             Tips for Booking a {vehicle.name} in {location.name}
           </h2>
 
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+          <p className="mt-3 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
             A few simple tips can make your {vehicle.name} journey
             smoother, more comfortable and convenient.
           </p>
@@ -75,7 +75,7 @@ export function TravelTips({
         </div>
 
         {/* Tips Grid */}
-        <div className="mx-auto mt-10 max-w-6xl">
+        <div className="mt-10 max-w-7xl">
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 

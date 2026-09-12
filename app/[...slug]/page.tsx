@@ -14,6 +14,7 @@ import {
   parseContactRouteUrl,
   parseRouteFareUrl,
   parseAirportTaxiRouteUrl,
+  parseServiceRoute,
 } from "@/lib/parse-route";
 
 import { cabTemplates } from "@/components/templates/cab";
@@ -52,6 +53,25 @@ export async function generateMetadata({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+
+  /* ====================================
+  local cabs outstation corportate
+  ========================================*/
+  const serviceRoute = parseServiceRoute(url);
+
+if (serviceRoute) {
+  // Format slug e.g. "airport-transfer" -> "Airport Transfer Taxi"
+  const serviceTitle = serviceRoute.serviceSlug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  return {
+    title: `${serviceTitle} in Noida | Best Rates & 24x7 Cab Service - NoidaCab`,
+    description: `Book reliable ${serviceTitle.toLowerCase()} in Noida with NoidaCab. Verified drivers, clean AC cabs, on-time pickups for local, outstation, & airport travel. Call 8377809809.`,
+  };
+}
 
   // ============================================
   // AIRPORT & NOIDA TAXI SERVICE METADATA
@@ -321,6 +341,8 @@ if (nearbyTempoRoute) {
     description:
       `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local sightseeing, airport transfers & corporate travel. City-expert drivers, clean AC cars. Call 8377809809.`,
   };
+
+  
    
   
 }
@@ -339,6 +361,20 @@ export default async function CabPage({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+
+  // ============================================
+  // SERVICE PAGES -> TAXI SERVICE NOIDA TEMPLATE
+  // (local-cab, airport-transfer, outstation-cab, etc.)
+  // ============================================
+  const serviceRoute = parseServiceRoute(url);
+  if (serviceRoute) {
+    return (
+      <TaxiServiceNoidaTemplate
+        serviceName={serviceRoute.serviceSlug}
+        url={url}
+      />
+    );
+  }
 
 
   // ============================================

@@ -68,7 +68,7 @@ export function TravelPlanning({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-7xl">
 
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-amber-700">
             <CalendarDays className="h-4 w-4" />
@@ -82,7 +82,7 @@ export function TravelPlanning({
             </span>
           </h2>
 
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+          <p className="mt-3 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
             Plan your {vehicle.name} journey around the weather,
             traffic and travel season for a more comfortable trip
             from {location.name}.
@@ -91,7 +91,7 @@ export function TravelPlanning({
         </div>
 
         {/* Quick Planning Info */}
-        <div className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-3">
+        <div className="mt-8 grid max-w-7xl gap-3 sm:grid-cols-3">
 
           {/* Best Season */}
           <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -153,7 +153,7 @@ export function TravelPlanning({
         </div>
 
         {/* Seasonal Cards */}
-        <div className="mx-auto mt-6 grid max-w-6xl gap-4 md:grid-cols-3">
+        <div className="mt-6 grid max-w-7xl gap-4 md:grid-cols-3">
 
           {seasons.map((season) => {
             const Icon = season.icon;
@@ -253,7 +253,7 @@ export function TravelPlanning({
         </div>
 
         {/* Planning Note */}
-        <div className="mx-auto mt-6 max-w-6xl rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 sm:px-6">
+        <div className="mt-6 max-w-7xl rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 sm:px-6">
 
           <div className="flex items-start gap-3 sm:items-center">
 

@@ -1252,5 +1252,11 @@
   { "url": "/noida/greater-noida/sedan-taxi" },
   { "url": "/noida/greater-noida-west/sedan-taxi" },
   { "url": "/noida/kondli/sedan-taxi" },
-  { "url": "/noida/noida-extension/sedan-taxi" }
+  { "url": "/noida/noida-extension/sedan-taxi" },
+  { "url": "/local-cab" },
+  { "url": "/airport-transfer" },
+  { "url": "/outstation-cab" },
+  { "url": "/corporate-cab" },
+  { "url": "/hourly-rental" },
+  { "url": "/chauffeur-service" }
 ]

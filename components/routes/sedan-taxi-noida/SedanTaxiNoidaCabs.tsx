@@ -152,13 +152,17 @@ export default function SedanTaxiNoidaCabs() {
                 </div>
 
                 {/* CTA */}
-                <Link
-                  href={`/taxi/${vehicle.slug}`}
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-amber-500 hover:text-slate-950"
-                >
-                  Book {vehicle.name}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                <a
+  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+    `Hello NoidaCab, I want to book a ${vehicle.name} taxi. Please confirm availability and fare.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-amber-500 hover:text-slate-950"
+>
+  Book {vehicle.name}
+  <ArrowRight className="h-4 w-4" />
+</a>
               </div>
             </div>
           ))}

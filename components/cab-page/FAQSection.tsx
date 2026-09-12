@@ -49,7 +49,7 @@ export function FAQSection({
 
   return (
     <section className="bg-white/95 border-b border-gray-300 px-4 py-14 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl">
 
         {/* Heading */}
         <div className="text-center">
