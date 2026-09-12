@@ -27,7 +27,7 @@ const vehicleSections = [
       "Book an Innova Crysta from your Noida locality for family trips, airport transfers and comfortable travel.",
   },
   {
-    name: "Maruti Ertiga",
+    name: "Ertiga",
     slug: "ertiga",
     basePath: "",
     type: "Taxi",
@@ -43,7 +43,23 @@ const vehicleSections = [
       "Book a Dzire from your Noida locality for affordable local and outstation taxi travel.",
   },
   {
-    name: "Honda Amaze",
+  name: "WagonR",
+  slug: "wagonr",
+  basePath: "",
+  type: "Taxi",
+  description:
+    "Book a WagonR from your Noida locality for affordable, budget-friendly local and outstation taxi travel.",
+},
+{
+  name: "Etios",
+  slug: "etios",
+  basePath: "",
+  type: "Taxi",
+  description:
+    "Book an Etios from your Noida locality for comfortable, spacious local and outstation taxi travel.",
+},
+  {
+    name: "Amaze",
     slug: "amaze",
     basePath: "",
     type: "Taxi",
