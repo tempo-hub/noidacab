@@ -501,10 +501,10 @@ export default function SUVPage() {
               href="/noida-to-jaipur-suv-taxi"
             />
 
-            <RouteCard
-              title="Noida to Delhi Airport SUV Taxi"
-              href="/noida-to-delhi-airport-suv-taxi"
-            />
+            {/* <RouteCard
+              title="Noida to Vrindavan SUV Taxi"
+              href="/noida-to-vrindavan-suv-taxi"
+            /> */}
 
             {/* <RouteCard
               title="Noida Outstation SUV Taxi"
