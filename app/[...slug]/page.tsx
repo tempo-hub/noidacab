@@ -362,8 +362,8 @@ const isTempo =
   parsed.vehicle.name?.toLowerCase().includes("urbania");
 
 const title = isTempo
-  ? `${parsed.vehicle.name} in ${parsed.locationName} on Rent - NoidaCab @ ${parsed.vehicle.price} | Book Now`
-  : `${parsed.vehicle.name} Cab in ${parsed.locationName} on Rent - NoidaCab @ ${parsed.vehicle.price} | Book Now`;
+  ? `${parsed.vehicle.name} in ${parsed.locationName}, Noida - Noida Cab @ ${parsed.vehicle.price} | Book Now`
+  : `${parsed.vehicle.name} Taxi in ${parsed.locationName}, Noida - Noida Cab @ ${parsed.vehicle.price} | Book Now`;
 
 const description = isTempo
   ? `Hire a ${parsed.vehicle.name} in ${parsed.locationName} for group tours, corporate events, outstation trips & weddings. Verified drivers, pushback seats & AC luxury. Call 8377809809.`

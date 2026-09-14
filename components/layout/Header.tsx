@@ -35,7 +35,7 @@ const navLinks = [
     ]
   },
   { label: "One Way", href: "/one-way-taxi-in-noida" },
-  { label: "Blog", href: "/Blog" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Header() {
