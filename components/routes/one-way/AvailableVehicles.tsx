@@ -32,7 +32,9 @@ export default function AvailableVehicles({ vehicles }: Props) {
                 </div>
 
                 <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-                    {vehicles.slice(0,6).map((vehicle) => (
+                    {vehicles.filter((vehicle) => 
+                        vehicle.name?.toLowerCase() !== "sedan")
+                    .slice(0,6).map((vehicle) => (
                         <div
                             key={vehicle.slug}
                             className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
