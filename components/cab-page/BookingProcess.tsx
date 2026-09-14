@@ -2,6 +2,7 @@ import {
   CalendarCheck,
   CheckCircle2,
   Car,
+  BusFront,
   ClipboardCheck,
 } from "lucide-react";
 
@@ -13,6 +14,8 @@ type Props = {
 
   vehicle: {
     name: string;
+    category?: string;
+    slug?: string;
   };
 };
 
@@ -20,32 +23,47 @@ export function BookingProcess({
   location,
   vehicle,
 }: Props) {
+  const isTempo =
+    vehicle.category?.toLowerCase() === "tempo-traveller" ||
+    vehicle.slug?.toLowerCase().includes("tempo") ||
+    vehicle.slug?.toLowerCase().includes("urbania") ||
+    vehicle.name?.toLowerCase().includes("tempo") ||
+    vehicle.name?.toLowerCase().includes("urbania");
+
+  const VehicleIcon = isTempo ? BusFront : Car;
+
   const steps = [
     {
       number: "01",
-      icon: Car,
-      title: "Choose Your Cab",
-      description: `Select the ${vehicle.name} that fits your travel needs.`,
+      icon: VehicleIcon,
+      title: isTempo ? "Select Seating Capacity" : "Choose Your Cab",
+      description: isTempo
+        ? `Select the ${vehicle.name} variant that suits your group size.`
+        : `Select the ${vehicle.name} that fits your travel needs.`,
     },
     {
       number: "02",
       icon: ClipboardCheck,
       title: "Enter Travel Details",
-      description: `Add your pickup location in ${location.name} and your destination.`,
+      description: isTempo
+        ? `Share your departure point in ${location.name} and destination itinerary.`
+        : `Add your pickup location in ${location.name} and your destination.`,
     },
     {
       number: "03",
       icon: CalendarCheck,
       title: "Confirm Booking",
-      description:
-        "Select your travel date and confirm your booking details.",
+      description: isTempo
+        ? "Lock your travel dates and receive instant quotation on WhatsApp."
+        : "Select your travel date and confirm your booking details.",
     },
     {
       number: "04",
       icon: CheckCircle2,
       title: "Start Your Journey",
-      description:
-        "Meet your driver at the pickup point and enjoy a comfortable journey.",
+      description: isTempo
+        ? "Board your luxury vehicle at your doorstep with our verified highway chauffeur."
+        : "Meet your driver at the pickup point and enjoy a comfortable journey.",
     },
   ];
 
@@ -54,7 +72,7 @@ export function BookingProcess({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className=" max-w-7xl">
+        <div className="max-w-7xl">
 
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-amber-700">
             <CalendarCheck className="h-4 w-4" />
@@ -62,11 +80,11 @@ export function BookingProcess({
           </div>
 
           <h2 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
-            How to Book a {vehicle.name} Cab
+            How to Book a {vehicle.name} {isTempo ? "Rental" : "Cab"}
           </h2>
 
           <p className="mt-3 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-            Booking your cab from{" "}
+            {isTempo ? "Hiring your group rental from " : "Booking your cab from "}
             <span className="font-semibold text-slate-950">
               {location.name}
             </span>{" "}
@@ -169,7 +187,9 @@ export function BookingProcess({
                 </div>
 
                 <p className="mt-1 text-xs text-slate-600 sm:text-sm">
-                  Simple and convenient local cab booking
+                  {isTempo
+                    ? "Seamless group travel booking with verified drivers"
+                    : "Simple and convenient local cab booking"}
                 </p>
 
               </div>

@@ -13,7 +13,7 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Sedan Taxi in Noida Starting @ ₹10/KM – Book Now",
+  title: "Sedan Taxi in Noida - NoidaCab @ ₹10/KM | Book Now",
   description:
     "Book Dzire, Etios & Amaze sedan taxi in Noida for local travel, airport transfers & outstation trips. Comfortable cars at the best rates. Call 8377809809.",
 };

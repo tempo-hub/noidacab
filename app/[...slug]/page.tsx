@@ -99,26 +99,37 @@ if (serviceRoute) {
   // ROUTE FARE METADATA (e.g., noida-to-delhi-taxi-fare)
   // ============================================
   const routeFare = parseRouteFareUrl(url);
-  if (routeFare) {
-    const { route } = routeFare;
-    const title = `${route.from.name} to ${route.to.name} Taxi Fare @ Best Rates | NoidaCab`;
-    const description = `Check ${route.from.name} to ${route.to.name} cab fare for one-way and round trips. Distance: ${route.distance} (${route.duration}). Sedans, SUVs & Tempo Travellers available. Call 8377809809.`;
 
-    return {
+if (routeFare) {
+  const { route } = routeFare;
+
+  const distance = parseFloat(
+    String(route.distance).replace(/,/g, "")
+  );
+
+  const calculatedPrice = Math.round(
+    distance * 1.5 * 10 + 500
+  );
+
+  const title = `${route.from.name} to ${route.to.name} Taxi Fare started @ ₹${calculatedPrice} - Noida Cab | Book Now`;
+
+  const description = `Check ${route.from.name} to ${route.to.name} cab fare starting from ₹${calculatedPrice}. Distance: ${route.distance} (${route.duration}). Sedan, SUV & Tempo Traveller options available. Call 8377809809.`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://noidacab.com${url}`,
+    },
+    openGraph: {
       title,
       description,
-      alternates: {
-        canonical: `https://noidacab.com${url}`,
-      },
-      openGraph: {
-        title,
-        description,
-        url: `https://noidacab.com${url}`,
-        siteName: "Noida Cab",
-        type: "website",
-      },
-    };
-  }
+      url: `https://noidacab.com${url}`,
+      siteName: "Noida Cab",
+      type: "website",
+    },
+  };
+}
 
   // ============================================
 // VEHICLE TEMPLATE ROUTE (Locality + Vehicle)
@@ -128,9 +139,9 @@ const directVehicles = parseVehicleTemplateUrl(url);
 if (directVehicles) {
   const { vehicle } = directVehicles;
 
-  const title = `${vehicle.name} in Noida Starting @ ${vehicle.price} | Noida Cab`;
+  const title = `${vehicle.name} in Noida - NoidaCab @ ${vehicle.price} | Book Now`;
   
-  const description = `Book ${vehicle.name} (${vehicle.category}) taxi in Noida. Features ${vehicle.seats} pushback seats, dual AC, space for ${vehicle.luggage} bags, and verified commercial drivers. Call 8377809809.`;
+  const description = `Book ${vehicle.name} taxi in Noida. Features ${vehicle.seats} pushback seats, dual AC, space for ${vehicle.luggage} bags, and verified commercial drivers. Call 8377809809.`;
 
   return {
     title,
@@ -186,7 +197,7 @@ if (directVehicles) {
   if (directVehicle) {
     const { vehicle } = directVehicle;
     return {
-      title: `${vehicle.name} Taxi in Noida Starting @ ${vehicle.price} – Book Now`,
+      title: `${vehicle.name} Taxi in Noida - NoidaCab @ ${vehicle.price} | Book Now`,
       description: `Book a ${vehicle.name} in Noida. Features ${vehicle.seats} seats, AC travel, spacious luggage capacity & transparent billing. Call 8377809809.`,
       alternates: {
         canonical: url,
@@ -227,14 +238,14 @@ if (contactRoute) {
 
   const distanceRoute = parseDistanceRouteUrl(url);
 
-  if (distanceRoute) {
-    return {
-      title: `${distanceRoute.from.name} to ${distanceRoute.to.name} Distance & Travel Time | NoidaCab`,
+if (distanceRoute) {
+  return {
+    title: `${distanceRoute.from.name} to ${distanceRoute.to.name} Distance, Travel Time & Route | NoidaCab`,
 
-      description:
-        `Check ${distanceRoute.from.name} to ${distanceRoute.to.name} distance, travel time, route information and cab options.`,
-    };
-  }
+    description:
+      `Check ${distanceRoute.from.name} to ${distanceRoute.to.name} distance, travel time and route details. Get estimated journey time, cab options and travel information with NoidaCab.`,
+  };
+}
 
   // ============================================
   // ONE WAY
@@ -244,10 +255,11 @@ if (contactRoute) {
 
   if (oneWayRoute) {
     return {
-      title: `${oneWayRoute.from} to ${oneWayRoute.to} One Way Cab | NoidaCab`,
+      title: `${oneWayRoute.from} to ${oneWayRoute.to} One Way Cab | NoidaCab | Book Now`,
 
-      description: oneWayRoute.description,
-    };
+      description:
+      `Book a reliable one-way cab from ${oneWayRoute.from} to ${oneWayRoute.to} with NoidaCab. Choose Sedan, SUV and Innova cabs with professional drivers, comfortable rides and affordable fares. Call 8448445504 to book now.`,
+  };
   }
 
   // ============================================
@@ -276,12 +288,19 @@ const nearbyTempoRoute =
   parseNoidaNearbyTempoRouteUrl(url);
 
 if (nearbyTempoRoute) {
+  const distance = parseFloat(
+    String(nearbyTempoRoute.distance).replace(/,/g, "")
+  );
+
+  const calculatedPrice = Math.round(
+    distance * 1.5 * 20 + 500
+  );
+
   return {
-    title: `${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} Tempo Traveller | NoidaCab`,
+    title: `${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} Tempo Traveller on Rent - NoidaCab @ ₹${calculatedPrice} | Book Now`,
 
     description:
-      nearbyTempoRoute.description ??
-      `Book a Tempo Traveller from ${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name}. Choose comfortable Tempo Traveller options for family trips, office groups, events and group travel.`,
+      `Book a Tempo Traveller from ${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} from ₹${calculatedPrice}. Choose comfortable Tempo Traveller options for family trips, office groups, events and group travel. Call 8448445504 to book now.`,
   };
 }
   // ============================================
@@ -329,18 +348,31 @@ if (nearbyTempoRoute) {
   // ============================================
 
   const parsed = parseLocalRouteUrl(url);
-  
-  if (!parsed) {
-    
-    return {};
-  }
+ 
+if (!parsed) {
+  return {};
+}
 
-  return {
-    title: `${parsed.vehicle.name} Cab in ${parsed.locationName}, ${parsed.city} @ ${parsed.vehicle.price} | Book Now`,
+// Check vehicle category or slug/name for Tempo Traveller or Urbania
+const isTempo =
+  parsed.vehicle.category?.toLowerCase() === "tempo-traveller" ||
+  parsed.vehicle.slug?.toLowerCase().includes("tempo") ||
+  parsed.vehicle.slug?.toLowerCase().includes("urbania") ||
+  parsed.vehicle.name?.toLowerCase().includes("tempo") ||
+  parsed.vehicle.name?.toLowerCase().includes("urbania");
 
-    description:
-      `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local sightseeing, airport transfers & corporate travel. City-expert drivers, clean AC cars. Call 8377809809.`,
-  };
+const title = isTempo
+  ? `${parsed.vehicle.name} in ${parsed.locationName} on Rent - NoidaCab @ ${parsed.vehicle.price} | Book Now`
+  : `${parsed.vehicle.name} Cab in ${parsed.locationName} on Rent - NoidaCab @ ${parsed.vehicle.price} | Book Now`;
+
+const description = isTempo
+  ? `Hire a ${parsed.vehicle.name} in ${parsed.locationName} for group tours, corporate events, outstation trips & weddings. Verified drivers, pushback seats & AC luxury. Call 8377809809.`
+  : `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local travel, airport transfers & outstation journeys. Verified drivers, clean AC cars & zero surge. Call 8377809809.`;
+
+return {
+  title,
+  description,
+};
 
   
    

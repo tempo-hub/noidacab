@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   ArrowRight,
   CarFront,
+  BusFront,
   CheckCircle2,
   Clock,
   MapPin,
@@ -24,8 +25,17 @@ type Props = {
 };
 
 export function PickupDropLocations({ location, vehicle }: Props) {
+  const isTempo =
+    vehicle.category?.toLowerCase() === "tempo-traveller" ||
+    vehicle.slug?.toLowerCase().includes("tempo") ||
+    vehicle.slug?.toLowerCase().includes("urbania") ||
+    vehicle.name?.toLowerCase().includes("tempo") ||
+    vehicle.name?.toLowerCase().includes("urbania");
+
+  const vehicleLabel = isTempo ? "rental" : "cab";
+
   const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
-    `Hello NoidaCab, I need to schedule a doorstep pickup in ${location.name} with a ${vehicle.name} cab.`
+    `Hello NoidaCab, I need to schedule a doorstep pickup in ${location.name} for a ${vehicle.name} ${vehicleLabel}.`
   )}`;
 
   return (
@@ -36,17 +46,27 @@ export function PickupDropLocations({ location, vehicle }: Props) {
         <div className="max-w-7xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-amber-700">
             <MapPin className="h-4 w-4 text-amber-600" />
-            DOORSTEP TRANSFERS
+            {isTempo ? "GROUP DEPARTURE & TOURS" : "DOORSTEP TRANSFERS"}
           </div>
 
           <h2 className="text-2xl font-black tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
-            Pickup & Drop Service in {location.name}
+            {isTempo ? "Doorstep Group Pickup" : "Pickup & Drop Service"} in {location.name}
           </h2>
 
           <p className="mx-auto mt-3 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-            Reliable, point-to-point transfer across Delhi NCR with clean{" "}
-            <span className="font-bold text-slate-900">{vehicle.name}</span> cabs. 
-            Zero cancellation charges, digital billing, and verified local chauffeurs.
+            {isTempo ? (
+              <>
+                Hassle-free group pickup across Noida &amp; Greater Noida with a clean, luxury{" "}
+                <span className="font-bold text-slate-900">{vehicle.name}</span>. 
+                Equipped with reclining pushback seats, dual AC blowers, all-India commercial tourist permits, and verified highway chauffeurs.
+              </>
+            ) : (
+              <>
+                Reliable, point-to-point transfer across Delhi NCR with clean{" "}
+                <span className="font-bold text-slate-900">{vehicle.name}</span> cabs. 
+                Zero cancellation charges, digital billing, and verified local chauffeurs.
+              </>
+            )}
           </p>
         </div>
 
@@ -74,17 +94,26 @@ export function PickupDropLocations({ location, vehicle }: Props) {
                       {location.name}
                     </h3>
                     <p className="mt-1 text-xs text-slate-500">
-                      Doorstep arrival across societies, offices & metro gates
+                      {isTempo
+                        ? "Doorstep boarding for group departures, societies & venues"
+                        : "Doorstep arrival across societies, offices & metro gates"}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-6 space-y-3 border-t border-slate-100 pt-5">
-                  {[
-                    "Chauffeur reaches exactly at your pin location",
-                    "Assistance with heavy luggage loading",
-                    "10–15 min quick dispatch window",
-                  ].map((perk, idx) => (
+                  {(isTempo
+                    ? [
+                        "Chauffeur reaches exactly at your assembly or society gate",
+                        "Spacious boot storage & assistance with heavy group baggage",
+                        "Guaranteed on-time scheduled departure window",
+                      ]
+                    : [
+                        "Chauffeur reaches exactly at your pin location",
+                        "Assistance with heavy luggage loading",
+                        "10–15 min quick dispatch window",
+                      ]
+                  ).map((perk, idx) => (
                     <div key={idx} className="flex items-center gap-2.5">
                       <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
                       <span className="text-xs font-medium text-slate-700 sm:text-sm">
@@ -96,12 +125,16 @@ export function PickupDropLocations({ location, vehicle }: Props) {
               </div>
 
               <div className="mt-6 rounded-2xl border border-amber-200/70 bg-amber-50/60 p-3 text-xs text-amber-900">
-                <span className="font-bold">Live Status:</span> Drivers active in {location.name}
+                <span className="font-bold">Live Status:</span>{" "}
+                {isTempo
+                  ? `Group departures available from ${location.name}`
+                  : `Drivers active in ${location.name}`}
               </div>
             </div>
 
             {/* Mid Vehicle Showcase & Connector */}
-            <div className="flex flex-col items-center justify-center gap-3 py-2 md:px-2">              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-200 bg-amber-400 text-slate-950 shadow-md">
+            <div className="flex flex-col items-center justify-center gap-3 py-2 md:px-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-200 bg-amber-400 text-slate-950 shadow-md">
                 <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </div>
             </div>
@@ -123,20 +156,29 @@ export function PickupDropLocations({ location, vehicle }: Props) {
                       Step 2: Destination
                     </p>
                     <h3 className="mt-0.5 text-xl font-black text-slate-950 sm:text-2xl">
-                      Anywhere in NCR
+                      {isTempo ? "Outstation & Event Venues" : "Anywhere in NCR"}
                     </h3>
                     <p className="mt-1 text-xs text-slate-500">
-                      Delhi, Noida, Greater Noida, Gurgaon, Airports & Railway
+                      {isTempo
+                        ? "Agra, Jaipur, Uttarakhand, Himachal, Delhi NCR Weddings & Resorts"
+                        : "Delhi, Noida, Greater Noida, Gurgaon, Airports & Railway"}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-6 space-y-3 border-t border-slate-100 pt-5">
-                  {[
-                    "Direct expressway routing without unnecessary detours",
-                    "Real-time FASTag toll receipts provided",
-                    "Chilled climate control throughout the trip",
-                  ].map((perk, idx) => (
+                  {(isTempo
+                    ? [
+                        "Direct expressway transit via Taj, Yamuna & Eastern Peripheral",
+                        "Commercial green/yellow plate with verified All-India permit",
+                        "Roof-mounted dual AC blowers for even 3rd-row cooling",
+                      ]
+                    : [
+                        "Direct expressway routing without unnecessary detours",
+                        "Real-time FASTag toll receipts provided",
+                        "Chilled climate control throughout the trip",
+                      ]
+                  ).map((perk, idx) => (
                     <div key={idx} className="flex items-center gap-2.5">
                       <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
                       <span className="text-xs font-medium text-slate-700 sm:text-sm">
@@ -148,7 +190,7 @@ export function PickupDropLocations({ location, vehicle }: Props) {
               </div>
 
               <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-3 text-xs text-slate-700">
-                <span className="font-bold">Tariff:</span> Starting at {vehicle.price}
+                <span className="font-bold">Price:</span> Starting at {vehicle.price}
               </div>
             </div>
 
@@ -161,7 +203,15 @@ export function PickupDropLocations({ location, vehicle }: Props) {
                 <Clock className="h-4 w-4" />
               </div>
               <span className="text-slate-700 font-medium">
-                Direct pickup from <strong className="text-slate-950">{location.name}</strong> inside 10–15 mins.
+                {isTempo ? (
+                  <>
+                    Direct group boarding from <strong className="text-slate-950">{location.name}</strong> with advance booking guarantee.
+                  </>
+                ) : (
+                  <>
+                    Direct pickup from <strong className="text-slate-950">{location.name}</strong> inside 10–15 mins.
+                  </>
+                )}
               </span>
             </div>
 
@@ -172,8 +222,12 @@ export function PickupDropLocations({ location, vehicle }: Props) {
                 rel="noopener noreferrer"
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-slate-800 sm:flex-initial"
               >
-                <Zap className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />
-                Schedule Cab
+                {isTempo ? (
+                  <BusFront className="h-3.5 w-3.5 text-amber-400" />
+                ) : (
+                  <Zap className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />
+                )}
+                {isTempo ? `Book ${vehicle.name}` : "Schedule Cab"}
               </a>
 
               <a

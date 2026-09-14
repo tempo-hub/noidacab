@@ -82,9 +82,9 @@ export default function AvailableVehicles({ vehicles }: Props) {
   href="https://wa.me/918377809809?text=Hello%20NoidaCab%2C%20I%20want%20to%20calculate%20and%20check%20the%20taxi%20fare.%20Please%20assist%20me."
   target="_blank"
   rel="noopener noreferrer"
-  className="flex items-center justify-between text-sm font-bold text-gray-900"
+  className="flex items-center justify-between text-sm font-bold text-gray-900 hover:text-amber-600"
 >
-  Calculate Fare
+  Book Now
   <ArrowRight className="h-4 w-4 text-amber-600 transition group-hover:translate-x-1" />
 </a>
                                 </div>

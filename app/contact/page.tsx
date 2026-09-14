@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Contact Us | Chiku Cabs",
+  title: "Contact NoidaCab | Cab Booking & Customer Support",
+
   description:
-    "Contact Chiku Cabs for taxi bookings, Noida to Delhi cabs, airport transfers, local taxi services and customer support.",
+    "Contact NoidaCab for cab bookings, Noida to Delhi taxis, airport transfers, local and outstation cabs. Get booking assistance and customer support.",
+
   alternates: {
     canonical: "/contact",
   },

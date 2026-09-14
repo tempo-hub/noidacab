@@ -84,12 +84,16 @@ export function OneWayHero({ route }: Props) {
                 </p>
               </div>
 
-              <button
-                type="button"
-                className="w-full rounded-xl bg-amber-500 px-5 py-4 font-semibold text-white shadow-lg transition hover:bg-amber-600"
-              >
-                Book One Way Cab
-              </button>
+             <a
+  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+    "Hello NoidaCab, I want to book a one-way cab. Please confirm route availability and fare details."
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex w-full items-center justify-center rounded-xl bg-amber-500 px-5 py-4 font-semibold text-white shadow-lg transition hover:bg-amber-600"
+>
+  Book One Way Cab
+</a>
             </div>
           </div>
         </div>

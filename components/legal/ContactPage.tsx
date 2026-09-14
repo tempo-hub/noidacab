@@ -47,7 +47,7 @@ export default function ContactPage() {
 
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-300">
               <MessageCircle className="h-4 w-4" />
-              Chiku Cabs Support
+              Noida Cab Support
             </div>
 
             <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -56,7 +56,7 @@ export default function ContactPage() {
 
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
               Need help with a taxi booking, route, fare or vehicle?
-              Get in touch with the Chiku Cabs support team. We are
+              Get in touch with the Noida Cab support team. We are
               available 24/7 to assist with your travel requirements.
             </p>
 
@@ -122,10 +122,10 @@ export default function ContactPage() {
                   title="Email"
                 >
                   <a
-                    href="mailto:info@chikucabs.com"
+                    href="mailto:info@noidacabs.com"
                     className="font-semibold text-slate-800 transition hover:text-amber-600"
                   >
-                    info@chikucabs.com
+                    info@noidacabs.com
                   </a>
                 </ContactItem>
 
@@ -236,7 +236,7 @@ export default function ContactPage() {
 
               {/* Email */}
               <a
-                href="mailto:info@chikucabs.com"
+                href="mailto:info@noidacabs.com"
                 className="mt-3 flex items-center justify-between rounded-xl border border-slate-200 p-5 transition hover:border-amber-300 hover:bg-amber-50"
               >
                 <div className="flex items-center gap-4">
@@ -251,7 +251,7 @@ export default function ContactPage() {
                     </p>
 
                     <p className="mt-1 text-sm text-slate-500">
-                      info@chikucabs.com
+                      info@noidacabs.com
                     </p>
                   </div>
 
@@ -292,7 +292,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-3xl text-center">
 
           <h2 className="text-xl font-bold text-slate-900">
-            Follow Chiku Cabs
+            Follow Noida Cabs
           </h2>
 
           <p className="mt-2 text-sm text-slate-600">

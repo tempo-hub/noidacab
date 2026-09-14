@@ -21,7 +21,7 @@ const fareCabs = [
   {
     id: "wagonr",
     name: "WagonR",
-    image: "/cabs/wagonrmain.webp",
+    image: "/cabs/wagonr.webp",
     href: "/taxi/wagonr",
     rating: 4.8,
     ratingsCount: 1250,
@@ -41,7 +41,7 @@ const fareCabs = [
   {
     id: "dzire",
     name: "Dzire",
-    image: "/cabs/dziremain.webp",
+    image: "/cabs/dzire.webp",
     href: "/taxi/dzire",
     rating: 4.8,
     ratingsCount: 1400,
@@ -61,7 +61,7 @@ const fareCabs = [
   {
     id: "etios",
     name: "Etios",
-    image: "/cabs/etiosmain.webp",
+    image: "/cabs/etios.webp",
     href: "/taxi/etios",
     rating: 4.8,
     ratingsCount: 1100,
@@ -81,7 +81,7 @@ const fareCabs = [
   {
     id: "amaze",
     name: "Amaze",
-    image: "/cabs/amazemain.webp",
+    image: "/cabs/amaze.webp",
     href: "/taxi/amaze",
     rating: 4.8,
     ratingsCount: 950,
@@ -101,7 +101,7 @@ const fareCabs = [
   {
     id: "ertiga",
     name: "Ertiga",
-    image: "/cabs/ertigamain.webp",
+    image: "/cabs/ertiga.webp",
     href: "/taxi/ertiga",
     rating: 4.9,
     ratingsCount: 1300,
@@ -121,7 +121,7 @@ const fareCabs = [
   {
     id: "innova-crysta",
     name: "Innova Crysta",
-    image: "/cabs/innovamain.webp",
+    image: "/cabs/innova.webp",
     href: "/taxi/innova-crysta",
     rating: 4.9,
     ratingsCount: 1500,

@@ -13,7 +13,7 @@ import NoidaDelhiBookingCTA from "@/components/routes/noida-to-delhi/NoidaDelhiB
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Noida to Delhi Taxi Fare | Cab Fare & Tariff",
+  title: "Noida to Delhi Taxi Fare | Cab Fare & Price",
   description:
     "Check Noida to Delhi taxi fare for Sedan, SUV and other cabs. Compare cab prices, fare details and choose an affordable taxi for your journey.",
 };

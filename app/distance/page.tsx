@@ -14,7 +14,7 @@ import { noidaRoutes } from "@/data/routes/noidaRoutes";
 export const metadata = {
   title: "Noida Distance & Travel Time Routes | NoidaCab",
   description:
-    "Explore distance, travel time, cab options and vehicle-wise routes from Noida to popular nearby cities.",
+  "Check distance, travel time and cab fares from Noida to popular cities. Compare Sedan, SUV, Innova and Tempo Traveller options and book your preferred cab.",
 };
 
 export default function DistancePage() {

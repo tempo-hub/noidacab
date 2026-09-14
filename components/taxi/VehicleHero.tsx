@@ -92,10 +92,26 @@ export default function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              {vehicle.name}
-              <span className="block text-amber-600">Service in Noida</span>
-            </h1>
+            {/* Dynamic vehicle service label based on category/slug */}
+{(() => {
+  const isCar =
+    vehicle.category === "Sedan" ||
+    vehicle.category === "SUV" ||
+    ["dzire", "etios", "amaze", "wagonr", "ertiga", "innova-crysta"].includes(vehicle.slug);
+
+  const vehicleSuffix = isCar
+    ? "Taxi"
+    : vehicle.category === "Tempo Traveller" || vehicle.slug.includes("tempo")
+    ? ""
+    : "Rental Service";
+
+  return (
+    <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+      {vehicle.name} {vehicleSuffix}
+      <span className="block text-amber-600">Service in Noida</span>
+    </h1>
+  );
+})()}
 
             {/* Description */}
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-700 sm:text-base">

@@ -42,8 +42,8 @@ const quickLinks = [
 
 const services = [
   { name: "Local Noida", href: "/noida" },
-  { name: "Noida-to-Delhi-fare", href: "/route/noida-to-delhi-taxi-fare" },
-  { name: "Noida-to-Delhi", href: "/route/noida-to-delhi-taxi" },
+  { name: "Noida-to-Delhi-fare", href: "/noida-to-delhi-taxi-fare" },
+  { name: "Noida-to-Delhi", href: "/noida-to-delhi-taxi" },
   { name: "Distance", href: "/distance" },
 ];
 

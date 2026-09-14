@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   BadgeCheck,
   Car,
+  BusFront,
   Clock3,
   IndianRupee,
   ShieldCheck,
@@ -23,42 +24,82 @@ type Props = {
     name: string;
     image?: string;
     price?: string;
+    category?: string;
+    slug?: string;
   };
 };
 
 export function WhyChooseUs({ location, vehicle }: Props) {
+  const isTempo =
+    vehicle.category?.toLowerCase() === "tempo-traveller" ||
+    vehicle.slug?.toLowerCase().includes("tempo") ||
+    vehicle.slug?.toLowerCase().includes("urbania") ||
+    vehicle.name?.toLowerCase().includes("tempo") ||
+    vehicle.name?.toLowerCase().includes("urbania");
+
+  const vehicleLabel = isTempo ? "rental" : "cab";
+
   const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
-    `Hello NoidaCab, I want to book a ${vehicle.name} cab in ${location.name}. Please confirm driver dispatch details.`
+    `Hello NoidaCab, I want to book a ${vehicle.name} ${vehicleLabel} in ${location.name}. Please confirm booking details.`
   )}`;
 
-  const secondaryBenefits = [
-    {
-      icon: IndianRupee,
-      title: "Transparent Kilometer Tariff",
-      description:
-        "No hidden platform fees, late-night multipliers, or unpredictable dynamic surge surges.",
-      badge: "Zero Hidden Fees",
-    },
-    {
-      icon: Car,
-      title: "Clean & Inspected Fleet",
-      description: `Spotless AC interior with scheduled mechanical checks for your ${vehicle.name} ride.`,
-      badge: "Sanitized Vehicles",
-    },
-    {
-      icon: Clock3,
-      title: "Swift Locality Pickup",
-      description: `Dedicated cabs stationed within ${location.name} ensuring swift 10–15 min doorstep arrival.`,
-      badge: "On-Time Guarantee",
-    },
-    {
-      icon: UserCheck,
-      title: "Vetted Local Chauffeurs",
-      description:
-        "Police-verified, polite commercial chauffeurs with in-depth knowledge of Delhi NCR bypasses.",
-      badge: "4.9/5 Rated Drivers",
-    },
-  ];
+  const secondaryBenefits = isTempo
+    ? [
+        {
+          icon: IndianRupee,
+          title: "Transparent Kilometer Tariff",
+          description:
+            "Fixed per-km billing with zero surge multipliers. All state tax and toll rates are confirmed upfront.",
+          badge: "No Hidden Costs",
+        },
+        {
+          icon: BusFront,
+          title: "Luxury Pushback Interiors",
+          description: `Spotless AC cabin, reclining seats, individual charging ports, and massive boot space in your ${vehicle.name}.`,
+          badge: "Premium Touring Fleet",
+        },
+        {
+          icon: Clock3,
+          title: "Guaranteed Punctual Boarding",
+          description: `Pre-scheduled doorstep arrival across ${location.name} ensuring your group departs right on time.`,
+          badge: "On-Time Dispatch",
+        },
+        {
+          icon: UserCheck,
+          title: "Highway-Expert Chauffeurs",
+          description:
+            "Police-vetted commercial drivers specialized in Yamuna Expressway, hill stations, and long interstate routes.",
+          badge: "Verified Tour Drivers",
+        },
+      ]
+    : [
+        {
+          icon: IndianRupee,
+          title: "Transparent Kilometer Price",
+          description:
+            "No hidden platform fees, late-night multipliers, or unpredictable dynamic surge surges.",
+          badge: "Zero Hidden Fees",
+        },
+        {
+          icon: Car,
+          title: "Clean & Inspected Fleet",
+          description: `Spotless AC interior with scheduled mechanical checks for your ${vehicle.name} ride.`,
+          badge: "Sanitized Vehicles",
+        },
+        {
+          icon: Clock3,
+          title: "Swift Locality Pickup",
+          description: `Dedicated cabs stationed within ${location.name} ensuring swift 10–15 min doorstep arrival.`,
+          badge: "On-Time Guarantee",
+        },
+        {
+          icon: UserCheck,
+          title: "Vetted Local Chauffeurs",
+          description:
+            "Police-verified, polite commercial chauffeurs with in-depth knowledge of Delhi NCR bypasses.",
+          badge: "4.9/5 Rated Drivers",
+        },
+      ];
 
   return (
     <section className="border-b border-gray-300 bg-white/95 py-14 sm:py-18 lg:py-20">
@@ -68,7 +109,7 @@ export function WhyChooseUs({ location, vehicle }: Props) {
         <div className="max-w-7xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-amber-700">
             <ShieldCheck className="h-4 w-4 text-amber-600" />
-            CUSTOMER COMMITMENT
+            {isTempo ? "GROUP TRAVEL ASSURANCE" : "CUSTOMER COMMITMENT"}
           </div>
 
           <h2 className="text-2xl font-black tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
@@ -76,9 +117,19 @@ export function WhyChooseUs({ location, vehicle }: Props) {
           </h2>
 
           <p className="mt-3 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-            Premium door-to-door cab booking across{" "}
-            <span className="font-semibold text-slate-950">{location.name}</span>. 
-            Enjoy reliable chauffeurs, immaculate cabs, and transparent billing.
+            {isTempo ? (
+              <>
+                Spacious and reliable group rentals across{" "}
+                <span className="font-semibold text-slate-950">{location.name}</span>. 
+                Enjoy certified highway chauffeurs, pushback comfort, and transparent tariffs for outstation tours and events.
+              </>
+            ) : (
+              <>
+                Premium door-to-door cab booking across{" "}
+                <span className="font-semibold text-slate-950">{location.name}</span>. 
+                Enjoy reliable chauffeurs, immaculate cabs, and transparent billing.
+              </>
+            )}
           </p>
         </div>
 
@@ -89,7 +140,6 @@ export function WhyChooseUs({ location, vehicle }: Props) {
             {/* Featured Hero Bento Card */}
             <div className="group relative overflow-hidden rounded-3xl bg-amber-400 p-6 shadow-md transition-all duration-300 hover:shadow-xl sm:p-8 lg:col-span-2 lg:min-h-[320px]">
               
-              {/* Soft decorative background glows */}
               <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-amber-300/60 blur-2xl" />
               <div className="pointer-events-none absolute -bottom-20 right-28 h-56 w-56 rounded-full bg-amber-500/40 blur-2xl" />
 
@@ -103,22 +153,33 @@ export function WhyChooseUs({ location, vehicle }: Props) {
                     </div>
 
                     <h3 className="mt-5 text-2xl font-black tracking-tight text-slate-950 sm:text-3xl">
-                      Safe & Stress-Free Travel
+                      {isTempo ? "Safe & Spacious Group Travel" : "Safe & Stress-Free Travel"}
                     </h3>
 
                     <p className="mt-2 text-sm leading-6 text-slate-900/90 font-medium">
-                      Travel safely from {location.name} with commercial green-plate vehicles, verified background checks, and active GPS-monitored routes.
+                      {isTempo
+                        ? `Travel safely from ${location.name} with commercial yellow-plate vehicles, verified highway chauffeurs, and certified All-India tourist permits.`
+                        : `Travel safely from ${location.name} with commercial green-plate vehicles, verified background checks, and active GPS-monitored routes.`}
                     </p>
                   </div>
 
                   {/* Bullet points */}
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {[
-                      "Verified Chauffeurs",
-                      "Clean AC Cabin",
-                      "Zero Surge Charges",
-                      "GPS Monitored",
-                    ].map((point) => (
+                    {(isTempo
+                      ? [
+                          "Commercial Yellow Plate",
+                          "Dual-Blower AC Cabin",
+                          "Pushback Seats",
+                          "Zero Surge Tariffs",
+                          "All-India Permit",
+                        ]
+                      : [
+                          "Verified Chauffeurs",
+                          "Clean AC Cabin",
+                          "Zero Surge Charges",
+                          "GPS Monitored",
+                        ]
+                    ).map((point) => (
                       <span
                         key={point}
                         className="inline-flex items-center gap-1 rounded-full bg-slate-950/10 px-3 py-1 text-xs font-bold text-slate-950 backdrop-blur-xs"
@@ -130,14 +191,16 @@ export function WhyChooseUs({ location, vehicle }: Props) {
                   </div>
                 </div>
 
-                {/* Right Real Car Image Thumbnail */}
+                {/* Right Vehicle Image Thumbnail */}
                 <div className="relative h-44 w-full overflow-hidden rounded-2xl border border-amber-300/60 bg-white/80 p-2 shadow-inner sm:col-span-5 sm:h-56">
                   <div className="relative h-full w-full overflow-hidden rounded-xl bg-slate-100">
                     <Image
                       src={vehicle.image || "/cabs/amazemain.webp"}
-                      alt={`${vehicle.name} cab in ${location.name}`}
+                      alt={`${vehicle.name} ${isTempo ? "rental" : "cab"} in ${location.name}`}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={`transition-transform duration-500 group-hover:scale-105 ${
+                        isTempo ? "object-contain p-2" : "object-cover"
+                      }`}
                       sizes="(max-width: 768px) 100vw, 260px"
                     />
                     <span className="absolute top-2 left-2 rounded-md bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur-xs">
@@ -162,11 +225,13 @@ export function WhyChooseUs({ location, vehicle }: Props) {
                 </div>
 
                 <h3 className="mt-5 text-xl font-black text-white">
-                  Instant Cab Booking
+                  {isTempo ? "Instant Group Booking" : "Instant Cab Booking"}
                 </h3>
 
                 <p className="mt-2 text-xs leading-5 text-slate-400">
-                  Skip app booking cancellations and waiting queues. Connect directly with our dispatcher for immediate assignment in {location.name}.
+                  {isTempo
+                    ? `Reserve your ${vehicle.name} directly with our fleet dispatch team. Get guaranteed vehicle availability for family vacations, weddings, and tours.`
+                    : `Skip app booking cancellations and waiting queues. Connect directly with our dispatcher for immediate assignment in ${location.name}.`}
                 </p>
 
                 <div className="mt-5 space-y-2 rounded-2xl bg-slate-800/80 p-3.5 text-xs text-slate-300">
@@ -242,7 +307,9 @@ export function WhyChooseUs({ location, vehicle }: Props) {
                   Ready to travel in {vehicle.name}?
                 </p>
                 <p className="text-xs text-slate-600">
-                  Reliable door-to-door cab pickups available right now across {location.name}.
+                  {isTempo
+                    ? `Reliable group departures and outstation tours available across ${location.name}.`
+                    : `Reliable door-to-door cab pickups available right now across ${location.name}.`}
                 </p>
               </div>
             </div>
@@ -254,6 +321,11 @@ export function WhyChooseUs({ location, vehicle }: Props) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition hover:bg-slate-800"
               >
+                {isTempo ? (
+                  <BusFront className="h-3.5 w-3.5 text-amber-400" />
+                ) : (
+                  <Car className="h-3.5 w-3.5 text-amber-400" />
+                )}
                 Book {vehicle.name}
                 <ArrowRight className="h-3.5 w-3.5 text-amber-400" />
               </a>

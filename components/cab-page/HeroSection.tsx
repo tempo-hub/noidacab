@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   ArrowRight,
   Car,
+  BusFront,
   CheckCircle2,
   Clock,
   PhoneCall,
@@ -32,8 +33,18 @@ export function HeroSection({
   fare,
   phoneNumber = "918377809809",
 }: Props) {
+  // Check if current vehicle is a Tempo Traveller or Force Urbania
+  const isTempo =
+    vehicle.category?.toLowerCase() === "tempo-traveller" ||
+    vehicle.slug?.toLowerCase().includes("tempo") ||
+    vehicle.slug?.toLowerCase().includes("urbania") ||
+    vehicle.name?.toLowerCase().includes("tempo") ||
+    vehicle.name?.toLowerCase().includes("urbania");
+
   const whatsappBookingUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-    `Hello NoidaCab, I want to book a ${vehicle.name} cab in ${location.name}. Please confirm driver arrival and pricing.`
+    `Hello NoidaCab, I want to book a ${vehicle.name} ${
+      isTempo ? "rental" : "cab"
+    } in ${location.name}. Please confirm driver arrival and pricing.`
   )}`;
 
   return (
@@ -54,7 +65,9 @@ export function HeroSection({
                 4.9 Rating
               </div>
               <span className="text-slate-400">•</span>
-              <span className="text-slate-700">Reliable Cab Service</span>
+              <span className="text-slate-700">
+                {isTempo ? "Reliable Group Travel" : "Reliable Cab Service"}
+              </span>
               <span className="text-slate-400">•</span>
               <span className="text-slate-700">No Hidden Charges</span>
             </div>
@@ -71,24 +84,27 @@ export function HeroSection({
             {/* Vehicle & Type Subtitle */}
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <h2 className="text-xl font-bold text-slate-950 sm:text-2xl">
-                {vehicle.name} Taxi in {location.name}
+                {vehicle.name} {isTempo ? "Rental" : "Taxi"} in {location.name}
               </h2>
               <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
               <span className="text-sm font-medium text-slate-700 sm:text-base">
-                Local Taxi Booking
+                {isTempo ? "Local Traveller Booking" : "Local Taxi Booking"}
               </span>
             </div>
 
             {/* Description */}
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-700 sm:text-lg sm:leading-8">
               {tagline ||
-                `Book a comfortable ${vehicle.name} cab in ${location.name}. Enjoy convenient pickup, a professional driver and a comfortable journey with transparent pricing.`}
+                (isTempo
+                  ? `Hire a spacious ${vehicle.name} in ${location.name}. Ideal for group outings, corporate events, airport transfers and outstation journeys with verified chauffeurs.`
+                  : `Book a comfortable ${vehicle.name} cab in ${location.name}. Enjoy convenient pickup, a professional driver and a comfortable journey with transparent pricing.`)}
             </p>
 
             {/* Highlights */}
             <div className="mt-6 flex flex-wrap gap-4 text-xs font-medium text-slate-800 sm:text-sm">
               <span className="flex items-center gap-1.5 rounded-lg border border-white/60 bg-white/70 px-3 py-1.5 backdrop-blur-xs">
-                <Clock className="h-4 w-4 text-amber-600" /> 10–15 Min Pickup
+                <Clock className="h-4 w-4 text-amber-600" />{" "}
+                {isTempo ? "On-Time Doorstep Dispatch" : "10–15 Min Pickup"}
               </span>
               <span className="flex items-center gap-1.5 rounded-lg border border-white/60 bg-white/70 px-3 py-1.5 backdrop-blur-xs">
                 <ShieldCheck className="h-4 w-4 text-emerald-600" /> Verified Drivers
@@ -106,7 +122,11 @@ export function HeroSection({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 rounded-xl bg-slate-950 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
               >
-                <Car className="h-4 w-4 text-amber-400" />
+                {isTempo ? (
+                  <BusFront className="h-4 w-4 text-amber-400" />
+                ) : (
+                  <Car className="h-4 w-4 text-amber-400" />
+                )}
                 Book {vehicle.name}
                 <ArrowRight className="h-4 w-4" />
               </a>
@@ -127,16 +147,16 @@ export function HeroSection({
 
               {/* Real Vehicle Image Preview */}
               <div className="relative h-58 w-full overflow-hidden rounded-xl border border-slate-200 bg-white sm:h-60">
-                <Image
-                  src={vehicle.image || "/cabs/amazemain.webp"}
-                  alt={`${vehicle.name} taxi in ${location.name}`}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 420px"
-                />
+              <Image
+  src={vehicle.image}
+  alt={`${vehicle.name} ${isTempo ? "rental" : "taxi"} in ${location.name}`}
+  fill
+  priority
+  className={isTempo ? "object-contain p-2" : "object-cover"}
+  sizes="(max-width: 1024px) 100vw, 420px"
+/>
                 <span className="absolute top-3 left-3 rounded-md bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-xs">
-                  {vehicle.category || "AC Taxi"}
+                  {vehicle.category || (isTempo ? "Luxury Tempo" : "AC Taxi")}
                 </span>
               </div>
 
@@ -161,11 +181,15 @@ export function HeroSection({
               <div className="mt-3 grid grid-cols-2 gap-3 text-xs text-slate-700">
                 <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-2.5">
                   <Users className="h-4 w-4 text-amber-600 shrink-0" />
-                  <span>Up to <strong>{vehicle.seats || 4} Seats</strong></span>
+                  <span>
+                    Up to <strong>{vehicle.seats || (isTempo ? 12 : 4)} Seats</strong>
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-2.5">
                   <Luggage className="h-4 w-4 text-amber-600 shrink-0" />
-                  <span><strong>{vehicle.luggage || 2} Luggage</strong> Bags</span>
+                  <span>
+                    <strong>{vehicle.luggage || (isTempo ? 8 : 2)} Luggage</strong> Bags
+                  </span>
                 </div>
               </div>
 

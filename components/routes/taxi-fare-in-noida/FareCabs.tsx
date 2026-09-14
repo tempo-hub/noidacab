@@ -215,13 +215,13 @@ function CabCard({
 
           {/* Vehicle Image */}
           <div className="flex h-[100px] items-center justify-center rounded-lg bg-amber-50">
-            <div className="relative h-[75px] w-[115px]">
+            <div className="relative h-[140px] w-[210px]">
               <Image
                 src={cab.image}
                 alt={`${cab.name} taxi`}
                 fill
-                sizes="115px"
-                className="object-cover"
+                sizes="140px"
+                className="object-cotain"
               />
             </div>
           </div>

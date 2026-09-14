@@ -30,15 +30,21 @@ export default function SedanTaxiNoidaHero() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-12">
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Left Content */}
-          <div>
+          <div className="">
             {/* Badge */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-900 bg-amber-800 px-4 py-2 text-sm font-medium text-amber-300">
+            {/* <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/95 bg-white/95 px-4 py-2 text-sm font-semibold text-slate-700">
               <CarFront className="h-4 w-4" />
               Sedan Taxi Service in Noida
-            </div>
+            </div> */}
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-slate-700">
+  <span className="text-amber-500">★</span>
+  <span>4.9/5</span>
+  <span className="text-slate-400">|</span>
+  <span>10,000+ Happy Customers</span>
+</div>
 
             {/* Heading */}
             <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">

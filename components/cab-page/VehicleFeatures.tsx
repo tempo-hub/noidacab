@@ -61,6 +61,14 @@ export function VehicleFeatures({
     },
   ];
 
+   const isTempo =
+    vehicle.category?.toLowerCase() === "tempo-traveller" ||
+    vehicle.slug?.toLowerCase().includes("tempo") ||
+    vehicle.slug?.toLowerCase().includes("urbania") ||
+    vehicle.name?.toLowerCase().includes("tempo") ||
+    vehicle.name?.toLowerCase().includes("urbania");
+
+
   const visibleFeatures = features.filter((feature) => feature.show);
 
   return (
@@ -90,10 +98,10 @@ export function VehicleFeatures({
             {/* Real Vehicle Image Frame */}
             <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs sm:h-72 lg:col-span-5">
               <Image
-                src={vehicle.image || "/cabs/amazemain.webp"}
+                src={vehicle.image}
                 alt={`${vehicle.name} cab features and interior comfort`}
                 fill
-                className="object-cover transition-transform duration-300 hover:scale-105"
+                className={isTempo ? "object-contain transition-transform duration-300 hover:scale-105" : "object-cover transition-transform duration-300 hover:scale-105"}
                 sizes="(max-width: 1024px) 100vw, 450px"
               />
               <div className="absolute top-3 left-3 rounded-full bg-slate-950/80 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-xs">

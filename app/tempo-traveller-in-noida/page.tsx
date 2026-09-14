@@ -21,7 +21,7 @@ import { noidaLocalities } from "@/data/routes/noida";
 import { Metadata } from "next";
 
 export const metadata : Metadata = {
-title: "Tempo Traveller in Noida Starting @ 20/km - Book Now",
+title: "Tempo Traveller in Noida - NoidaCab @ 20/km | Book Now",
   description: "Hire premium Tempo Travellers in Noida for luxury group tours, local sightseeing, outstation travel & weddings. 9 to 26 seater luxury caby. Call 8377809809.",
 }
 
@@ -275,15 +275,27 @@ export default function TempoTravellerPage() {
           <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_.8fr]">
 
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white/60 px-4 py-2 text-sm font-semibold text-slate-900 backdrop-blur">
-                <Sparkles className="h-4 w-4" />
-                Premium Group Travel
-              </div>
+              <div className="mb-5 inline-flex flex-wrap items-center gap-2.5 rounded-full border border-slate-900/10 bg-white/80 px-4 py-1.5 text-xs font-bold text-slate-900 shadow-xs backdrop-blur-md">
+  {/* Rating */}
+  <div className="flex items-center gap-1 text-slate-950">
+    <Star className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
+    <span>4.9/5</span>
+    <span className="font-medium text-slate-500">(1,250+ Reviews)</span>
+  </div>
+
+  <span className="text-slate-300">•</span>
+
+  {/* Active / Happy Commuters */}
+  <div className="flex items-center gap-1.5 text-slate-700">
+    <Users className="h-3.5 w-3.5 text-amber-600" />
+    <span>10k+ Happy Commuters</span>
+  </div>
+</div>
 
               <h1 className="max-w-4xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
                 Tempo Traveller & Urbania Rental
                 <span className="block">
-                  for Every Journey
+                  in Noida
                 </span>
               </h1>
 
@@ -303,11 +315,15 @@ export default function TempoTravellerPage() {
                 </a>
 
                 <a
-                  href="tel:+918377809809"
-                  className="inline-flex items-center justify-center rounded-xl border border-slate-900/20 bg-white/70 px-6 py-3.5 text-sm font-bold text-slate-900 transition hover:bg-white"
-                >
-                  Call for Booking
-                </a>
+  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+    "Hello NoidaCab, I want to inquire and book a cab. Please share details and availability."
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center rounded-xl border border-slate-900/20 bg-white/70 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-xs transition hover:bg-white"
+>
+  Book via WhatsApp
+</a>
               </div>
             </div>
 
@@ -649,93 +665,69 @@ export default function TempoTravellerPage() {
           6. ROUTE DIRECTORY
       ====================================================== */}
       <section
-        id="routes"
-        className="border-b border-gray-300 bg-white/95"
-      >
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-18 lg:px-8">
+  id="routes"
+  className="border-b border-gray-300 bg-white/95"
+>
+  <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-18 lg:px-8">
+    {/* Header */}
+    <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div>
+        <p className="text-sm font-bold uppercase tracking-widest text-amber-600">
+          Route Directory
+        </p>
+        <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+          Explore Tempo Traveller routes
+        </h2>
+        <p className="mt-3 max-w-2xl leading-7 text-slate-600">
+          Browse available routes and select Tempo Traveller, Luxury
+          Tempo Traveller or Urbania rental services.
+        </p>
+      </div>
 
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-widest text-amber-600">
-                Route Directory
-              </p>
+      <div className="rounded-xl border border-gray-300 bg-slate-50 px-4 py-3 text-sm font-semibold">
+        {totalRoutes}+ Routes
+      </div>
+    </div>
 
-              <h2 className="mt-3 text-3xl font-black sm:text-4xl">
-                Explore Tempo Traveller routes
-              </h2>
+    {/* All routes displayed in a single unified grid */}
+    <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {routeGroups.flatMap((group) =>
+        group.services.map((service) => (
+          <Link
+            key={service.url}
+            href={service.url}
+            className="group rounded-xl border border-gray-300 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-lg"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100">
+                <BusFront className="h-5 w-5 text-amber-600" />
+              </div>
 
-              <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-                Browse available routes and select Tempo Traveller, Luxury
-                Tempo Traveller or Urbania rental services.
-              </p>
+              <ArrowRight className="h-5 w-5 text-slate-300 transition group-hover:translate-x-1 group-hover:text-amber-500" />
             </div>
 
-            <div className="rounded-xl border border-gray-300 bg-slate-50 px-4 py-3 text-sm font-semibold">
-              {totalRoutes}+ Routes
+            <div className="mt-3 flex items-center gap-1.5 text-xs text-slate-500">
+              <MapPin className="h-3.5 w-3.5 text-amber-600" />
+              <span>{group.from} to {group.to}</span>
             </div>
-          </div>
 
-          <div className="mt-10 space-y-6">
-            {routeGroups.map((group) => (
-              <section
-                key={group.route}
-                className="overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-sm"
-              >
-                <div className="border-b border-gray-300 bg-slate-50 p-5 sm:p-6">
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-amber-600">
-                        Travel Route
-                      </p>
+            <h4 className="mt-3 font-bold text-slate-900">
+              {service.title}
+            </h4>
 
-                      <h3 className="mt-1 text-xl font-black sm:text-2xl">
-                        {group.route}
-                      </h3>
-                    </div>
+            <p className="mt-2 text-sm leading-6 text-slate-500">
+              {group.route} {service.title.toLowerCase()} booking options.
+            </p>
 
-                    <div className="flex items-center gap-2 text-sm text-slate-500">
-                      <MapPin className="h-4 w-4" />
-                      {group.from} to {group.to}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid gap-4 p-4 sm:p-6 md:grid-cols-3">
-                  {group.services.map((service) => (
-                    <Link
-                      key={service.url}
-                      href={service.url}
-                      className="group rounded-xl border border-gray-300 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-lg"
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100">
-                          <BusFront className="h-5 w-5 text-amber-600" />
-                        </div>
-
-                        <ArrowRight className="h-5 w-5 text-slate-300 transition group-hover:translate-x-1 group-hover:text-amber-500" />
-                      </div>
-
-                      <h4 className="mt-5 font-bold text-slate-900">
-                        {service.title}
-                      </h4>
-
-                      <p className="mt-2 text-sm leading-6 text-slate-500">
-                        {group.route} {service.title.toLowerCase()} booking
-                        options.
-                      </p>
-
-                      <span className="mt-4 inline-block text-sm font-bold text-amber-600">
-                        View Details
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-
-        </div>
-      </section>
+            <span className="mt-4 inline-block text-sm font-bold text-amber-600">
+              View Details
+            </span>
+          </Link>
+        ))
+      )}
+    </div>
+  </div>
+</section>
 
       {/* =====================================================
     NOIDA LOCATIONS

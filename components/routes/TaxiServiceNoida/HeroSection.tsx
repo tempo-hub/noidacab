@@ -47,7 +47,7 @@ Please share the fare and booking details.`;
           {/* Left Content */}
           <div>
             {/* Trust Badge */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 shadow-sm">
+            {/* <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 shadow-sm">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-50">
                 <ShieldCheck className="h-4 w-4 text-amber-600" />
               </span>
@@ -55,7 +55,17 @@ Please share the fare and booking details.`;
               <span className="text-sm font-medium text-slate-700">
                 Trusted Taxi Service in Noida
               </span>
-            </div>
+              
+            </div> */}
+
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-slate-700">
+  <span className="text-amber-500">★</span>
+  <span>4.9/5</span>
+  <span className="text-slate-400">|</span>
+  <span>10,000+ Happy Customers</span>
+</div>
+
+            
 
             {/* Heading */}
             <h1 className="max-w-3xl text-4xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">

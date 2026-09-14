@@ -179,7 +179,7 @@ const coverageCities = [
 ========================================================= */
 
 export const metadata = {
-  title: "One Way Cab from Noida Starting @ ₹10/KM – Book Now",
+  title: "One Way Cab in Noida - NoidaCab @ ₹10/KM | Book Now",
   description:
     "Book affordable one way cabs from Noida to Delhi, Gurgaon, Agra, Jaipur & Lucknow. Comfortable cars, professional drivers. Call 8377809809.",
 };
@@ -231,23 +231,26 @@ export default function OneWayPage() {
 
             {/* Buttons */}
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+  <a
+    href={`https://wa.me/918377809809?text=${encodeURIComponent(
+      "Hello NoidaCab, I want to book a one-way cab. Please confirm route availability and fare details."
+    )}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center gap-2 rounded-xl bg-gray-950 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-gray-800"
+  >
+    Book on WhatsApp
+    <ArrowRight className="h-4 w-4 text-amber-400" />
+  </a>
 
-              <Link
-                href="#popular-routes"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gray-950 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-gray-800"
-              >
-                Explore Routes
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <Link
-                href="#how-it-works"
-                className="inline-flex items-center justify-center rounded-xl border border-gray-900/20 bg-white/70 px-6 py-3.5 text-sm font-bold text-gray-900 transition hover:bg-white"
-              >
-                How It Works
-              </Link>
-
-            </div>
+  <a
+    href="tel:918377809809"
+    className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-900/20 bg-white/70 px-6 py-3.5 text-sm font-bold text-gray-900 shadow-xs backdrop-blur-sm transition hover:bg-white"
+  >
+    <PhoneCall className="h-4 w-4 text-amber-600" />
+    Call 8377809809
+  </a>
+</div>
           </div>
         </div>
       </section>

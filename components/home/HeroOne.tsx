@@ -100,7 +100,7 @@ export default function Hero() {
             <div className="absolute bottom-16 left-1/2 w-full max-w-xl -translate-x-1/2 rounded-3xl border border-white/40 bg-white/90 p-6 shadow-2xl backdrop-blur">
               <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
                 {[
-                  ["15K+", "Happy Riders"],
+                  ["10K+", "Happy Riders"],
                   ["5+", "Years"],
                   ["24×7", "Support"],
                   ["100%", "Verified"],

@@ -26,7 +26,7 @@ const navLinks = [
     label: "Services", dropdown: [
       { label: "Taxi Servces In Noida", href: "/taxi-service-in-noida" },
       { label: "Sedan Taxi In Noida", href: "/sedan-taxi-in-noida" },
-      { label: "Suv Taxi In Noida", href: "/route/suv-taxi-in-noida" },
+      { label: "Suv Taxi In Noida", href: "/suv-taxi-in-noida" },
       { label: "luxury-tempo-traveller In Noida", href: "/luxury-tempo-traveller-in-noida" },
       { label: "12-seater-tempo-traveller In Noida", href: "/12-seater-tempo-traveller-in-noida" },
       { label: "16-seater-tempo-traveller In Noida", href: "/16-seater-tempo-traveller-in-noida" },
@@ -35,6 +35,7 @@ const navLinks = [
     ]
   },
   { label: "One Way", href: "/one-way-taxi-in-noida" },
+  { label: "Blog", href: "/Blog" },
 ];
 
 export default function Header() {

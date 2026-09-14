@@ -16,7 +16,7 @@ import TaxiTypes from "@/components/routes/TaxiServiceNoida/TaxiTypes";
 import WhyChooseUs from "@/components/routes/TaxiServiceNoida/WhyChooseUs";
 
 export const metadata: Metadata = {
-  title: "Taxi Service in Noida Starting @ ₹10/KM – Book Now",
+  title: "Taxi Service in Noida - NoidaCab @ ₹10/KM | Book Now",
   description:
     "Book reliable taxi service in Noida for local, airport, outstation trips & sightseeing. Choose Sedans, SUVs & Tempo Travellers. Call 8377809809.",
   keywords: [

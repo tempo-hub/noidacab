@@ -41,7 +41,7 @@ export function VehicleSummary({ location, vehicle }: Props) {
               <div className="relative z-10 h-60 w-full max-w-[520px] sm:h-72 lg:h-80">
                 <Image
                   src={vehicle.image || "/cabs/amazemain.webp"}
-                  alt={`${vehicle.name} taxi fleet in ${location.name}`}
+                  alt={`${vehicle.name} fleet in ${location.name}`}
                   fill
                   priority
                   className="object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
@@ -57,7 +57,7 @@ export function VehicleSummary({ location, vehicle }: Props) {
 
               <div className="absolute bottom-5 left-5 z-20 rounded-2xl border border-white/80 bg-white/95 px-4 py-2.5 shadow-md backdrop-blur-xs sm:bottom-7 sm:left-7">
                 <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                  Base Tariff
+                  Base Price
                 </p>
                 <p className="text-base font-extrabold text-slate-950">
                   {vehicle.price}
@@ -87,7 +87,7 @@ export function VehicleSummary({ location, vehicle }: Props) {
 
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Spacious and verified{" "}
-                <strong className="text-slate-950">{vehicle.name}</strong> taxi
+                <strong className="text-slate-950">{vehicle.name}</strong>
                 ready for dispatch in{" "}
                 <strong className="text-slate-950">{location.name}</strong>.
                 Ideal for family outings, airport drops, and intercity trips.

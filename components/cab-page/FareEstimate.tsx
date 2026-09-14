@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   MapPin,
   Car,
+  BusFront,
   Fuel,
   ArrowRight,
   ShieldCheck,
@@ -25,8 +26,17 @@ type Props = {
 export function FareEstimate({ location, vehicle }: Props) {
   const rate = getPerKmRate(vehicle);
 
+  const isTempo =
+    vehicle.category?.toLowerCase() === "tempo-traveller" ||
+    vehicle.slug?.toLowerCase().includes("tempo") ||
+    vehicle.slug?.toLowerCase().includes("urbania") ||
+    vehicle.name?.toLowerCase().includes("tempo") ||
+    vehicle.name?.toLowerCase().includes("urbania");
+
+  const vehicleLabel = isTempo ? "rental" : "cab";
+
   const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
-    `Hello NoidaCab, I want an exact fare quotation for a ${vehicle.name} cab in ${location.name}.`
+    `Hello NoidaCab, I want an exact fare quotation for a ${vehicle.name} ${vehicleLabel} in ${location.name}.`
   )}`;
 
   return (
@@ -42,7 +52,7 @@ export function FareEstimate({ location, vehicle }: Props) {
             </div>
 
             <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-              Simple & Transparent Cab Fare in {location.name}
+              Simple &amp; Transparent {isTempo ? "Rental Price" : "Cab Fare"} in {location.name}
             </h2>
 
             <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
@@ -50,7 +60,7 @@ export function FareEstimate({ location, vehicle }: Props) {
               <span className="font-semibold text-slate-900">
                 {vehicle.name}
               </span>{" "}
-              taxi in{" "}
+              {isTempo ? "on rent" : "taxi"} in{" "}
               <span className="font-semibold text-slate-900">
                 {location.name}
               </span>{" "}
@@ -75,11 +85,11 @@ export function FareEstimate({ location, vehicle }: Props) {
 
               <div className="flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
-                  <Car className="h-5 w-5" />
+                  {isTempo ? <BusFront className="h-5 w-5" /> : <Car className="h-5 w-5" />}
                 </div>
                 <div>
                   <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">
-                    Cab Model
+                    {isTempo ? "Fleet Model" : "Cab Model"}
                   </p>
                   <p className="font-bold text-slate-900">
                     {vehicle.name}
@@ -92,11 +102,11 @@ export function FareEstimate({ location, vehicle }: Props) {
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium text-slate-600 sm:text-sm">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                GPS Metered Rides
+                {isTempo ? "Commercial All-India Permit" : "GPS Metered Rides"}
               </span>
               <span className="flex items-center gap-1.5">
                 <Fuel className="h-4 w-4 text-emerald-600" />
-                Fuel & Chauffeur Included
+                Fuel &amp; Chauffeur Included
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-emerald-600" />
@@ -109,23 +119,6 @@ export function FareEstimate({ location, vehicle }: Props) {
           <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/70">
             {/* Top accent line */}
             <div className="h-1.5 bg-amber-400" />
-
-            {/* Vehicle image strip */}
-            {/* <div className="relative h-36 w-full border-b border-slate-100 bg-slate-50">
-              <Image
-                src={vehicle.image || "/cabs/amazemain.webp"}
-                alt={`${vehicle.name} taxi fare in ${location.name}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 420px"
-              />
-              <div className="absolute top-3 left-3 rounded-full bg-slate-950/80 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-xs">
-                {vehicle.category || "Economy AC"}
-              </div>
-              <div className="absolute bottom-2.5 right-3 flex items-center gap-1 rounded-md bg-emerald-500/90 px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-xs">
-                <Zap size={11} /> Ready for Dispatch
-              </div>
-            </div> */}
 
             <div className="p-5 sm:p-6">
               {/* Primary Rate Box */}
@@ -148,7 +141,7 @@ export function FareEstimate({ location, vehicle }: Props) {
                   <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
                     No Peak Surge
                   </span>
-                  <p className="mt-1 text-[11px] text-slate-400">Fixed Tariff</p>
+                  <p className="mt-1 text-[11px] text-slate-400">Fixed Price</p>
                 </div>
               </div>
 
@@ -166,25 +159,29 @@ export function FareEstimate({ location, vehicle }: Props) {
                 <div className="h-px bg-slate-200/70" />
                 <div className="flex items-center justify-between">
                   <span className="text-slate-500">Luggage Allowance</span>
-                  <span className="font-semibold text-slate-900">{vehicle.luggage || 2} Large Bags</span>
+                  <span className="font-semibold text-slate-900">
+                    {vehicle.luggage || (isTempo ? 8 : 2)} Large Bags
+                  </span>
                 </div>
                 <div className="h-px bg-slate-200/70" />
                 <div className="flex items-center justify-between">
                   <span className="text-slate-500">Seating Capacity</span>
-                  <span className="font-semibold text-slate-900">Up to {vehicle.seats || 4} Passengers</span>
+                  <span className="font-semibold text-slate-900">
+                    Up to {vehicle.seats || (isTempo ? 12 : 4)} Passengers
+                  </span>
                 </div>
               </div>
 
-              {/* Action Button */}
-              {/* <a
+              {/* WhatsApp Action Button */}
+              <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-950 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-slate-800"
               >
-                Get Instant Quote on WhatsApp
+                Get Quote on WhatsApp
                 <ArrowRight className="h-4 w-4 text-amber-400" />
-              </a> */}
+              </a>
 
               {/* Disclaimer */}
               <div className="mt-4 flex items-start gap-2 text-[11px] leading-4 text-slate-500">
