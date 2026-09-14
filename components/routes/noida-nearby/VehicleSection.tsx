@@ -69,7 +69,8 @@ export default function VehicleSection({
   return vehicles.filter(
     (vehicle) =>
       vehicle.category !== "Tempo Traveller" &&
-      vehicle.category !== "Urbania"
+      vehicle.category !== "Urbania" &&
+      vehicle.name !== "Sedan"
   );
 }, [vehicles]);
 
