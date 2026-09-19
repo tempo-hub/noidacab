@@ -318,11 +318,11 @@ if (nearbyTempoRoute) {
   const calculatedPrice = Math.round(distance * 15 + 500);
   
     return {
-      title: `${nearbyRoute.from.name} to ${nearbyRoute.to.name} Taxi | From ${calculatedPrice} + 15% OFF | NoidaCab`,
+      title: `${nearbyRoute.from.name} to ${nearbyRoute.to.name} Taxi, NoidaCab - @ ${calculatedPrice} + 10% OFF | Book Now`,
 
       description:
         nearbyRoute.description ??
-        `Book a taxi from ${nearbyRoute.from.name} to ${nearbyRoute.to.name}. Compare comfortable cabs, fares and travel options with NoidaCab.`,
+       `Book a reliable taxi from ${nearbyRoute.from.name} to ${nearbyRoute.to.name} with NoidaCab. Compare cab fares, vehicle options and comfortable travel choices. Call 8448445504 to book now.`,
     };
   }
 
