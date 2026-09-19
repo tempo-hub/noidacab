@@ -12,7 +12,7 @@ export default function RouteFare({
   const { vehicle } = route;
 
   return (
-    <section className="bg-white/95 px-4 py-14 sm:py-16">
+    <section className="bg-white/95 border-y border-slate-300 px-4 py-14 sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-[1fr_380px] lg:items-center">
           {/* LEFT CONTENT */}

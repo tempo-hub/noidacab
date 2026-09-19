@@ -8,6 +8,7 @@ import RouteVehicleFeatures from "./RouteVehicleFeatures";
 import RouteBookingOptions from "./RouteBookingOptions";
 import RouteFAQs from "./RouteFAQs";
 import RouteVehicleOptions from "./RouteVehicleOptions";
+import RouteBenefits from "./RouteBenefits";
 
 export default function RouteVehicleTemplate({
   route,
@@ -36,6 +37,7 @@ export default function RouteVehicleTemplate({
       />
 
       <RouteBookingOptions route={route} />
+      <RouteBenefits route = {route} />
 
       <RouteFAQs route={route} />
 

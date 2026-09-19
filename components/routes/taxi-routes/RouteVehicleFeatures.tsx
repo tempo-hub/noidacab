@@ -70,7 +70,7 @@ export default function RouteVehicleFeatures({
     <section className="bg-white/95 border-b border-gray-300 px-4 py-14 sm:py-16">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-7xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-600">
             <CarFront className="h-4 w-4" />
             {vehicle.name} Features

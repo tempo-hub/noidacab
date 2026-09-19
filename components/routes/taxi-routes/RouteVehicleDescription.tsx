@@ -135,7 +135,11 @@ export default function RouteVehicleDescription({
                 src={vehicle.image}
                 alt={`${route.fromName} to ${route.toName} ${vehicle.name} taxi`}
                 fill
-                className="object-cover p-6"
+                className={`${
+      vehicle.category === "Tempo Traveller"
+        ? "object-contain p-6"
+        : "object-cover p-6"
+    }`}
               />
             </div>
 

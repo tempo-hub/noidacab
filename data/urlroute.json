@@ -1258,5 +1258,64 @@
   { "url": "/outstation-cab" },
   { "url": "/corporate-cab" },
   { "url": "/hourly-rental" },
-  { "url": "/chauffeur-service" }
+  { "url": "/chauffeur-service" },
+  { "url": "/noida-to-delhi-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-delhi-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-delhi-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-delhi-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-delhi-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-ghaziabad-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-ghaziabad-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-ghaziabad-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-ghaziabad-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-ghaziabad-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-faridabad-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-faridabad-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-faridabad-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-faridabad-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-faridabad-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-gurgaon-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-gurgaon-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-gurgaon-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-gurgaon-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-gurgaon-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-greater-noida-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-greater-noida-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-greater-noida-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-greater-noida-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-greater-noida-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-meerut-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-meerut-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-meerut-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-meerut-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-meerut-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-hapur-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-hapur-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-hapur-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-hapur-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-hapur-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-bulandshahr-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-bulandshahr-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-bulandshahr-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-bulandshahr-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-bulandshahr-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-mathura-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-mathura-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-mathura-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-mathura-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-mathura-24-seater-tempo-traveller-taxi" },
+
+{ "url": "/noida-to-agra-luxury-tempo-traveller-taxi" },
+{ "url": "/noida-to-agra-12-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-agra-16-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-agra-20-seater-tempo-traveller-taxi" },
+{ "url": "/noida-to-agra-24-seater-tempo-traveller-taxi" }
 ]

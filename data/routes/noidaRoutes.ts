@@ -3,7 +3,7 @@
 export interface CabOption {
   name: string;
   slug: string;
-  category: "Hatchback" | "Sedan" | "SUV";
+  category: "Hatchback" | "Sedan" | "SUV" | "Tempo Traveller";
   pricePerKm: number;
 }
 
@@ -30,6 +30,84 @@ export interface NoidaRouteData {
   cabs: CabOption[];
 }
 
+/**
+ * All cabs available for Noida city routes
+ */
+export const noidaCabs: CabOption[] = [
+  {
+    name: "Dzire",
+    slug: "dzire",
+    category: "Sedan",
+    pricePerKm: 14,
+  },
+
+  {
+    name: "Amaze",
+    slug: "amaze",
+    category: "Sedan",
+    pricePerKm: 15,
+  },
+
+  {
+    name: "Etios",
+    slug: "etios",
+    category: "Sedan",
+    pricePerKm: 15,
+  },
+
+  {
+    name: "Ertiga",
+    slug: "ertiga",
+    category: "SUV",
+    pricePerKm: 18,
+  },
+
+  {
+    name: "Innova Crysta",
+    slug: "innova-crysta",
+    category: "SUV",
+    pricePerKm: 22,
+  },
+
+  {
+    name: "Luxury Tempo Traveller",
+    slug: "luxury-tempo-traveller",
+    category: "Tempo Traveller",
+    pricePerKm: 25,
+  },
+
+  {
+    name: "12 Seater Tempo Traveller",
+    slug: "12-seater-tempo-traveller",
+    category: "Tempo Traveller",
+    pricePerKm: 20,
+  },
+
+  {
+    name: "16 Seater Tempo Traveller",
+    slug: "16-seater-tempo-traveller",
+    category: "Tempo Traveller",
+    pricePerKm: 22,
+  },
+
+  {
+    name: "20 Seater Tempo Traveller",
+    slug: "20-seater-tempo-traveller",
+    category: "Tempo Traveller",
+    pricePerKm: 24,
+  },
+
+  {
+    name: "24 Seater Tempo Traveller",
+    slug: "24-seater-tempo-traveller",
+    category: "Tempo Traveller",
+    pricePerKm: 26,
+  },
+];
+
+/**
+ * Noida city routes
+ */
 export const noidaRoutes: Record<string, NoidaRouteData> = {
   "noida-to-delhi": {
     slug: "noida-to-delhi",
@@ -47,12 +125,7 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 20,
     travelTime: "45 minutes",
 
-    recommendedCab: {
-      name: "Dzire",
-      slug: "dzire",
-      category: "Sedan",
-      pricePerKm: 14,
-    },
+    recommendedCab: noidaCabs[0],
 
     routes: [
       "DND Flyway",
@@ -60,26 +133,7 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
       "Maharani Bagh",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-      {
-        name: "Innova Crysta",
-        slug: "innova-crysta",
-        category: "SUV",
-        pricePerKm: 22,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-ghaziabad": {
@@ -98,32 +152,14 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 20,
     travelTime: "45 minutes",
 
-    recommendedCab: {
-      name: "Dzire",
-      slug: "dzire",
-      category: "Sedan",
-      pricePerKm: 14,
-    },
+    recommendedCab: noidaCabs[0],
 
     routes: [
       "NH 9",
       "Noida-Ghaziabad Road",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-faridabad": {
@@ -142,12 +178,7 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 30,
     travelTime: "60 minutes",
 
-    recommendedCab: {
-      name: "Dzire",
-      slug: "dzire",
-      category: "Sedan",
-      pricePerKm: 14,
-    },
+    recommendedCab: noidaCabs[0],
 
     routes: [
       "DND Flyway",
@@ -155,26 +186,7 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
       "Mathura Road",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-      {
-        name: "Innova Crysta",
-        slug: "innova-crysta",
-        category: "SUV",
-        pricePerKm: 22,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-gurgaon": {
@@ -193,12 +205,7 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 45,
     travelTime: "90 minutes",
 
-    recommendedCab: {
-      name: "Ertiga",
-      slug: "ertiga",
-      category: "SUV",
-      pricePerKm: 18,
-    },
+    recommendedCab: noidaCabs[3],
 
     routes: [
       "DND Flyway",
@@ -206,26 +213,7 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
       "NH 48",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-      {
-        name: "Innova Crysta",
-        slug: "innova-crysta",
-        category: "SUV",
-        pricePerKm: 22,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-greater-noida": {
@@ -244,31 +232,13 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 30,
     travelTime: "45 minutes",
 
-    recommendedCab: {
-      name: "Dzire",
-      slug: "dzire",
-      category: "Sedan",
-      pricePerKm: 14,
-    },
+    recommendedCab: noidaCabs[0],
 
     routes: [
       "Noida-Greater Noida Expressway",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-meerut": {
@@ -287,38 +257,14 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 65,
     travelTime: "90 minutes",
 
-    recommendedCab: {
-      name: "Ertiga",
-      slug: "ertiga",
-      category: "SUV",
-      pricePerKm: 18,
-    },
+    recommendedCab: noidaCabs[3],
 
     routes: [
       "NH 9",
       "Delhi-Meerut Expressway",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-      {
-        name: "Innova Crysta",
-        slug: "innova-crysta",
-        category: "SUV",
-        pricePerKm: 22,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-hapur": {
@@ -337,31 +283,13 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 50,
     travelTime: "75 minutes",
 
-    recommendedCab: {
-      name: "Dzire",
-      slug: "dzire",
-      category: "Sedan",
-      pricePerKm: 14,
-    },
+    recommendedCab: noidaCabs[0],
 
     routes: [
       "NH 9",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-bulandshahr": {
@@ -380,38 +308,14 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 65,
     travelTime: "90 minutes",
 
-    recommendedCab: {
-      name: "Ertiga",
-      slug: "ertiga",
-      category: "SUV",
-      pricePerKm: 18,
-    },
+    recommendedCab: noidaCabs[3],
 
     routes: [
       "NH 34",
       "Bulandshahr Road",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-      {
-        name: "Innova Crysta",
-        slug: "innova-crysta",
-        category: "SUV",
-        pricePerKm: 22,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-mathura": {
@@ -430,37 +334,13 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 145,
     travelTime: "150 minutes",
 
-    recommendedCab: {
-      name: "Innova Crysta",
-      slug: "innova-crysta",
-      category: "SUV",
-      pricePerKm: 22,
-    },
+    recommendedCab: noidaCabs[4],
 
     routes: [
       "Yamuna Expressway",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-      {
-        name: "Innova Crysta",
-        slug: "innova-crysta",
-        category: "SUV",
-        pricePerKm: 22,
-      },
-    ],
+    cabs: noidaCabs,
   },
 
   "noida-to-agra": {
@@ -479,36 +359,21 @@ export const noidaRoutes: Record<string, NoidaRouteData> = {
     distance: 165,
     travelTime: "180 minutes",
 
-    recommendedCab: {
-      name: "Innova Crysta",
-      slug: "innova-crysta",
-      category: "SUV",
-      pricePerKm: 22,
-    },
+    recommendedCab: noidaCabs[4],
 
     routes: [
       "Yamuna Expressway",
     ],
 
-    cabs: [
-      {
-        name: "Dzire",
-        slug: "dzire",
-        category: "Sedan",
-        pricePerKm: 14,
-      },
-      {
-        name: "Ertiga",
-        slug: "ertiga",
-        category: "SUV",
-        pricePerKm: 18,
-      },
-      {
-        name: "Innova Crysta",
-        slug: "innova-crysta",
-        category: "SUV",
-        pricePerKm: 22,
-      },
-    ],
+    cabs: noidaCabs,
   },
 };
+
+/**
+ * Get route by slug
+ */
+export function getNoidaRoute(
+  slug: string
+): NoidaRouteData | null {
+  return noidaRoutes[slug] ?? null;
+}

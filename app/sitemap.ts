@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import urlRoutes from "@/data/urlroute.json";
 
-const BASE_URL = "https://noidacab.com";
+const BASE_URL = "https://www.noidacab.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const dynamicRoutes = urlRoutes

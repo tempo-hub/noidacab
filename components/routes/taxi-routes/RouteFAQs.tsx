@@ -36,19 +36,16 @@ export default function RouteFAQs({
 
   return (
     <section className="bg-white/95 px-4 py-14 sm:py-16">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl">
         {/* HEADER */}
-        <div className="text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-50 text-orange-600">
-            <HelpCircle className="h-6 w-6" />
-          </div>
-
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="">
+          
+          <h2 className="text-7xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             FAQs About {route.fromName} to{" "}
             {route.toName} {vehicle.name} Taxi
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-600">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600">
             Find answers to common questions about booking a{" "}
             {vehicle.name} taxi from {route.fromName} to{" "}
             {route.toName}.

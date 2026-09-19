@@ -23,7 +23,6 @@ const navLinks = [
 
   {
     label: "Services", dropdown: [
-      { label: "Taxi Servces In Noida", href: "/taxi-service-in-noida" },
       { label: "Sedan Taxi In Noida", href: "/sedan-taxi-in-noida" },
       { label: "Suv Taxi In Noida", href: "/suv-taxi-in-noida" },
       { label: "luxury-tempo-traveller In Noida", href: "/luxury-tempo-traveller-in-noida" },
