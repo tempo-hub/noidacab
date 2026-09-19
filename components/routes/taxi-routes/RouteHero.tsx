@@ -46,7 +46,7 @@ export default function RouteHero({
             {/* Main heading */}
             <h1 className="max-w-4xl text-4xl font-black leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl">
               {route.fromName} To
-              <span className="px-1 text-orange-600">
+              <span className="px-4 text-orange-600">
                 {/* <span className="mr-2 inline-block">
                   →
                 </span> */}
