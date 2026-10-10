@@ -11,9 +11,14 @@ import {
   BadgePercent,
 } from "lucide-react";
 
-export default function FareHero() {
+interface FareHeroProps {
+  cityName?: string;
+  tagline?: string;
+}
+
+export default function FareHero({ cityName = "Noida", tagline }: FareHeroProps) {
   const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
-    "Hello NoidaCab, I would like to book a taxi. Please confirm rates and driver dispatch."
+    `Hello NoidaCab, I would like to book a taxi in ${cityName}. Please confirm rates and driver dispatch.`
   )}`;
 
   const taxiRates = [
@@ -54,14 +59,14 @@ export default function FareHero() {
             </div>
 
             <h1 className="text-4xl font-black leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Taxi Fare in Noida
+              Taxi Fare in {cityName}
               <span className="mt-2 block text-amber-600">
                 Starting at ₹1,100
               </span>
             </h1>
 
             <p className="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Transparent per-kilometer fares for local travel, airport drops, and outstation trips. Clean commercial AC cabs with verified chauffeurs and zero hidden charges.
+              Transparent per-kilometer fares for local travel, airport drops, and outstation trips in {cityName}. Clean commercial AC cabs with verified chauffeurs and zero hidden charges.
             </p>
 
             {/* Feature Pills */}

@@ -19,6 +19,7 @@ import urlRoutes from "@/data/urlroute.json";
 import Image from "next/image";
 import { noidaLocalities } from "@/data/routes/noida";
 import { Metadata } from "next";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 export const metadata : Metadata = {
 title: "Tempo Traveller in Noida - NoidaCab @ 20/km | Book Now",
@@ -68,7 +69,7 @@ const tempoFleet = [
     name: "16 Seater Tempo Traveller",
     slug: "16-seater-tempo-traveller",
     image: "/cabs/tempofirst.webp",
-    price: "₹20/km",
+    price: "₹25/km",
     seats: 16,
     doors: 4,
     luggage: 14,
@@ -81,7 +82,7 @@ const tempoFleet = [
     name: "20 Seater Tempo Traveller",
     slug: "20-seater-tempo-traveller",
     image: "/cabs/tempofirst.webp",
-    price: "₹20/km",
+    price: "₹27/km",
     seats: 20,
     doors: 4,
     luggage: 18,
@@ -94,7 +95,7 @@ const tempoFleet = [
     name: "24 Seater Tempo Traveller",
     slug: "24-seater-tempo-traveller",
     image: "/cabs/tempofirst.webp",
-    price: "₹20/km",
+    price: "₹29/km",
     seats: 24,
     doors: 4,
     luggage: 20,
@@ -664,12 +665,12 @@ export default function TempoTravellerPage() {
       {/* =====================================================
           6. ROUTE DIRECTORY
       ====================================================== */}
-      <section
+      {/* <section
   id="routes"
   className="border-b border-gray-300 bg-white/95"
 >
   <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-18 lg:px-8">
-    {/* Header */}
+    
     <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
       <div>
         <p className="text-sm font-bold uppercase tracking-widest text-amber-600">
@@ -689,7 +690,7 @@ export default function TempoTravellerPage() {
       </div>
     </div>
 
-    {/* All routes displayed in a single unified grid */}
+    
     <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {routeGroups.flatMap((group) =>
         group.services.map((service) => (
@@ -727,7 +728,10 @@ export default function TempoTravellerPage() {
       )}
     </div>
   </div>
-</section>
+</section> */}
+
+ {/* Popular Routes Section */}
+      <PopularCityRoutes cityName="Noida" vehicleSlug="tempo-traveller" vehicleName="Tempo Traveller" />
 
       {/* =====================================================
     NOIDA LOCATIONS
@@ -1040,7 +1044,7 @@ export default function TempoTravellerPage() {
       {/* =====================================================
           10. POPULAR ROUTES
       ====================================================== */}
-      <section className="border-b border-gray-300 bg-white/95">
+      {/* <section className="border-b border-gray-300 bg-white/95">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
 
           <div>
@@ -1079,7 +1083,7 @@ export default function TempoTravellerPage() {
           </div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* =====================================================
           11. PRICING / VALUE
@@ -1245,6 +1249,8 @@ export default function TempoTravellerPage() {
 
         </div>
       </section>
+
+     
 
       {/* =====================================================
           14. FINAL CTA

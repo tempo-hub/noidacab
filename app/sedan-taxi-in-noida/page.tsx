@@ -9,6 +9,7 @@ import SedanTaxiNoidaHero from "@/components/routes/sedan-taxi-noida/SedanTaxiNo
 import SedanTaxiNoidaLocations from "@/components/routes/sedan-taxi-noida/SedanTaxiNoidaLocations";
 import SedanTaxiNoidaTripTypes from "@/components/routes/sedan-taxi-noida/SedanTaxiNoidaTripTypes";
 import SedanTaxiNoidaWhyChoose from "@/components/routes/sedan-taxi-noida/SedanTaxiNoidaWhyChoose";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import type { Metadata } from "next";
 
 
@@ -47,6 +48,9 @@ export default function SedanTaxiInNoidaPage() {
 
       {/* Trip Types */}
       <SedanTaxiNoidaTripTypes />
+
+      {/* Popular Routes */}
+      <PopularCityRoutes cityName="Noida" vehicleSlug="sedan" vehicleName="Sedan Taxi" />
 
       {/* FAQ */}
       <SedanTaxiNoidaFAQ />

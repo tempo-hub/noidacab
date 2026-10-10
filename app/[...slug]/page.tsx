@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import {
   parseLocalRouteUrl,
@@ -32,6 +32,12 @@ import VehicleTemplate from "@/components/taxi/VehicleTemplate";
 import NoidaTaxiContactPage from "@/components/templates/NoidaTaxiContactPage";
 import RouteFareTemplate from "@/components/routes/fare-template/RouteFareTemplate";
 import TaxiServiceNoidaTemplate from "@/components/routes/TaxiServiceNoida/TaxiServiceNoidaTemplate";
+import { getCityDetails } from "@/lib/cityData";
+import DynamicTaxiServicePage from "@/components/cab-routes/DynamicTaxiServicePage";
+import DynamicTaxiFarePage from "@/components/cab-routes/DynamicTaxiFarePage";
+import DynamicAirportServicePage from "@/components/cab-routes/DynamicAirportServicePage";
+import DynamicLocalSightseeingPage from "@/components/cab-routes/DynamicLocalSightseeingPage";
+import DynamicOneWayTaxiPage from "@/components/cab-routes/DynamicOneWayTaxiPage";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -40,6 +46,71 @@ export function generateStaticParams() {
 type Params = Promise<{
   slug: string[];
 }>;
+
+function parseDynamicCityVehicleUrl(url: string) {
+  const cleanPath = url.replace(/^\/|\/$/g, "").toLowerCase();
+
+  if (
+    cleanPath.includes("/") ||
+    cleanPath.startsWith("taxi-service-in-") ||
+    cleanPath.startsWith("taxi-fare-in-") ||
+    cleanPath.endsWith("-taxi-fare") ||
+    cleanPath.startsWith("airport-service-in-") ||
+    cleanPath.startsWith("airport-taxi-in-") ||
+    cleanPath.startsWith("local-sightseeing-in-") ||
+    cleanPath.startsWith("local-sightseeing-routes-in-") ||
+    cleanPath.startsWith("one-way-taxi-in-") ||
+    cleanPath.startsWith("one-way-cab-in-")
+  ) {
+    return null;
+  }
+
+  const vehicleRules: { pattern: RegExp; vehicleSlug: string }[] = [
+    { pattern: /^luxury-tempo-traveller(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "luxury-tempo-traveller" },
+    { pattern: /^12-seater-tempo-traveller(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "12-seater-tempo-traveller" },
+    { pattern: /^16-seater-tempo-traveller(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "16-seater-tempo-traveller" },
+    { pattern: /^20-seater-tempo-traveller(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "20-seater-tempo-traveller" },
+    { pattern: /^24-seater-tempo-traveller(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "24-seater-tempo-traveller" },
+    { pattern: /^tempo-traveller(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "12-seater-tempo-traveller" },
+    { pattern: /^urbania(?:-rental)?(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "urbania" },
+    { pattern: /^innova-crysta(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "innova-crysta" },
+    { pattern: /^dzire(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "dzire" },
+    { pattern: /^etios(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "etios" },
+    { pattern: /^amaze(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "amaze" },
+    { pattern: /^ertiga(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "ertiga" },
+    { pattern: /^suv(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "ertiga" },
+    { pattern: /^sedan(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "sedan-taxi" },
+    { pattern: /^wagonr(?:-taxi)?-in-([a-z0-9-]+)$/, vehicleSlug: "wagonr" },
+  ];
+
+  for (const rule of vehicleRules) {
+    const match = cleanPath.match(rule.pattern);
+    if (match) {
+      const citySlug = match[1];
+      const cityInfo = getCityDetails(citySlug);
+      const matched = vehicles.find((v) => v.slug === rule.vehicleSlug) || vehicles[0];
+      const vehicle = { ...matched };
+
+      if (cleanPath.startsWith("tempo-traveller")) {
+        vehicle.name = "Tempo Traveller";
+        vehicle.slug = "tempo-traveller";
+      } else if (cleanPath.startsWith("suv")) {
+        vehicle.name = "SUV Taxi";
+        vehicle.slug = "suv";
+      } else if (cleanPath.startsWith("sedan")) {
+        vehicle.name = "Sedan Taxi";
+        vehicle.slug = "sedan";
+      }
+
+      return {
+        vehicle,
+        cityInfo,
+      };
+    }
+  }
+
+  return null;
+}
 
 /* =========================================================
    METADATA
@@ -54,6 +125,138 @@ export async function generateMetadata({
 
   const url = "/" + slug.join("/");
 
+  // ============================================
+  // DYNAMIC ONE-WAY TAXI IN CITY METADATA
+  // ============================================
+  if (url.startsWith("/one-way-taxi-in-") || url.startsWith("/one-way-cab-in-")) {
+    const citySlug = url.replace(/^(\/one-way-taxi-in-|\/one-way-cab-in-)/, "").toLowerCase();
+    if (citySlug === "noida") {
+      return {
+        title: "One Way Cab from Noida | Affordable One Way Taxi Service - NoidaCab",
+        description:
+          "Book affordable one-way cab service from Noida to Delhi, Gurgaon, Agra, Jaipur, Lucknow and other cities. Pay only one-side fare. Call 8377809809.",
+        alternates: { canonical: "https://noidacab.com/one-way-taxi-in-noida" },
+      };
+    }
+    const cityInfo = getCityDetails(citySlug);
+    return {
+      title: `One Way Taxi in ${cityInfo.name} | Verified Outstation Cabs Starting @ ₹10/km - NoidaCab`,
+      description: `Book reliable one-way taxi in ${cityInfo.name}. Pay only for one-side travel with zero return tolls and no hidden charges. Sedan, SUV, and Innova cabs available across ${cityInfo.localities.slice(0, 3).join(", ")}. Call 8377809809.`,
+      alternates: { canonical: `https://noidacab.com/one-way-taxi-in-${cityInfo.slug}` },
+      openGraph: {
+        title: `One Way Taxi in ${cityInfo.name} | NoidaCab`,
+        description: `Book one-way cabs in ${cityInfo.name} with fixed per-km tariffs and verified drivers.`,
+        url: `https://noidacab.com/one-way-taxi-in-${cityInfo.slug}`,
+      },
+    };
+  }
+
+  // ============================================
+  // DYNAMIC CITY TAXI, AIRPORT & SIGHTSEEING METADATA
+  // ============================================
+  if (url.startsWith("/taxi-fare-in-")) {
+    const citySlug = url.replace("/taxi-fare-in-", "").toLowerCase();
+    if (citySlug === "noida") {
+      return {
+        title: "Taxi Fare in Noida Cabs Starting @ ₹1100 + 10% OFF - Book Now",
+        description:
+          "Check affordable taxi fares in Noida. Book Hatchbacks, Sedans starting from ₹1100 and SUVs starting from ₹1280. Transparent pricing, no hidden costs. Call 8377809809.",
+        alternates: { canonical: "https://noidacab.com/noida-taxi-fare" },
+      };
+    }
+    const cityInfo = getCityDetails(citySlug);
+    return {
+      title: `Taxi Fare in ${cityInfo.name} | Transparent Cabs Starting @ ₹10/km - NoidaCab`,
+      description: `Check affordable taxi fares in ${cityInfo.name}. Flat per-km fares starting from ₹10/km for Sedans, ₹13/km for Ertiga, and ₹16/km for Innova Crysta. Doorstep pickup across ${cityInfo.localities.slice(0, 3).join(", ")}. Call 8377809809.`,
+      alternates: { canonical: `https://noidacab.com/taxi-fare-in-${cityInfo.slug}` },
+      openGraph: {
+        title: `Taxi Fare in ${cityInfo.name} | NoidaCab`,
+        description: `Check transparent taxi fares in ${cityInfo.name}. Flat ₹10/km sedan fares, verified drivers, zero surge.`,
+        url: `https://noidacab.com/taxi-fare-in-${cityInfo.slug}`,
+      },
+    };
+  }
+
+  if (url.endsWith("-taxi-fare") && !url.includes("-to-")) {
+    const citySlug = url.replace(/^\/|\/$/g, "").replace(/-taxi-fare$/, "").toLowerCase();
+    if (citySlug === "noida") {
+      return {
+        title: "Taxi Fare in Noida Cabs Starting @ ₹1100 + 10% OFF - Book Now",
+        description:
+          "Check affordable taxi fares in Noida. Book Hatchbacks, Sedans starting from ₹1100 and SUVs starting from ₹1280. Transparent pricing, no hidden costs. Call 8377809809.",
+        alternates: { canonical: "https://noidacab.com/noida-taxi-fare" },
+      };
+    }
+    const cityInfo = getCityDetails(citySlug);
+    return {
+      title: `Taxi Fare in ${cityInfo.name} | Transparent Cabs Starting @ ₹10/km - NoidaCab`,
+      description: `Check affordable taxi fares in ${cityInfo.name}. Flat per-km fares starting from ₹10/km for Sedans, ₹13/km for Ertiga, and ₹16/km for Innova Crysta. Doorstep pickup across ${cityInfo.localities.slice(0, 3).join(", ")}. Call 8377809809.`,
+      alternates: { canonical: `https://noidacab.com/taxi-fare-in-${cityInfo.slug}` },
+    };
+  }
+
+  if (url.startsWith("/taxi-service-in-")) {
+    const citySlug = url.replace("/taxi-service-in-", "").toLowerCase();
+    const cityInfo = getCityDetails(citySlug);
+    return {
+      title: `Taxi Service in ${cityInfo.name} | Reliable Cabs & Outstation Routes - NoidaCab`,
+      description: `Book reliable taxi service in ${cityInfo.name} for local travel, airport transfers, and outstation trips. Flat per-km fares, clean AC cabs, and verified drivers across ${cityInfo.localities.slice(0, 3).join(", ")}.`,
+      alternates: { canonical: `https://noidacab.com/taxi-service-in-${cityInfo.slug}` },
+      openGraph: {
+        title: `Taxi Service in ${cityInfo.name} | NoidaCab`,
+        description: `Book cabs in ${cityInfo.name} with fixed per-km pricing starting at ₹10/km.`,
+        url: `https://noidacab.com/taxi-service-in-${cityInfo.slug}`,
+      },
+    };
+  }
+
+  if (url.startsWith("/airport-service-in-") || url.startsWith("/airport-taxi-in-")) {
+    const citySlug = url.replace(/^(\/airport-service-in-|\/airport-taxi-in-)/, "").toLowerCase();
+    const cityInfo = getCityDetails(citySlug);
+    return {
+      title: `Airport Taxi Service in ${cityInfo.name} | 24×7 Cab Transfers to ${cityInfo.airportName}`,
+      description: `Book 24/7 airport taxi transfers in ${cityInfo.name} to ${cityInfo.airportName}. Real-time flight tracking, 15-min early arrival, and zero waiting surcharges.`,
+      alternates: { canonical: `https://noidacab.com/airport-service-in-${cityInfo.slug}` },
+      openGraph: {
+        title: `Airport Taxi in ${cityInfo.name} | NoidaCab`,
+        description: `Guaranteed flight catching transfers to ${cityInfo.airportName} from anywhere in ${cityInfo.name}.`,
+        url: `https://noidacab.com/airport-service-in-${cityInfo.slug}`,
+      },
+    };
+  }
+
+  if (url.startsWith("/local-sightseeing-in-") || url.startsWith("/local-sightseeing-routes-in-")) {
+    const citySlug = url.replace(/^(\/local-sightseeing-in-|\/local-sightseeing-routes-in-)/, "").toLowerCase();
+    const cityInfo = getCityDetails(citySlug);
+    return {
+      title: `Local Sightseeing Taxi in ${cityInfo.name} | City Tour Packages & Heritage Cabs`,
+      description: `Book full-day sightseeing taxi in ${cityInfo.name}. Visit ${cityInfo.attractions.slice(0, 3).join(", ")} in comfortable AC cabs with courteous local chauffeurs.`,
+      alternates: { canonical: `https://noidacab.com/local-sightseeing-in-${cityInfo.slug}` },
+      openGraph: {
+        title: `Local Sightseeing & Heritage Tour in ${cityInfo.name} | NoidaCab`,
+        description: `Explore ${cityInfo.name} at your own pace with 8hr/80km full-day packages.`,
+        url: `https://noidacab.com/local-sightseeing-in-${cityInfo.slug}`,
+      },
+    };
+  }
+
+  // ============================================
+  // DYNAMIC CITY VEHICLE METADATA (Dzire, Sedan, Innova, etc.)
+  // ============================================
+  const dynamicCityVehicle = parseDynamicCityVehicleUrl(url);
+  if (dynamicCityVehicle) {
+    const { vehicle, cityInfo } = dynamicCityVehicle;
+    return {
+      title: `${vehicle.name} Taxi in ${cityInfo.name} | Reliable Cabs @ ${vehicle.price} - NoidaCab`,
+      description: `Book ${vehicle.name} cab in ${cityInfo.name} for local sightseeing, airport transfers, and outstation trips. Clean AC vehicles, verified chauffeurs, and 24/7 on-time pickup.`,
+      alternates: { canonical: `https://noidacab.com${url}` },
+      openGraph: {
+        title: `${vehicle.name} Taxi in ${cityInfo.name} | NoidaCab`,
+        description: `Book ${vehicle.name} in ${cityInfo.name} starting from ${vehicle.price}.`,
+        url: `https://noidacab.com${url}`,
+      },
+    };
+  }
 
   /* ====================================
   local cabs outstation corportate
@@ -394,6 +597,67 @@ export default async function CabPage({
   const url = "/" + slug.join("/");
 
   // ============================================
+  // DYNAMIC CITY TAXI, AIRPORT & SIGHTSEEING PAGES
+  // ============================================
+  if (url.startsWith("/taxi-fare-in-")) {
+    const citySlug = url.replace("/taxi-fare-in-", "").toLowerCase();
+    if (citySlug === "noida") {
+      redirect("/noida-taxi-fare");
+    }
+    const cityInfo = getCityDetails(citySlug);
+    return <DynamicTaxiFarePage city={cityInfo} />;
+  }
+
+  if (url.endsWith("-taxi-fare") && !url.includes("-to-")) {
+    const citySlug = url.replace(/^\/|\/$/g, "").replace(/-taxi-fare$/, "").toLowerCase();
+    if (citySlug === "noida") {
+      redirect("/noida-taxi-fare");
+    }
+    const cityInfo = getCityDetails(citySlug);
+    return <DynamicTaxiFarePage city={cityInfo} />;
+  }
+
+  if (url.startsWith("/taxi-service-in-")) {
+    const citySlug = url.replace("/taxi-service-in-", "").toLowerCase();
+    const cityInfo = getCityDetails(citySlug);
+    return <DynamicTaxiServicePage city={cityInfo} />;
+  }
+
+  if (url.startsWith("/airport-service-in-") || url.startsWith("/airport-taxi-in-")) {
+    const citySlug = url.replace(/^(\/airport-service-in-|\/airport-taxi-in-)/, "").toLowerCase();
+    const cityInfo = getCityDetails(citySlug);
+    return <DynamicAirportServicePage city={cityInfo} />;
+  }
+
+  if (url.startsWith("/local-sightseeing-in-") || url.startsWith("/local-sightseeing-routes-in-")) {
+    const citySlug = url.replace(/^(\/local-sightseeing-in-|\/local-sightseeing-routes-in-)/, "").toLowerCase();
+    const cityInfo = getCityDetails(citySlug);
+    return <DynamicLocalSightseeingPage city={cityInfo} />;
+  }
+
+  if (url.startsWith("/one-way-taxi-in-") || url.startsWith("/one-way-cab-in-")) {
+    const citySlug = url.replace(/^(\/one-way-taxi-in-|\/one-way-cab-in-)/, "").toLowerCase();
+    if (citySlug === "noida") {
+      redirect("/one-way-taxi-in-noida");
+    }
+    const cityInfo = getCityDetails(citySlug);
+    return <DynamicOneWayTaxiPage city={cityInfo} />;
+  }
+
+  // ============================================
+  // DYNAMIC CITY VEHICLE PAGES (Dzire, Sedan, Innova, etc.)
+  // ============================================
+  const dynamicCityVehicle = parseDynamicCityVehicleUrl(url);
+  if (dynamicCityVehicle) {
+    return (
+      <VehicleTemplate
+        vehicle={dynamicCityVehicle.vehicle}
+        cityName={dynamicCityVehicle.cityInfo.name}
+      />
+    );
+  }
+
+  // ============================================
   // SERVICE PAGES -> TAXI SERVICE NOIDA TEMPLATE
   // (local-cab, airport-transfer, outstation-cab, etc.)
   // ============================================
@@ -449,7 +713,7 @@ if (contactRoute) {
   const directVehicles = parseVehicleTemplateUrl(url);
 
   if (directVehicles) {
-    return <VehicleTemplate vehicle={directVehicles.vehicle} />;
+    return <VehicleTemplate vehicle={directVehicles.vehicle} cityName="Noida" />;
   }
   
 
@@ -462,7 +726,7 @@ if (contactRoute) {
   const directVehicle = parseDirectVehicleUrl(url);
 
   if (directVehicle) {
-    return <VehicleTemplate vehicle={directVehicle.vehicle} />;
+    return <VehicleTemplate vehicle={directVehicle.vehicle} cityName="Noida" />;
   }
 
   // ============================================

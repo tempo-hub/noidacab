@@ -47,9 +47,13 @@ const fareFactors = [
   },
 ];
 
-export default function FareCalculation() {
+interface FareCalculationProps {
+  cityName?: string;
+}
+
+export default function FareCalculation({ cityName = "Noida" }: FareCalculationProps) {
   return (
-    <section className="bg-white/95 py-12">
+    <section className="bg-white/95 py-12 border-b border-slate-300">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
@@ -59,11 +63,11 @@ export default function FareCalculation() {
           </span>
 
           <h2 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-            How Is Taxi Fare Calculated?
+            How Is Taxi Fare Calculated in {cityName}?
           </h2>
 
           <p className="mt-4 leading-7 text-gray-600">
-            Your taxi fare can depend on several factors, including the
+            Your taxi fare in {cityName} depends on several factors, including the
             vehicle you select, journey distance, trip type and applicable
             charges.
           </p>

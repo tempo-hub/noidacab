@@ -7,22 +7,16 @@ import Image from "next/image";
 
 const navLinks = [
   {
-    label: "Cabs",
-    dropdown: [
-      { label: "Wagonr In Noida", href: "/wagonr-taxi-in-noida" },
-      { label: "Dzire In Noida", href: "/dzire-taxi-in-noida" },
-      { label: "Etios In Noida", href: "/etios-taxi-in-noida" },
-      { label: "Amaze In Noida", href: "/amaze-taxi-in-noida" },
-      { label: "Ertiga In Noida", href: "/ertiga-taxi-in-noida" },
-      { label: "Innova Crysta In Noida", href: "/innova-crysta-in-noida" },
-
-    ],
+    label: "Cabs", href:"/cab"
   },
 
   { label: "Taxi fare", href: "/noida-taxi-fare" },
 
   {
     label: "Services", dropdown: [
+      { label: "Intercity Taxi Routes", href: "/taxi-service-routes" },
+      { label: "Airport Taxi Routes", href: "/airport-service-routes" },
+      { label: "Local Sightseeing Routes", href: "/local-sightseeing-routes" },
       { label: "Sedan Taxi In Noida", href: "/sedan-taxi-in-noida" },
       { label: "Suv Taxi In Noida", href: "/suv-taxi-in-noida" },
       { label: "luxury-tempo-traveller In Noida", href: "/luxury-tempo-traveller-in-noida" },

@@ -6,31 +6,47 @@ import { routes } from "@/data/routes/taxiroutes";
 interface RelatedRoutesProps {
   currentSlug?: string;
   limit?: number;
+  cityName?: string;
 }
 
 export default function RelatedRoutes({
   currentSlug,
   limit = 8,
+  cityName = "Noida",
 }: RelatedRoutesProps) {
   // Remove the current route
   const availableRoutes = routes.filter(
     (route) => route.slug !== currentSlug
   );
 
+  const cityLower = cityName?.toLowerCase();
+  const prioritized = cityLower
+    ? availableRoutes.filter(
+        (r) =>
+          r.from.name.toLowerCase().includes(cityLower) ||
+          r.from.slug.includes(cityLower) ||
+          r.to.name.toLowerCase().includes(cityLower) ||
+          r.to.slug.includes(cityLower)
+      )
+    : [];
+
+  const remaining = availableRoutes.filter(
+    (r) => !prioritized.some((p) => p.slug === r.slug)
+  );
+
+  const combined = [...prioritized, ...remaining];
+
   // Remove duplicate from → to combinations
   const uniqueRoutes = Array.from(
     new Map(
-      availableRoutes.map((route) => [
+      combined.map((route) => [
         `${route.from.slug}-${route.to.slug}`,
         route,
       ])
     ).values()
   );
 
-  // Popular routes first
-  const relatedRoutes = uniqueRoutes
-    .sort((a, b) => Number(b.popular) - Number(a.popular))
-    .slice(0, limit);
+  const relatedRoutes = uniqueRoutes.slice(0, limit);
 
   if (!relatedRoutes.length) {
     return null;
@@ -47,12 +63,12 @@ export default function RelatedRoutes({
           </span>
 
           <h2 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-            Explore Popular Taxi Routes
+            Popular Taxi Routes {cityName ? `from ${cityName}` : ""}
           </h2>
 
           <p className="mt-4 leading-7 text-gray-600">
             Explore popular one-way taxi routes, distances and travel times
-            between major cities.
+            connecting {cityName} with major cities.
           </p>
         </div>
 

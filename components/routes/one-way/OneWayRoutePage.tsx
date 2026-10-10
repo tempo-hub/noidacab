@@ -12,6 +12,7 @@ import { OneWayRouteDetails } from "./OneWayRouteDetails";
 import { OneWayPickupAreas } from "./OneWayPickupAreas";
 import { OneWayFAQ } from "./OneWayFAQ";
 import { OneWayCTA } from "./OneWayCTA";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 
 type Props = {
@@ -40,6 +41,13 @@ export function OneWayRoutePage({ route }: Props) {
       {/* 4. Fleet */}
       <OneWayVehicles />
 
+      {/* Popular Routes Section */}
+      <PopularCityRoutes
+        cityName={route.from || "Noida"}
+        vehicleSlug="one-way-taxi"
+        vehicleName="One Way Taxi"
+      />
+
       {/* 5. Fare information */}
       <OneWayFareHighlights route={route} />
 
@@ -54,6 +62,8 @@ export function OneWayRoutePage({ route }: Props) {
 
       {/* 9. Why choose NoidaCab */}
       <OneWayWhyChoose />
+
+      
 
       {/* 10. FAQ */}
       <OneWayFAQ route={route} />

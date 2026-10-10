@@ -67,7 +67,11 @@ const faqs = [
   },
 ];
 
-export default function TaxiFareFAQ() {
+interface TaxiFareFAQProps {
+  cityName?: string;
+}
+
+export default function TaxiFareFAQ({ cityName = "Noida" }: TaxiFareFAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -76,9 +80,62 @@ export default function TaxiFareFAQ() {
     );
   };
 
+  const dynamicFaqs = [
+    {
+      question: `What determines the taxi fare in ${cityName}?`,
+      answer:
+        `The taxi fare in ${cityName} depends on factors such as the selected vehicle, journey type, travel distance, travel date, waiting time and applicable taxes or charges.`,
+    },
+    {
+      question: `How much does a taxi cost in ${cityName}?`,
+      answer:
+        `Taxi prices in ${cityName} start from ₹10/km for Sedans, ₹13/km for Ertiga, and ₹16/km for Innova Crysta, with minimum local booking starting at ₹1,100.`,
+    },
+    {
+      question: "Are one-way and round-trip fares different?",
+      answer:
+        "Yes. One-way and round-trip journeys can have different pricing structures based on the selected vehicle, distance and booking requirements.",
+    },
+    {
+      question: `Which vehicles are available for booking in ${cityName}?`,
+      answer:
+        "Depending on availability, you can choose from different vehicle categories such as hatchbacks (WagonR), sedans (Dzire, Etios, Amaze), SUVs (Ertiga, Innova Crysta) and luxury tempo travellers for group travel.",
+    },
+    {
+      question: "Can I book an AC taxi?",
+      answer:
+        "Yes. AC vehicles are available among the available cab options. Vehicle availability may vary depending on the selected journey and travel date.",
+    },
+    {
+      question: "Are taxes included in the taxi fare?",
+      answer:
+        "Applicable taxes and charges depend on the selected vehicle and fare. Any applicable amount is displayed during the booking process.",
+    },
+    {
+      question: "Are there extra charges for additional distance or time?",
+      answer:
+        "Additional distance, waiting time or other applicable charges may apply depending on the selected vehicle and fare terms. Check the vehicle details before confirming your booking.",
+    },
+    {
+      question: "Can I choose my preferred vehicle?",
+      answer:
+        "Yes. You can select an available vehicle according to your passenger count, luggage requirements, comfort preferences and budget.",
+    },
+    {
+      question: `How can I check the exact taxi fare in ${cityName}?`,
+      answer:
+        `Enter your pickup location in ${cityName}, destination, travel date and pickup time in the booking form or contact us via WhatsApp/call to view the applicable fare before confirming your booking.`,
+    },
+    {
+      question: "Can I book a taxi in advance?",
+      answer:
+        "Yes. You can provide your preferred travel date and pickup time during the booking process to schedule your journey in advance.",
+    },
+  ];
+
   return (
-    <section className="bg-white/95 py-20">
-      <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
+    <section className="bg-white/95 py-12 border-b border-slate-300">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
         <div className="mb-12 text-center">
@@ -87,18 +144,18 @@ export default function TaxiFareFAQ() {
           </span>
 
           <h2 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-            Taxi Fare FAQs
+            Taxi Fare in {cityName} FAQs
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl leading-7 text-gray-600">
+          <p className="mx-auto mt-4 max-w-7xl leading-7 text-gray-600">
             Find answers to common questions about taxi fares, vehicles,
-            additional charges and cab booking.
+            additional charges and cab booking in {cityName}.
           </p>
         </div>
 
         {/* FAQs */}
         <div className="space-y-4">
-          {faqs.map((faq, index) => {
+          {dynamicFaqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (

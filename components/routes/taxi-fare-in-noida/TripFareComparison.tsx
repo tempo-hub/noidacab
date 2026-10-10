@@ -48,15 +48,28 @@ interface TripFareComparisonProps {
   options?: FareOption[];
   title?: string;
   description?: string;
+  cityName?: string;
 }
 
 export default function TripFareComparison({
   options = fareOptions,
-  title = "One-Way & Round-Trip Taxi Fare",
-  description = "Choose a one-way or round-trip taxi based on your travel requirements. Our cab options are designed for comfortable, convenient and reliable journeys.",
+  cityName,
+  title,
+  description,
 }: TripFareComparisonProps) {
+  const displayTitle =
+    title ||
+    (cityName
+      ? `One-Way & Round-Trip Taxi Fare in ${cityName}`
+      : "One-Way & Round-Trip Taxi Fare");
+
+  const displayDescription =
+    description ||
+    (cityName
+      ? `Choose a one-way or round-trip taxi in ${cityName} based on your travel requirements. Our cab options are designed for comfortable, convenient and reliable journeys.`
+      : "Choose a one-way or round-trip taxi based on your travel requirements. Our cab options are designed for comfortable, convenient and reliable journeys.");
   return (
-    <section className="bg-white/95 py-12">
+    <section className="bg-white/95 py-12 border-b border-slate-300">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
@@ -66,11 +79,11 @@ export default function TripFareComparison({
           </span>
 
           <h2 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-            {title}
+            {displayTitle}
           </h2>
 
           <p className="mt-4 leading-7 text-gray-600">
-            {description}
+            {displayDescription}
           </p>
         </div>
 

@@ -6,40 +6,47 @@ import {
   CarFront,
 } from "lucide-react";
 
-const travelInfo = [
-  {
-    title: "Flexible Routes",
-    value: "Multiple Routes",
-    description:
-      "Taxi fares can vary depending on the selected pickup location, destination and route.",
-    icon: Route,
-  },
-  {
-    title: "Travel Time",
-    value: "Route Based",
-    description:
-      "Journey time depends on traffic, weather, route conditions and the selected destination.",
-    icon: Clock3,
-  },
-  {
-    title: "Pickup Locations",
-    value: "Multiple Locations",
-    description:
-      "Cabs can be booked from various residential areas, business hubs, transport points and nearby locations.",
-    icon: MapPinned,
-  },
-  {
-    title: "Vehicle Options",
-    value: "AC Cabs",
-    description:
-      "Choose from different vehicle categories based on your group size, comfort and travel requirements.",
-    icon: CarFront,
-  },
-];
+interface DistanceTravelTimeProps {
+  cityName?: string;
+  localities?: string[];
+}
 
-export default function DistanceTravelTime() {
+export default function DistanceTravelTime({ cityName = "Noida", localities }: DistanceTravelTimeProps) {
+  const travelInfo = [
+    {
+      title: "Flexible Routes",
+      value: "Multiple Routes",
+      description:
+        `Taxi fares can vary depending on the selected pickup location in ${cityName}, destination and route.`,
+      icon: Route,
+    },
+    {
+      title: "Travel Time",
+      value: "Route Based",
+      description:
+        `Journey time depends on traffic, weather, route conditions and the selected destination from ${cityName}.`,
+      icon: Clock3,
+    },
+    {
+      title: "Pickup Locations",
+      value: `${cityName} Hubs`,
+      description:
+        localities && localities.length > 0
+          ? `Cabs can be booked from various residential areas, business hubs, and transport points across ${localities.slice(0, 3).join(", ")} and nearby sectors.`
+          : `Cabs can be booked from various residential areas, business hubs, transport points and nearby locations in ${cityName}.`,
+      icon: MapPinned,
+    },
+    {
+      title: "Vehicle Options",
+      value: "AC Cabs",
+      description:
+        "Choose from different vehicle categories based on your group size, comfort and travel requirements.",
+      icon: CarFront,
+    },
+  ];
+
   return (
-    <section className="bg-white/95 py-12">
+    <section className="bg-white/95 py-12 border-b border-slate-300">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
@@ -49,12 +56,12 @@ export default function DistanceTravelTime() {
           </span>
 
           <h2 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-            Taxi Travel Information
+            Taxi Travel Information in {cityName}
           </h2>
 
           <p className="mt-4 leading-7 text-gray-600">
             Understand the factors that can affect your taxi fare, travel time
-            and vehicle selection before booking your ride.
+            and vehicle selection before booking your ride in {cityName}.
           </p>
         </div>
 

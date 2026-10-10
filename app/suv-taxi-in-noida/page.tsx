@@ -20,6 +20,7 @@ import {
 
 import { vehicles } from "@/data/vehicles";
 import { noidaLocalities } from "@/data/routes/noida";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 export const metadata: Metadata = {
   title: "SUV Taxi in Noida - NoidaCab ₹13–₹16/km | Book Now",
@@ -530,6 +531,9 @@ export default function SUVPage() {
           </div>
         </div>
       </section>
+
+      {/* Popular Routes Section */}
+      <PopularCityRoutes cityName="Noida" vehicleSlug="suv" vehicleName="SUV Taxi" />
 
       {/* =====================================================
           FAQ SECTION

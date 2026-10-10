@@ -17,6 +17,25 @@ const pickupAreas = [
 ];
 
 export function OneWayPickupAreas({ route }: Props) {
+  const isNoida = route.from.toLowerCase().includes("noida");
+  const pickupAreas = isNoida
+    ? [
+        "Noida Sector 18",
+        "Noida Sector 62",
+        "Noida Sector 63",
+        "Noida Sector 75",
+        "Noida Sector 76",
+        "Noida Extension",
+      ]
+    : [
+        `${route.from} Railway Station`,
+        `${route.from} Airport / Terminal`,
+        `${route.from} City Center / Hazratganj`,
+        `${route.from} Bus Terminal / ISBT`,
+        "Doorstep Home / Hotel Pickup",
+        "Expressway / Highway Entry Point",
+      ];
+
   return (
     <section className="bg-white/95 py-16 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -31,7 +50,7 @@ export function OneWayPickupAreas({ route }: Props) {
             </h2>
 
             <p className="mt-4 leading-7 text-gray-400">
-              Convenient pickup can be arranged from popular areas across
+              Convenient pickup can be arranged from popular areas across{" "}
               {route.from}. Enter your exact pickup location while
               booking.
             </p>

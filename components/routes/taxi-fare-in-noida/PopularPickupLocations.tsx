@@ -8,63 +8,79 @@ import {
   Plane,
 } from "lucide-react";
 
-const locations = [
-  {
-    name: "Residential Areas",
-    description:
-      "Book a taxi from residential areas and housing societies for local and outstation travel.",
-    icon: Building2,
-  },
-  {
-    name: "Business Hubs",
-    description:
-      "Convenient taxi pickup from offices, corporate parks and major business areas.",
-    icon: BriefcaseBusiness,
-  },
-  {
-    name: "Railway Stations",
-    description:
-      "Arrange a comfortable cab pickup or drop-off for your railway station journey.",
-    icon: TrainFront,
-  },
-  {
-    name: "Shopping Areas",
-    description:
-      "Book a taxi from popular shopping areas, markets and commercial destinations.",
-    icon: ShoppingBag,
-  },
-  {
-    name: "Local Pickup Points",
-    description:
-      "Choose a convenient pickup point near your location for a smooth taxi journey.",
-    icon: MapPin,
-  },
-  {
-    name: "Airports",
-    description:
-      "Book reliable airport transfers with comfortable vehicles and scheduled pickups.",
-    icon: Plane,
-  },
-];
+interface PopularPickupLocationsProps {
+  cityName?: string;
+  localities?: string[];
+  airportName?: string;
+}
 
-export default function PopularPickupLocations() {
+export default function PopularPickupLocations({
+  cityName = "Noida",
+  localities,
+  airportName,
+}: PopularPickupLocationsProps) {
+  const locations = [
+    {
+      name: "Residential Areas",
+      description:
+        localities && localities.length >= 2
+          ? `Book a taxi from residential areas such as ${localities.slice(0, 2).join(", ")} for local and outstation travel.`
+          : `Book a taxi from residential areas and housing societies in ${cityName} for local and outstation travel.`,
+      icon: Building2,
+    },
+    {
+      name: "Business Hubs",
+      description:
+        `Convenient taxi pickup from offices, corporate parks and major commercial districts in ${cityName}.`,
+      icon: BriefcaseBusiness,
+    },
+    {
+      name: "Railway Stations",
+      description:
+        `Arrange a comfortable cab pickup or drop-off for ${cityName} railway junction and local stations.`,
+      icon: TrainFront,
+    },
+    {
+      name: "Shopping Areas",
+      description:
+        `Book a taxi from popular shopping areas, markets and commercial destinations in ${cityName}.`,
+      icon: ShoppingBag,
+    },
+    {
+      name: "Local Pickup Points",
+      description:
+        localities && localities.length >= 4
+          ? `Doorstep pickup across ${localities.slice(2, 5).join(", ")} and city transit centers.`
+          : `Choose a convenient pickup point near your location in ${cityName} for a smooth taxi journey.`,
+      icon: MapPin,
+    },
+    {
+      name: "Airports",
+      description:
+        airportName
+          ? `Book reliable airport transfers to and from ${airportName} with guaranteed on-time pickups.`
+          : `Book reliable airport transfers with comfortable vehicles and scheduled pickups in ${cityName}.`,
+      icon: Plane,
+    },
+  ];
+
   return (
-    <section className="bg-white/95 py-20">
+    <section className="bg-white/95 py-12 border-b border-slate-300">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
-        <div className="mx-auto mb-12 max-w-3xl text-center">
+        <div className="mx-auto mb-12 max-w-7xl text-center">
           <span className="inline-flex rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-600">
             Pickup Locations
           </span>
 
           <h2 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-            Convenient Taxi Pickup Locations
+            Popular Taxi Pickup Locations in {cityName}
           </h2>
 
           <p className="mt-4 leading-7 text-gray-600">
             Book a taxi from convenient residential, commercial, transport and
-            business locations according to your travel requirements.
+            business locations across {cityName} according to your travel requirements.
           </p>
         </div>
 

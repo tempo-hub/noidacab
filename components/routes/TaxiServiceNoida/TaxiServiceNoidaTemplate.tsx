@@ -6,6 +6,7 @@ import HeroSection from "./HeroSection";
 import LocalSightseeing from "./LocalSightseeing";
 import OutstationTaxi from "./OutstationTaxi";
 import PopularRoutes from "./PopularRoutes";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RailwayStationTaxi from "./RailwayStationTaxi";
 import ServiceAreas from "./ServiceAreas";
 import TaxiServiceFAQ from "./TaxiServiceFAQ";
@@ -50,7 +51,8 @@ export default function TaxiServiceNoidaTemplate({
       <OutstationTaxi />
       <LocalSightseeing />
       <RailwayStationTaxi />
-      <PopularRoutes />
+      {/* Popular Routes Section */}
+      <PopularCityRoutes cityName="Noida" vehicleSlug="taxi" vehicleName="Taxi" />
       <ServiceAreas />
       <WhyChooseUs />
       <CustomerReviews />

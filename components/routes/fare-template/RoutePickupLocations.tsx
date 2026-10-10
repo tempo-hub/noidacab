@@ -1,130 +1,131 @@
 import Link from "next/link";
 import {
-  Building2,
   MapPin,
-  TrainFront,
-  ShoppingBag,
-  BriefcaseBusiness,
-  Plane,
-  Sparkles,
+  Route as RouteIcon,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
-import { RouteData } from "@/data/routes/taxiroutes";
+
+import { masterRoutes } from "@/data/masterRoutes";
+import type { RouteData } from "@/data/routes/taxiroutes";
 
 export default function RoutePickupLocations({
   route,
 }: {
   route: RouteData;
 }) {
-  const pickupHubs = [
-    {
-      name: "Sector 18",
-      slug: "sector-18",
-      type: "Commercial & Retail",
-      description: `Fast doorstep cab pickup near Atta Market, DLF Mall of India, and Sector 18 Metro for direct transit to ${route.to.name}.`,
-      icon: ShoppingBag,
-    },
-    {
-      name: "Sector 62",
-      slug: "sector-62",
-      type: "IT & Corporate Hub",
-      description: `Convenient pickup from Electronic City, Fortis Hospital, and major tech parks headed toward ${route.to.name}.`,
-      icon: BriefcaseBusiness,
-    },
-    {
-      name: "Sector 137",
-      slug: "sector-137",
-      type: "Expressway Residential",
-      description: `Prompt pickup across Paras Tierea, Purvanchal Royal Park, and surrounding high-rise societies on Noida Expressway.`,
-      icon: Building2,
-    },
-    {
-      name: "Botanical Garden",
-      slug: "botanical-garden",
-      type: "Transit Interchange",
-      description: `Accessible meeting point with immediate expressway feeder access toward ${route.to.name}.`,
-      icon: TrainFront,
-    },
-    {
-      name: "Noida Extension",
-      slug: "noida-extension",
-      type: "Greater Noida West",
-      description: `Doorstep cabs from Gaur City, Char Murti, and Crossing Republik for outstation and intercity travel.`,
-      icon: MapPin,
-    },
-    {
-      name: "Pari Chowk",
-      slug: "pari-chowk",
-      type: "Greater Noida Gateway",
-      description: `Quick pickup for travelers situated in Alpha, Beta, Delta, Knowledge Park, and Yamuna Expressway entry points.`,
-      icon: Plane,
-    },
-  ];
+  const normalizeCity = (city: string) =>
+    city.trim().toLowerCase();
+
+  const currentFrom = normalizeCity(route.from.name);
+  const currentTo = normalizeCity(route.to.name);
+
+  // Get routes connected to the current pickup city.
+  const relatedRoutes = masterRoutes.filter(
+    (item) =>
+      normalizeCity(item.from) === currentFrom &&
+      normalizeCity(item.to) !== currentTo,
+  );
+
+  // Remove duplicate destination names.
+  const uniqueRoutes = Array.from(
+    new Map(
+      relatedRoutes.map((item) => [
+        normalizeCity(item.to),
+        item,
+      ]),
+    ).values(),
+  ).slice(0, 6);
+
+  const slugify = (value: string) =>
+    value
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
 
   return (
-    <section className="border-b border-slate-200 bg-white/95 py-12 sm:py-16">
+    <section className="border-b border-slate-200 bg-white/95 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-200/80 bg-amber-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
-            <Sparkles size={13} className="text-amber-600" />
-            Pickup Coverage
+        <div className="mx-auto mb-10 max-w-4xl text-center">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
+            <Sparkles size={13} />
+            Popular Routes
           </div>
 
           <h2 className="mt-4 text-2xl font-black tracking-tight text-slate-900 sm:text-4xl">
-            Popular {route.from.name} Pickup Hubs for {route.to.name} Cabs
+            Popular Routes from {route.from.name}
           </h2>
 
           <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-            We provide doorstep arrivals across residential societies, commercial complexes, and metro stations throughout {route.from.name}.
+            Explore available cab routes from {route.from.name} to
+            popular destinations, with route distance and estimated
+            travel time.
           </p>
         </div>
 
-        {/* Location Cards Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {pickupHubs.map((location) => {
-            const Icon = location.icon;
-            // Matches your dynamic local route format: /noida/sector-18/innova-crysta
-            const href = `/${route.from.slug}/${location.slug}/innova-crysta`;
+        {uniqueRoutes.length > 0 ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {uniqueRoutes.map((item) => {
+              const href = `/route/${slugify(item.from)}-to-${slugify(
+                item.to,
+              )}-taxi-fare`;
 
-            return (
-              <Link
-                key={location.name}
-                href={href}
-                className="group flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-[#FFFDF5] p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-md"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100/80 text-amber-600 transition-colors group-hover:bg-amber-600 group-hover:text-white">
-                      <Icon size={22} />
+              return (
+                <Link
+                  key={`${item.from}-${item.to}`}
+                  href={href}
+                  className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-[#FFFDF5] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-md"
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 text-amber-600 transition-colors group-hover:bg-amber-600 group-hover:text-white">
+                        <MapPin size={22} />
+                      </div>
+
+                      <span className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] font-semibold text-amber-800">
+                        {item.distance} km
+                      </span>
                     </div>
-                    <span className="rounded-md border border-amber-200/60 bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-800">
-                      {location.type}
-                    </span>
+
+                    <h3 className="mt-4 text-lg font-bold text-slate-900 transition-colors group-hover:text-amber-600">
+                      {item.from} to {item.to} Taxi
+                    </h3>
+
+                    <div className="mt-3 flex items-center gap-2 text-sm text-slate-600">
+                      <RouteIcon size={15} className="text-amber-600" />
+                      <span>{item.duration}</span>
+                    </div>
+
+                    {item.highway && (
+                      <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                        Via {item.highway}
+                      </p>
+                    )}
                   </div>
 
-                  <h3 className="mt-4 text-lg font-bold text-slate-900 transition-colors group-hover:text-amber-600">
-                    {route.from.name} to {route.to.name} Taxi from {location.name}
-                  </h3>
+                  <div className="mt-5 flex items-center gap-1.5 text-xs font-bold text-amber-600 group-hover:underline">
+                    <span>Explore Route</span>
+                    <ArrowRight
+                      size={13}
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="text-center text-sm text-slate-500">
+            No additional routes are currently available from{" "}
+            {route.from.name}.
+          </p>
+        )}
 
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
-                    {location.description}
-                  </p>
-                </div>
-
-                <div className="mt-5 flex items-center gap-1.5 text-xs font-bold text-amber-600 group-hover:underline">
-                  <span>Explore Cabs from {location.name}</span>
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Bottom Note */}
         <div className="mx-auto mt-10 max-w-3xl text-center">
           <p className="text-xs leading-relaxed text-slate-500 sm:text-sm">
-            Don't see your sector listed? NoidaCab operates in <strong>all sectors and residential communities</strong> across {route.from.name} and Greater Noida. Specify your exact gate or landmark at the time of booking for direct doorstep dispatch.
+            Route availability, distance, and travel time are based on
+            the routes configured in the master route registry.
           </p>
         </div>
       </div>

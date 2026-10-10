@@ -17,27 +17,27 @@ import {
 import type { Vehicle } from "@/data/vehicles";
 import { useState } from "react";
 
-export default function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
+export default function VehicleHero({ vehicle, cityName = "Noida" }: { vehicle: Vehicle; cityName?: string }) {
   const categoryLabel = vehicle.category.toUpperCase();
 
   const categoryDescription: Record<Vehicle["category"], string> = {
     Hatchback:
-      "Book an affordable and comfortable hatchback in Noida for local travel, airport transfers and everyday journeys.",
+      `Book an affordable and comfortable hatchback in ${cityName} for local travel, airport transfers and everyday journeys.`,
     Sedan:
-      "Book a comfortable private sedan in Noida for business travel, airport transfers, family trips and city travel.",
+      `Book a comfortable private sedan in ${cityName} for business travel, airport transfers, family trips and city travel.`,
     SUV:
-      "Book a spacious SUV in Noida for family trips, airport transfers, outstation journeys and comfortable group travel.",
+      `Book a spacious SUV in ${cityName} for family trips, airport transfers, outstation journeys and comfortable group travel.`,
     Urbania:
-      "Book a premium Force Urbania in Noida for comfortable group travel, events, tours and long-distance journeys.",
+      `Book a premium Force Urbania in ${cityName} for comfortable group travel, events, tours and long-distance journeys.`,
     "Tempo Traveller":
-      "Book a comfortable Tempo Traveller in Noida for family trips, group tours, events, weddings and outstation travel.",
+      `Book a comfortable Tempo Traveller in ${cityName} for family trips, group tours, events, weddings and outstation travel.`,
     "":
-      "Book a vehicle in Noida for local travel, airport transfers, outstation trips and comfortable journeys.",
+      `Book a vehicle in ${cityName} for local travel, airport transfers, outstation trips and comfortable journeys.`,
   };
 
   const [formData, setFormData] = useState({
-    pickup: "Noida",
-    drop: "Delhi",
+    pickup: cityName,
+    drop: cityName.toLowerCase() === "lucknow" ? "Ayodhya" : "Delhi",
     date: "",
     time: "",
   });
@@ -83,7 +83,7 @@ export default function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-600/20 bg-white/90 px-3.5 py-1.5 text-xs font-extrabold text-amber-800 shadow-sm backdrop-blur-md">
                 <CarFront size={14} className="text-amber-600" />
-                NOIDA {categoryLabel} RENTAL
+                {cityName.toUpperCase()} {categoryLabel} RENTAL
               </div>
               <div className="inline-flex items-center gap-1 rounded-full bg-amber-600/10 px-3 py-1 text-xs font-bold text-amber-900">
                 <Star size={13} className="fill-amber-600 text-amber-600" />
@@ -108,7 +108,7 @@ export default function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
   return (
     <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
       {vehicle.name} {vehicleSuffix}
-      <span className="block text-amber-600">Service in Noida</span>
+      <span className="block text-amber-600">Service in {cityName}</span>
     </h1>
   );
 })()}

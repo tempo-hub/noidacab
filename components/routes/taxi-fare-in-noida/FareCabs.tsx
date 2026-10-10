@@ -44,7 +44,7 @@ export default function FareCabs({
   return (
     <section
       id="available-cabs"
-      className="bg-white/95 px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
+      className="bg-white/95 px-4 py-8 sm:px-6 lg:px-8 lg:py-12 border-b border-slate-300"
     >
       <div className="mx-auto max-w-7xl">
 

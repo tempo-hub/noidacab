@@ -24,7 +24,7 @@ export default function Fleet() {
             Choose Your Perfect Ride
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-900">
+          <p className="mx-auto mt-5 max-w-7xl text-lg text-gray-900">
             From affordable hatchbacks to spacious tempo travellers, we have
             the perfect vehicle for every journey.
           </p>
@@ -32,7 +32,11 @@ export default function Fleet() {
 
         {/* Cards */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {vehicles.slice(0, 6).map((vehicle) => (
+          {vehicles.filter((vehicle) =>
+    ["sedan", "suv", "hatchback"].includes(
+      vehicle.category.toLowerCase()
+    )
+  ).map((vehicle) => (
             <Link
               key={vehicle.slug}
               href={`/taxi/${vehicle.slug}`}

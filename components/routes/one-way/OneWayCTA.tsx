@@ -9,7 +9,7 @@ type Props = {
 
 export function OneWayCTA({ route }: Props) {
   return (
-    <section className="px-4 py-16 sm:px-6 lg:px-8 bg-white/95 ">
+    <section className="px-4 py-12 sm:px-6 lg:px-8 bg-white/95 ">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-r from-amber-600 to-amber-300">
         <div className="relative p-8 sm:p-12">
           <div className="relative max-w-3xl">

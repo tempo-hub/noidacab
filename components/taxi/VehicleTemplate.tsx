@@ -16,12 +16,14 @@ import VehicleShowcaseSpecs from "./VehicleShowcaseSpecs";
 import VehicleEstimatePrice from "./VehicleEstimatePrice";
 import VehicleLocalSectors from "./VehicleLocalSectors";
 import VehicleTrust from "./VehicleTrust";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 interface VehicleTemplateProps {
   vehicle: Vehicle;
+  cityName?: string;
 }
 
-export default function VehicleTemplate({ vehicle }: VehicleTemplateProps) {
+export default function VehicleTemplate({ vehicle, cityName = "Noida" }: VehicleTemplateProps) {
   const numericPrice = (() => {
     if (typeof vehicle.price === "number") return vehicle.price;
     const match = String(vehicle.price || "").match(/\d+/);
@@ -31,8 +33,8 @@ export default function VehicleTemplate({ vehicle }: VehicleTemplateProps) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${vehicle.name} Taxi Rental in Noida`,
-    description: `Book ${vehicle.name} taxi in Noida with ${vehicle.seats} seats, AC, and GPS. Reliable airport, local, and outstation cab services.`,
+    name: `${vehicle.name} Taxi Rental in ${cityName}`,
+    description: `Book ${vehicle.name} taxi in ${cityName} with ${vehicle.seats} seats, AC, and GPS. Reliable airport, local, and outstation cab services.`,
     brand: {
       "@type": "Brand",
       name: "Noida Cab",
@@ -52,9 +54,19 @@ export default function VehicleTemplate({ vehicle }: VehicleTemplateProps) {
   };
   return (
     <main>
-      <VehicleHero vehicle={vehicle} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <VehicleHero vehicle={vehicle} cityName={cityName} />
       <VehicleOverview vehicle={vehicle} />
       <VehicleShowcaseSpecs vehicle={vehicle} />
+      {/* Popular Routes Section (dynamically scoped to vehicle and city) */}
+      <PopularCityRoutes
+        cityName={cityName}
+        vehicleSlug={vehicle.slug}
+        vehicleName={vehicle.name}
+      />
       <VehicleSpecifications vehicle={vehicle} />
       <VehicleEstimatePrice vehicle={vehicle} />
       <VehicleFare vehicle={vehicle} />
@@ -63,6 +75,7 @@ export default function VehicleTemplate({ vehicle }: VehicleTemplateProps) {
       <VehicleLocalSectors vehicle={vehicle} />
       <VehicleUseCases vehicle={vehicle} />
       <VehicleBooking vehicle={vehicle} />
+
       <VehicleFAQ vehicle={vehicle} />
       <VehicleTrust vehicle={vehicle} />
       <VehicleCTA vehicle={vehicle} />

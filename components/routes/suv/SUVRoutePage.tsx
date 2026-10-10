@@ -7,6 +7,7 @@ import { SUVRouteInfo } from "./SUVRouteInfo";
 import { SUVWhyChoose } from "./SUVWhyChoose";
 import { SUVRouteFAQ } from "./SUVRouteFAQ";
 import { SUVRouteCTA } from "./SUVRouteCTA";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 export function SUVRoutePage({
   route,
@@ -22,6 +23,9 @@ export function SUVRoutePage({
       <SUVRouteInfo route={route} />
 
       <SUVWhyChoose route={route} />
+
+      {/* Popular Routes Section */}
+      <PopularCityRoutes cityName={route.fromName || "Noida"} vehicleSlug="suv" vehicleName="SUV Taxi" />
 
       <SUVRouteFAQ route={route} />
 

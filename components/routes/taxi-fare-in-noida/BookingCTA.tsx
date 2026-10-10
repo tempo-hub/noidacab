@@ -5,9 +5,13 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-export default function BookingCTA() {
+interface BookingCTAProps {
+  cityName?: string;
+}
+
+export default function BookingCTA({ cityName = "Noida" }: BookingCTAProps) {
   const waMessage = encodeURIComponent(
-    `Hello NoidaCab, I want to book a taxi from Noida. Please confirm cab availability and instant booking.`
+    `Hello NoidaCab, I want to book a taxi from ${cityName}. Please confirm cab availability and instant booking.`
   );
   return (
     <section className="bg-white px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
@@ -27,12 +31,12 @@ export default function BookingCTA() {
 
             {/* Heading */}
             <h2 className="mt-5 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-              Ready to Book Your Taxi?
+              Ready to Book Your Taxi in {cityName}?
             </h2>
 
             {/* Description */}
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-amber-50 sm:text-base">
-              Choose your pickup location, travel time and preferred vehicle
+              Choose your pickup location in {cityName}, travel time and preferred vehicle
               to book a comfortable taxi for your journey.
             </p>
 

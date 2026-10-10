@@ -10,6 +10,7 @@ import RelatedRoutes from "@/components/routes/taxi-fare-in-noida/RelatedRoutes"
 import TaxiFareFAQ from "@/components/routes/taxi-fare-in-noida/TaxiFareFAQ";
 import TripFareComparison from "@/components/routes/taxi-fare-in-noida/TripFareComparison";
 import WhyChooseUs from "@/components/routes/taxi-fare-in-noida/WhyChooseUs";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -247,6 +248,13 @@ export default function FarePage() {
 
       <FareCabs cabs={fareCabs} />
 
+      <PopularCityRoutes
+        cityName="Noida"
+        vehicleSlug="taxi-fare"
+        vehicleName="Taxi Fare"
+        limit={12}
+      />
+
       <TripFareComparison />
 
       <FareTable cabs={fareCabs} />
@@ -257,7 +265,7 @@ export default function FarePage() {
 
       <FareCalculation />
 
-      <RelatedRoutes />
+      {/* <RelatedRoutes /> */}
 
       <WhyChooseUs />
 

@@ -9,6 +9,7 @@ import HeroSection from "@/components/routes/TaxiServiceNoida/HeroSection";
 import LocalSightseeing from "@/components/routes/TaxiServiceNoida/LocalSightseeing";
 import OutstationTaxi from "@/components/routes/TaxiServiceNoida/OutstationTaxi";
 import PopularRoutes from "@/components/routes/TaxiServiceNoida/PopularRoutes";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RailwayStationTaxi from "@/components/routes/TaxiServiceNoida/RailwayStationTaxi";
 import ServiceAreas from "@/components/routes/TaxiServiceNoida/ServiceAreas";
 import TaxiServices from "@/components/routes/TaxiServiceNoida/TaxiServices";
@@ -68,7 +69,8 @@ export default function TaxiServicePage() {
 
       <LocalSightseeing />
 
-      <PopularRoutes />
+      {/* Popular Routes Section */}
+      <PopularCityRoutes cityName="Noida" vehicleSlug="taxi" vehicleName="Taxi" />
 
       {/* <FleetSection /> */}
 

@@ -30,7 +30,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "WagonR",
     slug: "wagonr",
-    image: "/cabs/wagonrmain.webp",
+    image: "/cabs/wagonr.webp",
     price: "₹10/km",
 
     seats: 4,
@@ -47,7 +47,7 @@ export const vehicles: Vehicle[] = [
   // {
   //   name: "Swift",
   //   slug: "swift",
-  //   image: "/cabs/dziremain.webp",
+  //   image: "/cabs/dzire.webp",
   //   price: "₹12/km",
 
   //   seats: 4,
@@ -63,7 +63,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "Dzire",
     slug: "dzire",
-    image: "/cabs/dziremain.webp",
+    image: "/cabs/dzire.webp",
     price: "₹10/km",
 
     seats: 4,
@@ -84,7 +84,7 @@ export const vehicles: Vehicle[] = [
   // {
   //   name: "Swift Dzire",
   //   slug: "dzire",
-  //   image: "/cabs/dziremain.webp",
+  //   image: "/cabs/dzire.webp",
   //   price: "₹12/km",
 
   //   seats: 4,
@@ -101,7 +101,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "Etios",
     slug: "etios",
-    image: "/cabs/etiosmain.webp",
+    image: "/cabs/etios.webp",
     price: "₹10/km",
 
     seats: 4,
@@ -118,7 +118,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "Amaze",
     slug: "amaze",
-    image: "/cabs/amazemain.webp",
+    image: "/cabs/amaze.webp",
     price: "₹10/km",
 
     seats: 4,
@@ -135,7 +135,7 @@ export const vehicles: Vehicle[] = [
   {
   name: "Sedan",
   slug: "sedan-taxi",
-  image: "/cabs/amazemain.webp",
+  image: "/cabs/amaze.webp",
   price: "₹10/km",
 
   seats: 4,
@@ -156,7 +156,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "Ertiga",
     slug: "ertiga",
-    image: "/cabs/ertigamain.webp",
+    image: "/cabs/ertiga.webp",
     price: "₹13/km",
 
     seats: 6,
@@ -173,7 +173,7 @@ export const vehicles: Vehicle[] = [
   // {
   //   name: "Innova Crysta",
   //   slug: "innova",
-  //   image: "/cabs/innovamain.webp",
+  //   image: "/cabs/innova.webp",
   //   price: "₹18/km",
 
   //   seats: 6,
@@ -189,7 +189,7 @@ export const vehicles: Vehicle[] = [
   {
     name: "Innova Crysta",
     slug: "innova-crysta",
-    image: "/cabs/innovamain.webp",
+    image: "/cabs/innova.webp",
     price: "₹16/km",
 
     seats: 6,
@@ -206,7 +206,7 @@ export const vehicles: Vehicle[] = [
   // {
   //   name: "Toyota Innova Crysta",
   //   slug: "innova-crysta",
-  //   image: "/cabs/innovamain.webp",
+  //   image: "/cabs/innova.webp",
   //   price: "₹20/km",
 
   //   seats: 7,
@@ -223,7 +223,7 @@ export const vehicles: Vehicle[] = [
   // {
   //   name: "MG ZS",
   //   slug: "mg-zs",
-  //   image: "/cabs/mgzsmain.webp",
+  //   image: "/cabs/mgzs.webp",
   //   price: "₹20/km",
 
   //   seats: 5,
@@ -300,7 +300,7 @@ export const vehicles: Vehicle[] = [
     name: "16 Seater Tempo Traveller",
     slug: "16-seater-tempo-traveller",
     image: "/cabs/tempofirst.webp",
-    price: "₹20/km",
+    price: "₹25/km",
 
     seats: 16,
     doors: 4,
@@ -317,7 +317,7 @@ export const vehicles: Vehicle[] = [
     name: "20 Seater Tempo Traveller",
     slug: "20-seater-tempo-traveller",
     image: "/cabs/tempofirst.webp",
-    price: "₹20/km",
+    price: "₹27/km",
 
     seats: 20,
     doors: 4,
@@ -334,7 +334,7 @@ export const vehicles: Vehicle[] = [
     name: "24 Seater Tempo Traveller",
     slug: "24-seater-tempo-traveller",
     image: "/cabs/tempofirst.webp",
-    price: "₹20/km",
+    price: "₹29/km",
 
     seats: 24,
     doors: 4,

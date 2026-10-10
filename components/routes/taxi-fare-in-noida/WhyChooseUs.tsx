@@ -47,24 +47,28 @@ const benefits = [
   },
 ];
 
-export default function WhyChooseUs() {
+interface WhyChooseUsProps {
+  cityName?: string;
+}
+
+export default function WhyChooseUs({ cityName = "Noida" }: WhyChooseUsProps) {
   return (
-    <section className="bg-white/95 py-12">
+    <section className="bg-white/95 py-12 border-b border-slate-300">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {/* Heading */}
-        <div className="mx-auto mb-12 max-w-3xl text-center">
+        <div className="mx-auto mb-12 max-w-7xl text-center">
           <span className="inline-flex rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-600">
-            Why NoidaCab
+            Why NoidaCab in {cityName}
           </span>
 
           <h2 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-            Why Choose NoidaCab for Your Taxi?
+            Why Choose NoidaCab in {cityName}?
           </h2>
 
           <p className="mt-4 leading-7 text-gray-600">
             From choosing the right vehicle to understanding your fare, we
-            make booking a taxi simple, convenient and comfortable.
+            make booking a taxi in {cityName} simple, convenient and comfortable.
           </p>
         </div>
 
