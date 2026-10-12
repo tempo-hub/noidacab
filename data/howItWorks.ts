@@ -5,18 +5,18 @@ export const howItWorks: HowItWorksStep[] = [
     number: "01",
     title: "Call or WhatsApp",
     description:
-      "Reach us at 8377809809 with your pickup, destination, and date. That's it!",
+      "Call or WhatsApp 8377809809 with your pickup point, drop location, travel date and time.",
   },
   {
     number: "02",
     title: "Choose Your Ride",
     description:
-      "Choose from Hatchback, Sedan, SUV, Ertiga, Innova Crysta or Tempo Traveller based on your travel needs.",
+      "Choose a hatchback, sedan, Ertiga, Innova Crysta or Tempo Traveller. We confirm your fare before you book.",
   },
   {
     number: "03",
-    title: "Sit Back & Enjoy",
+    title: "Your Driver Arrives",
     description:
-      "Confirm your booking and our professional driver will arrive at your location on time.",
+      "We share the driver's name and vehicle details. Your driver calls before arriving and reaches your pickup point on time.",
   },
 ];

@@ -9,6 +9,7 @@ import RouteBookingOptions from "./RouteBookingOptions";
 import RouteFAQs from "./RouteFAQs";
 import RouteVehicleOptions from "./RouteVehicleOptions";
 import RouteBenefits from "./RouteBenefits";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 export default function RouteVehicleTemplate({
   route,
@@ -39,9 +40,14 @@ export default function RouteVehicleTemplate({
       <RouteBookingOptions route={route} />
       <RouteBenefits route = {route} />
 
-      <RouteFAQs route={route} />
+      {/* Popular City Routes */}
+      <PopularCityRoutes
+        cityName={route.fromName || "Noida"}
+        vehicleSlug={vehicle.slug}
+        vehicleName={vehicle.name}
+      />
 
-      
+      <RouteFAQs route={route} />
     </main>
   );
 }

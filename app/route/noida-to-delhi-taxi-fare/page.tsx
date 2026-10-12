@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Noida to Delhi Taxi Fare | Cab Fare & Price",
   description:
     "Check Noida to Delhi taxi fare for Sedan, SUV and other cabs. Compare cab prices, fare details and choose an affordable taxi for your journey.",
+  alternates: {
+    canonical: "https://www.noidacab.com/route/noida-to-delhi-taxi-fare",
+  },
 };
 export default function NoidaToDelhiTaxiFarePage() {
   return (

@@ -10,6 +10,7 @@ import HowToTravel from "./HowToTravel";
 import PopularNearbyRoutes from "./PopularNearbyRoutes";
 import WhyChooseNoidaCab from "./WhyChooseNoidaCab";
 import DistanceBookingCTA from "./DistanceBookingCTA";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 interface DistanceRouteProps {
   route: ParsedDistanceRoute;
@@ -57,6 +58,13 @@ export default function DistanceRoute({
       <PopularNearbyRoutes
         currentSlug={route.slug}
         routes={nearbyRoutes}
+      />
+
+      {/* Popular City Routes */}
+      <PopularCityRoutes
+        cityName={route.from.name || "Noida"}
+        vehicleSlug="taxi"
+        vehicleName="Distance & Travel Cabs"
       />
 
       <DistanceBookingCTA

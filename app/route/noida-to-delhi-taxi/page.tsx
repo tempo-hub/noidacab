@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "Noida to Delhi Cab | @ ₹1,100 + 10% OFF | Book Now",
   description:
     "Book a reliable Noida to Delhi taxi for one-way and round trips. Choose from Sedan, SUV and other cabs with comfortable rides and affordable fares.",
+  alternates: {
+    canonical: "https://www.noidacab.com/route/noida-to-delhi-taxi",
+  },
 };
 
 export default function NoidaToDelhiTaxiPage() {

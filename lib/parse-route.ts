@@ -9,6 +9,7 @@ import {
 } from "@/data/vehicles";
 
 import urlRoutes from "@/data/urlroute.json";
+import { cityCabServicesData } from "@/data/cityCabServices";
 
 import {
   getNoidaOneWayRoute,
@@ -136,10 +137,22 @@ export type ParsedDistanceRoute = NoidaRouteData & {
 ========================================================= */
 
 export function getAllUrlSlugs(): { slug: string[] }[] {
-  return urlRoutes.map((entry) => ({
-    slug: entry.url
-      .split("/")
-      .filter(Boolean),
+  const allUrls = new Set<string>();
+
+  urlRoutes.forEach((entry) => {
+    allUrls.add(entry.url);
+  });
+
+  cityCabServicesData.forEach((group) => {
+    group.items.forEach((item) => {
+      if (item.href && item.href.startsWith("/")) {
+        allUrls.add(item.href);
+      }
+    });
+  });
+
+  return Array.from(allUrls).map((url) => ({
+    slug: url.split("/").filter(Boolean),
   }));
 }
 
@@ -705,7 +718,11 @@ export function parseVehicleTemplateUrl(
       .toLowerCase();
 
   // Exclude contact page from matching vehicle routes
-  if (normalizedUrl === "/noida-taxi-contact-number") {
+  if (
+    normalizedUrl.endsWith("-taxi-contact-number") ||
+    normalizedUrl.endsWith("-cab-contact-number") ||
+    normalizedUrl.endsWith("-contact-number")
+  ) {
     return null;
   }
 
@@ -931,6 +948,7 @@ export function parseAirportTaxiRouteUrl(url: string): ParsedAirportTaxiRoute | 
 export type ParsedContactRoute = {
   template: "contact-route";
   type: "taxi-contact-number";
+  citySlug: string;
 };
 
 export function parseContactRouteUrl(url: string): ParsedContactRoute | null {
@@ -942,6 +960,20 @@ export function parseContactRouteUrl(url: string): ParsedContactRoute | null {
       .join("/")
       .toLowerCase();
 
+  // Pattern: /[city]-taxi-contact-number or /[city]-cab-contact-number or /[city]-contact-number
+  const match = normalizedUrl.match(/^\/([a-z0-9-]+)-(?:taxi-|cab-)?contact-number$/);
+  if (match) {
+    const citySlug = match[1];
+    // Exclude route pairs like "noida-to-delhi"
+    if (!citySlug.includes("-to-")) {
+      return {
+        template: "contact-route",
+        type: "taxi-contact-number",
+        citySlug,
+      };
+    }
+  }
+
   if (
     normalizedUrl === "/noida-taxi-contact-number" ||
     normalizedUrl === "/noida-cab-contact-number"
@@ -949,6 +981,7 @@ export function parseContactRouteUrl(url: string): ParsedContactRoute | null {
     return {
       template: "contact-route",
       type: "taxi-contact-number",
+      citySlug: "noida",
     };
   }
 

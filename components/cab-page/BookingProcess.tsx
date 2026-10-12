@@ -62,7 +62,7 @@ export function BookingProcess({
       icon: CheckCircle2,
       title: "Start Your Journey",
       description: isTempo
-        ? "Board your luxury vehicle at your doorstep with our verified highway chauffeur."
+        ? "Board your vehicle at your doorstep with our verified highway chauffeur."
         : "Meet your driver at the pickup point and enjoy a comfortable journey.",
     },
   ];

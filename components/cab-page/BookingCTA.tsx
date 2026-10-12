@@ -67,7 +67,7 @@ export function BookingCTA({ location, vehicle, url }: Props) {
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base sm:leading-7">
                 {isTempo ? (
                   <>
-                    Hire a luxury{" "}
+                    Hire a{" "}
                     <span className="font-semibold text-white">
                       {vehicle.name}
                     </span>{" "}

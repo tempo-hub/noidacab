@@ -8,23 +8,26 @@ export default function Services() {
     <section className="py-12 bg-white/95 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Heading */}
-        <div className="mb-16 text-center">
-          <span className="inline-flex rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-600">
-            Our Services
-          </span>
+        <div className="mb-12 text-center">
+  <span className="inline-flex rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-600">
+    Our Cab Services
+  </span>
 
-          <h2 className="mt-5 text-4xl font-bold text-gray-900 md:text-5xl">
-            Cab Services Designed
-            <span className="block text-amber-600">
-              For Every Journey
-            </span>
-          </h2>
+  <h2 className="mt-5 text-3xl font-bold text-gray-900 md:text-5xl">
+    Taxi and Cab Services in Noida
+    <span className="block text-amber-600">
+      For Every Journey
+    </span>
+  </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600">
-            From local rides to airport transfers and outstation trips, we have
-            the perfect cab service for every travel need.
-          </p>
-        </div>
+  <p className="mx-auto mt-5 max-w-7xl text-base leading-7 text-gray-600 md:text-lg">
+    From local taxi bookings and Noida to Delhi transfers to airport
+    pickups, one-way trips, corporate travel and outstation journeys,
+    NoidaCab offers vehicle options for different travel needs.
+    Choose a sedan, SUV, Innova Crysta or Tempo Traveller and contact
+    our team to confirm availability and fares.
+  </p>
+</div>
 
         {/* Cards */}
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">

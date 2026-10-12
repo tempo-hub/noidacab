@@ -28,11 +28,11 @@ export default function ServiceAreas() {
           </span>
 
           <h2 className="mt-5 text-4xl font-bold text-slate-900">
-            Service Areas in Noida
+            Cab Service Near You – Noida, Greater Noida and Noida Extension
           </h2>
 
           <p className="mt-4 text-gray-600">
-            Book reliable Taxi services from the most popular areas in Noida.
+            Doorstep pickups across Noida, including Sector 18, Sector 62, Sector 137, Noida Extension, Greater Noida, Pari Chowk, Film City, Botanical Garden and Jewar Airport.
           </p>
         </div>
 
@@ -69,6 +69,9 @@ export default function ServiceAreas() {
             );
           })}
         </div>
+        <p className="mt-8 leading-7 text-gray-600">
+          We also serve sectors 15, 16, 19, 25, 26, 27, 29, 31, 34, 35, 37, 39, 41, 44, 48, 50, 51, 52, 61, 63, 64, 74, 75, 78, 93, 100, 104, 110, 119, 128, 135, 142 and 150, as well as Golf Course and Kondli.
+        </p>
       </div>
     </section>
   );

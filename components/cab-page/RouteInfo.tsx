@@ -154,7 +154,7 @@ export function RouteInfo({ location, vehicle }: Props) {
                   sizes="(max-width: 1024px) 100vw, 320px"
                 />
                 <div className="absolute top-2.5 left-2.5 rounded-md bg-slate-950/80 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur-xs">
-                  {vehicle.name} • {vehicle.category || (isTempo ? "Luxury Tempo" : "AC Cab")}
+                  {vehicle.name} • {vehicle.category || (isTempo ? "Tempo Traveller" : "AC Cab")}
                 </div>
               </div>
 
@@ -236,7 +236,7 @@ export function RouteInfo({ location, vehicle }: Props) {
             <p className="text-xs leading-5 text-slate-700 sm:text-sm">
               {isTempo ? (
                 <>
-                  Planning a group outing or wedding? Luxury{" "}
+                  Planning a group outing or wedding?{" "}
                   <strong className="text-slate-950">{vehicle.name}</strong> rentals are available from{" "}
                   <strong className="text-slate-950">{location.name}</strong> with transparent per-km billing and verified highway chauffeurs.
                 </>

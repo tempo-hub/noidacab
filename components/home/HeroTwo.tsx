@@ -1,12 +1,34 @@
 import Image from "next/image";
-import { Car, Clock, Shield } from "lucide-react";
+import { Car, Clock, IndianRupee, MapPin, Shield } from "lucide-react";
 import BookingCard from "./BookingCard";
 import Link from "next/link";
 
 const features = [
-  { icon: Car, title: "4,000+ Tips", subtitle: "Rides Completed" },
-  { icon: Shield, title: "100% Safe", subtitle: "Background Checked" },
-  { icon: Clock, title: "24/7 Support", subtitle: "No Hidden Charges" },
+  {
+    icon: Clock,
+    title: "24x7 Availability",
+    subtitle: "Book Anytime",
+  },
+  {
+    icon: Shield,
+    title: "Verified Drivers",
+    subtitle: "Professional Chauffeurs",
+  },
+  {
+    icon: IndianRupee,
+    title: "Upfront Fares",
+    subtitle: "Know Your Fare Before Travel",
+  },
+  {
+    icon: MapPin,
+    title: "All Noida Sectors",
+    subtitle: "Noida & Greater Noida",
+  },
+  {
+    icon: Car,
+    title: "Multiple Vehicle Options",
+    subtitle: "Sedan, SUV, Innova & Tempo Traveller",
+  },
 ];
 
 export default function Hero() {
@@ -46,18 +68,20 @@ export default function Hero() {
                 ))}
               </div>
 
-              <h1 className="text-3xl font-black leading-[1.05] tracking-tight text-gray-900 sm:text-4xl lg:text-6xl">
-                Reliable Cab
-                <span className="block text-amber-600">Booking in Noida</span>
-              </h1>
+              <h1 className="text-3xl font-black leading-[1.05] tracking-tight text-gray-900 sm:text-4xl lg:text-4xl">
+  Taxi Service in Noida
+  <span className="block text-amber-600">
+    Book a Verified Cab in Minutes, 24x7
+  </span>
+</h1>
 
-
-              <p className="mt-5 max-w-lg text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
-                Book a reliable taxi for local travel, airport transfers, Delhi trips, and
-                outstation journeys. Choose from comfortable vehicles, transparent fares,
-                and convenient booking with NoidaCab.
-              </p>
-
+<p className="mt-5 max-w-lg text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
+  Need a cab in Noida right now or planning an early-morning airport
+  drop? NoidaCab connects you with clean AC cars and verified drivers
+  for local travel across Noida and Greater Noida. Get your fare
+  confirmed before the trip and book by call or WhatsApp for Delhi
+  trips, Jewar and IGI airport transfers, and outstation journeys.
+</p>
               <div className="mt-4 flex flex-wrap gap-4">
                 <a
                   href="https://wa.me/918377809809"

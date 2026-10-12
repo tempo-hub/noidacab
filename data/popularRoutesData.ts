@@ -51,7 +51,7 @@ export interface VehiclePricingRule {
 }
 
 export const vehicleRules: Record<string, VehiclePricingRule> = {
-  "tempo-traveller": { name: "Tempo Traveller", slug: "tempo-traveller", perKm: 19.7, fixedBase: 0 },
+  "tempo-traveller": { name: "Tempo Traveller", slug: "tempo-traveller", perKm: 20, fixedBase: 0 },
   "12-seater-tempo-traveller": { name: "12-Seater Tempo Traveller", slug: "12-seater-tempo-traveller", perKm: 20, fixedBase: 0 },
   "16-seater-tempo-traveller": { name: "16-Seater Tempo Traveller", slug: "16-seater-tempo-traveller", perKm: 25, fixedBase: 0 },
   "20-seater-tempo-traveller": { name: "20-Seater Tempo Traveller", slug: "20-seater-tempo-traveller", perKm: 27, fixedBase: 0 },
@@ -86,15 +86,29 @@ export const vehicleRules: Record<string, VehiclePricingRule> = {
   "innova": { name: "Innova Crysta Taxi", slug: "innova-crysta-taxi", perKm: 16, fixedBase: 0 },
   "innova-taxi": { name: "Innova Crysta Taxi", slug: "innova-crysta-taxi", perKm: 16, fixedBase: 0 },
   "urbania": { name: "Force Urbania", slug: "urbania", perKm: 20, fixedBase: 0 },
-  "urbania-rental": { name: "Force Urbania", slug: "urbania", perKm: 25, fixedBase: 0 },
+  "urbania-rental": { name: "Force Urbania Rental", slug: "urbania-rental", perKm: 25, fixedBase: 0 },
+  "contact-number": { name: "Taxi Contact Number", slug: "contact-number", perKm: 10, fixedBase: 0 },
+  "taxi-contact-number": { name: "Taxi Contact Number", slug: "contact-number", perKm: 10, fixedBase: 0 },
+  "distance-travel-time": { name: "Distance & Travel Time", slug: "distance-travel-time", perKm: 10, fixedBase: 0 },
 };
 
 export function normalizeVehicleKey(vehicleSlug?: string): string {
   if (!vehicleSlug) return "tempo-traveller";
   const clean = vehicleSlug.toLowerCase().trim();
 
+  if (
+    clean.includes("contact-number") ||
+    clean.includes("contact") ||
+    clean.includes("helpline") ||
+    clean.includes("phone-number")
+  ) {
+    return "contact-number";
+  }
+
+  if (clean.includes("distance")) return "distance-travel-time";
   if (clean.includes("one-way") || clean.includes("oneway")) return "one-way-taxi";
   if (clean.includes("innova")) return "innova-crysta";
+  if (clean.includes("urbania-rental")) return "urbania-rental";
   if (clean.includes("urbania")) return "urbania";
   if (clean.includes("luxury-tempo") || clean.includes("luxury")) return "luxury-tempo-traveller";
   if (clean.includes("12-seater")) return "12-seater-tempo-traveller";
@@ -480,23 +494,27 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail {
     from = parts[0].replace(/-/g, " ");
 
     const rest = parts[1];
-    if (rest.endsWith("-luxury-tempo-traveller")) {
-      to = rest.replace("-luxury-tempo-traveller", "").replace(/-/g, " ");
+    if (
+      rest.endsWith("-luxury-tempo-traveller") ||
+      rest.endsWith("-luxury-tempo-travel") ||
+      rest.endsWith("-luxury-tempo")
+    ) {
+      to = rest.replace(/-(luxury-tempo-traveller|luxury-tempo-travel|luxury-tempo)$/, "").replace(/-/g, " ");
       vehicleKey = "luxury-tempo-traveller";
-    } else if (rest.endsWith("-12-seater-tempo-traveller")) {
-      to = rest.replace("-12-seater-tempo-traveller", "").replace(/-/g, " ");
+    } else if (rest.endsWith("-12-seater-tempo-traveller") || rest.endsWith("-12-seater")) {
+      to = rest.replace(/-(12-seater-tempo-traveller|12-seater)$/, "").replace(/-/g, " ");
       vehicleKey = "12-seater-tempo-traveller";
-    } else if (rest.endsWith("-16-seater-tempo-traveller")) {
-      to = rest.replace("-16-seater-tempo-traveller", "").replace(/-/g, " ");
+    } else if (rest.endsWith("-16-seater-tempo-traveller") || rest.endsWith("-16-seater")) {
+      to = rest.replace(/-(16-seater-tempo-traveller|16-seater)$/, "").replace(/-/g, " ");
       vehicleKey = "16-seater-tempo-traveller";
-    } else if (rest.endsWith("-20-seater-tempo-traveller")) {
-      to = rest.replace("-20-seater-tempo-traveller", "").replace(/-/g, " ");
+    } else if (rest.endsWith("-20-seater-tempo-traveller") || rest.endsWith("-20-seater")) {
+      to = rest.replace(/-(20-seater-tempo-traveller|20-seater)$/, "").replace(/-/g, " ");
       vehicleKey = "20-seater-tempo-traveller";
-    } else if (rest.endsWith("-24-seater-tempo-traveller")) {
-      to = rest.replace("-24-seater-tempo-traveller", "").replace(/-/g, " ");
+    } else if (rest.endsWith("-24-seater-tempo-traveller") || rest.endsWith("-24-seater")) {
+      to = rest.replace(/-(24-seater-tempo-traveller|24-seater)$/, "").replace(/-/g, " ");
       vehicleKey = "24-seater-tempo-traveller";
-    } else if (rest.endsWith("-tempo-traveller")) {
-      to = rest.replace("-tempo-traveller", "").replace(/-/g, " ");
+    } else if (rest.endsWith("-tempo-traveller") || rest.endsWith("-tempo")) {
+      to = rest.replace(/-(tempo-traveller|tempo)$/, "").replace(/-/g, " ");
       vehicleKey = "tempo-traveller";
     } else if (
       rest.endsWith("-innova-crysta-taxi") ||
@@ -533,18 +551,31 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail {
     } else if (rest.endsWith("-suv-taxi") || rest.endsWith("-suv")) {
       to = rest.replace(/-suv(-taxi)?$/, "").replace(/-/g, " ");
       vehicleKey = "suv";
-    } else if (rest.endsWith("-urbania") || rest.endsWith("-urbania-rental")) {
-      to = rest.replace(/-urbania(-rental)?$/, "").replace(/-/g, " ");
+    } else if (rest.endsWith("-urbania-rental")) {
+      to = rest.replace("-urbania-rental", "").replace(/-/g, " ");
+      vehicleKey = "urbania-rental";
+    } else if (rest.endsWith("-urbania")) {
+      to = rest.replace("-urbania", "").replace(/-/g, " ");
       vehicleKey = "urbania";
     } else if (rest.endsWith("-one-way-taxi") || rest.endsWith("-oneway-taxi") || rest.endsWith("-one-way-cab")) {
       to = rest.replace(/-(one-way-taxi|oneway-taxi|one-way-cab)$/, "").replace(/-/g, " ");
       vehicleKey = "one-way-taxi";
+    } else if (rest.endsWith("-distance-travel-time")) {
+      to = rest.replace("-distance-travel-time", "").replace(/-/g, " ");
+      vehicleKey = "distance-travel-time";
     } else if (rest.endsWith("-fare-taxi")) {
       to = rest.replace("-fare-taxi", "").replace(/-/g, " ");
       vehicleKey = "fare-taxi";
     } else if (rest.endsWith("-taxi-fare")) {
       to = rest.replace("-taxi-fare", "").replace(/-/g, " ");
       vehicleKey = "taxi-fare";
+    } else if (
+      rest.endsWith("-contact-number") ||
+      rest.endsWith("-taxi-contact-number") ||
+      rest.endsWith("-cab-contact-number")
+    ) {
+      to = rest.replace(/-(taxi-|cab-)?contact-number$/, "").replace(/-/g, " ");
+      vehicleKey = "contact-number";
     } else if (rest.endsWith("-taxi")) {
       to = rest.replace("-taxi", "").replace(/-/g, " ");
       vehicleKey = "taxi";
@@ -567,6 +598,14 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail {
   const baseKm = pairInfo.distanceKm;
   const canonicalSlug = `${fromSlug}-to-${toSlug}-${vRule.slug}`;
 
+  const isContactRoute = vehicleKey === "contact-number" || clean.includes("contact-number");
+  const title = isContactRoute
+    ? `${fromCap} to ${toCap} Taxi Contact Number | 24x7 Cab Booking Helpline: 8377809809`
+    : `${fromCap} to ${toCap} ${vRule.name} & Cab Booking`;
+  const description = isContactRoute
+    ? `Call ${fromCap} to ${toCap} Taxi Contact Number +91-8377809809 for immediate 24x7 cab booking. Verified drivers, clean AC Sedans, SUVs & Tempo Travellers. Distance: ${pairInfo.distanceKm} km (${pairInfo.duration}). Starting @ ₹${fare.toLocaleString("en-IN")}.`
+    : `Book a comfortable and verified ${vRule.name} from ${fromCap} to ${toCap}. Distance: ${pairInfo.distanceKm} km (${pairInfo.duration}). Zero surge pricing, professional drivers, and door-to-door pickup.`;
+
   return {
     slug: canonicalSlug,
     canonicalSlug,
@@ -579,8 +618,8 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail {
     duration: pairInfo.duration,
     fare: `₹${fare.toLocaleString("en-IN")}`,
     highway: pairInfo.highway,
-    title: `${fromCap} to ${toCap} ${vRule.name} & Cab Booking`,
-    description: `Book a comfortable and verified ${vRule.name} from ${fromCap} to ${toCap}. Distance: ${pairInfo.distanceKm} km (${pairInfo.duration}). Zero surge pricing, professional drivers, and door-to-door pickup.`,
+    title,
+    description,
     pickupPoints: [
       `${fromCap} Railway Station`,
       `${fromCap} Airport / City Center`,

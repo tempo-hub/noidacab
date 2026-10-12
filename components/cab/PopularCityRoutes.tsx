@@ -50,7 +50,8 @@ function slugify(val: string): string {
 export function getRoutesFromMasterRoutes(
   cityName?: string,
   vehicleSlug?: string,
-  limit?: number
+  limit?: number,
+  vehicleName?: string
 ): PopularRouteCardItem[] {
   const targetCityNorm = normalizeCity(cityName);
   const isAllCities = !targetCityNorm || targetCityNorm === "all";
@@ -114,7 +115,7 @@ export function getRoutesFromMasterRoutes(
       id: slug,
       from: pickup,
       to: drop,
-      vehicle: vRule.name,
+      vehicle: vehicleName || vRule.name,
       vehicleSlug: vRule.slug,
       distance: `${distKm} km`,
       duration: item.duration,
@@ -153,7 +154,7 @@ export function getRoutesFromMasterRoutes(
         id: slug,
         from: currentCity,
         to: dest,
-        vehicle: defaultRule.name,
+        vehicle: vehicleName || defaultRule.name,
         vehicleSlug: defaultRule.slug,
         distance: `${pairInfo.distanceKm} km`,
         duration: pairInfo.duration,
@@ -181,7 +182,7 @@ export default function PopularCityRoutes({
   subtitle,
   badgeText,
 }: Props) {
-  const routes = customRoutes || getRoutesFromMasterRoutes(cityName, vehicleSlug, limit);
+  const routes = customRoutes || getRoutesFromMasterRoutes(cityName, vehicleSlug, limit, vehicleName);
 
   const displayVehicle =
     vehicleName ||
@@ -212,7 +213,7 @@ export default function PopularCityRoutes({
               key={item.id}
               className="group rounded-2xl md:rounded-3xl border border-gray-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-amber-300 hover:shadow-md transition-all flex flex-col justify-between"
             >
-              <div>
+              <Link href={`/route/${item.slug}`} className="block group/cardhead transition">
                 {/* Pickup Row */}
                 <div className="flex items-start justify-between">
                   <div>
@@ -222,7 +223,7 @@ export default function PopularCityRoutes({
                         PICKUP
                       </span>
                     </div>
-                    <p className="mt-1 pl-4.5 text-lg sm:text-xl font-bold text-gray-900">
+                    <p className="mt-1 pl-4.5 text-lg sm:text-xl font-bold text-gray-900 group-hover/cardhead:text-amber-600 transition">
                       {item.from}
                     </p>
                   </div>
@@ -233,7 +234,7 @@ export default function PopularCityRoutes({
                       POPULAR
                     </span>
                     {item.vehicle && (
-                      <span className="text-[11px] font-semibold text-gray-500">
+                      <span className="rounded-md bg-amber-100/90 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-900 border border-amber-300/60 shadow-2xs">
                         {item.vehicle}
                       </span>
                     )}
@@ -251,11 +252,11 @@ export default function PopularCityRoutes({
                       DROP
                     </span>
                   </div>
-                  <p className="mt-1 pl-4.5 text-lg sm:text-xl font-bold text-gray-900">
+                  <p className="mt-1 pl-4.5 text-lg sm:text-xl font-bold text-gray-900 group-hover/cardhead:text-amber-600 transition">
                     {item.to}
                   </p>
                 </div>
-              </div>
+              </Link>
 
               {/* Bottom Row: Starting Fare & BOOK Button */}
               <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between">

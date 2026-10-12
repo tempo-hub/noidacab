@@ -54,7 +54,7 @@ export function WhyChooseUs({ location, vehicle }: Props) {
         },
         {
           icon: BusFront,
-          title: "Luxury Pushback Interiors",
+          title: "Pushback Reclining Interiors",
           description: `Spotless AC cabin, reclining seats, individual charging ports, and massive boot space in your ${vehicle.name}.`,
           badge: "Premium Touring Fleet",
         },

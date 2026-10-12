@@ -1,54 +1,38 @@
-import { whyChoose } from "@/data/whyChoose";
+import SafetyFeatures from "./SafetyFeatures";
+import WhyChooseNoidaCab from "./WhyChooseNoidaCab";
 
 export default function WhyChooseCards() {
   return (
-    <section className="bg-white/95 py-12 border-b border-gray-300">
-      <div className="container-custom">
-        {/* Heading */}
-        <div className="mx-auto mb-4 max-w-3xl text-center">
-          <span className="inline-flex rounded-full bg-amber-100 px-5 py-2 text-sm font-semibold text-amber-600">
-            Why Choose Us
+    <section
+      className="border-b border-gray-300 bg-white/95 py-10 sm:py-12 lg:py-12"
+      aria-labelledby="why-choose-heading"
+    >
+      <div className="container-custom px-4 sm:px-6">
+        <div className="mx-auto mb-10 max-w-4xl text-center sm:mb-12">
+          <span className="inline-flex rounded-full bg-amber-100 px-4 py-2 text-xs font-semibold text-amber-700 sm:text-sm">
+            Safe, Clean and Verified
           </span>
 
-          <h2 className="mt-5 text-4xl font-bold text-gray-900 md:text-5xl">
-            Why Thousands of Customers
-            <span className="block text-amber-600">
-              Choose NoidaCab
+          <h2
+            id="why-choose-heading"
+            className="mt-4 text-2xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+          >
+            Why People Choose NoidaCab
+            <span className="mt-1 block text-amber-600">
+              For Travel Across Noida and Delhi-NCR
             </span>
           </h2>
 
-          <p className="mt-5 text-lg text-gray-600">
-            Experience reliable, affordable, and comfortable cab services
-            designed for every type of journey.
+          <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-gray-600 sm:text-base sm:leading-7">
+            Explore vehicle options, get fare information before booking
+            and arrange local rides, airport transfers or outstation trips
+            with convenient booking support.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3  ">
-          {whyChoose.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={item.title}
-                className="group rounded-3xl bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl justify-center items-center text-center"
-              >
-                <div className="flex flex-wrap justify-center gap-6">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-100 text-amber-600 transition group-hover:bg-amber-400 group-hover:text-white">
-                  <Icon size={30} />
-                </div>
-                </div>
-
-                <h3 className="mb-4 text-2xl font-bold text-gray-900">
-                  {item.title}
-                </h3>
-
-                <p className="leading-8 text-gray-600">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
+        <div className="mx-auto max-w-7xl">
+          <SafetyFeatures />
+          <WhyChooseNoidaCab />
         </div>
       </div>
     </section>

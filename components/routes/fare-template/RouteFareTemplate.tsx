@@ -12,6 +12,7 @@ import RouteWhyChooseNoidaCab from "./RouteWhyChooseNoidaCab";
 import RoutePickupLocations from "./RoutePickupLocations";
 import RouteFareFAQ from "./RouteFareFAQ";
 import RouteFareCTA from "./RouteFareCTA";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 
 export default function RouteFareTemplate({ route }: { route: RouteData }) {
@@ -64,6 +65,13 @@ export default function RouteFareTemplate({ route }: { route: RouteData }) {
 
 
       
+
+      {/* Popular City Routes */}
+      <PopularCityRoutes
+        cityName={route.from.name}
+        vehicleSlug="taxi-fare"
+        vehicleName="Taxi Fare"
+      />
 
       {/* 11. Route-Specific FAQs + Schema.org */}
       <RouteFareFAQ route={route} />

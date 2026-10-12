@@ -39,7 +39,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Lucknow", href: "/ertiga-taxi-in-lucknow" },
       { name: "Urbania Rental in Lucknow", href: "/urbania-rental-in-lucknow" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-lucknow" },
-      { name: "Lucknow Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Lucknow Taxi Contact Number", href: "/lucknow-taxi-contact-number" },
     ],
   },
   {
@@ -70,7 +70,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Varanasi", href: "/ertiga-taxi-in-varanasi" },
       { name: "Urbania Rental in Varanasi", href: "/urbania-rental-in-varanasi" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-varanasi" },
-      { name: "Varanasi Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Varanasi Taxi Contact Number", href: "/varanasi-taxi-contact-number" },
     ],
   },
   {
@@ -101,7 +101,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Ayodhya", href: "/ertiga-taxi-in-ayodhya" },
       { name: "Urbania Rental in Ayodhya", href: "/urbania-rental-in-ayodhya" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-ayodhya" },
-      { name: "Ayodhya Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Ayodhya Taxi Contact Number", href: "/ayodhya-taxi-contact-number" },
     ],
   },
   {
@@ -132,7 +132,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Prayagraj", href: "/ertiga-taxi-in-prayagraj" },
       { name: "Urbania Rental in Prayagraj", href: "/urbania-rental-in-prayagraj" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-prayagraj" },
-      { name: "Prayagraj Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Prayagraj Taxi Contact Number", href: "/prayagraj-taxi-contact-number" },
     ],
   },
   {
@@ -163,7 +163,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Noida", href: "/ertiga-taxi-in-noida" },
       { name: "Urbania Rental in Noida", href: "/urbania-rental-in-noida" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-noida" },
-      { name: "Noida Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Noida Taxi Contact Number", href: "/noida-taxi-contact-number" },
     ],
   },
   {
@@ -194,7 +194,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Haridwar", href: "/ertiga-taxi-in-haridwar" },
       { name: "Urbania Rental in Haridwar", href: "/urbania-rental-in-haridwar" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-haridwar" },
-      { name: "Haridwar Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Haridwar Taxi Contact Number", href: "/haridwar-taxi-contact-number" },
     ],
   },
   {
@@ -225,7 +225,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Agra", href: "/ertiga-taxi-in-agra" },
       { name: "Urbania Rental in Agra", href: "/urbania-rental-in-agra" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-agra" },
-      { name: "Agra Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Agra Taxi Contact Number", href: "/agra-taxi-contact-number" },
     ],
   },
   {
@@ -256,7 +256,7 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Ertiga Taxi in Mathura", href: "/ertiga-taxi-in-mathura" },
       { name: "Urbania Rental in Mathura", href: "/urbania-rental-in-mathura" },
       { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-mathura" },
-      { name: "Mathura Taxi Contact Number", href: "tel:+918377809809", isPhone: true },
+      { name: "Mathura Taxi Contact Number", href: "/mathura-taxi-contact-number" },
     ],
   },
 ];

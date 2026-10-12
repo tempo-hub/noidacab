@@ -62,7 +62,7 @@ export function JourneyInfo({ location, vehicle }: Props) {
           <p className="mt-2 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
             {isTempo ? (
               <>
-                Hire a luxury, pushback AC {vehicle.name} from{" "}
+                Hire a pushback AC {vehicle.name} from{" "}
                 <span className="font-semibold text-slate-900">{location.name}</span>{" "}
                 for long-distance family vacations, wedding guest transfers, and outstation trips with an experienced highway chauffeur and transparent billing.
               </>
@@ -160,7 +160,7 @@ export function JourneyInfo({ location, vehicle }: Props) {
                   sizes="(max-width: 1024px) 100vw, 320px"
                 />
                 <span className="absolute top-2.5 left-2.5 rounded-md bg-slate-950/80 px-2.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-xs">
-                  {vehicle.category || (isTempo ? "Luxury Tempo" : "Economy AC")}
+                  {vehicle.category || (isTempo ? "Tempo Traveller" : "Economy AC")}
                 </span>
                 <span className="absolute bottom-2.5 right-2.5 flex items-center gap-1 rounded-md bg-emerald-600/90 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur-xs">
                   <Sparkles size={11} /> {isTempo ? "Sanitized Cabin" : "Clean Cab"}

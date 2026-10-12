@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "Noida to Delhi Sedan Taxi | Book Sedan Cab",
   description:
     "Book a Noida to Delhi sedan taxi for comfortable one-way travel. Choose from Dzire, Etios, Amaze and other sedan options.",
+  alternates: {
+    canonical: "https://www.noidacab.com/route/noida-to-delhi-sedan-taxi",
+  },
 };
 
 export default function NoidaToDelhiSedanTaxiPage() {

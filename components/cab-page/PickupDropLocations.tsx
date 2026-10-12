@@ -56,7 +56,7 @@ export function PickupDropLocations({ location, vehicle }: Props) {
           <p className="mx-auto mt-3 max-w-7xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
             {isTempo ? (
               <>
-                Hassle-free group pickup across Noida &amp; Greater Noida with a clean, luxury{" "}
+                Hassle-free group pickup across Noida &amp; Greater Noida with a clean{" "}
                 <span className="font-bold text-slate-900">{vehicle.name}</span>. 
                 Equipped with reclining pushback seats, dual AC blowers, all-India commercial tourist permits, and verified highway chauffeurs.
               </>

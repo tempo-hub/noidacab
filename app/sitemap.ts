@@ -83,6 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addUrl("/suv-taxi-in-noida", 0.8, "weekly");
   addUrl("/tempo-traveller-in-noida", 0.8, "weekly");
   addUrl("/noida-to-delhi-sedan-taxi", 0.8, "weekly");
+  addUrl("/noida-taxi-contact-number", 0.95, "daily");
 
   // Company info
   addUrl("/about-us", 0.6, "monthly");
@@ -107,8 +108,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       if (!item.isPhone && item.href && item.href.startsWith("/")) {
         const priority =
           item.href.includes("taxi-service") ||
-          item.href.includes("one-way-taxi") ||
-          item.href.includes("taxi-fare")
+            item.href.includes("one-way-taxi") ||
+            item.href.includes("taxi-fare")
             ? 0.9
             : 0.8;
         addUrl(item.href, priority, "weekly");
@@ -167,6 +168,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "taxi-fare",
     "taxi",
     "sedan-taxi",
+    "etios-taxi",
+    "amaze-taxi",
     "ertiga-taxi",
     "innova-crysta-taxi",
     "dzire-taxi",
@@ -174,8 +177,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "tempo-traveller",
     "12-seater-tempo-traveller",
     "16-seater-tempo-traveller",
+    "20-seater-tempo-traveller",
+    "24-seater-tempo-traveller",
     "luxury-tempo-traveller",
+    "urbania-rental",
     "urbania",
+    "distance-travel-time",
+    "contact-number",
   ];
 
   for (const route of masterRoutesRegistry) {
@@ -196,8 +204,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
           vSlug === "one-way-taxi" || vSlug === "taxi-fare"
             ? 0.9
             : vSlug === "taxi" || vSlug === "ertiga-taxi" || vSlug === "sedan-taxi"
-            ? 0.85
-            : 0.8;
+              ? 0.85
+              : 0.8;
 
         addUrl(routeSlug, priority, "weekly");
       }

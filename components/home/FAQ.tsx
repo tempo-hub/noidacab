@@ -22,10 +22,7 @@ export default function FAQ() {
           </span>
 
           <h2 className="mt-5 text-4xl font-bold text-gray-900 md:text-5xl">
-            Frequently Asked
-            <span className="block text-amber-600">
-              Questions
-            </span>
+            Frequently Asked Questions About Taxi Service in Noida
           </h2>
 
           <p className="mt-5 text-lg text-gray-600">

@@ -38,6 +38,9 @@ import DynamicTaxiFarePage from "@/components/cab-routes/DynamicTaxiFarePage";
 import DynamicAirportServicePage from "@/components/cab-routes/DynamicAirportServicePage";
 import DynamicLocalSightseeingPage from "@/components/cab-routes/DynamicLocalSightseeingPage";
 import DynamicOneWayTaxiPage from "@/components/cab-routes/DynamicOneWayTaxiPage";
+import DynamicCityContactPage from "@/components/cab-routes/DynamicCityContactPage";
+import DynamicCityVehiclePage from "@/components/cab-routes/DynamicCityVehiclePage";
+import { parseDynamicRouteSlug } from "@/data/popularRoutesData";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -96,10 +99,13 @@ function parseDynamicCityVehicleUrl(url: string) {
         vehicle.slug = "tempo-traveller";
       } else if (cleanPath.startsWith("suv")) {
         vehicle.name = "SUV Taxi";
-        vehicle.slug = "suv";
+        vehicle.slug = "suv-taxi";
       } else if (cleanPath.startsWith("sedan")) {
         vehicle.name = "Sedan Taxi";
-        vehicle.slug = "sedan";
+        vehicle.slug = "sedan-taxi";
+      } else if (cleanPath.startsWith("urbania")) {
+        vehicle.name = "Force Urbania";
+        vehicle.slug = "urbania";
       }
 
       return {
@@ -263,18 +269,18 @@ export async function generateMetadata({
   ========================================*/
   const serviceRoute = parseServiceRoute(url);
 
-if (serviceRoute) {
-  // Format slug e.g. "airport-transfer" -> "Airport Transfer Taxi"
-  const serviceTitle = serviceRoute.serviceSlug
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+  if (serviceRoute) {
+    // Format slug e.g. "airport-transfer" -> "Airport Transfer Taxi"
+    const serviceTitle = serviceRoute.serviceSlug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
 
-  return {
-    title: `${serviceTitle} in Noida | Best Rates & 24x7 Cab Service - NoidaCab`,
-    description: `Book reliable ${serviceTitle.toLowerCase()} in Noida with NoidaCab. Verified drivers, clean AC cabs, on-time pickups for local, outstation, & airport travel. Call 8377809809.`,
-  };
-}
+    return {
+      title: `${serviceTitle} in Noida | Best Rates & 24x7 Cab Service - NoidaCab`,
+      description: `Book reliable ${serviceTitle.toLowerCase()} in Noida with NoidaCab. Verified drivers, clean AC cabs, on-time pickups for local, outstation, & airport travel. Call 8377809809.`,
+    };
+  }
 
   // ============================================
   // AIRPORT & NOIDA TAXI SERVICE METADATA
@@ -303,92 +309,92 @@ if (serviceRoute) {
   // ============================================
   const routeFare = parseRouteFareUrl(url);
 
-if (routeFare) {
-  const { route } = routeFare;
+  if (routeFare) {
+    const { route } = routeFare;
 
-  const distance = parseFloat(
-    String(route.distance).replace(/,/g, "")
-  );
+    const distance = parseFloat(
+      String(route.distance).replace(/,/g, "")
+    );
 
-  const calculatedPrice = Math.round(
-    distance * 1.5 * 10 + 500
-  );
+    const calculatedPrice = Math.round(
+      distance * 1.5 * 10 + 500
+    );
 
-  const title = `${route.from.name} to ${route.to.name} Taxi Fare started @ ₹${calculatedPrice} - Noida Cab | Book Now`;
+    const title = `${route.from.name} to ${route.to.name} Taxi Fare started @ ₹${calculatedPrice} - Noida Cab | Book Now`;
 
-  const description = `Check ${route.from.name} to ${route.to.name} cab fare starting from ₹${calculatedPrice}. Distance: ${route.distance} (${route.duration}). Sedan, SUV & Tempo Traveller options available. Call 8377809809.`;
+    const description = `Check ${route.from.name} to ${route.to.name} cab fare starting from ₹${calculatedPrice}. Distance: ${route.distance} (${route.duration}). Sedan, SUV & Tempo Traveller options available. Call 8377809809.`;
 
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `https://noidacab.com${url}`,
-    },
-    openGraph: {
+    return {
       title,
       description,
-      url: `https://noidacab.com${url}`,
-      siteName: "Noida Cab",
-      type: "website",
-    },
-  };
-}
+      alternates: {
+        canonical: `https://noidacab.com${url}`,
+      },
+      openGraph: {
+        title,
+        description,
+        url: `https://noidacab.com${url}`,
+        siteName: "Noida Cab",
+        type: "website",
+      },
+    };
+  }
 
   // ============================================
-// VEHICLE TEMPLATE ROUTE (Locality + Vehicle)
-// ============================================
-const directVehicles = parseVehicleTemplateUrl(url);
+  // VEHICLE TEMPLATE ROUTE (Locality + Vehicle)
+  // ============================================
+  const directVehicles = parseVehicleTemplateUrl(url);
 
-if (directVehicles) {
-  const { vehicle } = directVehicles;
+  if (directVehicles) {
+    const { vehicle } = directVehicles;
 
-  const title = `${vehicle.name} in Noida - NoidaCab @ ${vehicle.price} | Book Now`;
-  
-  const description = `Book ${vehicle.name} taxi in Noida. Features ${vehicle.seats} pushback seats, dual AC, space for ${vehicle.luggage} bags, and verified commercial drivers. Call 8377809809.`;
+    const title = `${vehicle.name} in Noida - NoidaCab @ ${vehicle.price} | Book Now`;
 
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `https://noidacab.com${url}`,
-    },
-    openGraph: {
+    const description = `Book ${vehicle.name} taxi in Noida. Features ${vehicle.seats} pushback seats, dual AC, space for ${vehicle.luggage} bags, and verified commercial drivers. Call 8377809809.`;
+
+    return {
       title,
       description,
-      url: `https://noidacab.com${url}`,
-      siteName: "Noida Cab",
-      type: "website",
-      images: [
-        {
-          url: vehicle.image.startsWith("http")
+      alternates: {
+        canonical: `https://noidacab.com${url}`,
+      },
+      openGraph: {
+        title,
+        description,
+        url: `https://noidacab.com${url}`,
+        siteName: "Noida Cab",
+        type: "website",
+        images: [
+          {
+            url: vehicle.image.startsWith("http")
+              ? vehicle.image
+              : `https://noidacab.com${vehicle.image}`,
+            width: 1200,
+            height: 630,
+            alt: `${vehicle.name} Taxi Service in Noida`,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [
+          vehicle.image.startsWith("http")
             ? vehicle.image
             : `https://noidacab.com${vehicle.image}`,
-          width: 1200,
-          height: 630,
-          alt: `${vehicle.name} Taxi Service in Noida`,
-        },
+        ],
+      },
+      keywords: [
+        `${vehicle.name} in Noida`,
+        `${vehicle.name} taxi Noida`,
+        `${vehicle.name} rental Noida`,
+        `${vehicle.category.toLowerCase()} cab Noida`,
+        "Noida taxi contact number",
+        "outstation cab from Noida",
       ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [
-        vehicle.image.startsWith("http")
-          ? vehicle.image
-          : `https://noidacab.com${vehicle.image}`,
-      ],
-    },
-    keywords: [
-      `${vehicle.name} in Noida`,
-      `${vehicle.name} taxi Noida`,
-      `${vehicle.name} rental Noida`,
-      `${vehicle.category.toLowerCase()} cab Noida`,
-      "Noida taxi contact number",
-      "outstation cab from Noida",
-    ],
-  };
-}
+    };
+  }
 
 
 
@@ -423,17 +429,24 @@ if (directVehicles) {
   /* =========================================================
     Contact Route Metadata
     ========================================================= */
-const contactRoute = parseContactRouteUrl(url);
-if (contactRoute) {
-  return {
-    title: "Noida Taxi Contact Number | 24x7 Cab Booking Helpline: 8377809809",
-    description:
-      "Call Noida Taxi Contact Number +91-8377809809 for immediate cab booking in Noida. Clean Dzire, Ertiga, Innova Crysta, and Tempo Travellers for local and outstation trips.",
-    alternates: {
-      canonical: `https://noidacab.com/noida-taxi-contact-number`,
-    },
-  };
-}
+  const contactRoute = parseContactRouteUrl(url);
+  if (contactRoute) {
+    const cityInfo = getCityDetails(contactRoute.citySlug);
+    return {
+      title: `${cityInfo.name} Taxi Contact Number | 24x7 Cab Booking Helpline: 8377809809`,
+      description: `Call ${cityInfo.name} Taxi Contact Number +91-8377809809 for immediate cab booking in ${cityInfo.name}. Clean Sedans, SUVs, Innova Crysta, and Tempo Travellers across ${cityInfo.localities.slice(0, 3).join(", ")}. Instant quotation, zero surge pricing.`,
+      alternates: {
+        canonical: `https://noidacab.com${url}`,
+      },
+      openGraph: {
+        title: `${cityInfo.name} Taxi Contact Number - 24x7 Booking Helpline`,
+        description: `Instant cab booking in ${cityInfo.name}. Call or WhatsApp +91-8377809809. Verified drivers, sanitized cars, fast doorstep arrival.`,
+        url: `https://noidacab.com${url}`,
+        siteName: "NoidaCab",
+        type: "website",
+      },
+    };
+  }
 
   // ============================================
   // DISTANCE & TRAVEL TIME
@@ -441,14 +454,14 @@ if (contactRoute) {
 
   const distanceRoute = parseDistanceRouteUrl(url);
 
-if (distanceRoute) {
-  return {
-    title: `${distanceRoute.from.name} to ${distanceRoute.to.name} Distance, Travel Time & Route | NoidaCab`,
+  if (distanceRoute) {
+    return {
+      title: `${distanceRoute.from.name} to ${distanceRoute.to.name} Distance, Travel Time & Route | NoidaCab`,
 
-    description:
-      `Check ${distanceRoute.from.name} to ${distanceRoute.to.name} distance, travel time and route details. Get estimated journey time, cab options and travel information with NoidaCab.`,
-  };
-}
+      description:
+        `Check ${distanceRoute.from.name} to ${distanceRoute.to.name} distance, travel time and route details. Get estimated journey time, cab options and travel information with NoidaCab.`,
+    };
+  }
 
   // ============================================
   // ONE WAY
@@ -461,8 +474,8 @@ if (distanceRoute) {
       title: `${oneWayRoute.from} to ${oneWayRoute.to} One Way Cab | NoidaCab | Book Now`,
 
       description:
-      `Book a reliable one-way cab from ${oneWayRoute.from} to ${oneWayRoute.to} with NoidaCab. Choose Sedan, SUV and Innova cabs with professional drivers, comfortable rides and affordable fares. Call 8448445504 to book now.`,
-  };
+        `Book a reliable one-way cab from ${oneWayRoute.from} to ${oneWayRoute.to} with NoidaCab. Choose Sedan, SUV and Innova cabs with professional drivers, comfortable rides and affordable fares. Call 8448445504 to book now.`,
+    };
   }
 
   // ============================================
@@ -483,29 +496,29 @@ if (distanceRoute) {
     };
   }
 
-// ============================================
-// NOIDA → NEARBY TEMPO TRAVELLER
-// ============================================
+  // ============================================
+  // NOIDA → NEARBY TEMPO TRAVELLER
+  // ============================================
 
-const nearbyTempoRoute =
-  parseNoidaNearbyTempoRouteUrl(url);
+  const nearbyTempoRoute =
+    parseNoidaNearbyTempoRouteUrl(url);
 
-if (nearbyTempoRoute) {
-  const distance = parseFloat(
-    String(nearbyTempoRoute.distance).replace(/,/g, "")
-  );
+  if (nearbyTempoRoute) {
+    const distance = parseFloat(
+      String(nearbyTempoRoute.distance).replace(/,/g, "")
+    );
 
-  const calculatedPrice = Math.round(
-    distance * 1.5 * 20 + 500
-  );
+    const calculatedPrice = Math.round(
+      distance * 1.5 * 20 + 500
+    );
 
-  return {
-    title: `${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} Tempo Traveller on Rent - NoidaCab @ ₹${calculatedPrice} | Book Now`,
+    return {
+      title: `${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} Tempo Traveller on Rent - NoidaCab @ ₹${calculatedPrice} | Book Now`,
 
-    description:
-      `Book a Tempo Traveller from ${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} from ₹${calculatedPrice}. Choose comfortable Tempo Traveller options for family trips, office groups, events and group travel. Call 8448445504 to book now.`,
-  };
-}
+      description:
+        `Book a Tempo Traveller from ${nearbyTempoRoute.from.name} to ${nearbyTempoRoute.to.name} from ₹${calculatedPrice}. Choose comfortable Tempo Traveller options for family trips, office groups, events and group travel. Call 8448445504 to book now.`,
+    };
+  }
   // ============================================
   // NOIDA → NEARBY CITY
   // ============================================
@@ -515,16 +528,16 @@ if (nearbyTempoRoute) {
 
   if (nearbyRoute) {
     const distance = parseFloat(
-    String(nearbyRoute.distance).replace(/,/g, "")
-  );
+      String(nearbyRoute.distance).replace(/,/g, "")
+    );
 
-  const calculatedPrice = Math.round(distance * 15 + 500);
-  
+    const calculatedPrice = Math.round(distance * 15 + 500);
+
     return {
       title: `${nearbyRoute.from.name} to ${nearbyRoute.to.name} Taxi, NoidaCab - @ ₹${calculatedPrice} + 10% OFF | Book Now`,
 
       description:
-       `Book a reliable taxi from ${nearbyRoute.from.name} to ${nearbyRoute.to.name} with NoidaCab. Compare cab fares, vehicle options and comfortable travel choices. Call 8448445504 to book now.`,
+        `Book a reliable taxi from ${nearbyRoute.from.name} to ${nearbyRoute.to.name} with NoidaCab. Compare cab fares, vehicle options and comfortable travel choices. Call 8448445504 to book now.`,
     };
   }
 
@@ -550,35 +563,48 @@ if (nearbyTempoRoute) {
   // ============================================
 
   const parsed = parseLocalRouteUrl(url);
- 
-if (!parsed) {
-  return {};
-}
 
-// Check vehicle category or slug/name for Tempo Traveller or Urbania
-const isTempo =
-  parsed.vehicle.category?.toLowerCase() === "tempo-traveller" ||
-  parsed.vehicle.slug?.toLowerCase().includes("tempo") ||
-  parsed.vehicle.slug?.toLowerCase().includes("urbania") ||
-  parsed.vehicle.name?.toLowerCase().includes("tempo") ||
-  parsed.vehicle.name?.toLowerCase().includes("urbania");
+  if (!parsed) {
+    const cleanPath = url.replace(/^\/|\/$/g, "").toLowerCase();
+    if (cleanPath.includes("-to-")) {
+      const dynamicRoute = parseDynamicRouteSlug(cleanPath);
+      if (dynamicRoute && dynamicRoute.canonicalSlug) {
+        return {
+          title: dynamicRoute.title,
+          description: dynamicRoute.description,
+          alternates: {
+            canonical: `https://www.noidacab.com/route/${dynamicRoute.canonicalSlug}`,
+          },
+        };
+      }
+    }
+    return {};
+  }
 
-const title = isTempo
-  ? `${parsed.vehicle.name} in ${parsed.locationName}, Noida - Noida Cab @ ${parsed.vehicle.price} | Book Now`
-  : `${parsed.vehicle.name} Taxi in ${parsed.locationName}, Noida - Noida Cab @ ${parsed.vehicle.price} | Book Now`;
+  // Check vehicle category or slug/name for Tempo Traveller or Urbania
+  const isTempo =
+    parsed.vehicle.category?.toLowerCase() === "tempo-traveller" ||
+    parsed.vehicle.slug?.toLowerCase().includes("tempo") ||
+    parsed.vehicle.slug?.toLowerCase().includes("urbania") ||
+    parsed.vehicle.name?.toLowerCase().includes("tempo") ||
+    parsed.vehicle.name?.toLowerCase().includes("urbania");
 
-const description = isTempo
-  ? `Hire a ${parsed.vehicle.name} in ${parsed.locationName} for group tours, corporate events, outstation trips & weddings. Verified drivers, pushback seats & AC luxury. Call 8377809809.`
-  : `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local travel, airport transfers & outstation journeys. Verified drivers, clean AC cars & zero surge. Call 8377809809.`;
+  const title = isTempo
+    ? `${parsed.vehicle.name} in ${parsed.locationName}, Noida - Noida Cab @ ${parsed.vehicle.price} | Book Now`
+    : `${parsed.vehicle.name} Taxi in ${parsed.locationName}, Noida - Noida Cab @ ${parsed.vehicle.price} | Book Now`;
 
-return {
-  title,
-  description,
-};
+  const description = isTempo
+    ? `Hire a ${parsed.vehicle.name} in ${parsed.locationName} for group tours, corporate events, outstation trips & weddings. Verified drivers, pushback seats & AC luxury. Call 8377809809.`
+    : `Book a ${parsed.vehicle.name} cab in ${parsed.locationName} for local travel, airport transfers & outstation journeys. Verified drivers, clean AC cars & zero surge. Call 8377809809.`;
 
-  
-   
-  
+  return {
+    title,
+    description,
+  };
+
+
+
+
 }
 
 
@@ -595,6 +621,31 @@ export default async function CabPage({
   const { slug } = await params;
 
   const url = "/" + slug.join("/");
+  const cleanPath = url.replace(/^\/|\/$/g, "").toLowerCase();
+
+  // ============================================
+  // DYNAMIC INTERCITY ROUTE REDIRECT
+  // Handles routes like:
+  // - /noida-to-delhi-contact-number
+  // - /noida-to-delhi-12-seater-tempo-traveller
+  // - /noida-to-delhi-16-seater-tempo-traveller, etc.
+  // Redirects dynamically to canonical /route/[slug]
+  // ============================================
+  const isDynamicRouteDirect =
+    cleanPath.includes("-to-") &&
+    (cleanPath.includes("contact") ||
+      cleanPath.includes("helpline") ||
+      cleanPath.includes("12-seater") ||
+      cleanPath.includes("16-seater") ||
+      cleanPath.includes("20-seater") ||
+      cleanPath.includes("24-seater"));
+
+  if (isDynamicRouteDirect) {
+    const dynamicRoute = parseDynamicRouteSlug(cleanPath);
+    if (dynamicRoute && dynamicRoute.canonicalSlug) {
+      redirect(`/route/${dynamicRoute.canonicalSlug}`);
+    }
+  }
 
   // ============================================
   // DYNAMIC CITY TAXI, AIRPORT & SIGHTSEEING PAGES
@@ -650,9 +701,9 @@ export default async function CabPage({
   const dynamicCityVehicle = parseDynamicCityVehicleUrl(url);
   if (dynamicCityVehicle) {
     return (
-      <VehicleTemplate
+      <DynamicCityVehiclePage
+        city={dynamicCityVehicle.cityInfo}
         vehicle={dynamicCityVehicle.vehicle}
-        cityName={dynamicCityVehicle.cityInfo.name}
       />
     );
   }
@@ -703,9 +754,10 @@ export default async function CabPage({
     Content Routing Logic
   ========================================================= */
   const contactRoute = parseContactRouteUrl(url);
-if (contactRoute) {
-  return <NoidaTaxiContactPage />;
-}
+  if (contactRoute) {
+    const cityInfo = getCityDetails(contactRoute.citySlug);
+    return <DynamicCityContactPage city={cityInfo} />;
+  }
 
   // ============================================
   // vehicle template route (locality + vehicle)
@@ -715,7 +767,7 @@ if (contactRoute) {
   if (directVehicles) {
     return <VehicleTemplate vehicle={directVehicles.vehicle} cityName="Noida" />;
   }
-  
+
 
 
   // ============================================
@@ -776,21 +828,21 @@ if (contactRoute) {
   }
 
   // ============================================
-// NOIDA → NEARBY TEMPO TRAVELLER
-// ============================================
+  // NOIDA → NEARBY TEMPO TRAVELLER
+  // ============================================
 
-const nearbyTempoRoute =
-  parseNoidaNearbyTempoRouteUrl(url);
+  const nearbyTempoRoute =
+    parseNoidaNearbyTempoRouteUrl(url);
 
-if (nearbyTempoRoute) {
-  return (
-    <NearbyTempoTemplate
-      route={nearbyTempoRoute}
-      vehicles={vehicles}
-      url={url}
-    />
-  );
-}
+  if (nearbyTempoRoute) {
+    return (
+      <NearbyTempoTemplate
+        route={nearbyTempoRoute}
+        vehicles={vehicles}
+        url={url}
+      />
+    );
+  }
 
   // ============================================
   // NOIDA → NEARBY CITY
@@ -828,6 +880,14 @@ if (nearbyTempoRoute) {
   // LOCALITY
   // ============================================
 
+  // Fallback for any other intercity route with "-to-" not caught by static templates
+  if (cleanPath.includes("-to-")) {
+    const dynamicRoute = parseDynamicRouteSlug(cleanPath);
+    if (dynamicRoute && dynamicRoute.canonicalSlug) {
+      redirect(`/route/${dynamicRoute.canonicalSlug}`);
+    }
+  }
+
   const parsed =
     parseLocalRouteUrl(url);
 
@@ -837,7 +897,7 @@ if (nearbyTempoRoute) {
 
   const Template =
     cabTemplates[
-      parsed.template as keyof typeof cabTemplates
+    parsed.template as keyof typeof cabTemplates
     ];
 
   if (!Template) {

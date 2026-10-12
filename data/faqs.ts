@@ -6,31 +6,77 @@ import { FAQ } from "@/types/faq";
 
 export const faqs: FAQ[] = [
   {
-    question: "How much does a Noida to Delhi taxi cost?",
+    question: "How do I book a taxi in Noida?",
     answer:
-      "The Noida to Delhi taxi cost starts from ₹9 per km and goes up depending on the vehicle you choose, with hatchbacks at the lower end and SUVs at the top. Every quote includes fuel, toll, and driver charges upfront, so you know the full amount before the ride starts.",
+      "Call or WhatsApp 8377809809 with your pickup point, drop location, date and time. Choose your cab, confirm the fare and receive driver details before pickup.",
   },
   {
-    question: "How can I book a Noida to Delhi taxi?",
+    question: "Is your cab service in Noida available 24x7?",
     answer:
-      "Booking a Noida to Delhi cab takes just a few steps online or over a call. Pick your vehicle type based on group size, confirm your pickup sector, and pick a one way drop or a round trip. Your driver details and fare breakup arrive before the car reaches you.",
+      "Yes. We take bookings and run trips 24 hours a day, 7 days a week, including early-morning and late-night airport transfers.",
   },
   {
-    question: "How long does a taxi take from Noida to Delhi?",
+    question: "What is the taxi fare in Noida per km?",
     answer:
-      "Travel time depends on your pickup point and route, but most trips land between 35 minutes and 1 hour 20 minutes. A drop near South Delhi via DND Flyway is quicker, while a trip to Old Delhi via Outer Ring Road takes longer given the added distance and traffic.",
+      "Hatchbacks and sedans start at ₹10 per km, Ertiga at ₹13 per km and Innova Crysta at ₹16 per km. The final fare depends on route, trip type and waiting time, and is confirmed before booking.",
   },
   {
-    question:
-      "Can I book a Noida to Delhi taxi for airport transfer?",
+    question: "What is the taxi fare from Noida to Delhi?",
     answer:
-      "Yes, airport pickup and drop is a regular part of this route. Your driver tracks the flight schedule so the car is ready outside the terminal when you land, and the same works in reverse for a drop to Indira Gandhi International Airport ahead of your flight.",
+      "Noida to Delhi cab fares start from ₹800, depending on your pickup sector, drop location in Delhi and the car you choose.",
   },
   {
-    question:
-      "Is Noida to Delhi taxi available for one-way travel?",
+    question: "How much is a taxi from Noida to Delhi airport?",
     answer:
-      "Yes, a one way cab is available and priced only for the distance you actually travel, no return charge added. This option suits a single drop such as a work meeting, an airport run, or a visit where you'll sort your own way back to Noida.",
+      "The fare depends on your pickup sector, terminal and car type. Share your location and flight time, and we will confirm the exact amount upfront.",
+  },
+  {
+    question: "Do you provide cabs for Jewar (Noida International) Airport?",
+    answer: "Yes. We offer pickup and drop for both Jewar Airport and Delhi IGI Airport, 24x7.",
+  },
+  {
+    question: "Can I book a one way taxi from Noida?",
+    answer: "Yes. A one way cab is priced for the distance you travel, so you do not pay for the return journey on a single drop.",
+  },
+  {
+    question: "Can I book a round-trip or outstation cab from Noida?",
+    answer: "Yes. We offer one-way and round-trip taxis to Agra, Mathura, Jaipur, Haridwar, Rishikesh, Chandigarh, Dehradun and other cities.",
+  },
+  {
+    question: "Which cabs do you have?",
+    answer: "Our fleet includes WagonR, Dzire, Etios, Amaze, Ertiga, Innova Crysta, and 12, 16, 20 and 24-seater Tempo Travellers, including luxury options.",
+  },
+  {
+    question: "Which cab is best for a family of 5 or 6?",
+    answer: "Ertiga is a good-value option for 5–6 passengers with luggage. Innova Crysta offers more comfort for long trips.",
+  },
+  {
+    question: "Do you provide cab service in Greater Noida and Noida Extension?",
+    answer: "Yes. We cover all Noida sectors, Greater Noida, Greater Noida West (Noida Extension) and nearby areas.",
+  },
+  {
+    question: "Can I hire a cab with driver for a full day in Noida?",
+    answer: "Yes. Hourly and full-day rental with driver is available for meetings, shopping, weddings and city tours.",
+  },
+  {
+    question: "How early should I book an airport cab?",
+    answer: "For early-morning flights, book the previous evening. For same-day needs, call us and we will arrange the nearest available car.",
+  },
+  {
+    question: "Are your drivers verified?",
+    answer: "Yes. All NoidaCab drivers are verified and experienced with Delhi-NCR routes.",
+  },
+  {
+    question: "Do you provide a Tempo Traveller for weddings and group trips?",
+    answer: "Yes. We have 12, 16, 20 and 24-seater Tempo Travellers for weddings, tours, pilgrimages and corporate groups.",
+  },
+  {
+    question: "Is cab travel from Noida safe for women and families?",
+    answer: "Our verified drivers, clean cars and 24x7 support make NoidaCab a comfortable option for women travelling alone, senior citizens and families.",
+  },
+  {
+    question: "Can I book a corporate cab for my company?",
+    answer: "Yes. We offer daily and monthly employee transport, client pickups and airport transfers. Contact us for corporate rates.",
   },
 ];
 

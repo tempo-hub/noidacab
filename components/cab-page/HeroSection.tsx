@@ -156,7 +156,7 @@ export function HeroSection({
   sizes="(max-width: 1024px) 100vw, 420px"
 />
                 <span className="absolute top-3 left-3 rounded-md bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-xs">
-                  {vehicle.category || (isTempo ? "Luxury Tempo" : "AC Taxi")}
+                  {vehicle.category || (isTempo ? "Tempo Traveller" : "AC Taxi")}
                 </span>
               </div>
 

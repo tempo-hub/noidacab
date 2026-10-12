@@ -18,6 +18,7 @@ import RouteInfoSection from "./RouteInfoSection";
 import RelatedServicesSection from "./RelatedServicesSection";
 import BookingCTASection from "../noida-nearby/BookingCTASection";
 import FAQsSection from "./FAQsSection";
+import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
 
 type Props = {
@@ -70,7 +71,14 @@ export default async function NearbyTempoTemplate({
 
 <RelatedServicesSection />
 
-{/* Section 14 */}
+    {/* Popular City Routes */}
+    <PopularCityRoutes
+      cityName={route.from?.name || "Noida"}
+      vehicleSlug="tempo-traveller"
+      vehicleName="Tempo Traveller"
+    />
+
+    {/* Section 14 */}
 <FAQsSection
   route={route}
   url={url}

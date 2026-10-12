@@ -5,45 +5,42 @@ import {
   ShieldCheck,
   CarFront,
   Headphones,
+  Clock,
+  MapPin,
+  Car,
 } from "lucide-react";
 
 import { WhyChoose } from "@/types/why-choose";
 
 export const whyChoose: WhyChoose[] = [
-  {
-    title: "Transparent Pricing",
-    description:
-      "No hidden charges. Get fair and affordable cab fares before confirming your booking.",
+ {
     icon: IndianRupee,
+    title: "Upfront, Transparent Fares",
+    description:
+      "Share your pickup and drop locations to get your fare before confirming your ride. Know the quoted price in advance and clarify any applicable extra charges before your journey.",
   },
   {
-    title: "Verified Drivers",
-    description:
-      "Every driver is verified and experienced to ensure a safe and comfortable journey.",
     icon: ShieldCheck,
+    title: "Driver & Vehicle Details",
+    description:
+      "Get the available driver and vehicle details before pickup so you can identify your cab and travel with greater confidence.",
   },
   {
-    title: "24×7 Availability",
+    icon: Car,
+    title: "Vehicles for Every Group",
     description:
-      "Book a cab anytime for local rides, airport transfers, or outstation trips.",
-    icon: Clock3,
+      "Choose a hatchback for short trips, a sedan for airport transfers, an Ertiga or Innova Crysta for family travel and luggage, or a Tempo Traveller for group journeys.",
   },
   {
-    title: "Wide Fleet",
+    icon: MapPin,
+    title: "Local Noida Route Knowledge",
     description:
-      "Choose from Hatchback, Sedan, Ertiga, Innova Crysta, SUVs, and Tempo Travellers.",
-    icon: CarFront,
+      "Book rides across Noida and Greater Noida with drivers familiar with local sectors, the DND Flyway, the Noida–Greater Noida Expressway, airports and railway stations.",
   },
   {
-    title: "Instant Booking",
+    icon: Clock,
+    title: "Convenient Cab Booking",
     description:
-      "Quick booking process with instant confirmation and reliable pickup service.",
-    icon: BadgeCheck,
-  },
-  {
-    title: "Dedicated Support",
-    description:
-      "Our support team is available to help you before, during, and after your trip.",
-    icon: Headphones,
+      "Arrange a cab for office commutes, school runs, airport drop-offs, weddings, family outings and outstation trips. Book by phone or WhatsApp according to your travel plans.",
   },
 ];
