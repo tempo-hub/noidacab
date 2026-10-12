@@ -34,7 +34,7 @@ export function SedanFleetSection({
     <section className="border-b border-slate-200 bg-white/95 py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto mb-12 max-w-3xl text-center">
+        <div className="mx-auto mb-12 max-w-7xl text-center">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
             <Sparkles size={13} className="text-amber-600" />
             Verified Sedan Fleet

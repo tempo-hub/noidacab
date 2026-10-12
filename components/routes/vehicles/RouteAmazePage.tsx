@@ -371,8 +371,8 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-slate-50 py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Pickup and Drop for {route.from} to {route.to}</h2>
           <div className="mt-5 grid gap-6 sm:grid-cols-2">
             <div className="border-l-2 border-amber-400 pl-4">
@@ -387,8 +387,8 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-white py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">What Is Included With Your Honda Amaze Booking?</h2>
           <div className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
             <p className="border-t border-gray-200 pt-4 text-gray-700">Honda Amaze cab for the confirmed route and trip type</p>
@@ -400,8 +400,8 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-slate-50 py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">How to Book a Honda Amaze Cab</h2>
           <ol className="mt-6 grid gap-5 sm:grid-cols-3">
             <li className="border-t-2 border-amber-400 bg-white p-5">
@@ -423,8 +423,8 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-white py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Travel Tips for Your {route.from} to {route.to} Amaze Trip</h2>
           <ul className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
             <li className="border-l-2 border-amber-400 pl-4 leading-6 text-gray-700">Allow extra time for traffic, especially if travelling to an appointment or scheduled connection.</li>
@@ -451,7 +451,7 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
       />
 
       {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
-      <section className="bg-white py-12 border-b border-gray-200">
+      {/* <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">OTHER VEHICLES</span>
@@ -477,11 +477,11 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 8. FAQS */}
-      <section className="bg-slate-50 py-14 border-b border-gray-200">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FREQUENTLY ASKED QUESTIONS</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">

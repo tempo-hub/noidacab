@@ -29,8 +29,8 @@ export function SUVRouteFAQ({ route }: Props) {
   ];
 
   return (
-    <section className="bg-slate-50 py-20">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-white/95 py-12">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-orange-600">
             Frequently Asked Questions

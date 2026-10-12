@@ -508,7 +508,7 @@ export default function VehicleRouteBase({ route, config }: Props) {
       />
 
       {/* 6. ALTERNATIVE VEHICLE FLEET SWITCHER */}
-      <section className="bg-white py-12 border-b border-gray-200">
+      {/* <section className="bg-white py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
@@ -536,7 +536,7 @@ export default function VehicleRouteBase({ route, config }: Props) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 7. VEHICLE SPECIFIC FAQS */}
       <section className="bg-slate-50 py-14 border-b border-gray-200">

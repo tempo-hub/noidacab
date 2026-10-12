@@ -24,6 +24,15 @@ import { vehicles } from "@/data/vehicles";
 import { masterRoutes } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
+import { RouteInfo } from "@/components/cab-page/RouteInfo";
+import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
+import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
+import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
+import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
+import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
+import { BookingProcess } from "@/components/cab-page/BookingProcess";
+import { TravelTips } from "@/components/cab-page/TravelTips";
+import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -67,6 +76,11 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
   const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
+  const location = {
+    slug: route.canonicalSlug || `${fromSlug}-to-${toSlug}`,
+    name: `${route.from} to ${route.to}`,
+  };
+
   const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book Maruti Dzire from ${route.from} to ${route.to} (${distanceDisplay}, Est fare ₹${oneWayFare}). Please confirm availability.`
   )}`;
@@ -100,7 +114,7 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen">
       {/* 1. BREADCRUMBS */}
       <nav className="border-b border-gray-100 bg-slate-50 py-3 text-xs sm:text-sm text-gray-500">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-2">
@@ -225,9 +239,9 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* 3. VEHICLE SPECIFICATIONS */}
-      <section className="bg-slate-50 py-12 border-y border-gray-200">
+      <section className="bg-white/95 py-12 border-y border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-7xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">SPECIFICATIONS</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Maruti Dzire Engineering & Comfort Highlights
@@ -262,10 +276,13 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
+      {/* ROUTE INFO (from DzireTemplate) */}
+      <RouteInfo location={location} vehicle={vehicleData} />
+
       {/* 4. WHY CHOOSE DZIRE FOR THIS ROUTE */}
-      <section className="bg-white py-14 border-b border-gray-200">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-7xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">SMART TRAVEL</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Why Book Maruti Dzire from {route.from} to {route.to}?
@@ -317,8 +334,8 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* 5. TRANSPARENT FARE DETAILS */}
-      <section className="bg-slate-50 py-12 border-b border-gray-200">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FARE BREAKDOWN</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
@@ -352,6 +369,30 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
+      {/* VEHICLE SUMMARY (from DzireTemplate) */}
+      <VehicleSummary location={location} vehicle={vehicleData} />
+
+      {/* JOURNEY INFO (from DzireTemplate) */}
+      <JourneyInfo location={location} vehicle={vehicleData} />
+
+      {/* PICKUP & DROP LOCATIONS (from DzireTemplate) */}
+      <PickupDropLocations location={location} vehicle={vehicleData} />
+
+      {/* WHY CHOOSE US (from DzireTemplate) */}
+      <WhyChooseUs location={location} vehicle={vehicleData} />
+
+      {/* WHAT'S INCLUDED (from DzireTemplate) */}
+      <WhatsIncluded location={location} vehicle={vehicleData} />
+
+      {/* BOOKING PROCESS (from DzireTemplate) */}
+      <BookingProcess location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL TIPS (from DzireTemplate) */}
+      <TravelTips location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL PLANNING (from DzireTemplate) */}
+      <TravelPlanning location={location} vehicle={vehicleData} />
+
       <RouteTripPlanning
         from={route.from}
         to={route.to}
@@ -368,7 +409,7 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
       />
 
       {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
-      <section className="bg-white py-12 border-b border-gray-200">
+      {/* <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">OTHER VEHICLES</span>
@@ -394,11 +435,11 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 8. FAQS */}
-      <section className="bg-slate-50 py-14 border-b border-gray-200">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FREQUENTLY ASKED QUESTIONS</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">

@@ -12,8 +12,8 @@ export default function RouteTripPlanning({
   planningPoint: string;
 }) {
   return (
-    <section className="border-b border-gray-200 bg-white py-12">
-      <div className="mx-auto grid max-w-5xl gap-5 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
+    <section className="border-b border-gray-200 bg-white/95 py-12">
+      <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-amber-700">Route and vehicle planning</p>
           <h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">

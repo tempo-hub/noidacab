@@ -16,10 +16,9 @@ type Props = {
 
 export function SUVRouteHero({ route }: Props) {
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-orange-50/80 to-transparent" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
 
-      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <div className="relative mx-auto max-w-7xl ">
         {/* Breadcrumb */}
         {/* <div className="mb-8 flex items-center gap-2 text-sm text-slate-500">
           <Link

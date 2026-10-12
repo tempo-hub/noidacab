@@ -24,6 +24,15 @@ import { vehicles } from "@/data/vehicles";
 import { masterRoutes } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
+import { RouteInfo } from "@/components/cab-page/RouteInfo";
+import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
+import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
+import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
+import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
+import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
+import { BookingProcess } from "@/components/cab-page/BookingProcess";
+import { TravelTips } from "@/components/cab-page/TravelTips";
+import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -66,6 +75,11 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
 
   const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+  const location = {
+    slug: route.canonicalSlug || `${fromSlug}-to-${toSlug}`,
+    name: `${route.from} to ${route.to}`,
+  };
 
   const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book Maruti Ertiga from ${route.from} to ${route.to} (${distanceDisplay}, Est fare ₹${oneWayFare}). Please confirm availability.`
@@ -225,9 +239,9 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* 3. VEHICLE SPECIFICATIONS */}
-      <section className="bg-slate-50 py-12 border-y border-gray-200">
+      <section className="bg-white/95 py-12 border-y border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-7xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">SPECIFICATIONS</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Maruti Ertiga Highlights & Cabin Comfort
@@ -262,6 +276,9 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
+      {/* ROUTE INFO (from ErtigaTemplate) */}
+      <RouteInfo location={location} vehicle={vehicleData} />
+
       <section className="border-b border-gray-200 bg-white/95 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-700">Route information</p>
@@ -281,8 +298,8 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-slate-50 py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Ertiga Pickup and Drop: {route.from} to {route.to}</h2>
           <div className="mt-5 grid gap-6 sm:grid-cols-2">
             <div className="border-l-2 border-amber-400 pl-4">
@@ -298,9 +315,9 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* 4. WHY CHOOSE ERTIGA FOR THIS ROUTE */}
-      <section className="bg-white py-14 border-b border-gray-200">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-7xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FAMILY COMFORT</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Why Book Maruti Ertiga from {route.from} to {route.to}?
@@ -352,8 +369,8 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* 5. TRANSPARENT FARE DETAILS */}
-      <section className="bg-slate-50 py-12 border-b border-gray-200">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FARE BREAKDOWN</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
@@ -387,8 +404,8 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-white py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">What to Expect With Your Ertiga Booking</h2>
           <div className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
             <p className="border-t border-gray-200 pt-4 text-gray-700">Maruti Ertiga for the confirmed route and trip type</p>
@@ -400,8 +417,8 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-slate-50 py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">How to Book a Maruti Ertiga</h2>
           <ol className="mt-6 grid gap-5 sm:grid-cols-3">
             <li className="border-t-2 border-amber-400 bg-white p-5">
@@ -423,8 +440,8 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-white py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-200 bg-white/95 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Travel Tips for Your {route.from} to {route.to} Ertiga Trip</h2>
           <ul className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
             <li className="border-l-2 border-amber-400 pl-4 leading-6 text-gray-700">Allow extra travel time for traffic and road conditions along the route.</li>
@@ -434,6 +451,30 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
           </ul>
         </div>
       </section>
+
+      {/* VEHICLE SUMMARY (from ErtigaTemplate) */}
+      <VehicleSummary location={location} vehicle={vehicleData} />
+
+      {/* JOURNEY INFO (from ErtigaTemplate) */}
+      <JourneyInfo location={location} vehicle={vehicleData} />
+
+      {/* PICKUP & DROP LOCATIONS (from ErtigaTemplate) */}
+      <PickupDropLocations location={location} vehicle={vehicleData} />
+
+      {/* WHY CHOOSE US (from ErtigaTemplate) */}
+      <WhyChooseUs location={location} vehicle={vehicleData} />
+
+      {/* WHAT'S INCLUDED (from ErtigaTemplate) */}
+      <WhatsIncluded location={location} vehicle={vehicleData} />
+
+      {/* BOOKING PROCESS (from ErtigaTemplate) */}
+      <BookingProcess location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL TIPS (from ErtigaTemplate) */}
+      <TravelTips location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL PLANNING (from ErtigaTemplate) */}
+      <TravelPlanning location={location} vehicle={vehicleData} />
 
       <RouteTripPlanning
         from={route.from}
@@ -451,7 +492,7 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       />
 
       {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
-      <section className="bg-white py-12 border-b border-gray-200">
+      {/* <section className="bg-white py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">OTHER VEHICLES</span>
@@ -477,10 +518,10 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 8. FAQS */}
-      <section className="bg-slate-50 py-14 border-b border-gray-200">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FREQUENTLY ASKED QUESTIONS</span>

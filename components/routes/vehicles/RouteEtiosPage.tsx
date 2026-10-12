@@ -368,7 +368,7 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
       />
 
       {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
-      <section className="bg-white py-12 border-b border-gray-200">
+      {/* <section className="bg-white py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">OTHER VEHICLES</span>
@@ -394,7 +394,7 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 8. FAQS */}
       <section className="bg-slate-50 py-14 border-b border-gray-200">

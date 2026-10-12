@@ -68,6 +68,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Taxi Contact Number | 24x7 Cab Booking Helpline: 8377809809`,
       description: `Need an urgent taxi from ${route.from} to ${route.to}? Call ${route.from} to ${route.to} Cab Contact Number +91-8377809809 for immediate doorstep pickup. Clean Sedans, SUVs & Tempo Travellers. Distance: ${route.distance} (${route.duration}). Starting @ ${route.fare}.`,
+      keywords: [
+        `${route.from} to ${route.to} taxi contact number`,
+        `${route.from} to ${route.to} cab contact number`,
+        `${route.from} to ${route.to} taxi phone number`,
+        `${route.from} to ${route.to} cab helpline`,
+        `${route.from} to ${route.to} cab booking number`,
+        `call taxi from ${route.from} to ${route.to}`,
+        `book cab ${route.from} to ${route.to} phone number`,
+        "NoidaCab contact number",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -84,6 +94,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} One Way Cab Starting @ ${route.fare} | NoidaCab`,
       description: `Book a reliable one-way cab from ${route.from} to ${route.to} with NoidaCab. Clean AC cars, professional drivers, transparent fares. Distance: ${route.distance} (${route.duration}). Call 8377809809.`,
+      keywords: [
+        `${route.from} to ${route.to} one way cab`,
+        `${route.from} to ${route.to} one way taxi`,
+        `${route.from} to ${route.to} drop taxi`,
+        `one way taxi from ${route.from} to ${route.to}`,
+        `one side cab ${route.from} to ${route.to}`,
+        `cheapest one way cab ${route.from} to ${route.to}`,
+        `${route.from} to ${route.to} outstation one way cab`,
+        "NoidaCab one way drop taxi",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -105,6 +125,17 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Taxi Fare Starting @ ${route.fare} - NoidaCab`,
       description: `Check affordable taxi fares from ${route.from} to ${route.to}. Clean AC Sedans & SUVs starting @ ₹10/km. Distance: ${route.distance} (${route.duration}). Transparent pricing, zero hidden charges. Call 8377809809.`,
+      keywords: [
+        `${route.from} to ${route.to} taxi fare`,
+        `${route.from} to ${route.to} cab fare`,
+        `${route.from} to ${route.to} taxi price`,
+        `${route.from} to ${route.to} taxi rate per km`,
+        `${route.from} to ${route.to} cab charges`,
+        `how much taxi fare from ${route.from} to ${route.to}`,
+        `${route.from} to ${route.to} one way taxi fare`,
+        `${route.from} to ${route.to} round trip taxi fare`,
+        "NoidaCab fare chart",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -121,6 +152,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Distance & Travel Time | Route Info & Cabs | NoidaCab`,
       description: `Check ${route.from} to ${route.to} distance (${route.distance}), travel time (${route.duration}) and route details. Book clean cabs with NoidaCab. Call 8377809809.`,
+      keywords: [
+        `${route.from} to ${route.to} distance`,
+        `${route.from} to ${route.to} travel time`,
+        `${route.from} to ${route.to} road distance`,
+        `${route.from} to ${route.to} driving duration`,
+        `${route.from} to ${route.to} distance by road`,
+        `${route.from} to ${route.to} route map`,
+        `${route.from} to ${route.to} expressway route`,
+        `${route.from} to ${route.to} cab travel time`,
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${slug.toLowerCase()}`,
       },
@@ -137,6 +178,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} SUV Taxi | Ertiga & Innova Cab Starting @ ${route.fare} | NoidaCab`,
       description: `Book 6-7 seater SUV cab from ${route.from} to ${route.to}. Clean Ertiga and Innova Crysta cabs with verified drivers. Distance: ${route.distance} (${route.duration}).`,
+      keywords: [
+        `${route.from} to ${route.to} SUV taxi`,
+        `${route.from} to ${route.to} SUV cab`,
+        `${route.from} to ${route.to} 6 seater taxi`,
+        `${route.from} to ${route.to} 7 seater cab`,
+        `${route.from} to ${route.to} Ertiga taxi`,
+        `${route.from} to ${route.to} Innova cab`,
+        `SUV car rental ${route.from} to ${route.to}`,
+        `family SUV cab ${route.from} to ${route.to}`,
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -156,6 +207,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} 12 Seater Tempo Traveller Hire @ ₹20/km | NoidaCab`,
       description: `Book 12 Seater Tempo Traveller from ${route.from} to ${route.to} for family trips & corporate outings. AC pushback seats, luggage carrier & verified driver. Starting @ ₹20/km. Distance: ${route.distance}.`,
+      keywords: [
+        `${route.from} to ${route.to} 12 seater tempo traveller`,
+        `12 seater tempo traveller hire ${route.from} to ${route.to}`,
+        `12 seater tempo traveller on rent ${route.from} to ${route.to}`,
+        `12 seater tempo traveller fare ${route.from} to ${route.to}`,
+        `12 seater luxury tempo traveller ${route.from} to ${route.to}`,
+        `12 seater tempo traveller per km rate`,
+        `group travel 12 seater tempo ${route.from} to ${route.to}`,
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -175,6 +235,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} 16 Seater Tempo Traveller Hire @ ₹25/km | NoidaCab`,
       description: `Rent 16 Seater Tempo Traveller from ${route.from} to ${route.to} with pushback luxury seats, high roof, dual AC & music system. Ideal for medium groups @ ₹25/km. Distance: ${route.distance}.`,
+      keywords: [
+        `${route.from} to ${route.to} 16 seater tempo traveller`,
+        `16 seater tempo traveller hire ${route.from} to ${route.to}`,
+        `16 seater tempo traveller on rent ${route.from} to ${route.to}`,
+        `16 seater tempo traveller price ${route.from} to ${route.to}`,
+        `16 seater luxury tempo traveller ${route.from} to ${route.to}`,
+        `16 seater tempo traveller per km rate`,
+        `16 seater minibus ${route.from} to ${route.to}`,
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -194,6 +263,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} 20 Seater Tempo Traveller Rental @ ₹27/km | NoidaCab`,
       description: `Book 20 Seater Tempo Traveller from ${route.from} to ${route.to}. Spacious 2x1 seating, walk-in aisle, luggage boot & experienced driver @ ₹27/km. Distance: ${route.distance}.`,
+      keywords: [
+        `${route.from} to ${route.to} 20 seater tempo traveller`,
+        `20 seater tempo traveller hire ${route.from} to ${route.to}`,
+        `20 seater tempo traveller on rent ${route.from} to ${route.to}`,
+        `20 seater tempo traveller fare ${route.from} to ${route.to}`,
+        `20 seater luxury tempo traveller ${route.from} to ${route.to}`,
+        `20 seater tempo rate per km`,
+        `20 seater mini bus rental ${route.from} to ${route.to}`,
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -213,6 +291,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} 24 Seater Tempo Traveller / Mini Bus @ ₹29/km | NoidaCab`,
       description: `Hire 24 Seater Tempo Traveller / Mini Bus from ${route.from} to ${route.to} for weddings, pilgrimages & corporate events. 2x2 luxury pushback seats @ ₹29/km. Distance: ${route.distance}.`,
+      keywords: [
+        `${route.from} to ${route.to} 24 seater tempo traveller`,
+        `24 seater tempo traveller hire ${route.from} to ${route.to}`,
+        `24 seater mini bus rental ${route.from} to ${route.to}`,
+        `24 seater tempo traveller on rent ${route.from} to ${route.to}`,
+        `24 seater luxury tempo traveller ${route.from} to ${route.to}`,
+        `24 seater tempo traveller per km rate`,
+        `wedding 24 seater bus ${route.from} to ${route.to}`,
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -233,6 +320,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Luxury Tempo Traveller | Maharaja Recliner Seats @ ₹25/km | NoidaCab`,
       description: `Rent Luxury Maharaja Tempo Traveller from ${route.from} to ${route.to}. 1x1 VIP sofa recliner seats, starlight ambient lighting, ice box & LCD screen @ ₹25/km. Distance: ${route.distance}.`,
+      keywords: [
+        `${route.from} to ${route.to} luxury tempo traveller`,
+        `maharaja tempo traveller ${route.from} to ${route.to}`,
+        `luxury tempo traveller hire ${route.from} to ${route.to}`,
+        `VIP tempo traveller ${route.from} to ${route.to}`,
+        `luxury tempo traveller on rent ${route.from} to ${route.to}`,
+        `luxury tempo traveller rate per km`,
+        `1x1 recliner sofa tempo traveller ${route.from} to ${route.to}`,
+        "luxury tempo traveller booking",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -253,6 +350,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Force Urbania Rental | 12 Seater Luxury Van @ ₹25/km | NoidaCab`,
       description: `Rent Force Urbania from ${route.from} to ${route.to} for luxury group & corporate travel. European monocoque chassis, individual AC vents, reclining captain seats @ ₹25/km. Distance: ${route.distance}.`,
+      keywords: [
+        `${route.from} to ${route.to} Force Urbania rental`,
+        `Force Urbania hire ${route.from} to ${route.to}`,
+        `Force Urbania 12 seater ${route.from} to ${route.to}`,
+        `Force Urbania on rent ${route.from} to ${route.to}`,
+        `Force Urbania per km rate ${route.from} to ${route.to}`,
+        `luxury Urbania van booking ${route.from} to ${route.to}`,
+        "Force Urbania luxury tempo",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -273,6 +379,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Tempo Traveller | 9-26 Seater Hire @ ₹20/km | NoidaCab`,
       description: `Rent Tempo Traveller from ${route.from} to ${route.to} for group tours, weddings, and corporate trips. Choose from 12, 16, 20 & 24 seater luxury tempos with pushback seats. Distance: ${route.distance}.`,
+      keywords: [
+        `${route.from} to ${route.to} tempo traveller`,
+        `tempo traveller hire ${route.from} to ${route.to}`,
+        `tempo traveller on rent ${route.from} to ${route.to}`,
+        `tempo traveller fare ${route.from} to ${route.to}`,
+        `luxury tempo traveller ${route.from} to ${route.to}`,
+        `tempo traveller per km rate ${route.from} to ${route.to}`,
+        `9 to 26 seater tempo traveller ${route.from} to ${route.to}`,
+        `outstation tempo traveller ${route.from} to ${route.to}`,
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -293,6 +409,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Innova Crysta Taxi | 6-7 Seater Luxury MUV Starting @ ${route.fare} | NoidaCab`,
       description: `Book 6-7 seater Toyota Innova Crysta taxi from ${route.from} to ${route.to}. Reclining captain seats, dual AC, 4-5 bag boot space. Distance: ${route.distance} (${route.duration}). Call 8377809809.`,
+      keywords: [
+        `${route.from} to ${route.to} Innova Crysta taxi`,
+        `${route.from} to ${route.to} Innova Crysta cab`,
+        `Innova Crysta hire from ${route.from} to ${route.to}`,
+        `Innova Crysta per km rate ${route.from} to ${route.to}`,
+        `Toyota Innova Crysta 7 seater ${route.from} to ${route.to}`,
+        `Innova Crysta fare ${route.from} to ${route.to}`,
+        `luxury Innova cab ${route.from} to ${route.to}`,
+        "Innova Crysta outstation taxi",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -313,6 +439,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Ertiga Taxi | 6 Seater MUV Cab Starting @ ${route.fare} | NoidaCab`,
       description: `Book affordable 6-seater Maruti Ertiga cab from ${route.from} to ${route.to} starting @ ₹13/km. Roof AC vents, flexible seating, verified drivers. Distance: ${route.distance} (${route.duration}).`,
+      keywords: [
+        `${route.from} to ${route.to} Ertiga taxi`,
+        `${route.from} to ${route.to} Ertiga cab`,
+        `Maruti Ertiga hire from ${route.from} to ${route.to}`,
+        `Ertiga 6 seater taxi ${route.from} to ${route.to}`,
+        `Ertiga taxi fare ${route.from} to ${route.to}`,
+        `Ertiga per km rate ${route.from} to ${route.to}`,
+        `budget 6 seater SUV ${route.from} to ${route.to}`,
+        "Ertiga outstation cab",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -333,6 +469,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Dzire Taxi | 4 Seater AC Sedan Cab Starting @ ${route.fare} | NoidaCab`,
       description: `Book Maruti Dzire AC sedan from ${route.from} to ${route.to} starting @ ₹10/km. 378L boot space, clean seats, prompt doorstep pickup. Distance: ${route.distance} (${route.duration}).`,
+      keywords: [
+        `${route.from} to ${route.to} Dzire taxi`,
+        `${route.from} to ${route.to} Dzire cab`,
+        `Maruti Dzire taxi fare ${route.from} to ${route.to}`,
+        `Dzire sedan hire from ${route.from} to ${route.to}`,
+        `Dzire per km rate ${route.from} to ${route.to}`,
+        `4 seater AC sedan ${route.from} to ${route.to}`,
+        `one way Dzire cab ${route.from} to ${route.to}`,
+        "Maruti Dzire outstation taxi",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -353,6 +499,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Honda Amaze Taxi | 420L Boot Sedan Starting @ ${route.fare} | NoidaCab`,
       description: `Rent Honda Amaze sedan with class-leading 420L boot space from ${route.from} to ${route.to}. Quiet cabin, smooth cruising, transparent ₹10/km fares. Distance: ${route.distance} (${route.duration}).`,
+      keywords: [
+        `${route.from} to ${route.to} Honda Amaze taxi`,
+        `${route.from} to ${route.to} Honda Amaze cab`,
+        `Honda Amaze sedan hire ${route.from} to ${route.to}`,
+        `Amaze taxi fare ${route.from} to ${route.to}`,
+        `Amaze per km rate ${route.from} to ${route.to}`,
+        `sedan cab with large boot ${route.from} to ${route.to}`,
+        "Honda Amaze outstation taxi",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -373,6 +528,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Toyota Etios Taxi | 592L Boot Touring Sedan Starting @ ${route.fare} | NoidaCab`,
       description: `Book Toyota Platinum Etios touring sedan from ${route.from} to ${route.to} with massive 592L trunk and flat rear floorboard. ₹10/km highway rates. Distance: ${route.distance} (${route.duration}).`,
+      keywords: [
+        `${route.from} to ${route.to} Toyota Etios taxi`,
+        `${route.from} to ${route.to} Toyota Etios cab`,
+        `Toyota Etios hire from ${route.from} to ${route.to}`,
+        `Etios sedan rate per km ${route.from} to ${route.to}`,
+        `Etios taxi fare ${route.from} to ${route.to}`,
+        `spacious sedan cab ${route.from} to ${route.to}`,
+        "Toyota Etios outstation taxi",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -393,6 +557,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
       title: `${route.from} to ${route.to} Sedan Taxi | Dzire, Etios & Amaze Cab Starting @ ${route.fare} | NoidaCab`,
       description: `Book prime AC Sedan cab from ${route.from} to ${route.to} starting @ ₹10/km. Clean cars, professional highway chauffeurs, zero surge. Distance: ${route.distance} (${route.duration}).`,
+      keywords: [
+        `${route.from} to ${route.to} sedan taxi`,
+        `${route.from} to ${route.to} sedan cab`,
+        `AC sedan hire from ${route.from} to ${route.to}`,
+        `sedan cab fare ${route.from} to ${route.to}`,
+        `sedan rate per km ${route.from} to ${route.to}`,
+        `Dzire Etios Amaze taxi ${route.from} to ${route.to}`,
+        `cheapest sedan cab ${route.from} to ${route.to}`,
+        "outstation sedan taxi",
+      ],
       alternates: {
         canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
       },
@@ -408,6 +582,17 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: `${route.from} to ${route.to} ${route.vehicle} | Starting ${route.fare} - NoidaCab`,
     description: `Book comfortable ${route.from} to ${route.to} ${route.vehicle.toLowerCase()} and taxi. Distance: ${route.distance} (${route.duration}). Transparent per-km billing, verified drivers, and doorstep pickup.`,
+    keywords: [
+      `${route.from} to ${route.to} taxi`,
+      `${route.from} to ${route.to} cab`,
+      `${route.from} to ${route.to} ${route.vehicle.toLowerCase()}`,
+      `${route.from} to ${route.to} outstation cab`,
+      `book taxi ${route.from} to ${route.to}`,
+      `${route.from} to ${route.to} one way cab`,
+      `${route.from} to ${route.to} car rental`,
+      `${route.from} to ${route.to} taxi service`,
+      "NoidaCab outstation taxi",
+    ],
     alternates: {
       canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
     },
