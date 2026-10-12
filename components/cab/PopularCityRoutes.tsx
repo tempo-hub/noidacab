@@ -19,6 +19,7 @@ interface Props {
   title?: string;
   subtitle?: string;
   badgeText?: string;
+  buttonText?: string;
 }
 
 // Normalize city names for exact & partial matching (e.g. "taxi-service-in-noida", "Noida" -> "noida")
@@ -181,8 +182,13 @@ export default function PopularCityRoutes({
   title,
   subtitle,
   badgeText,
+  buttonText,
 }: Props) {
   const routes = customRoutes || getRoutesFromMasterRoutes(cityName, vehicleSlug, limit, vehicleName);
+
+  const isContactMode =
+    vehicleSlug === "contact-number" ||
+    (vehicleSlug ? normalizeVehicleKey(vehicleSlug) === "contact-number" : false);
 
   const displayVehicle =
     vehicleName ||
@@ -208,74 +214,84 @@ export default function PopularCityRoutes({
 
         {/* 3-Column Card Grid - Exact matching reference image */}
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {routes.map((item) => (
-            <div
-              key={item.id}
-              className="group rounded-2xl md:rounded-3xl border border-gray-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-amber-300 hover:shadow-md transition-all flex flex-col justify-between"
-            >
-              <Link href={`/route/${item.slug}`} className="block group/cardhead transition">
-                {/* Pickup Row */}
-                <div className="flex items-start justify-between">
+          {routes.map((item) => {
+            const isContactCard =
+              isContactMode ||
+              item.vehicleSlug === "contact-number" ||
+              item.slug.includes("-contact-number");
+            const actionText = buttonText || (isContactCard ? "CONTACT" : "BOOK");
+
+            return (
+              <div
+                key={item.id}
+                className="group rounded-2xl md:rounded-3xl border border-gray-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-amber-300 hover:shadow-md transition-all flex flex-col justify-between"
+              >
+                <Link href={`/route/${item.slug}`} className="block group/cardhead transition">
+                  {/* Pickup Row */}
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500 shrink-0" />
+                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
+                          PICKUP
+                        </span>
+                      </div>
+                      <p className="mt-1 pl-4.5 text-lg sm:text-xl font-bold text-gray-900 group-hover/cardhead:text-amber-600 transition">
+                        {item.from}
+                      </p>
+                    </div>
+
+                    {/* Popular Badge & Vehicle Badge */}
+                    <div className="flex flex-col items-end gap-1">
+                      <span className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold text-amber-700 border border-amber-200/50">
+                        {isContactCard ? "24/7 HELPLINE" : "POPULAR"}
+                      </span>
+                      {item.vehicle && (
+                        <span className="rounded-md bg-amber-100/90 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-900 border border-amber-300/60 shadow-2xs">
+                          {item.vehicle}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Connector Line */}
+                  <div className="my-1.5 ml-1 h-5 w-0.5 border-l-2 border-dotted border-gray-300" />
+
+                  {/* Drop Row */}
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full bg-amber-500 shrink-0" />
+                      <span className="h-2.5 w-2.5 rounded-full border-2 border-gray-400 bg-white shrink-0" />
                       <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
-                        PICKUP
+                        DROP
                       </span>
                     </div>
                     <p className="mt-1 pl-4.5 text-lg sm:text-xl font-bold text-gray-900 group-hover/cardhead:text-amber-600 transition">
-                      {item.from}
+                      {item.to}
+                    </p>
+                  </div>
+                </Link>
+
+                {/* Bottom Row: Starting Fare & Action Button */}
+                <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-medium text-gray-500">
+                      {isContactCard ? "Estimated fare from" : "Starting fare"}
+                    </p>
+                    <p className="text-xl sm:text-2xl font-black text-gray-900">
+                      {item.startingFare}
                     </p>
                   </div>
 
-                  {/* Popular Badge & Vehicle Badge */}
-                  <div className="flex flex-col items-end gap-1">
-                    <span className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold text-amber-700 border border-amber-200/50">
-                      POPULAR
-                    </span>
-                    {item.vehicle && (
-                      <span className="rounded-md bg-amber-100/90 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-900 border border-amber-300/60 shadow-2xs">
-                        {item.vehicle}
-                      </span>
-                    )}
-                  </div>
+                  <Link
+                    href={`/route/${item.slug}`}
+                    className="rounded-full border-2 border-amber-500 bg-white px-6 py-1.5 text-xs font-extrabold text-amber-600 transition hover:bg-amber-500 hover:text-white shadow-xs cursor-pointer tracking-wider uppercase"
+                  >
+                    {actionText}
+                  </Link>
                 </div>
-
-                {/* Connector Line */}
-                <div className="my-1.5 ml-1 h-5 w-0.5 border-l-2 border-dotted border-gray-300" />
-
-                {/* Drop Row */}
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full border-2 border-gray-400 bg-white shrink-0" />
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
-                      DROP
-                    </span>
-                  </div>
-                  <p className="mt-1 pl-4.5 text-lg sm:text-xl font-bold text-gray-900 group-hover/cardhead:text-amber-600 transition">
-                    {item.to}
-                  </p>
-                </div>
-              </Link>
-
-              {/* Bottom Row: Starting Fare & BOOK Button */}
-              <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-medium text-gray-500">Starting fare</p>
-                  <p className="text-xl sm:text-2xl font-black text-gray-900">
-                    {item.startingFare}
-                  </p>
-                </div>
-
-                <Link
-                  href={`/route/${item.slug}`}
-                  className="rounded-full border-2 border-amber-500 bg-white px-6 py-1.5 text-xs font-extrabold text-amber-600 transition hover:bg-amber-500 hover:text-white shadow-xs cursor-pointer tracking-wider uppercase"
-                >
-                  BOOK
-                </Link>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
