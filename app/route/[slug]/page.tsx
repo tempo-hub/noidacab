@@ -821,7 +821,7 @@ export default async function DynamicRouteDetailPage({ params }: { params: Param
     );
   });
 
-  if (matchedVehicle && matchedVehicle.slug !== "wagonr") {
+  if (matchedVehicle) {
     const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
     const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
     const cityToCityVehicleRoute: ParsedCityToCityVehicleRoute = {

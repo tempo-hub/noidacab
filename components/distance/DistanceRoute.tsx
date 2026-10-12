@@ -32,14 +32,14 @@ export default function DistanceRoute({
         routes={route.routes}
       />
 
-      <RecommendedCab
+      {/* <RecommendedCab
   cab={route.recommendedCab}
   from={route.from}
   to={route.to}
-/>
+/> */}
 
 <AvailableCabs
-  cabs={route.cabs}
+  // cabs={route.cabs}
   from={route.from}
   to={route.to}
 />
@@ -61,11 +61,11 @@ export default function DistanceRoute({
       />
 
       {/* Popular City Routes */}
-      <PopularCityRoutes
+      {/* <PopularCityRoutes
         cityName={route.from.name || "Noida"}
         vehicleSlug="taxi"
         vehicleName="Distance & Travel Cabs"
-      />
+      /> */}
 
       <DistanceBookingCTA
   route={route}
