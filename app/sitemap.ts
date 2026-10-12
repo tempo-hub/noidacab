@@ -14,6 +14,19 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, "");
 }
 
+// The sitemap protocol requires these 5 characters to be escaped as XML
+// entities inside <loc>. Next.js does NOT do this for you — if any raw
+// "&", "<", ">", "'" or '"' reaches the output, the XML becomes invalid
+// from that point on and every entry after it silently disappears.
+function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   const seenUrls = new Set<string>();
@@ -25,18 +38,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: number = 0.7,
     changeFrequency: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" = "weekly"
   ) {
+    if (!path || typeof path !== "string") return;
+
     const cleanPath = path.startsWith("/") ? path : `/${path}`;
     const fullUrl = `${BASE_URL}${cleanPath}`;
 
-    if (!seenUrls.has(fullUrl)) {
-      seenUrls.add(fullUrl);
-      entries.push({
-        url: fullUrl,
-        lastModified: now,
-        changeFrequency,
-        priority,
-      });
-    }
+    // Dedup on the canonical (unescaped) URL so escaped/unescaped
+    // variants of the same URL are never treated as different entries.
+    if (seenUrls.has(fullUrl)) return;
+    seenUrls.add(fullUrl);
+
+    entries.push({
+      url: escapeXml(fullUrl),
+      lastModified: now,
+      changeFrequency,
+      priority,
+    });
   }
 
   // =========================================================================
@@ -174,7 +191,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const pair of pairs) {
       for (const vSlug of routeVehicleSlugs) {
         const routeSlug = `/route/${pair.from}-to-${pair.to}-${vSlug}`;
-        const routesSlug = `/routes/${pair.from}-to-${pair.to}-${vSlug}`;
 
         const priority =
           vSlug === "one-way-taxi" || vSlug === "taxi-fare"
@@ -184,7 +200,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             : 0.8;
 
         addUrl(routeSlug, priority, "weekly");
-        addUrl(routesSlug, priority, "weekly");
       }
     }
   }
@@ -192,6 +207,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // =========================================================================
   // 6. Local Sector and Highway URLs from urlroute.json (urlRoutes)
   // =========================================================================
+  // NOTE: these come straight from JSON data, not through slugify(), so
+  // they are the most likely source of a raw "&" or other unsafe character
+  // breaking the XML. escapeXml() inside addUrl() now guards against that,
+  // but it's worth auditing urlroute.json itself for entries with "&",
+  // spaces, or other non-slug characters and cleaning them at the source.
   for (const r of urlRoutes) {
     if (r && typeof r.url === "string") {
       const trimmed = r.url.trim();
@@ -202,4 +222,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   return entries;
-}
+}
