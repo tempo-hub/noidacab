@@ -702,7 +702,7 @@ export default async function CabPage({
 
   if (url.startsWith("/one-way-taxi-in-") || url.startsWith("/one-way-cab-in-")) {
     const citySlug = url.replace(/^(\/one-way-taxi-in-|\/one-way-cab-in-)/, "").toLowerCase();
-    if (citySlug === "noida") {
+    if (citySlug === "noida" && url !== "/one-way-taxi-in-noida") {
       redirect("/one-way-taxi-in-noida");
     }
     const cityInfo = getCityDetails(citySlug);

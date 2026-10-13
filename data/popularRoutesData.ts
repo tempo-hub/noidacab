@@ -27,6 +27,8 @@ import {
   masterRoutes,
   masterRoutesRegistry,
 } from "./masterRoutes";
+import { noidaRoutes } from "./routes/noidaRoutes";
+import { routes } from "./routes/taxiroutes";
 
 export type { MasterRouteItem, PopularRouteDefinition };
 export { masterRoutes, masterRoutesRegistry };
@@ -452,16 +454,17 @@ export interface ParsedRouteDetail {
   }[];
 }
 
-export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail {
+export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
   // Strip any accidental leading "route-" or "route/" prefix (e.g. "route-noida-to-delhi-dzire-taxi")
   const clean = (slug || "").toLowerCase().trim().replace(/^(route[-/])+/g, "");
+  if (!clean || !clean.includes("-to-")) return null;
 
-  let from = "Lucknow";
-  let to = "Ayodhya";
-  let vehicleKey = "tempo-traveller";
+  let from = "";
+  let to = "";
+  let vehicleKey = "";
+  let matchedRegistry = false;
 
   // 1. Direct match against masterRoutesRegistry (both directions)
-  let matchedRegistry = false;
   for (const r of masterRoutesRegistry) {
     const fSlug = r.from.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
     const tSlug = r.to.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
@@ -489,101 +492,67 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail {
     }
   }
 
-  // 2. Generic fallback parser if not explicitly in master registry
-  if (!matchedRegistry && clean.includes("-to-")) {
-    const parts = clean.split("-to-");
-    from = parts[0].replace(/-/g, " ");
+  // 2. Direct match against noidaRoutes
+  if (!matchedRegistry) {
+    for (const r of Object.values(noidaRoutes)) {
+      const fSlug = (r.from?.slug || r.from?.name || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
+      const tSlug = (r.to?.slug || r.to?.name || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
+      if (!fSlug || !tSlug) continue;
 
-    const rest = parts[1];
-    if (
-      rest.endsWith("-luxury-tempo-traveller") ||
-      rest.endsWith("-luxury-tempo-travel") ||
-      rest.endsWith("-luxury-tempo")
-    ) {
-      to = rest.replace(/-(luxury-tempo-traveller|luxury-tempo-travel|luxury-tempo)$/, "").replace(/-/g, " ");
-      vehicleKey = "luxury-tempo-traveller";
-    } else if (rest.endsWith("-12-seater-tempo-traveller") || rest.endsWith("-12-seater")) {
-      to = rest.replace(/-(12-seater-tempo-traveller|12-seater)$/, "").replace(/-/g, " ");
-      vehicleKey = "12-seater-tempo-traveller";
-    } else if (rest.endsWith("-16-seater-tempo-traveller") || rest.endsWith("-16-seater")) {
-      to = rest.replace(/-(16-seater-tempo-traveller|16-seater)$/, "").replace(/-/g, " ");
-      vehicleKey = "16-seater-tempo-traveller";
-    } else if (rest.endsWith("-20-seater-tempo-traveller") || rest.endsWith("-20-seater")) {
-      to = rest.replace(/-(20-seater-tempo-traveller|20-seater)$/, "").replace(/-/g, " ");
-      vehicleKey = "20-seater-tempo-traveller";
-    } else if (rest.endsWith("-24-seater-tempo-traveller") || rest.endsWith("-24-seater")) {
-      to = rest.replace(/-(24-seater-tempo-traveller|24-seater)$/, "").replace(/-/g, " ");
-      vehicleKey = "24-seater-tempo-traveller";
-    } else if (rest.endsWith("-tempo-traveller") || rest.endsWith("-tempo")) {
-      to = rest.replace(/-(tempo-traveller|tempo)$/, "").replace(/-/g, " ");
-      vehicleKey = "tempo-traveller";
-    } else if (
-      rest.endsWith("-innova-crysta-taxi") ||
-      rest.endsWith("-innova-crysta") ||
-      rest.endsWith("-innova-taxi") ||
-      rest.endsWith("-innova")
-    ) {
-      to = rest.replace(/-innova(-crysta)?(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "innova-crysta";
-    } else if (rest.endsWith("-dzire-taxi") || rest.endsWith("-dzire")) {
-      to = rest.replace(/-dzire(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "dzire";
-    } else if (rest.endsWith("-etios-taxi") || rest.endsWith("-etios")) {
-      to = rest.replace(/-etios(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "etios";
-    } else if (rest.endsWith("-amaze-taxi") || rest.endsWith("-amaze")) {
-      to = rest.replace(/-amaze(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "amaze";
-    } else if (rest.endsWith("-ertiga-taxi") || rest.endsWith("-ertiga")) {
-      to = rest.replace(/-ertiga(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "ertiga";
-    } else if (rest.endsWith("-wagonr-taxi") || rest.endsWith("-wagonr")) {
-      to = rest.replace(/-wagonr(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "wagonr";
-    } else if (rest.endsWith("-swift-taxi") || rest.endsWith("-swift")) {
-      to = rest.replace(/-swift(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "swift";
-    } else if (rest.endsWith("-hatchback-taxi") || rest.endsWith("-hatchback")) {
-      to = rest.replace(/-hatchback(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "hatchback";
-    } else if (rest.endsWith("-sedan-taxi") || rest.endsWith("-sedan")) {
-      to = rest.replace(/-sedan(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "sedan";
-    } else if (rest.endsWith("-suv-taxi") || rest.endsWith("-suv")) {
-      to = rest.replace(/-suv(-taxi)?$/, "").replace(/-/g, " ");
-      vehicleKey = "suv";
-    } else if (rest.endsWith("-urbania-rental")) {
-      to = rest.replace("-urbania-rental", "").replace(/-/g, " ");
-      vehicleKey = "urbania-rental";
-    } else if (rest.endsWith("-urbania")) {
-      to = rest.replace("-urbania", "").replace(/-/g, " ");
-      vehicleKey = "urbania";
-    } else if (rest.endsWith("-one-way-taxi") || rest.endsWith("-oneway-taxi") || rest.endsWith("-one-way-cab")) {
-      to = rest.replace(/-(one-way-taxi|oneway-taxi|one-way-cab)$/, "").replace(/-/g, " ");
-      vehicleKey = "one-way-taxi";
-    } else if (rest.endsWith("-distance-travel-time")) {
-      to = rest.replace("-distance-travel-time", "").replace(/-/g, " ");
-      vehicleKey = "distance-travel-time";
-    } else if (rest.endsWith("-fare-taxi")) {
-      to = rest.replace("-fare-taxi", "").replace(/-/g, " ");
-      vehicleKey = "fare-taxi";
-    } else if (rest.endsWith("-taxi-fare")) {
-      to = rest.replace("-taxi-fare", "").replace(/-/g, " ");
-      vehicleKey = "taxi-fare";
-    } else if (
-      rest.endsWith("-contact-number") ||
-      rest.endsWith("-taxi-contact-number") ||
-      rest.endsWith("-cab-contact-number")
-    ) {
-      to = rest.replace(/-(taxi-|cab-)?contact-number$/, "").replace(/-/g, " ");
-      vehicleKey = "contact-number";
-    } else if (rest.endsWith("-taxi")) {
-      to = rest.replace("-taxi", "").replace(/-/g, " ");
-      vehicleKey = "taxi";
-    } else {
-      to = rest.replace(/-/g, " ");
-      vehicleKey = "tempo-traveller";
+      const forwardPrefix = `${fSlug}-to-${tSlug}`;
+      if (clean === forwardPrefix || clean.startsWith(`${forwardPrefix}-`)) {
+        from = r.from.name;
+        to = r.to.name;
+        const vPart = clean.slice(forwardPrefix.length).replace(/^-/, "");
+        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        matchedRegistry = true;
+        break;
+      }
+
+      const reversePrefix = `${tSlug}-to-${fSlug}`;
+      if (clean === reversePrefix || clean.startsWith(`${reversePrefix}-`)) {
+        from = r.to.name;
+        to = r.from.name;
+        const vPart = clean.slice(reversePrefix.length).replace(/^-/, "");
+        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        matchedRegistry = true;
+        break;
+      }
     }
+  }
+
+  // 3. Direct match against routes (taxiroutes)
+  if (!matchedRegistry) {
+    for (const r of routes) {
+      const fSlug = (r.from?.slug || r.from?.name || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
+      const tSlug = (r.to?.slug || r.to?.name || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
+      if (!fSlug || !tSlug) continue;
+
+      const forwardPrefix = `${fSlug}-to-${tSlug}`;
+      if (clean === forwardPrefix || clean.startsWith(`${forwardPrefix}-`)) {
+        from = r.from.name;
+        to = r.to.name;
+        const vPart = clean.slice(forwardPrefix.length).replace(/^-/, "");
+        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        matchedRegistry = true;
+        break;
+      }
+
+      const reversePrefix = `${tSlug}-to-${fSlug}`;
+      if (clean === reversePrefix || clean.startsWith(`${reversePrefix}-`)) {
+        from = r.to.name;
+        to = r.from.name;
+        const vPart = clean.slice(reversePrefix.length).replace(/^-/, "");
+        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        matchedRegistry = true;
+        break;
+      }
+    }
+  }
+
+  // If route is not found in our catalogs, return null (404 error - do NOT auto-generate or switch to another page)
+  if (!matchedRegistry || !from || !to) {
+    return null;
   }
 
   // Capitalize

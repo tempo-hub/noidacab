@@ -88,13 +88,21 @@ export const masterRoutes: MasterRouteItem[] = [
 
   // --- Noida / NCR Corridors ---
   { from: "Noida", to: "Delhi", distance: 25, duration: "45 min", highway: "DND Flyway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Greater Noida", distance: 25, duration: "40 min", highway: "Noida-Greater Noida Expressway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Ghaziabad", distance: 20, duration: "35 min", highway: "NH 9 & Hindon Elevated Road", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Gurgaon", distance: 55, duration: "1 hr 30 min", highway: "Outer Ring Road / NH48", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Meerut", distance: 70, duration: "1 hr 15 min", highway: "Delhi-Meerut Expressway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Hapur", distance: 60, duration: "1 hr 10 min", highway: "NH 9", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Bulandshahr", distance: 75, duration: "1 hr 30 min", highway: "NH 34", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Agra", distance: 180, duration: "2 hr 45 min", highway: "Yamuna Expressway", defaultVehicle: "taxi" },
   { from: "Noida", to: "Jaipur", distance: 290, duration: "4 hr 45 min", highway: "Delhi-Mumbai Expressway", defaultVehicle: "taxi" },
   { from: "Noida", to: "Haridwar", distance: 215, duration: "3 hr 45 min", highway: "Delhi-Meerut Expressway", defaultVehicle: "tempo-traveller" },
   { from: "Noida", to: "Rishikesh", distance: 240, duration: "4 hr 15 min", highway: "NH334", defaultVehicle: "tempo-traveller" },
   { from: "Noida", to: "Mathura", distance: 140, duration: "2 hr 15 min", highway: "Yamuna Expressway", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Vrindavan", distance: 145, duration: "2 hr 10 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Dehradun", distance: 255, duration: "4 hr 30 min", highway: "Delhi-Dehradun Expressway", defaultVehicle: "tempo-traveller" },
+  { from: "Noida", to: "Chandigarh", distance: 260, duration: "4 hr 30 min", highway: "NH 44", defaultVehicle: "taxi", isPopular: true },
+  { from: "Uttarakhand", to: "Rohtak", distance: 240, duration: "4 hr 30 min", highway: "NH 334 & Eastern Peripheral Expressway", defaultVehicle: "suv-taxi", isPopular: true },
 
   // --- Haryana Corridors (from Noida) ---
   // Ambala District
@@ -550,6 +558,18 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Mathura", to: "Vrindavan", distance: 15, duration: "30 min", highway: "Vrindavan Road", defaultVehicle: "taxi" },
   { from: "Mathura", to: "Jaipur", distance: 225, duration: "4 hr 00 min", highway: "NH21", defaultVehicle: "taxi" },
   { from: "Mathura", to: "Haridwar", distance: 310, duration: "5 hr 30 min", highway: "Expressways", defaultVehicle: "tempo-traveller" },
+
+  // --- Haryana Corridors ---
+  { from: "Haryana", to: "Delhi", distance: 60, duration: "1 hr 30 min", highway: "NH 44 & Delhi-Gurgaon Expressway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Noida", distance: 75, duration: "1 hr 45 min", highway: "KMP Expressway & DND Flyway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Chandigarh", distance: 210, duration: "3 hr 30 min", highway: "NH 44 (Delhi-Chandigarh Hwy)", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Jaipur", distance: 240, duration: "4 hr 00 min", highway: "NH 48 (Delhi-Jaipur Hwy)", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Agra", distance: 195, duration: "3 hr 15 min", highway: "Yamuna Expressway & KMP", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Haridwar", distance: 230, duration: "4 hr 15 min", highway: "NH 334 & Delhi-Meerut Expressway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Dehradun", distance: 260, duration: "4 hr 45 min", highway: "NH 307 & Mohand Pass Hwy", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Amritsar", distance: 410, duration: "6 hr 45 min", highway: "NH 44 & Grand Trunk Road", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Shimla", distance: 320, duration: "6 hr 30 min", highway: "NH 5 & Himalayan Expressway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Haryana", to: "Manali", distance: 510, duration: "10 hr 30 min", highway: "NH 3 & Kiratpur-Nerchowk Expressway", defaultVehicle: "taxi", isPopular: true },
 ];
 
 export const masterRoutesRegistry = masterRoutes;
