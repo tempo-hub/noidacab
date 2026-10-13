@@ -68,16 +68,13 @@ export function BookingProcess({
   ];
 
   return (
-    <section className="bg-white/95 border-b border-gray-300 py-12 sm:py-16 lg:py-20">
+    <section className="bg-white/95 border-b border-gray-300 py-12 sm:py-12 lg:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="max-w-7xl">
 
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-amber-700">
-            <CalendarCheck className="h-4 w-4" />
-            HOW IT WORKS
-          </div>
+
 
           <h2 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
             How to Book a {vehicle.name} {isTempo ? "Rental" : "Cab"}

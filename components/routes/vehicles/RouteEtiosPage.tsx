@@ -23,7 +23,20 @@ import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
 import { masterRoutes } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "./RelatedCityRoutes";
+import CabTestimonials from "@/components/cab/CabTestimonials";
+import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
+
+import { RouteInfo } from "@/components/cab-page/RouteInfo";
+import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
+import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
+import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
+import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
+import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
+import { BookingProcess } from "@/components/cab-page/BookingProcess";
+import { TravelTips } from "@/components/cab-page/TravelTips";
+import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -67,6 +80,11 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
   const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
+  const location = {
+    slug: route.canonicalSlug || `${fromSlug}-to-${toSlug}`,
+    name: `${route.from} to ${route.to}`,
+  };
+
   const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book Toyota Etios from ${route.from} to ${route.to} (${distanceDisplay}, Est fare ₹${oneWayFare}). Please confirm availability.`
   )}`;
@@ -100,7 +118,7 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen">
       {/* 1. BREADCRUMBS */}
       <nav className="border-b border-gray-100 bg-slate-50 py-3 text-xs sm:text-sm text-gray-500">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-2">
@@ -113,7 +131,7 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
       </nav>
 
       {/* 2. HERO SECTION */}
-    <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left Content */}
@@ -125,7 +143,7 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
 
               <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight">
                 {route.from} to {route.to}{" "}
-                <span className="text-amber-600">Toyota Etios Taxi</span>
+                <span className="text-amber-600">Etios Taxi</span>
               </h1>
 
               <p className="mt-3 text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl">
@@ -225,10 +243,9 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* 3. VEHICLE SPECIFICATIONS */}
-      <section className="bg-slate-50 py-12 border-y border-gray-200">
+      <section className="bg-white/95 py-12 border-y border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">SPECIFICATIONS</span>
+          <div className="text-center max-w-7xl mx-auto mb-10">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Toyota Etios Engineering & Cabin Dimensions
             </h2>
@@ -262,10 +279,16 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
+      {/* VEHICLE SUMMARY (from EtiosTemplate) */}
+      <VehicleSummary location={location} vehicle={vehicleData} />
+
+      {/* ROUTE INFO (from EtiosTemplate) */}
+      <RouteInfo location={location} vehicle={vehicleData} />
+
       {/* 4. WHY CHOOSE ETIOS FOR THIS ROUTE */}
-      <section className="bg-white py-14 border-b border-gray-200">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-7xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">UNMATCHED DURABILITY</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Why Book Toyota Etios from {route.from} to {route.to}?
@@ -317,8 +340,8 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* 5. TRANSPARENT FARE DETAILS */}
-      <section className="bg-slate-50 py-12 border-b border-gray-200">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white/95 py-12 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FARE BREAKDOWN</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
@@ -352,6 +375,27 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
+      {/* JOURNEY INFO (from EtiosTemplate) */}
+      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
+
+      {/* PICKUP & DROP LOCATIONS (from EtiosTemplate) */}
+      {/* <PickupDropLocations location={location} vehicle={vehicleData} /> */}
+
+      {/* WHY CHOOSE US (from EtiosTemplate) */}
+      <WhyChooseUs location={location} vehicle={vehicleData} />
+
+      {/* WHAT'S INCLUDED (from EtiosTemplate) */}
+      <WhatsIncluded location={location} vehicle={vehicleData} />
+
+      {/* BOOKING PROCESS (from EtiosTemplate) */}
+      <BookingProcess location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL TIPS (from EtiosTemplate) */}
+      <TravelTips location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL PLANNING (from EtiosTemplate) */}
+      <TravelPlanning location={location} vehicle={vehicleData} />
+
       <RouteTripPlanning
         from={route.from}
         to={route.to}
@@ -360,45 +404,26 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
         planningPoint="The listed Etios capacity is four passengers with space for three luggage pieces. Share your group size and bag count before confirming, especially when travelling with full-size suitcases."
       />
 
-      {/* 6. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
-      <PopularCityRoutes
-        cityName={route.from}
+      {/* 6. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
+      <VehicleRouteSeoGuide
+        route={route}
         vehicleSlug="etios"
-        vehicleName="Etios"
+        vehicleName="Toyota Etios"
       />
 
-      {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
-      {/* <section className="bg-white py-12 border-b border-gray-200">
+      {/* 8. RELATED REGIONAL CITY ROUTES (matched by destination city's state/region) */}
+      <RelatedCityRoutes
+        destinationCity={route.to}
+        vehicleSlug="etios"
+        vehicleName="Toyota Etios"
+      />
+
+      {/* 8. TESTIMONIALS */}
+      <CabTestimonials />
+
+      {/* 9. FAQS */}
+      <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-6">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">OTHER VEHICLES</span>
-            <h3 className="text-xl font-black text-gray-900 mt-1">
-              Compare Other Cabs for {route.from} to {route.to}
-            </h3>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-            {alternativeVehicles.map((alt) => (
-              <Link
-                key={alt.slug}
-                href={`/route/${fromSlug}-to-${toSlug}-${alt.slug}`}
-                className="group rounded-2xl border border-gray-200 bg-slate-50 p-4 hover:border-amber-400 hover:bg-amber-50/50 transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-amber-700">{alt.seats} Seats</span>
-                  <ArrowRight className="h-3 w-3 text-gray-400 group-hover:text-amber-600 transition" />
-                </div>
-                <h4 className="text-sm font-bold text-gray-900">{alt.name}</h4>
-                <p className="text-xs font-semibold text-gray-500 mt-1">{alt.price}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* 8. FAQS */}
-      <section className="bg-slate-50 py-14 border-b border-gray-200">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FREQUENTLY ASKED QUESTIONS</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
@@ -430,6 +455,13 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
           </div>
         </div>
       </section>
+
+      {/* 7. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
+      <PopularCityRoutes
+        cityName={route.from}
+        vehicleSlug="etios"
+        vehicleName="Etios"
+      />
 
       {/* 9. BOTTOM CONVERSION CTA */}
       <section className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white py-10 px-4 sm:px-6 lg:px-8">

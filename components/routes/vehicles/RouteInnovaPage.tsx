@@ -23,6 +23,9 @@ import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
 import { masterRoutes } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "./RelatedCityRoutes";
+import CabTestimonials from "@/components/cab/CabTestimonials";
+import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import { RouteInfo } from "@/components/cab-page/RouteInfo";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
 import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
@@ -125,7 +128,7 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
       </nav>
 
       {/* 2. HERO SECTION */}
-    <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left Content */}
@@ -275,7 +278,10 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* ROUTE INFO (from InnovaTemplate) */}
-      <RouteInfo location={location} vehicle={vehicleData} />
+      {/* <RouteInfo location={location} vehicle={vehicleData} /> */}
+
+      {/* VEHICLE SUMMARY (from InnovaTemplate) */}
+      <VehicleSummary location={location} vehicle={vehicleData} />
 
       {/* 4. WHY CHOOSE INNOVA CRYSTA FOR THIS ROUTE */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
@@ -367,8 +373,7 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      {/* VEHICLE SUMMARY (from InnovaTemplate) */}
-      <VehicleSummary location={location} vehicle={vehicleData} />
+      
 
       {/* JOURNEY INFO (from InnovaTemplate) */}
       <JourneyInfo location={location} vehicle={vehicleData} />
@@ -385,14 +390,21 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
       {/* TRAVEL TIPS (from InnovaTemplate) */}
       <TravelTips location={location} vehicle={vehicleData} />
 
-      {/* TRAVEL PLANNING (from InnovaTemplate) */}
-      <TravelPlanning location={location} vehicle={vehicleData} />
 
-      {/* 6. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
-      <PopularCityRoutes
-        cityName={route.from}
+      {/* 6. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
+      <VehicleRouteSeoGuide
+        route={route}
         vehicleSlug="innova-crysta"
-        vehicleName="Innova Crysta"
+        vehicleName="Toyota Innova Crysta"
+      />
+
+      
+
+      {/* 8. RELATED REGIONAL CITY ROUTES (matched by destination city's state/region) */}
+      <RelatedCityRoutes
+        destinationCity={route.to}
+        vehicleSlug="innova-crysta"
+        vehicleName="Toyota Innova Crysta"
       />
 
       {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
@@ -424,7 +436,10 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section> */}
 
-      {/* 8. FAQS */}
+      {/* 8. TESTIMONIALS */}
+      <CabTestimonials />
+
+      {/* 9. FAQS */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -458,6 +473,13 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
           </div>
         </div>
       </section>
+
+      {/* 7. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
+      <PopularCityRoutes
+        cityName={route.from}
+        vehicleSlug="innova-crysta"
+        vehicleName="Innova Crysta"
+      />
 
       {/* 9. BOTTOM CONVERSION CTA */}
       <section className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white py-10 px-4 sm:px-6 lg:px-8">

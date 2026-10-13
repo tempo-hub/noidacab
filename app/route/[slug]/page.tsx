@@ -175,26 +175,33 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   }
 
   if (route.vehicleSlug === "suv-taxi" || slug.toLowerCase().endsWith("-suv-taxi")) {
+    const fromCap = route.from.charAt(0).toUpperCase() + route.from.slice(1);
+    const toCap = route.to.charAt(0).toUpperCase() + route.to.slice(1);
+    const canonicalUrl = `https://www.noidacab.com/route/${slug.toLowerCase()}`;
+
     return {
-      title: `${route.from} to ${route.to} SUV Taxi | Ertiga & Innova Cab Starting @ ${route.fare} | NoidaCab`,
-      description: `Book 6-7 seater SUV cab from ${route.from} to ${route.to}. Clean Ertiga and Innova Crysta cabs with verified drivers. Distance: ${route.distance} (${route.duration}).`,
+      title: `${fromCap} to ${toCap} SUV Taxi | Ertiga & Innova Crysta Cab Starting @ ₹13/km | NoidaCab`,
+      description: `Book 6-7 seater SUV taxi from ${fromCap} to ${toCap} with NoidaCab. Clean Maruti Ertiga & Toyota Innova Crysta cabs with dual AC & verified chauffeurs. Distance: ${route.distance} (${route.duration}). Starting @ ₹13/km. Call 8377809809.`,
       keywords: [
-        `${route.from} to ${route.to} SUV taxi`,
-        `${route.from} to ${route.to} SUV cab`,
-        `${route.from} to ${route.to} 6 seater taxi`,
-        `${route.from} to ${route.to} 7 seater cab`,
-        `${route.from} to ${route.to} Ertiga taxi`,
-        `${route.from} to ${route.to} Innova cab`,
-        `SUV car rental ${route.from} to ${route.to}`,
-        `family SUV cab ${route.from} to ${route.to}`,
+        `${fromCap} to ${toCap} SUV taxi`,
+        `${fromCap} to ${toCap} SUV cab`,
+        `${fromCap} to ${toCap} 6 seater taxi`,
+        `${fromCap} to ${toCap} 7 seater cab`,
+        `${fromCap} to ${toCap} Ertiga taxi`,
+        `${fromCap} to ${toCap} Innova cab`,
+        `${fromCap} to ${toCap} Innova Crysta rental`,
+        `outstation SUV cab ${fromCap} to ${toCap}`,
+        `family SUV taxi ${fromCap} to ${toCap}`,
+        `SUV car rental ${fromCap} to ${toCap}`,
+        "NoidaCab SUV taxi service",
       ],
       alternates: {
-        canonical: `https://www.noidacab.com/route/${route.canonicalSlug}`,
+        canonical: canonicalUrl,
       },
       openGraph: {
-        title: `${route.from} to ${route.to} SUV Taxi - NoidaCab`,
-        description: `Spacious SUV cabs from ${route.from} to ${route.to}. Starting fare: ${route.fare}.`,
-        url: `https://www.noidacab.com/route/${route.canonicalSlug}`,
+        title: `${fromCap} to ${toCap} SUV Taxi (Ertiga & Innova) - NoidaCab`,
+        description: `Spacious 6-7 seater SUV cabs from ${fromCap} to ${toCap}. Clean AC cars, professional drivers, per-km billing from ₹13/km. Call 8377809809.`,
+        url: canonicalUrl,
         siteName: "NoidaCab",
       },
     };

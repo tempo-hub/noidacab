@@ -26,6 +26,9 @@ import {
 } from "lucide-react";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "./RelatedCityRoutes";
+import CabTestimonials from "@/components/cab/CabTestimonials";
+import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 
 export interface VehicleRouteConfig {
   vehicleName: string;
@@ -102,23 +105,23 @@ export default function VehicleRouteBase({ route, config }: Props) {
 
   const alternativeVehicles = (isGroupVehicle
     ? [
-        { name: "12-Seater Tempo", slug: "12-seater-tempo-traveller", rate: "₹20/km", seats: "12 Seats" },
-        { name: "16-Seater Tempo", slug: "16-seater-tempo-traveller", rate: "₹25/km", seats: "16 Seats" },
-        { name: "20-Seater Tempo", slug: "20-seater-tempo-traveller", rate: "₹27/km", seats: "20 Seats" },
-        { name: "24-Seater Tempo", slug: "24-seater-tempo-traveller", rate: "₹29/km", seats: "24 Seats" },
-        { name: "Luxury Maharaja", slug: "luxury-tempo-traveller", rate: "₹25/km", seats: "12 Seats" },
-        { name: "Force Urbania", slug: "urbania-rental", rate: "₹25/km", seats: "12-16 Seats" },
-        { name: "Innova Crysta", slug: "innova-crysta-taxi", rate: "₹16/km", seats: "6 Seats" },
-      ]
+      { name: "12-Seater Tempo", slug: "12-seater-tempo-traveller", rate: "₹20/km", seats: "12 Seats" },
+      { name: "16-Seater Tempo", slug: "16-seater-tempo-traveller", rate: "₹25/km", seats: "16 Seats" },
+      { name: "20-Seater Tempo", slug: "20-seater-tempo-traveller", rate: "₹27/km", seats: "20 Seats" },
+      { name: "24-Seater Tempo", slug: "24-seater-tempo-traveller", rate: "₹29/km", seats: "24 Seats" },
+      { name: "Luxury Maharaja", slug: "luxury-tempo-traveller", rate: "₹25/km", seats: "12 Seats" },
+      { name: "Force Urbania", slug: "urbania-rental", rate: "₹25/km", seats: "12-16 Seats" },
+      { name: "Innova Crysta", slug: "innova-crysta-taxi", rate: "₹16/km", seats: "6 Seats" },
+    ]
     : [
-        { name: "Innova Crysta", slug: "innova-crysta-taxi", rate: "₹16/km", seats: "6 Seats" },
-        { name: "Ertiga", slug: "ertiga-taxi", rate: "₹13/km", seats: "6 Seats" },
-        { name: "Dzire", slug: "dzire-taxi", rate: "₹10/km", seats: "4 Seats" },
-        { name: "Amaze", slug: "amaze-taxi", rate: "₹10/km", seats: "4 Seats" },
-        { name: "Etios", slug: "etios-taxi", rate: "₹10/km", seats: "4 Seats" },
-        { name: "Sedan", slug: "sedan-taxi", rate: "₹10/km", seats: "4 Seats" },
-        { name: "12 Seater Tempo", slug: "12-seater-tempo-traveller", rate: "₹20/km", seats: "12 Seats" },
-      ]
+      { name: "Innova Crysta", slug: "innova-crysta-taxi", rate: "₹16/km", seats: "6 Seats" },
+      { name: "Ertiga", slug: "ertiga-taxi", rate: "₹13/km", seats: "6 Seats" },
+      { name: "Dzire", slug: "dzire-taxi", rate: "₹10/km", seats: "4 Seats" },
+      { name: "Amaze", slug: "amaze-taxi", rate: "₹10/km", seats: "4 Seats" },
+      { name: "Etios", slug: "etios-taxi", rate: "₹10/km", seats: "4 Seats" },
+      { name: "Sedan", slug: "sedan-taxi", rate: "₹10/km", seats: "4 Seats" },
+      { name: "12 Seater Tempo", slug: "12-seater-tempo-traveller", rate: "₹20/km", seats: "12 Seats" },
+    ]
   ).filter((v) => v.slug !== config.vehicleSlug);
 
   return (
@@ -500,9 +503,23 @@ export default function VehicleRouteBase({ route, config }: Props) {
         </div>
       </section>
 
-      {/* 5. POPULAR CITY ROUTES FOR THIS VEHICLE */}
+      {/* 5. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
+      <VehicleRouteSeoGuide
+        route={route}
+        vehicleSlug={config.vehicleSlug}
+        vehicleName={config.vehicleName}
+      />
+
+      {/* 6. POPULAR CITY ROUTES FOR THIS VEHICLE */}
       <PopularCityRoutes
         cityName={route.from}
+        vehicleSlug={config.vehicleSlug}
+        vehicleName={config.vehicleName}
+      />
+
+      {/* 6b. RELATED REGIONAL CITY ROUTES */}
+      <RelatedCityRoutes
+        destinationCity={route.to}
         vehicleSlug={config.vehicleSlug}
         vehicleName={config.vehicleName}
       />
@@ -538,7 +555,10 @@ export default function VehicleRouteBase({ route, config }: Props) {
         </div>
       </section> */}
 
-      {/* 7. VEHICLE SPECIFIC FAQS */}
+      {/* 7. TESTIMONIALS */}
+      <CabTestimonials />
+
+      {/* 8. VEHICLE SPECIFIC FAQS */}
       <section className="bg-slate-50 py-14 border-b border-gray-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -568,9 +588,8 @@ export default function VehicleRouteBase({ route, config }: Props) {
                   >
                     <span>{faq.q}</span>
                     <ChevronDown
-                      className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${
-                        isOpen ? "rotate-180 text-amber-600" : ""
-                      }`}
+                      className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${isOpen ? "rotate-180 text-amber-600" : ""
+                        }`}
                     />
                   </button>
                   {isOpen && (

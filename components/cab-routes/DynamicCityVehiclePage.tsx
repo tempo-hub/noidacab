@@ -26,6 +26,7 @@ import { CityInfo } from "@/lib/cityData";
 import { Vehicle } from "@/data/vehicles";
 import { intercityTaxiRoutes } from "@/data/allRoutesData";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 import AllCityRoutes from "@/components/cab-routes/AllCityRoutes";
 import OurServicesGrid from "@/components/cab-routes/OurServicesGrid";
 import HowToBook from "@/components/cab/HowToBook";
@@ -466,13 +467,20 @@ Please share instant driver allocation and fare quote.`;
         subtitle={`Top outstation routes from ${city.name} booked with ${vehicle.name} at flat per-km tariffs.`}
       />
 
+      {/* 4b. Regional Routes matched to this city */}
+      <RelatedCityRoutes
+        destinationCity={city.name}
+        vehicleSlug={vehicle.slug}
+        vehicleName={vehicle.name}
+      />
+
       {/* 5. All Intercity Taxi Routes connecting with this city */}
-      <AllCityRoutes
+      {/* <AllCityRoutes
         routes={displayRoutes}
         title={`All Intercity Taxi Routes Connecting ${city.name}`}
         subtitle={`Seamless one-way drops and round-trip highway cabs connecting ${city.name} with major pilgrimage centers, expressways, and business corridors.`}
         badge={`${city.name} Corridors`}
-      />
+      /> */}
 
       {/* 6. Our Services Grid */}
       <OurServicesGrid currentServiceSlug="taxi-service-routes" />

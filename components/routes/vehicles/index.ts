@@ -15,3 +15,8 @@ export { RouteUrbaniaPage } from "./RouteUrbaniaPage";
 
 export { default as VehicleRouteBase } from "./VehicleRouteBase";
 export type { VehicleRouteConfig } from "./VehicleRouteBase";
+
+export { default as VehicleRouteSeoGuide } from "./VehicleRouteSeoGuide";
+export { default as RelatedCityRoutes } from "./RelatedCityRoutes";
+export * from "./vehicleSeoProfiles";
+

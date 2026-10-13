@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { FAQSection } from "@/components/cab-page";
+import TaxiServiceFAQ from "@/components/routes/TaxiServiceNoida/TaxiServiceFAQ";
 import Testimonials from "@/components/home/Testimonials";
 import AirportTaxiService from "@/components/routes/TaxiServiceNoida/AirportTaxiService";
 import FinalBookingCTA from "@/components/routes/TaxiServiceNoida/FinalBookingCTA";
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     "outstation taxi Noida",
   ],
   alternates: {
-    canonical: "https://noidacab.com/taxi-services",
+    canonical: "https://www.noidacab.com/taxi-service-in-noida",
   },
   openGraph: {
     title: "Taxi Service in Noida | Local, Airport & Outstation Cabs",
     description:
       "Book a taxi in Noida for local rides, airport transfers, outstation travel and sightseeing. Sedans, SUVs and Tempo Travellers available.",
-    url: "https://noidacab.com/taxi-services",
+    url: "https://www.noidacab.com/taxi-service-in-noida",
     siteName: "NoidaCab",
     type: "website",
     locale: "en_IN",
@@ -51,8 +51,32 @@ export const metadata: Metadata = {
 };
 
 export default function TaxiServicePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TaxiService",
+    name: "NoidaCab - Taxi Service in Noida",
+    description:
+      "Book reliable taxi service in Noida for local city travel, IGI airport transfers, and outstation trips starting @ ₹10/km. Verified drivers, 24/7 service.",
+    url: "https://www.noidacab.com/taxi-service-in-noida",
+    telephone: "+918377809809",
+    priceRange: "₹10/km - ₹32/km",
+    areaServed: {
+      "@type": "City",
+      name: "Noida",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "8420",
+    },
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection />
 
       <TaxiTypes />
@@ -76,13 +100,9 @@ export default function TaxiServicePage() {
 
       <WhyChooseUs />
 
-      {/* <HowItWorks />
-
-      <WhyNoidaCab /> */}
-
       <Testimonials />
 
-      {/* <FAQSection /> */}
+      <TaxiServiceFAQ />
 
       <FinalBookingCTA />
     </main>

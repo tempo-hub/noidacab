@@ -67,7 +67,7 @@ interface Props {
 
 export default function OurServicesGrid({ currentServiceSlug }: Props) {
   return (
-    <section className="bg-white py-12 sm:py-12 border-b border-gray-200">
+    <section className="bg-white/95 py-12 border-b border-gray-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-7xl text-center mb-14 sm:mb-20">

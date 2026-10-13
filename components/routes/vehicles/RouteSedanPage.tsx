@@ -23,6 +23,9 @@ import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
 import { masterRoutes } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "./RelatedCityRoutes";
+import CabTestimonials from "@/components/cab/CabTestimonials";
+import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
 import { SedanFleetSection } from "@/components/cab-page/SedanFleetSection";
 import { RouteInfo } from "@/components/cab-page/RouteInfo";
@@ -128,7 +131,7 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
       </nav>
 
       {/* 2. HERO SECTION */}
-    <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left Content */}
@@ -140,7 +143,7 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
 
               <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight">
                 {route.from} to {route.to}{" "}
-                <span className="text-amber-600">Sedan Taxi Service</span>
+                <span className="text-amber-600">Sedan Taxi</span>
               </h1>
 
               <p className="mt-3 text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl">
@@ -243,7 +246,6 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
       <section className="bg-white/95 py-12 border-y border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-7xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">SPECIFICATIONS</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Prime Sedan Fleet Features & Comfort Amenities
             </h2>
@@ -277,8 +279,11 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      {/* SEDAN FLEET (from SedanTemplate) */}
-      <SedanFleetSection location={location} currentVehicleSlug={vehicleData.slug} />
+      {/* VEHICLE SUMMARY (from SedanTemplate) */}
+      <VehicleSummary location={location} vehicle={vehicleData} />
+
+      {/* ROUTE INFO (from SedanTemplate) */}
+      <RouteInfo location={location} vehicle={vehicleData} />
 
 
       {/* 4. WHY CHOOSE SEDAN FOR THIS ROUTE */}
@@ -373,6 +378,24 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
 
 
 
+      {/* JOURNEY INFO (from SedanTemplate) */}
+      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
+
+      {/* PICKUP & DROP LOCATIONS (from SedanTemplate) */}
+      {/* <PickupDropLocations location={location} vehicle={vehicleData} /> */}
+
+      {/* WHY CHOOSE US (from SedanTemplate) */}
+      <WhyChooseUs location={location} vehicle={vehicleData} />
+
+      {/* WHAT'S INCLUDED (from SedanTemplate) */}
+      <WhatsIncluded location={location} vehicle={vehicleData} />
+
+      {/* BOOKING PROCESS (from SedanTemplate) */}
+      <BookingProcess location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL TIPS (from SedanTemplate) */}
+      <TravelTips location={location} vehicle={vehicleData} />
+
       {/* TRAVEL PLANNING (from SedanTemplate) */}
       <TravelPlanning location={location} vehicle={vehicleData} />
 
@@ -384,11 +407,18 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
         planningPoint="Sedan models can differ in boot space. Confirm the assigned car, passenger count and number of bags when you request your fare."
       />
 
-      {/* 6. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
-      <PopularCityRoutes
-        cityName={route.from}
+      {/* 6. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
+      <VehicleRouteSeoGuide
+        route={route}
         vehicleSlug="sedan-taxi"
-        vehicleName="Sedan"
+        vehicleName="Prime Sedan"
+      />
+
+      {/* 8. RELATED REGIONAL CITY ROUTES (matched by destination city's state/region) */}
+      <RelatedCityRoutes
+        destinationCity={route.to}
+        vehicleSlug="sedan-taxi"
+        vehicleName="Prime Sedan"
       />
 
       {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
@@ -420,7 +450,10 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section> */}
 
-      {/* 8. FAQS */}
+      {/* 8. TESTIMONIALS */}
+      <CabTestimonials />
+
+      {/* 9. FAQS */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -454,6 +487,13 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
           </div>
         </div>
       </section>
+
+      {/* 7. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
+      <PopularCityRoutes
+        cityName={route.from}
+        vehicleSlug="sedan-taxi"
+        vehicleName="Sedan"
+      />
 
       {/* 9. BOTTOM CONVERSION CTA */}
       <section className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white py-10 px-4 sm:px-6 lg:px-8">

@@ -15,8 +15,34 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Taxi Fare in Noida Cabs Starting @ ₹1100 + 10% OFF - Book Now",
-  description: "Check affordable taxi fares in Noida. Book Hatchbacks, Sedans starting from ₹1100 and SUVs starting from ₹1280. Transparent pricing, no hidden costs. Call 8377809809.",
-}
+  description:
+    "Check affordable taxi fares in Noida. Book Hatchbacks, Sedans starting from ₹1100 and SUVs starting from ₹1280. Transparent pricing, no hidden costs. Call 8377809809.",
+  keywords: [
+    "taxi fare in Noida",
+    "cab fare Noida",
+    "Noida cab charges",
+    "taxi rate card Noida",
+    "Noida to Delhi taxi fare",
+    "per km taxi rate Noida",
+  ],
+  alternates: {
+    canonical: "https://www.noidacab.com/noida-taxi-fare",
+  },
+  openGraph: {
+    title: "Taxi Fare in Noida | Transparent Pricing - NoidaCab",
+    description:
+      "Transparent taxi fares in Noida with fixed per-km pricing starting at ₹10/km. Zero hidden costs, free cancellation.",
+    url: "https://www.noidacab.com/noida-taxi-fare",
+    siteName: "NoidaCab",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Taxi Fare in Noida | NoidaCab",
+    description: "Check transparent cab fares in Noida starting from ₹1100.",
+  },
+};
 
 const fareCabs = [
   {

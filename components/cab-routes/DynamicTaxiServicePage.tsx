@@ -7,6 +7,7 @@ import CabFleet from "@/components/cab/CabFleet";
 import OurServicesGrid from "@/components/cab-routes/OurServicesGrid";
 import AllCityRoutes from "@/components/cab-routes/AllCityRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 import HowToBook from "@/components/cab/HowToBook";
 import WhyChooseCab from "@/components/cab/WhyChooseCab";
 import CabTestimonials from "@/components/cab/CabTestimonials";
@@ -92,6 +93,9 @@ export default function DynamicTaxiServicePage({ city }: Props) {
 
       {/* 4. Popular Routes Section (Matching reference image) */}
       <PopularCityRoutes cityName={city.name} vehicleSlug="taxi" vehicleName="Taxi" />
+
+      {/* 4b. Related Regional Routes */}
+      <RelatedCityRoutes destinationCity={city.name} vehicleSlug="taxi" vehicleName="Taxi" />
 
       {/* 4b. All City Routes Section */}
       <AllCityRoutes

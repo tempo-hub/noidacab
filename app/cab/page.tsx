@@ -56,6 +56,7 @@ export default function CabPage() {
       { "@type": "City", name: "Haridwar" },
       { "@type": "City", name: "Agra" },
       { "@type": "City", name: "Mathura" },
+      { "@type": "City", name: "Haryana" },
     ],
     aggregateRating: {
       "@type": "AggregateRating",

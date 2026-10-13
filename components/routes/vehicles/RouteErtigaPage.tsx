@@ -23,6 +23,9 @@ import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
 import { masterRoutes } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "./RelatedCityRoutes";
+import CabTestimonials from "@/components/cab/CabTestimonials";
+import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
 import { RouteInfo } from "@/components/cab-page/RouteInfo";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
@@ -127,7 +130,7 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       </nav>
 
       {/* 2. HERO SECTION */}
-    <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left Content */}
@@ -277,27 +280,13 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* ROUTE INFO (from ErtigaTemplate) */}
-      <RouteInfo location={location} vehicle={vehicleData} />
+      {/* <RouteInfo location={location} vehicle={vehicleData} /> */}
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-xs font-bold uppercase tracking-wider text-amber-700">Route information</p>
-          <h2 className="mt-2 text-2xl font-black text-gray-900 sm:text-3xl">Maruti Ertiga Route from {route.from} to {route.to}</h2>
-          <p className="mt-4 leading-7 text-gray-600">
-            The Ertiga taxi route from {route.from} to {route.to} is approximately {distanceDisplay}, with an estimated travel time of {durationDisplay}. The route may use {highwayDisplay}; the final road choice and journey time depend on your pickup address, destination and live traffic. Share any appointment time or planned stop when arranging your trip.
-          </p>
-        </div>
-      </section>
+      {/* JOURNEY INFO (from ErtigaTemplate) */}
+      <JourneyInfo location={location} vehicle={vehicleData} />
+      
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Maruti Ertiga Journey Details</h2>
-          <p className="mt-3 leading-7 text-gray-600">
-            This is a private cab journey between {route.from} and {route.to}. Use the estimated distance of {distanceDisplay} and travel time of {durationDisplay} to plan your departure. Actual drive time can vary with traffic, road conditions and your exact pickup and drop locations.
-          </p>
-        </div>
-      </section>
-
+      
       <section className="border-b border-gray-200 bg-white/95 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Ertiga Pickup and Drop: {route.from} to {route.to}</h2>
@@ -453,10 +442,8 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
       {/* VEHICLE SUMMARY (from ErtigaTemplate) */}
-      <VehicleSummary location={location} vehicle={vehicleData} />
+      {/* <VehicleSummary location={location} vehicle={vehicleData} /> */}
 
-      {/* JOURNEY INFO (from ErtigaTemplate) */}
-      <JourneyInfo location={location} vehicle={vehicleData} />
 
       {/* PICKUP & DROP LOCATIONS (from ErtigaTemplate) */}
       <PickupDropLocations location={location} vehicle={vehicleData} />
@@ -474,7 +461,7 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
       <TravelTips location={location} vehicle={vehicleData} />
 
       {/* TRAVEL PLANNING (from ErtigaTemplate) */}
-      <TravelPlanning location={location} vehicle={vehicleData} />
+      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
 
       <RouteTripPlanning
         from={route.from}
@@ -484,11 +471,20 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         planningPoint="The listed capacity is six passengers and four luggage pieces. If all seats will be occupied, tell us how many bags you are carrying so we can confirm the available luggage space."
       />
 
-      {/* 6. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
-      <PopularCityRoutes
-        cityName={route.from}
+      {/* 6. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
+      <VehicleRouteSeoGuide
+        route={route}
         vehicleSlug="ertiga"
-        vehicleName="Ertiga"
+        vehicleName="Maruti Suzuki Ertiga"
+      />
+
+      
+
+      {/* 8. RELATED REGIONAL CITY ROUTES (matched by destination city's state/region) */}
+      <RelatedCityRoutes
+        destinationCity={route.to}
+        vehicleSlug="ertiga"
+        vehicleName="Maruti Ertiga"
       />
 
       {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
@@ -520,7 +516,10 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section> */}
 
-      {/* 8. FAQS */}
+      {/* 8. TESTIMONIALS */}
+      <CabTestimonials />
+
+      {/* 9. FAQS */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -554,6 +553,13 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
           </div>
         </div>
       </section>
+
+      {/* 7. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
+      <PopularCityRoutes
+        cityName={route.from}
+        vehicleSlug="ertiga"
+        vehicleName="Ertiga"
+      />
 
       {/* 9. BOTTOM CONVERSION CTA */}
       <section className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white py-10 px-4 sm:px-6 lg:px-8">

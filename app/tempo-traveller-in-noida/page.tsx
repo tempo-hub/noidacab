@@ -21,10 +21,38 @@ import { noidaLocalities } from "@/data/routes/noida";
 import { Metadata } from "next";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 
-export const metadata : Metadata = {
-title: "Tempo Traveller in Noida - NoidaCab @ 20/km | Book Now",
-  description: "Hire premium Tempo Travellers in Noida for luxury group tours, local sightseeing, outstation travel & weddings. 9 to 26 seater luxury caby. Call 8377809809.",
-}
+export const metadata: Metadata = {
+  title: "Tempo Traveller in Noida - NoidaCab @ ₹20/km | Book Now",
+  description:
+    "Hire premium Tempo Travellers in Noida for luxury group tours, local sightseeing, outstation travel & weddings. 9 to 26 seater luxury cabs. Call 8377809809.",
+  keywords: [
+    "tempo traveller in Noida",
+    "tempo traveller on rent Noida",
+    "12 seater tempo traveller Noida",
+    "16 seater tempo traveller Noida",
+    "20 seater tempo traveller Noida",
+    "24 seater tempo traveller Noida",
+    "luxury tempo traveller Noida",
+    "tempo traveller hire Noida",
+  ],
+  alternates: {
+    canonical: "https://www.noidacab.com/tempo-traveller-in-noida",
+  },
+  openGraph: {
+    title: "Tempo Traveller on Rent in Noida | Luxury Group Travel - NoidaCab",
+    description:
+      "Hire 9 to 26 seater luxury Tempo Travellers in Noida. Pushback seats, AC, charging ports, and experienced highway drivers.",
+    url: "https://www.noidacab.com/tempo-traveller-in-noida",
+    siteName: "NoidaCab",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tempo Traveller in Noida | NoidaCab",
+    description: "Book luxury 12, 16, 20 & 24 seater tempo travellers in Noida.",
+  },
+};
 
 type Service = {
   title: string;

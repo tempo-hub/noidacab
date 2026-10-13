@@ -153,7 +153,7 @@ export default function TaxiServiceFAQ() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50/70 p-5 text-center sm:p-6">
+        {/* <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50/70 p-5 text-center sm:p-6">
           <p className="text-sm font-semibold text-slate-900">
             Still have a question?
           </p>
@@ -169,7 +169,7 @@ export default function TaxiServiceFAQ() {
           >
             Call 8377809809
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { CityInfo } from "@/lib/cityData";
 import { vehicles } from "@/data/vehicles";
 import AvailableVehicles from "@/components/routes/one-way/AvailableVehicles";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 import WhyChooseCab from "@/components/cab/WhyChooseCab";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import {
@@ -285,6 +286,13 @@ export default function DynamicOneWayTaxiPage({ city }: Props) {
           title={`Popular One Way ${city.name} Taxi Routes`}
           subtitle={`Fixed per-km tariffs for the most booked one-way routes from ${city.name}. Zero return charges, verified drivers.`}
           badgeText={`${city.name.toUpperCase()} ONE WAY ROUTES`}
+        />
+
+        {/* Regional Routes matched to this city */}
+        <RelatedCityRoutes
+          destinationCity={city.name}
+          vehicleSlug="one-way-taxi"
+          vehicleName="One Way Taxi"
         />
       </div>
 

@@ -60,6 +60,7 @@ function parseDynamicCityVehicleUrl(url: string) {
     cleanPath.endsWith("-taxi-fare") ||
     cleanPath.startsWith("airport-service-in-") ||
     cleanPath.startsWith("airport-taxi-in-") ||
+    cleanPath.startsWith("airport-taxi-service-in-") ||
     cleanPath.startsWith("local-sightseeing-in-") ||
     cleanPath.startsWith("local-sightseeing-routes-in-") ||
     cleanPath.startsWith("one-way-taxi-in-") ||
@@ -141,18 +142,18 @@ export async function generateMetadata({
         title: "One Way Cab from Noida | Affordable One Way Taxi Service - NoidaCab",
         description:
           "Book affordable one-way cab service from Noida to Delhi, Gurgaon, Agra, Jaipur, Lucknow and other cities. Pay only one-side fare. Call 8377809809.",
-        alternates: { canonical: "https://noidacab.com/one-way-taxi-in-noida" },
+        alternates: { canonical: "https://www.noidacab.com/one-way-taxi-in-noida" },
       };
     }
     const cityInfo = getCityDetails(citySlug);
     return {
       title: `One Way Taxi in ${cityInfo.name} | Verified Outstation Cabs Starting @ ₹10/km - NoidaCab`,
       description: `Book reliable one-way taxi in ${cityInfo.name}. Pay only for one-side travel with zero return tolls and no hidden charges. Sedan, SUV, and Innova cabs available across ${cityInfo.localities.slice(0, 3).join(", ")}. Call 8377809809.`,
-      alternates: { canonical: `https://noidacab.com/one-way-taxi-in-${cityInfo.slug}` },
+      alternates: { canonical: `https://www.noidacab.com/one-way-taxi-in-${cityInfo.slug}` },
       openGraph: {
         title: `One Way Taxi in ${cityInfo.name} | NoidaCab`,
         description: `Book one-way cabs in ${cityInfo.name} with fixed per-km tariffs and verified drivers.`,
-        url: `https://noidacab.com/one-way-taxi-in-${cityInfo.slug}`,
+        url: `https://www.noidacab.com/one-way-taxi-in-${cityInfo.slug}`,
       },
     };
   }
@@ -167,18 +168,18 @@ export async function generateMetadata({
         title: "Taxi Fare in Noida Cabs Starting @ ₹1100 + 10% OFF - Book Now",
         description:
           "Check affordable taxi fares in Noida. Book Hatchbacks, Sedans starting from ₹1100 and SUVs starting from ₹1280. Transparent pricing, no hidden costs. Call 8377809809.",
-        alternates: { canonical: "https://noidacab.com/noida-taxi-fare" },
+        alternates: { canonical: "https://www.noidacab.com/noida-taxi-fare" },
       };
     }
     const cityInfo = getCityDetails(citySlug);
     return {
       title: `Taxi Fare in ${cityInfo.name} | Transparent Cabs Starting @ ₹10/km - NoidaCab`,
       description: `Check affordable taxi fares in ${cityInfo.name}. Flat per-km fares starting from ₹10/km for Sedans, ₹13/km for Ertiga, and ₹16/km for Innova Crysta. Doorstep pickup across ${cityInfo.localities.slice(0, 3).join(", ")}. Call 8377809809.`,
-      alternates: { canonical: `https://noidacab.com/taxi-fare-in-${cityInfo.slug}` },
+      alternates: { canonical: `https://www.noidacab.com/taxi-fare-in-${cityInfo.slug}` },
       openGraph: {
         title: `Taxi Fare in ${cityInfo.name} | NoidaCab`,
         description: `Check transparent taxi fares in ${cityInfo.name}. Flat ₹10/km sedan fares, verified drivers, zero surge.`,
-        url: `https://noidacab.com/taxi-fare-in-${cityInfo.slug}`,
+        url: `https://www.noidacab.com/taxi-fare-in-${cityInfo.slug}`,
       },
     };
   }
@@ -190,14 +191,14 @@ export async function generateMetadata({
         title: "Taxi Fare in Noida Cabs Starting @ ₹1100 + 10% OFF - Book Now",
         description:
           "Check affordable taxi fares in Noida. Book Hatchbacks, Sedans starting from ₹1100 and SUVs starting from ₹1280. Transparent pricing, no hidden costs. Call 8377809809.",
-        alternates: { canonical: "https://noidacab.com/noida-taxi-fare" },
+        alternates: { canonical: "https://www.noidacab.com/noida-taxi-fare" },
       };
     }
     const cityInfo = getCityDetails(citySlug);
     return {
       title: `Taxi Fare in ${cityInfo.name} | Transparent Cabs Starting @ ₹10/km - NoidaCab`,
       description: `Check affordable taxi fares in ${cityInfo.name}. Flat per-km fares starting from ₹10/km for Sedans, ₹13/km for Ertiga, and ₹16/km for Innova Crysta. Doorstep pickup across ${cityInfo.localities.slice(0, 3).join(", ")}. Call 8377809809.`,
-      alternates: { canonical: `https://noidacab.com/taxi-fare-in-${cityInfo.slug}` },
+      alternates: { canonical: `https://www.noidacab.com/taxi-fare-in-${cityInfo.slug}` },
     };
   }
 
@@ -207,26 +208,32 @@ export async function generateMetadata({
     return {
       title: `Taxi Service in ${cityInfo.name} | Reliable Cabs & Outstation Routes - NoidaCab`,
       description: `Book reliable taxi service in ${cityInfo.name} for local travel, airport transfers, and outstation trips. Flat per-km fares, clean AC cabs, and verified drivers across ${cityInfo.localities.slice(0, 3).join(", ")}.`,
-      alternates: { canonical: `https://noidacab.com/taxi-service-in-${cityInfo.slug}` },
+      alternates: { canonical: `https://www.noidacab.com/taxi-service-in-${cityInfo.slug}` },
       openGraph: {
         title: `Taxi Service in ${cityInfo.name} | NoidaCab`,
         description: `Book cabs in ${cityInfo.name} with fixed per-km pricing starting at ₹10/km.`,
-        url: `https://noidacab.com/taxi-service-in-${cityInfo.slug}`,
+        url: `https://www.noidacab.com/taxi-service-in-${cityInfo.slug}`,
       },
     };
   }
 
-  if (url.startsWith("/airport-service-in-") || url.startsWith("/airport-taxi-in-")) {
-    const citySlug = url.replace(/^(\/airport-service-in-|\/airport-taxi-in-)/, "").toLowerCase();
+  if (
+    url.startsWith("/airport-service-in-") ||
+    url.startsWith("/airport-taxi-in-") ||
+    url.startsWith("/airport-taxi-service-in-")
+  ) {
+    const citySlug = url
+      .replace(/^(\/airport-service-in-|\/airport-taxi-in-|\/airport-taxi-service-in-)/, "")
+      .toLowerCase();
     const cityInfo = getCityDetails(citySlug);
     return {
       title: `Airport Taxi Service in ${cityInfo.name} | 24×7 Cab Transfers to ${cityInfo.airportName}`,
       description: `Book 24/7 airport taxi transfers in ${cityInfo.name} to ${cityInfo.airportName}. Real-time flight tracking, 15-min early arrival, and zero waiting surcharges.`,
-      alternates: { canonical: `https://noidacab.com/airport-service-in-${cityInfo.slug}` },
+      alternates: { canonical: `https://www.noidacab.com/airport-service-in-${cityInfo.slug}` },
       openGraph: {
         title: `Airport Taxi in ${cityInfo.name} | NoidaCab`,
         description: `Guaranteed flight catching transfers to ${cityInfo.airportName} from anywhere in ${cityInfo.name}.`,
-        url: `https://noidacab.com/airport-service-in-${cityInfo.slug}`,
+        url: `https://www.noidacab.com/airport-service-in-${cityInfo.slug}`,
       },
     };
   }
@@ -237,11 +244,11 @@ export async function generateMetadata({
     return {
       title: `Local Sightseeing Taxi in ${cityInfo.name} | City Tour Packages & Heritage Cabs`,
       description: `Book full-day sightseeing taxi in ${cityInfo.name}. Visit ${cityInfo.attractions.slice(0, 3).join(", ")} in comfortable AC cabs with courteous local chauffeurs.`,
-      alternates: { canonical: `https://noidacab.com/local-sightseeing-in-${cityInfo.slug}` },
+      alternates: { canonical: `https://www.noidacab.com/local-sightseeing-in-${cityInfo.slug}` },
       openGraph: {
         title: `Local Sightseeing & Heritage Tour in ${cityInfo.name} | NoidaCab`,
         description: `Explore ${cityInfo.name} at your own pace with 8hr/80km full-day packages.`,
-        url: `https://noidacab.com/local-sightseeing-in-${cityInfo.slug}`,
+        url: `https://www.noidacab.com/local-sightseeing-in-${cityInfo.slug}`,
       },
     };
   }
@@ -255,11 +262,11 @@ export async function generateMetadata({
     return {
       title: `${vehicle.name} Taxi in ${cityInfo.name} | Reliable Cabs @ ${vehicle.price} - NoidaCab`,
       description: `Book ${vehicle.name} cab in ${cityInfo.name} for local sightseeing, airport transfers, and outstation trips. Clean AC vehicles, verified chauffeurs, and 24/7 on-time pickup.`,
-      alternates: { canonical: `https://noidacab.com${url}` },
+      alternates: { canonical: `https://www.noidacab.com${url}` },
       openGraph: {
         title: `${vehicle.name} Taxi in ${cityInfo.name} | NoidaCab`,
         description: `Book ${vehicle.name} in ${cityInfo.name} starting from ${vehicle.price}.`,
-        url: `https://noidacab.com${url}`,
+        url: `https://www.noidacab.com${url}`,
       },
     };
   }
@@ -292,12 +299,12 @@ export async function generateMetadata({
       title: airportTaxiRoute.title,
       description: `Book 24x7 ${airportTaxiRoute.serviceName} with NoidaCab. Doorstep pickup across Noida sectors to IGI Terminal 1, 2, and 3. Clean AC Sedans & SUVs. Call 8377809809.`,
       alternates: {
-        canonical: `https://noidacab.com${url}`,
+        canonical: `https://www.noidacab.com${url}`,
       },
       openGraph: {
         title: airportTaxiRoute.title,
         description: `Book 24x7 ${airportTaxiRoute.serviceName} with NoidaCab. On-time doorstep pickup, professional drivers, and zero hidden charges.`,
-        url: `https://noidacab.com${url}`,
+        url: `https://www.noidacab.com${url}`,
         siteName: "Noida Cab",
         type: "website",
       },
@@ -436,12 +443,12 @@ export async function generateMetadata({
       title: `${cityInfo.name} Taxi Contact Number | 24x7 Cab Booking Helpline: 8377809809`,
       description: `Call ${cityInfo.name} Taxi Contact Number +91-8377809809 for immediate cab booking in ${cityInfo.name}. Clean Sedans, SUVs, Innova Crysta, and Tempo Travellers across ${cityInfo.localities.slice(0, 3).join(", ")}. Instant quotation, zero surge pricing.`,
       alternates: {
-        canonical: `https://noidacab.com${url}`,
+        canonical: `https://www.noidacab.com${url}`,
       },
       openGraph: {
         title: `${cityInfo.name} Taxi Contact Number - 24x7 Booking Helpline`,
         description: `Instant cab booking in ${cityInfo.name}. Call or WhatsApp +91-8377809809. Verified drivers, sanitized cars, fast doorstep arrival.`,
-        url: `https://noidacab.com${url}`,
+        url: `https://www.noidacab.com${url}`,
         siteName: "NoidaCab",
         type: "website",
       },
@@ -674,8 +681,14 @@ export default async function CabPage({
     return <DynamicTaxiServicePage city={cityInfo} />;
   }
 
-  if (url.startsWith("/airport-service-in-") || url.startsWith("/airport-taxi-in-")) {
-    const citySlug = url.replace(/^(\/airport-service-in-|\/airport-taxi-in-)/, "").toLowerCase();
+  if (
+    url.startsWith("/airport-service-in-") ||
+    url.startsWith("/airport-taxi-in-") ||
+    url.startsWith("/airport-taxi-service-in-")
+  ) {
+    const citySlug = url
+      .replace(/^(\/airport-service-in-|\/airport-taxi-in-|\/airport-taxi-service-in-)/, "")
+      .toLowerCase();
     const cityInfo = getCityDetails(citySlug);
     return <DynamicAirportServicePage city={cityInfo} />;
   }

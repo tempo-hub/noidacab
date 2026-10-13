@@ -18,6 +18,9 @@ import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
 import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "./RelatedCityRoutes";
+import CabTestimonials from "@/components/cab/CabTestimonials";
+import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles, type Vehicle } from "@/data/vehicles";
 
@@ -103,7 +106,7 @@ export function RouteLuxuryTempoPage({ route }: { route: ParsedRouteDetail }) {
       <RouteInfo location={location} vehicle={vehicleData} />
 
       {/* 6. VEHICLE SUMMARY */}
-      <VehicleSummary location={location} vehicle={vehicleData} />
+      {/* <VehicleSummary location={location} vehicle={vehicleData} /> */}
 
       {/* 7. JOURNEY INFO */}
       {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
@@ -126,15 +129,34 @@ export function RouteLuxuryTempoPage({ route }: { route: ParsedRouteDetail }) {
       {/* 13. TRAVEL PLANNING */}
       <TravelPlanning location={location} vehicle={vehicleData} />
 
-      {/* 14. POPULAR CITY ROUTES */}
+      {/* 14. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
+      <VehicleRouteSeoGuide
+        route={route}
+        vehicleSlug="luxury-tempo-traveller"
+        vehicleName="Luxury Tempo Traveller"
+      />
+
+      
+
+      {/* 15b. RELATED REGIONAL CITY ROUTES */}
+      <RelatedCityRoutes
+        destinationCity={route.to}
+        vehicleSlug="luxury-tempo-traveller"
+        vehicleName="Luxury Tempo Traveller"
+      />
+
+      {/* 15. TESTIMONIALS */}
+      <CabTestimonials />
+
+      {/* 16. FAQ SECTION */}
+      <FAQSection location={location} vehicle={vehicleData} />
+
+      {/* 15. POPULAR CITY ROUTES */}
       <PopularCityRoutes
         cityName={route.from}
         vehicleSlug="luxury-tempo-traveller"
         vehicleName="Luxury Tempo Traveller"
       />
-
-      {/* 15. FAQ SECTION */}
-      <FAQSection location={location} vehicle={vehicleData} />
 
       {/* 16. BOOKING CTA */}
       <BookingCTA location={location} vehicle={vehicleData} url={url} />

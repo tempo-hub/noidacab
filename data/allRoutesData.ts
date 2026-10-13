@@ -1,3 +1,5 @@
+import { masterRoutes } from "./masterRoutes";
+
 export interface RouteItem {
   id: string;
   from: string;
@@ -195,6 +197,43 @@ export const intercityTaxiRoutes: RouteItem[] = [
     description: "Comfortable intercity transfer connecting the two historic cultural hubs of UP.",
   },
 ];
+
+// Dynamically register all routes from masterRoutes into intercityTaxiRoutes
+for (const mr of masterRoutes) {
+  const fClean = mr.from.trim();
+  const tClean = mr.to.trim();
+  const slugId = `${fClean.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-to-${tClean.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
+  if (
+    !intercityTaxiRoutes.some(
+      (r) =>
+        r.id === slugId ||
+        (r.from.toLowerCase() === fClean.toLowerCase() &&
+          r.to.toLowerCase() === tClean.toLowerCase())
+    )
+  ) {
+    const distNum =
+      typeof mr.distance === "number"
+        ? mr.distance
+        : parseFloat(String(mr.distance).replace(/[^0-9.]/g, "")) || 180;
+    const highway = mr.highway || "Expressway / National Highway";
+    intercityTaxiRoutes.push({
+      id: slugId,
+      from: fClean,
+      to: tClean,
+      category: "intercity",
+      distance: `${distNum} km`,
+      duration: mr.duration,
+      startingFare: calculateRouteStartingFare(`${distNum} km`, "₹10/km"),
+      perKmRate: "₹10/km",
+      popular: mr.isPopular ?? true,
+      highlights: [highway, `${tClean} Center`, "Doorstep Pickup"],
+      recommendedVehicle:
+        mr.defaultVehicle === "tempo-traveller" ? "Tempo Traveller" : "Dzire / Ertiga",
+      description: `Book reliable one-way drop or round-trip outstation cab from ${fClean} to ${tClean} via ${highway} with verified chauffeurs and flat per-km tariffs.`,
+    });
+  }
+}
 
 // 2. All Airport Transfer Routes
 export const airportServiceRoutes: RouteItem[] = [

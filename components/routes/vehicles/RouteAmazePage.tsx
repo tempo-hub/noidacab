@@ -23,7 +23,20 @@ import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
 import { masterRoutes } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "./RelatedCityRoutes";
+import CabTestimonials from "@/components/cab/CabTestimonials";
+import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
+
+import { RouteInfo } from "@/components/cab-page/RouteInfo";
+import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
+import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
+import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
+import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
+import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
+import { BookingProcess } from "@/components/cab-page/BookingProcess";
+import { TravelTips } from "@/components/cab-page/TravelTips";
+import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -67,6 +80,11 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
   const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
+  const location = {
+    slug: route.canonicalSlug || `${fromSlug}-to-${toSlug}`,
+    name: `${route.from} to ${route.to}`,
+  };
+
   const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book Honda Amaze from ${route.from} to ${route.to} (${distanceDisplay}, Est fare ₹${oneWayFare}). Please confirm availability.`
   )}`;
@@ -100,7 +118,7 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen">
       {/* 1. BREADCRUMBS */}
       <nav className="border-b border-gray-100 bg-slate-50 py-3 text-xs sm:text-sm text-gray-500">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-2">
@@ -113,7 +131,7 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
       </nav>
 
       {/* 2. HERO SECTION */}
-    <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 border-b border-slate-300 py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left Content */}
@@ -125,7 +143,7 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
 
               <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight">
                 {route.from} to {route.to}{" "}
-                <span className="text-amber-600">Honda Amaze Taxi</span>
+                <span className="text-amber-600">Amaze Taxi</span>
               </h1>
 
               <p className="mt-3 text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl">
@@ -228,7 +246,6 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
       <section className="bg-white/95 py-12 border-y border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-7xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">SPECIFICATIONS</span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
               Honda Amaze Highlights & Cabin Features
             </h2>
@@ -262,15 +279,11 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-xs font-bold uppercase tracking-wider text-amber-700">Route information</p>
-          <h2 className="mt-2 text-2xl font-black text-gray-900 sm:text-3xl">Honda Amaze Route from {route.from} to {route.to}</h2>
-          <p className="mt-4 leading-7 text-gray-600">
-            The Honda Amaze cab covers approximately {distanceDisplay} from {route.from} to {route.to}, with an estimated travel time of {durationDisplay}. The route may use {highwayDisplay}; the best route and actual journey time depend on the pickup address, destination and current traffic. Share any appointment or arrival deadline when booking so you can plan an appropriate pickup time.
-          </p>
-        </div>
-      </section>
+      {/* VEHICLE SUMMARY (from AmazeTemplate) */}
+      <VehicleSummary location={location} vehicle={vehicleData} />
+
+      {/* ROUTE INFO (from AmazeTemplate) */}
+      <RouteInfo location={location} vehicle={vehicleData} />
 
       {/* 4. WHY CHOOSE AMAZE FOR THIS ROUTE */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
@@ -362,78 +375,26 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Honda Amaze Journey Details</h2>
-          <p className="mt-3 leading-7 text-gray-600">
-            This booking is a private trip from {route.from} to {route.to}. Your estimated distance is {distanceDisplay} and expected drive time is {durationDisplay}. Final routing and travel time can change with road conditions and the exact pickup and drop addresses.
-          </p>
-        </div>
-      </section>
+      {/* JOURNEY INFO (from AmazeTemplate) */}
+      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Pickup and Drop for {route.from} to {route.to}</h2>
-          <div className="mt-5 grid gap-6 sm:grid-cols-2">
-            <div className="border-l-2 border-amber-400 pl-4">
-              <h3 className="font-bold text-gray-900">Pickup in {route.from}</h3>
-              <p className="mt-2 leading-6 text-gray-600">Provide your complete pickup address or map pin and preferred pickup time when requesting the booking.</p>
-            </div>
-            <div className="border-l-2 border-slate-400 pl-4">
-              <h3 className="font-bold text-gray-900">Drop in {route.to}</h3>
-              <p className="mt-2 leading-6 text-gray-600">Share the exact destination address before confirming so the route and fare can be quoted for your trip.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* PICKUP & DROP LOCATIONS (from AmazeTemplate) */}
+      {/* <PickupDropLocations location={location} vehicle={vehicleData} /> */}
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">What Is Included With Your Honda Amaze Booking?</h2>
-          <div className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
-            <p className="border-t border-gray-200 pt-4 text-gray-700">Honda Amaze cab for the confirmed route and trip type</p>
-            <p className="border-t border-gray-200 pt-4 text-gray-700">Professional driver for the booked journey</p>
-            <p className="border-t border-gray-200 pt-4 text-gray-700">Pickup and drop at the addresses agreed at booking</p>
-            <p className="border-t border-gray-200 pt-4 text-gray-700">Fare estimate and applicable charges shared before confirmation</p>
-          </div>
-          <p className="mt-5 text-sm leading-6 text-gray-600">Confirm tolls, parking, waiting time and any other route-specific charges with the final quote before you book.</p>
-        </div>
-      </section>
+      {/* WHY CHOOSE US (from AmazeTemplate) */}
+      <WhyChooseUs location={location} vehicle={vehicleData} />
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">How to Book a Honda Amaze Cab</h2>
-          <ol className="mt-6 grid gap-5 sm:grid-cols-3">
-            <li className="border-t-2 border-amber-400 bg-white p-5">
-              <span className="text-xs font-bold text-amber-700">STEP 1</span>
-              <h3 className="mt-2 font-bold text-gray-900">Share trip details</h3>
-              <p className="mt-2 text-sm leading-6 text-gray-600">Provide your pickup in {route.from}, destination in {route.to}, travel date and passenger/luggage count.</p>
-            </li>
-            <li className="border-t-2 border-amber-400 bg-white p-5">
-              <span className="text-xs font-bold text-amber-700">STEP 2</span>
-              <h3 className="mt-2 font-bold text-gray-900">Review the fare</h3>
-              <p className="mt-2 text-sm leading-6 text-gray-600">Confirm the route, trip type and applicable charges with the team before accepting the booking.</p>
-            </li>
-            <li className="border-t-2 border-amber-400 bg-white p-5">
-              <span className="text-xs font-bold text-amber-700">STEP 3</span>
-              <h3 className="mt-2 font-bold text-gray-900">Meet your driver</h3>
-              <p className="mt-2 text-sm leading-6 text-gray-600">Receive the vehicle and driver details, then meet your cab at the confirmed pickup point.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
+      {/* WHAT'S INCLUDED (from AmazeTemplate) */}
+      <WhatsIncluded location={location} vehicle={vehicleData} />
 
-      <section className="border-b border-gray-200 bg-white/95 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 sm:text-3xl">Travel Tips for Your {route.from} to {route.to} Amaze Trip</h2>
-          <ul className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
-            <li className="border-l-2 border-amber-400 pl-4 leading-6 text-gray-700">Allow extra time for traffic, especially if travelling to an appointment or scheduled connection.</li>
-            <li className="border-l-2 border-amber-400 pl-4 leading-6 text-gray-700">Share the exact pickup and drop addresses to receive an accurate route estimate.</li>
-            <li className="border-l-2 border-amber-400 pl-4 leading-6 text-gray-700">Confirm passenger and luggage capacity when booking, particularly if carrying large bags.</li>
-            <li className="border-l-2 border-amber-400 pl-4 leading-6 text-gray-700">Check the confirmed fare and any toll, parking or waiting charges before the trip.</li>
-          </ul>
-        </div>
-      </section>
+      {/* BOOKING PROCESS (from AmazeTemplate) */}
+      <BookingProcess location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL TIPS (from AmazeTemplate) */}
+      <TravelTips location={location} vehicle={vehicleData} />
+
+      {/* TRAVEL PLANNING (from AmazeTemplate) */}
+      <TravelPlanning location={location} vehicle={vehicleData} />
 
       <RouteTripPlanning
         from={route.from}
@@ -443,43 +404,24 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         planningPoint="The listed Amaze capacity is four passengers with space for three luggage pieces. Mention oversized bags or extra luggage while booking so the vehicle arrangement can be checked."
       />
 
-      {/* 6. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
-      <PopularCityRoutes
-        cityName={route.from}
+      {/* 6. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
+      <VehicleRouteSeoGuide
+        route={route}
         vehicleSlug="amaze"
-        vehicleName="Amaze"
+        vehicleName="Honda Amaze"
       />
 
-      {/* 7. FLEET OPTIONS (from data/vehicles.ts) */}
-      {/* <section className="bg-white/95 py-12 border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-6">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">OTHER VEHICLES</span>
-            <h3 className="text-xl font-black text-gray-900 mt-1">
-              Compare Other Cabs for {route.from} to {route.to}
-            </h3>
-          </div>
+      {/* 8. RELATED REGIONAL CITY ROUTES (matched by destination city's state/region) */}
+      <RelatedCityRoutes
+        destinationCity={route.to}
+        vehicleSlug="amaze"
+        vehicleName="Honda Amaze"
+      />
 
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-            {alternativeVehicles.map((alt) => (
-              <Link
-                key={alt.slug}
-                href={`/route/${fromSlug}-to-${toSlug}-${alt.slug}`}
-                className="group rounded-2xl border border-gray-200 bg-slate-50 p-4 hover:border-amber-400 hover:bg-amber-50/50 transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-amber-700">{alt.seats} Seats</span>
-                  <ArrowRight className="h-3 w-3 text-gray-400 group-hover:text-amber-600 transition" />
-                </div>
-                <h4 className="text-sm font-bold text-gray-900">{alt.name}</h4>
-                <p className="text-xs font-semibold text-gray-500 mt-1">{alt.price}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section> */}
+      {/* 8. TESTIMONIALS */}
+      <CabTestimonials />
 
-      {/* 8. FAQS */}
+      {/* 9. FAQS */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -513,6 +455,13 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
           </div>
         </div>
       </section>
+
+      {/* 7. POPULAR CITY ROUTES (from data/masterRoutes.ts) */}
+      <PopularCityRoutes
+        cityName={route.from}
+        vehicleSlug="amaze"
+        vehicleName="Amaze"
+      />
 
       {/* 9. BOTTOM CONVERSION CTA */}
       <section className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white py-10 px-4 sm:px-6 lg:px-8">

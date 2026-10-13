@@ -26,6 +26,32 @@ export const metadata: Metadata = {
   title: "SUV Taxi in Noida - NoidaCab ₹13–₹16/km | Book Now",
   description:
     "Check Noida SUV cab fare. Complete rate options with Ertiga, Innova & SUV pricing. No hidden charges. Book now or call 8377809809.",
+  keywords: [
+    "SUV taxi in Noida",
+    "SUV cab Noida",
+    "Ertiga taxi Noida",
+    "Innova Crysta Noida",
+    "7 seater cab Noida",
+    "SUV car rental Noida",
+    "Noida to outstation SUV taxi",
+  ],
+  alternates: {
+    canonical: "https://www.noidacab.com/suv-taxi-in-noida",
+  },
+  openGraph: {
+    title: "SUV Taxi in Noida | Ertiga & Innova Crysta - NoidaCab",
+    description:
+      "Spacious 6 & 7-seater SUV taxis in Noida starting from ₹13/km. Perfect for family outstation trips and airport transfers.",
+    url: "https://www.noidacab.com/suv-taxi-in-noida",
+    siteName: "NoidaCab",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SUV Taxi in Noida | NoidaCab",
+    description: "Book spacious Ertiga & Innova SUV cabs in Noida at transparent per-km rates.",
+  },
 };
 
 const suvVehicles = vehicles.filter(
