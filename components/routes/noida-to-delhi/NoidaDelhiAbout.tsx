@@ -99,35 +99,35 @@ export default function NoidaDelhiAbout() {
 
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm">
             <Link
-              href="/noida-to-delhi-taxi-fare"
+              href="/route/noida-to-delhi-taxi-fare"
               className="font-medium text-amber-600 hover:underline"
             >
               Noida to Delhi Taxi Fare
             </Link>
 
             <Link
-              href="/noida-to-delhi-one-way-taxi"
+              href="/route/noida-to-delhi-one-way-taxi"
               className="font-medium text-amber-600 hover:underline"
             >
               Noida to Delhi One Way Taxi
             </Link>
 
             <Link
-              href="/noida-to-delhi-sedan-taxi"
+              href="/route/noida-to-delhi-sedan-taxi"
               className="font-medium text-amber-600 hover:underline"
             >
               Noida to Delhi Sedan Taxi
             </Link>
 
             <Link
-              href="/noida-to-delhi-suv-taxi"
+              href="/route/noida-to-delhi-suv-taxi"
               className="font-medium text-amber-600 hover:underline"
             >
               Noida to Delhi SUV Taxi
             </Link>
 
             <Link
-              href="/noida-to-delhi-innova-crysta-taxi"
+              href="/route/noida-to-delhi-innova-crysta-taxi"
               className="font-medium text-amber-600 hover:underline"
             >
               Noida to Delhi Innova Crysta Taxi

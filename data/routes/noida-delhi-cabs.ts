@@ -85,7 +85,7 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
     fuelType: "CNG",
     cancellation: "Free till 6 hours of departure",
     image: "/cabs/dzirefirst.webp",
-    href: "/noida-to-delhi-dzire-taxi",
+    href: "/route/noida-to-delhi-dzire-taxi",
   },
 
   {
@@ -105,7 +105,7 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 6 hours of departure",
     image: "/cabs/etiosfirst.webp",
-    href: "/noida-to-delhi-etios-taxi",
+    href: "/route/noida-to-delhi-etios-taxi",
   },
 
   {
@@ -125,7 +125,7 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
     fuelType: "PETROL",
     cancellation: "Free till 6 hours of departure",
     image: "/cabs/amazefirst.webp",
-    href: "/noida-to-delhi-amaze-taxi",
+    href: "/route/noida-to-delhi-amaze-taxi",
   },
 
   // --------------------------------------------------
@@ -172,7 +172,7 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
     fuelType: "CNG",
     cancellation: "Free till 6 hours of departure",
     image: "/cabs/ertigafirst.webp",
-    href: "/noida-to-delhi-ertiga-taxi",
+    href: "/route/noida-to-delhi-ertiga-taxi",
   },
 
   {
@@ -192,7 +192,7 @@ export const noidaDelhiCabs: NoidaDelhiCab[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 6 hours of departure",
     image: "/cabs/innovafirst.webp",
-    href: "/noida-to-delhi-innova-crysta-taxi",
+    href: "/route/noida-to-delhi-innova-crysta-taxi",
   },
 ];
 
@@ -220,7 +220,7 @@ export const noidaDelhiTempo: NoidaDelhiTaxi[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 12 hours of departure",
     image: "/cabs/urbaniafirst.webp",
-    href: "/noida-to-delhi-urbania-rental",
+    href: "/route/noida-to-delhi-urbania-rental",
   },
 
   // --------------------------------------------------
@@ -245,7 +245,7 @@ export const noidaDelhiTempo: NoidaDelhiTaxi[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 12 hours of departure",
     image: "/cabs/tempofirst.webp",
-    href: "/noida-to-delhi-luxury-tempo-traveller",
+    href: "/route/noida-to-delhi-luxury-tempo-traveller",
   },
 
   {
@@ -266,7 +266,7 @@ export const noidaDelhiTempo: NoidaDelhiTaxi[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 12 hours of departure",
     image: "/cabs/tempofirst.webp",
-    href: "/noida-to-delhi-12-seater-tempo-traveller",
+    href: "/route/noida-to-delhi-12-seater-tempo-traveller",
   },
 
   {
@@ -287,7 +287,7 @@ export const noidaDelhiTempo: NoidaDelhiTaxi[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 12 hours of departure",
     image: "/cabs/tempofirst.webp",
-    href: "/noida-to-delhi-16-seater-tempo-traveller",
+    href: "/route/noida-to-delhi-16-seater-tempo-traveller",
   },
 
   {
@@ -308,7 +308,7 @@ export const noidaDelhiTempo: NoidaDelhiTaxi[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 12 hours of departure",
     image: "/cabs/tempofirst.webp",
-    href: "/noida-to-delhi-20-seater-tempo-traveller",
+    href: "/route/noida-to-delhi-20-seater-tempo-traveller",
   },
 
   {
@@ -329,6 +329,6 @@ export const noidaDelhiTempo: NoidaDelhiTaxi[] = [
     fuelType: "DIESEL",
     cancellation: "Free till 12 hours of departure",
     image: "/cabs/tempofirst.webp",
-    href: "/noida-to-delhi-24-seater-tempo-traveller",
+    href: "/route/noida-to-delhi-24-seater-tempo-traveller",
   },
 ];

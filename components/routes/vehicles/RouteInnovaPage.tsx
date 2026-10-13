@@ -34,6 +34,8 @@ import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
 import { BookingProcess } from "@/components/cab-page/BookingProcess";
 import { TravelTips } from "@/components/cab-page/TravelTips";
 import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
+import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
+import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
 
 export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -72,7 +74,10 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 16;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
-  const roundTripFare = Math.round(distNum * 2 * ratePerKm);
+  const roundTripFare = Math.max(
+    Math.round(distNum * 2 * ratePerKm + 500),
+    Math.round(oneWayFare * 1.5)
+  );
 
   const fromSlug = route.from.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
   const toSlug = route.to.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
@@ -381,6 +386,9 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
       {/* PICKUP & DROP LOCATIONS (from InnovaTemplate) */}
       <PickupDropLocations location={location} vehicle={vehicleData} />
 
+      {/* WHY CHOOSE US */}
+      <WhyChooseUs location={location} vehicle={vehicleData} />
+
       {/* WHAT'S INCLUDED (from InnovaTemplate) */}
       <WhatsIncluded location={location} vehicle={vehicleData} />
 
@@ -389,6 +397,15 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
 
       {/* TRAVEL TIPS (from InnovaTemplate) */}
       <TravelTips location={location} vehicle={vehicleData} />
+
+      {/* ROUTE TRIP PLANNING */}
+      <RouteTripPlanning
+        from={route.from}
+        to={route.to}
+        vehicleName="Toyota Innova Crysta"
+        summary={`An Innova Crysta taxi from ${route.from} to ${route.to} delivers supreme outstation comfort for up to 6-7 passengers, featuring plush middle captain recliners, dual digital climate control, and generous boot space for 4-5 large bags.`}
+        planningPoint={`The listed Toyota Innova Crysta capacity is 6 passengers plus 1 chauffeur with ample luggage space. For long highway drives via ${highwayDisplay}, advance doorstep pickup scheduling ensures punctual departure and zero waiting delays.`}
+      />
 
 
       {/* 6. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}

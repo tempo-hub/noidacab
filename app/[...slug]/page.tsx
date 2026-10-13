@@ -651,7 +651,10 @@ export default async function CabPage({
     const dynamicRoute = parseDynamicRouteSlug(cleanPath);
     if (dynamicRoute && dynamicRoute.canonicalSlug) {
       const targetSlug = dynamicRoute.canonicalSlug.replace(/^(route[-/])+/g, "");
-      redirect(`/route/${targetSlug}`);
+      const targetUrl = `/route/${targetSlug}`;
+      if (url.toLowerCase() !== targetUrl.toLowerCase()) {
+        redirect(targetUrl);
+      }
     }
   }
 
@@ -899,7 +902,10 @@ export default async function CabPage({
     const dynamicRoute = parseDynamicRouteSlug(cleanPath);
     if (dynamicRoute && dynamicRoute.canonicalSlug) {
       const targetSlug = dynamicRoute.canonicalSlug.replace(/^(route[-/])+/g, "");
-      redirect(`/route/${targetSlug}`);
+      const targetUrl = `/route/${targetSlug}`;
+      if (url.toLowerCase() !== targetUrl.toLowerCase()) {
+        redirect(targetUrl);
+      }
     }
   }
 

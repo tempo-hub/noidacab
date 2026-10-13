@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { parseDynamicRouteSlug, buildPopularRouteItem } from "@/data/popularRoutesData";
+import { parseDynamicRouteSlug, buildPopularRouteItem, masterRoutesRegistry } from "@/data/popularRoutesData";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import CabFleet from "@/components/cab/CabFleet";
 import HowToBook from "@/components/cab/HowToBook";
@@ -53,6 +53,47 @@ import { vehicles, type Vehicle } from "@/data/vehicles";
 import { noidaRoutes, noidaCabs } from "@/data/routes/noidaRoutes";
 import type { ParsedRoute, ParsedCityToCityVehicleRoute } from "@/lib/parse-route";
 import type { RouteData } from "@/data/routes/taxiroutes";
+
+export const dynamicParams = true;
+
+export function generateStaticParams() {
+  const slugs: { slug: string }[] = [];
+  const routeVehicleSlugs = [
+    "taxi",
+    "taxi-fare",
+    "one-way-taxi",
+    "sedan-taxi",
+    "dzire-taxi",
+    "etios-taxi",
+    "amaze-taxi",
+    "ertiga-taxi",
+    "suv-taxi",
+    "innova-crysta-taxi",
+    "tempo-traveller",
+    "12-seater-tempo-traveller",
+    "16-seater-tempo-traveller",
+    "20-seater-tempo-traveller",
+    "24-seater-tempo-traveller",
+    "luxury-tempo-traveller",
+    "urbania",
+    "urbania-rental",
+    "contact-number",
+    "distance-travel-time",
+  ];
+
+  for (const route of masterRoutesRegistry) {
+    if (route.isPopular || route.from === "Noida" || route.to === "Delhi" || route.from === "Delhi") {
+      const fSlug = route.from.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
+      const tSlug = route.to.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
+      for (const vSlug of routeVehicleSlugs) {
+        slugs.push({ slug: `${fSlug}-to-${tSlug}-${vSlug}` });
+        slugs.push({ slug: `${tSlug}-to-${fSlug}-${vSlug}` });
+      }
+    }
+  }
+
+  return slugs;
+}
 
 type Params = Promise<{ slug: string }>;
 

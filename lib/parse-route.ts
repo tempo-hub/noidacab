@@ -140,12 +140,15 @@ export function getAllUrlSlugs(): { slug: string[] }[] {
   const allUrls = new Set<string>();
 
   urlRoutes.forEach((entry) => {
-    allUrls.add(entry.url);
+    // Only include root-level URLs; /route/* paths belong to app/route/[slug]
+    if (entry.url && !entry.url.startsWith("/route/")) {
+      allUrls.add(entry.url);
+    }
   });
 
   cityCabServicesData.forEach((group) => {
     group.items.forEach((item) => {
-      if (item.href && item.href.startsWith("/")) {
+      if (item.href && item.href.startsWith("/") && !item.href.startsWith("/route/")) {
         allUrls.add(item.href);
       }
     });

@@ -15,7 +15,7 @@ const vehicles = [
     bestFor: "Budget-friendly travel",
     description:
       "A practical choice for individuals, couples and small families looking for an economical Noida to Delhi taxi.",
-    href: "/noida-to-delhi-dzire-taxi",
+    href: "/route/noida-to-delhi-dzire-taxi",
   },
   {
     name: "Ertiga",
@@ -24,7 +24,7 @@ const vehicles = [
     bestFor: "Families & small groups",
     description:
       "A spacious option for families and groups who need additional seating and luggage space.",
-    href: "/noida-to-delhi-ertiga-taxi",
+    href: "/route/noida-to-delhi-ertiga-taxi",
   },
   {
     name: "Innova Crysta",
@@ -33,7 +33,7 @@ const vehicles = [
     bestFor: "Comfort & premium travel",
     description:
       "A comfortable premium option for families, business travellers and passengers carrying more luggage.",
-    href: "/noida-to-delhi-innova-crysta-taxi",
+    href: "/route/noida-to-delhi-innova-crysta-taxi",
   },
   {
     name: "Etios",
@@ -42,7 +42,7 @@ const vehicles = [
     bestFor: "Everyday travel",
     description:
       "A comfortable sedan option for small groups travelling between Noida and Delhi.",
-    href: "/noida-to-delhi-etios-taxi",
+    href: "/route/noida-to-delhi-etios-taxi",
   },
   {
     name: "Amaze",
@@ -51,7 +51,7 @@ const vehicles = [
     bestFor: "Comfortable sedan travel",
     description:
       "Suitable for passengers who prefer a comfortable sedan for their Noida to Delhi journey.",
-    href: "/noida-to-delhi-amaze-taxi",
+    href: "/route/noida-to-delhi-amaze-taxi",
   },
 ];
 
