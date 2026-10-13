@@ -73,7 +73,8 @@ export default function PopularNearbyRoutes({
         {/* Route Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {nearbyRoutes.map((route, index) => {
-            const href = `/route/${route.slug}-distance-travel-time`;
+            const cleanRouteSlug = route.slug.replace(/^(route[-/])+/g, "");
+            const href = `/route/${cleanRouteSlug}-distance-travel-time`;
 
             return (
               <Link

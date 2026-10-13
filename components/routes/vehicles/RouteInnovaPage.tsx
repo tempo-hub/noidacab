@@ -74,12 +74,12 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
   const roundTripFare = Math.round(distNum * 2 * ratePerKm);
 
-  const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const fromSlug = route.from.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
+  const toSlug = route.to.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
 
   const location = {
-    slug: route.canonicalSlug || `${fromSlug}-to-${toSlug}`,
-    name: `${route.from} to ${route.to}`,
+    slug: (route.canonicalSlug || `${fromSlug}-to-${toSlug}`).replace(/^(route[-/])+/g, ""),
+    name: `${route.from.replace(/^Route\s+/i, "")} to ${route.to}`,
   };
 
   const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(

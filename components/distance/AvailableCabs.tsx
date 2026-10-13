@@ -20,6 +20,7 @@ function cleanSlug(val?: string): string {
   return val
     .toLowerCase()
     .trim()
+    .replace(/^route[-_ ]+/, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }

@@ -453,7 +453,8 @@ export interface ParsedRouteDetail {
 }
 
 export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail {
-  const clean = slug.toLowerCase().trim();
+  // Strip any accidental leading "route-" or "route/" prefix (e.g. "route-noida-to-delhi-dzire-taxi")
+  const clean = (slug || "").toLowerCase().trim().replace(/^(route[-/])+/g, "");
 
   let from = "Lucknow";
   let to = "Ayodhya";

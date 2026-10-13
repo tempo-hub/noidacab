@@ -87,7 +87,7 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Prayagraj", to: "Delhi", distance: 680, duration: "9 hr 30 min", highway: "NH19 & Expressways", defaultVehicle: "tempo-traveller" },
 
   // --- Noida / NCR Corridors ---
-  { from: "Noida", to: "Delhi", distance: 25, duration: "45 min", highway: "DND Flyway", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Delhi", distance: 25, duration: "45 min", highway: "DND Flyway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Gurgaon", distance: 55, duration: "1 hr 30 min", highway: "Outer Ring Road / NH48", defaultVehicle: "taxi" },
   { from: "Noida", to: "Agra", distance: 180, duration: "2 hr 45 min", highway: "Yamuna Expressway", defaultVehicle: "taxi" },
   { from: "Noida", to: "Jaipur", distance: 290, duration: "4 hr 45 min", highway: "Delhi-Mumbai Expressway", defaultVehicle: "taxi" },

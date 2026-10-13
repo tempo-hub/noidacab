@@ -41,6 +41,7 @@ export default function RoutePickupLocations({
     value
       .toLowerCase()
       .trim()
+      .replace(/^route[-_ ]+/, "")
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
 

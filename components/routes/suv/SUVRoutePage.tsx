@@ -44,8 +44,8 @@ export function SUVRoutePage({ route }: { route: RouteProp }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   // Normalize origin & destination names
-  const rawFrom = route.fromName || route.from || "Uttarakhand";
-  const rawTo = route.toName || route.to || "Rohtak";
+  const rawFrom = String(route.fromName || route.from || "Uttarakhand").replace(/^route[-_\s]+/i, "");
+  const rawTo = String(route.toName || route.to || "Rohtak").replace(/^route[-_\s]+/i, "");
 
   const capitalize = (s: string) =>
     s
@@ -57,8 +57,8 @@ export function SUVRoutePage({ route }: { route: RouteProp }) {
   const fromName = capitalize(rawFrom);
   const toName = capitalize(rawTo);
 
-  const fromSlug = route.fromSlug || fromName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const toSlug = route.toSlug || toName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const fromSlug = (route.fromSlug || fromName.toLowerCase().replace(/[^a-z0-9]+/g, "-")).replace(/^route-/, "");
+  const toSlug = (route.toSlug || toName.toLowerCase().replace(/[^a-z0-9]+/g, "-")).replace(/^route-/, "");
 
   // Fetch route details from masterRoutes
   const masterRoute = masterRoutes.find(

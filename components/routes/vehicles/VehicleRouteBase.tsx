@@ -62,8 +62,8 @@ export default function VehicleRouteBase({ route, config }: Props) {
   const oneWayFare = Math.round(numDist * 1.5 * config.ratePerKm + 500);
   const roundTripFare = Math.round(numDist * 2 * config.ratePerKm + 1000);
 
-  const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const fromSlug = route.from.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
+  const toSlug = route.to.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
 
   const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${config.vehicleName} for route: ${route.from} to ${route.to} (${route.distance}, Estimated ₹${oneWayFare.toLocaleString("en-IN")}). Please confirm availability & driver dispatch.`

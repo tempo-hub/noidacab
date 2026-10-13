@@ -650,7 +650,8 @@ export default async function CabPage({
   if (isDynamicRouteDirect) {
     const dynamicRoute = parseDynamicRouteSlug(cleanPath);
     if (dynamicRoute && dynamicRoute.canonicalSlug) {
-      redirect(`/route/${dynamicRoute.canonicalSlug}`);
+      const targetSlug = dynamicRoute.canonicalSlug.replace(/^(route[-/])+/g, "");
+      redirect(`/route/${targetSlug}`);
     }
   }
 
@@ -897,7 +898,8 @@ export default async function CabPage({
   if (cleanPath.includes("-to-")) {
     const dynamicRoute = parseDynamicRouteSlug(cleanPath);
     if (dynamicRoute && dynamicRoute.canonicalSlug) {
-      redirect(`/route/${dynamicRoute.canonicalSlug}`);
+      const targetSlug = dynamicRoute.canonicalSlug.replace(/^(route[-/])+/g, "");
+      redirect(`/route/${targetSlug}`);
     }
   }
 

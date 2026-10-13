@@ -91,8 +91,8 @@ export default function MasterRoutesExplorer({ routes }: Props) {
           const vRule = vehicleRules[defaultVehicle] || vehicleRules[normalizeVehicleKey(defaultVehicle)] || vehicleRules["tempo-traveller"];
           const vSlug = vRule?.slug || defaultVehicle;
 
-          const fromSlug = r.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-          const toSlug = r.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+          const fromSlug = r.from.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
+          const toSlug = r.to.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
           const primarySlug = `/route/${fromSlug}-to-${toSlug}-${vSlug}`;
 
           return (

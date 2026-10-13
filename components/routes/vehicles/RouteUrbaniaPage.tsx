@@ -60,7 +60,8 @@ export function RouteUrbaniaPage({ route }: { route: ParsedRouteDetail }) {
     parseFloat(String(route.distance || "180").replace(/[^0-9.]/g, "")) || 180;
   const calculatedFare = Math.round(distNum * 1.5 * ratePerKm + 500);
 
-  const url = `https://www.noidacab.com/route/${route.canonicalSlug || route.slug}`;
+  const cleanSlug = (route.canonicalSlug || route.slug).replace(/^(route[-/])+/g, "");
+  const url = `https://www.noidacab.com/route/${cleanSlug}`;
 
   return (
     <main className="min-h-screen bg-white">
@@ -107,7 +108,7 @@ export function RouteUrbaniaPage({ route }: { route: ParsedRouteDetail }) {
       <RouteInfo location={location} vehicle={vehicleData} />
 
       {/* 6. VEHICLE SUMMARY */}
-      <VehicleSummary location={location} vehicle={vehicleData} />
+      {/* <VehicleSummary location={location} vehicle={vehicleData} /> */}
 
       {/* 7. JOURNEY INFO */}
       {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
@@ -128,7 +129,7 @@ export function RouteUrbaniaPage({ route }: { route: ParsedRouteDetail }) {
       <TravelTips location={location} vehicle={vehicleData} />
 
       {/* 13. TRAVEL PLANNING */}
-      <TravelPlanning location={location} vehicle={vehicleData} />
+      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
 
       {/* 14. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
       <VehicleRouteSeoGuide

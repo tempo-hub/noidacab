@@ -57,12 +57,13 @@ type Params = Promise<{ slug: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
-  const route = parseDynamicRouteSlug(slug);
+  const cleanSlug = (slug || "").toLowerCase().replace(/^(route[-/])+/g, "");
+  const route = parseDynamicRouteSlug(cleanSlug);
 
   const isContactRoute =
     route.vehicleSlug === "contact-number" ||
-    slug.toLowerCase().endsWith("-contact-number") ||
-    slug.toLowerCase().endsWith("-taxi-contact-number");
+    cleanSlug.endsWith("-contact-number") ||
+    cleanSlug.endsWith("-taxi-contact-number");
 
   if (isContactRoute) {
     return {
@@ -474,8 +475,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     slug.toLowerCase().includes("dzire")
   ) {
     return {
-      title: `${route.from} to ${route.to} Dzire Taxi | 4 Seater AC Sedan Cab Starting @ ${route.fare} | NoidaCab`,
-      description: `Book Maruti Dzire AC sedan from ${route.from} to ${route.to} starting @ ₹10/km. 378L boot space, clean seats, prompt doorstep pickup. Distance: ${route.distance} (${route.duration}).`,
+      title: `${route.from} to ${route.to} Dzire Taxi | 4 Seater Cab Starting @ ₹10/km | NoidaCab`,
+
+description: `Book a Maruti Dzire AC taxi from ${route.from} to ${route.to} starting @ ₹10/km. Enjoy comfortable seating, 378L boot space and convenient pickup. Check distance (${route.distance}) and travel time (${route.duration}) with NoidaCab.`,
+
       keywords: [
         `${route.from} to ${route.to} Dzire taxi`,
         `${route.from} to ${route.to} Dzire cab`,
@@ -504,7 +507,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     slug.toLowerCase().includes("amaze")
   ) {
     return {
-      title: `${route.from} to ${route.to} Honda Amaze Taxi | 420L Boot Sedan Starting @ ${route.fare} | NoidaCab`,
+      title: `${route.from} to ${route.to} Honda Amaze Taxi | 4 Seater Sedan Starting @ ${route.fare} | NoidaCab`,
       description: `Rent Honda Amaze sedan with class-leading 420L boot space from ${route.from} to ${route.to}. Quiet cabin, smooth cruising, transparent ₹10/km fares. Distance: ${route.distance} (${route.duration}).`,
       keywords: [
         `${route.from} to ${route.to} Honda Amaze taxi`,
@@ -533,7 +536,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     slug.toLowerCase().includes("etios")
   ) {
     return {
-      title: `${route.from} to ${route.to} Toyota Etios Taxi | 592L Boot Touring Sedan Starting @ ${route.fare} | NoidaCab`,
+      title: `${route.from} to ${route.to} Toyota Etios Taxi | 4 seater Sedan Starting @ ${route.fare} | NoidaCab`,
       description: `Book Toyota Platinum Etios touring sedan from ${route.from} to ${route.to} with massive 592L trunk and flat rear floorboard. ₹10/km highway rates. Distance: ${route.distance} (${route.duration}).`,
       keywords: [
         `${route.from} to ${route.to} Toyota Etios taxi`,
@@ -614,6 +617,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function DynamicRouteDetailPage({ params }: { params: Params }) {
   const { slug } = await params;
+
+  // Immediate permanent redirect if URL has redundant "route-" prefix
+  // e.g. /route/route-noida-to-delhi-dzire-taxi -> /route/noida-to-delhi-dzire-taxi
+  if (slug.toLowerCase().startsWith("route-")) {
+    const cleanSlug = slug.toLowerCase().replace(/^(route[-/])+/g, "");
+    redirect(`/route/${cleanSlug}`);
+  }
+
   const route = parseDynamicRouteSlug(slug);
 
   if (slug.toLowerCase() !== route.canonicalSlug.toLowerCase()) {

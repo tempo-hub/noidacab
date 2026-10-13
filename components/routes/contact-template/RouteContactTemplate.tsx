@@ -34,8 +34,8 @@ export default function RouteContactTemplate({ route }: Props) {
     `Hello NoidaCab, I need an urgent taxi booking from ${route.from} to ${route.to}. Please confirm cab availability and fare.`
   )}`;
 
-  const fromSlug = route.from.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const toSlug = route.to.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const fromSlug = route.from.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
+  const toSlug = route.to.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
 
   // Extract numeric distance
   const numDist = parseInt(String(route.distance).replace(/[^0-9]/g, "")) || 30;

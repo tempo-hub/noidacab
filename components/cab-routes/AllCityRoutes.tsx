@@ -116,7 +116,11 @@ export default function AllCityRoutes({
 
             const cleanCitySlug = (city: string) => {
               const primary = city.split("(")[0].split("&")[0].trim();
-              return primary.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+              return primary
+                .toLowerCase()
+                .replace(/^route[-_ ]+/, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-|-$/g, "");
             };
 
             const getRouteTypeSlug = (vehicle?: string) => {

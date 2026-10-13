@@ -116,8 +116,8 @@ export function getRoutesFromMasterRoutes(
 
     const rate = vRule.perKm || 10;
     const rawFare = Math.round(distKm * 1.5 * rate + 500);
-    const fromSlug = slugify(pickup);
-    const toSlug = slugify(drop);
+    const fromSlug = slugify(pickup).replace(/^route-/, "");
+    const toSlug = slugify(drop).replace(/^route-/, "");
     const slug = `${fromSlug}-to-${toSlug}-${vRule.slug}`;
 
     cards.push({
@@ -314,13 +314,14 @@ export default function PopularCityRoutes({
                   item.vehicleSlug === "contact-number" ||
                   item.slug.includes("-contact-number");
                 const actionText = buttonText || (isContactCard ? "CONTACT" : "BOOK");
+                const cleanItemSlug = item.slug.replace(/^(route[-/])+/g, "");
 
                 return (
                   <div
                     key={item.id}
                     className="group rounded-2xl md:rounded-3xl border border-gray-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-amber-300 hover:shadow-md transition-all flex flex-col justify-between"
                   >
-                    <Link href={`/route/${item.slug}`} className="block group/cardhead transition">
+                    <Link href={`/route/${cleanItemSlug}`} className="block group/cardhead transition">
                       {/* Pickup Row */}
                       <div className="flex items-start justify-between">
                         <div>
@@ -377,7 +378,7 @@ export default function PopularCityRoutes({
                       </div>
 
                       <Link
-                        href={`/route/${item.slug}`}
+                        href={`/route/${cleanItemSlug}`}
                         className="rounded-full border-2 border-amber-500 bg-white px-6 py-1.5 text-xs font-extrabold text-amber-600 transition hover:bg-amber-500 hover:text-white shadow-xs cursor-pointer tracking-wider uppercase"
                       >
                         {actionText}
