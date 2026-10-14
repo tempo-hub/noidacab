@@ -12,11 +12,11 @@ export default function RouteInformation({
   to,
 }: RouteInformationProps) {
   return (
-    <section className="bg-white/95 px-4 py-16 sm:py-20">
+    <section className="bg-white/95 px-4 py-12 sm:py-12 border-b boder-slate-300">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
-        <div className="mb-10 max-w-3xl">
+        <div className="mb-10 max-w-7xl">
           <div className="mb-4 flex items-center gap-3">
             <span className="h-px w-10 bg-orange-500" />
 

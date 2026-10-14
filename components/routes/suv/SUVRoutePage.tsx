@@ -126,9 +126,9 @@ export function SUVRoutePage({ route }: { route: RouteProp }) {
   const innovaRate = parseFloat(innovaData.price.replace(/[^0-9.]/g, "")) || 18;
 
   const ertigaOneWayFare = Math.round(distNum * 1.5 * ertigaRate + 500);
-  const ertigaRoundTripFare = Math.round(distNum * 2 * ertigaRate);
+  const ertigaRoundTripFare = Math.round(distNum * 3 * ertigaRate + 500);
   const innovaOneWayFare = Math.round(distNum * 1.5 * innovaRate + 500);
-  const innovaRoundTripFare = Math.round(distNum * 2 * innovaRate);
+  const innovaRoundTripFare = Math.round(distNum * 3 * innovaRate + 500);
 
   const oneWayFare = ertigaOneWayFare;
   const roundTripFare = ertigaRoundTripFare;

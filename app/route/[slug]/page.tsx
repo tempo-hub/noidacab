@@ -464,7 +464,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     slug.toLowerCase().includes("innova")
   ) {
     return {
-      title: `${route.from} to ${route.to} Innova Crysta Taxi | 6-7 Seater Luxury MUV Starting @ ${route.fare} | NoidaCab`,
+      title: `${route.from} to ${route.to} Innova Crysta Taxi | 7 Seater MUV Starting @ ${route.fare} | NoidaCab`,
       description: `Book 6-7 seater Toyota Innova Crysta taxi from ${route.from} to ${route.to}. Reclining captain seats, dual AC, 4-5 bag boot space. Distance: ${route.distance} (${route.duration}). Call 8377809809.`,
       keywords: [
         `${route.from} to ${route.to} Innova Crysta taxi`,
@@ -494,7 +494,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     slug.toLowerCase().includes("ertiga")
   ) {
     return {
-      title: `${route.from} to ${route.to} Ertiga Taxi | 6 Seater MUV Cab Starting @ ${route.fare} | NoidaCab`,
+      title: `${route.from} to ${route.to} Ertiga Taxi | 6 Seater MUV Starting @ ${route.fare} | NoidaCab`,
       description: `Book affordable 6-seater Maruti Ertiga cab from ${route.from} to ${route.to} starting @ ₹13/km. Roof AC vents, flexible seating, verified drivers. Distance: ${route.distance} (${route.duration}).`,
       keywords: [
         `${route.from} to ${route.to} Ertiga taxi`,
@@ -524,7 +524,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     slug.toLowerCase().includes("dzire")
   ) {
     return {
-      title: `${route.from} to ${route.to} Dzire Taxi | 4 Seater Cab Starting @ ₹10/km | NoidaCab`,
+      title: `${route.from} to ${route.to} Dzire Taxi | 4 Seater Sedan Starting @ ₹10/km | NoidaCab`,
 
 description: `Book a Maruti Dzire AC taxi from ${route.from} to ${route.to} starting @ ₹10/km. Enjoy comfortable seating, 378L boot space and convenient pickup. Check distance (${route.distance}) and travel time (${route.duration}) with NoidaCab.`,
 

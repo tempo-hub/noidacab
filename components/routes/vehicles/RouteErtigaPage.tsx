@@ -74,7 +74,7 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 13;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
-  const roundTripFare = Math.round(distNum * 2 * ratePerKm);
+  const roundTripFare = Math.round(distNum * 3 * ratePerKm + 500);
 
   const fromSlug = route.from.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
   const toSlug = route.to.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");

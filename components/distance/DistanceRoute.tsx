@@ -28,6 +28,12 @@ export default function DistanceRoute({
 
       <DistanceOverview route={route} />
 
+      <AvailableCabs
+  // cabs={route.cabs}
+  from={route.from}
+  to={route.to}
+/>
+
       <RouteInformation
         routes={route.routes}
       />
@@ -38,11 +44,7 @@ export default function DistanceRoute({
   to={route.to}
 /> */}
 
-<AvailableCabs
-  // cabs={route.cabs}
-  from={route.from}
-  to={route.to}
-/>
+
 
 <TravelDetails
   route={route}
@@ -55,17 +57,17 @@ export default function DistanceRoute({
   to={route.to.name}
 />
 
-      <PopularNearbyRoutes
+      {/* <PopularNearbyRoutes
         currentSlug={route.slug}
         routes={nearbyRoutes}
-      />
+      /> */}
 
       {/* Popular City Routes */}
-      {/* <PopularCityRoutes
+      <PopularCityRoutes
         cityName={route.from.name || "Noida"}
         vehicleSlug="taxi"
         vehicleName="Distance & Travel Cabs"
-      /> */}
+      />
 
       <DistanceBookingCTA
   route={route}

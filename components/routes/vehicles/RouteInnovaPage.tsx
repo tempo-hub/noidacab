@@ -75,7 +75,7 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
   const roundTripFare = Math.max(
-    Math.round(distNum * 2 * ratePerKm + 500),
+    Math.round(distNum * 3 * ratePerKm + 500),
     Math.round(oneWayFare * 1.5)
   );
 

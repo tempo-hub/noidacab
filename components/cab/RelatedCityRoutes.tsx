@@ -31,6 +31,29 @@ interface Props {
   subtitle?: string;
 }
 
+/**
+ * Ensures ONLY specific cabs get "-taxi" appended:
+ * dzire -> dzire-taxi, etios -> etios-taxi, amaze -> amaze-taxi, ertiga -> ertiga-taxi.
+ * All other vehicle types (tempo-traveller, urbania, innova-crysta, etc.) keep their exact slug.
+ */
+function resolveVehicleSlug(slug?: string): string {
+  if (!slug) return "taxi";
+  const clean = slug.toLowerCase().trim().replace(/-taxi$/, "");
+
+  // Add "-taxi" ONLY for these exact cab models
+  if (["dzire", "etios", "amaze", "ertiga"].includes(clean)) {
+    return `${clean}-taxi`;
+  }
+
+  // If already specified as "taxi", keep it
+  if (clean === "taxi" || clean === "cab") {
+    return "taxi";
+  }
+
+  // Else, return the clean slug as-is (e.g., tempo-traveller, urbania, innova-crysta)
+  return clean;
+}
+
 export default function RelatedCityRoutes({
   destinationCity = "",
   vehicleSlug = "taxi",
@@ -38,12 +61,17 @@ export default function RelatedCityRoutes({
   title,
   subtitle,
 }: Props) {
-  // 1. Detect matching region based on URL / destination city
+  // 1. Resolve vehicle slug based on the rule
+  const normalizedVehicleSlug = useMemo(() => {
+    return resolveVehicleSlug(vehicleSlug);
+  }, [vehicleSlug]);
+
+  // 2. Detect matching region based on URL / destination city
   const detectedRegion = useMemo(() => {
     return getRegionByCityName(destinationCity);
   }, [destinationCity]);
 
-  // 2. Active Tab State (defaults to detected region, e.g. "Punjab")
+  // 3. Active Tab State (defaults to detected region, e.g. "Punjab")
   const [selectedRegion, setSelectedRegion] = useState<string>(detectedRegion);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [visibleLimit, setVisibleLimit] = useState<number>(24);
@@ -56,12 +84,32 @@ export default function RelatedCityRoutes({
   // Available region tabs
   const regionTabs = ["Punjab", "Haryana", "Uttarakhand", "Uttar Pradesh", "Rajasthan", "All"];
 
-  // 3. Fetch routes from masterRoutes for current active tab & vehicle
-  const routes: CityCabRouteItem[] = useMemo(() => {
-    return getRegionalRoutesFromMaster(selectedRegion, vehicleSlug);
-  }, [selectedRegion, vehicleSlug]);
+  // 4. Fetch routes from masterRoutes for current active tab & vehicle
+  const rawRoutes: CityCabRouteItem[] = useMemo(() => {
+    return getRegionalRoutesFromMaster(selectedRegion, normalizedVehicleSlug);
+  }, [selectedRegion, normalizedVehicleSlug]);
 
-  // 4. Filter by live search query
+  // 5. Ensure the route hrefs match the format:
+  // e.g. /route/noida-to-amritsar-dzire-taxi OR /route/noida-to-amritsar-tempo-traveller
+  const routes = useMemo(() => {
+    return rawRoutes.map((route) => {
+      // If href doesn't already end with normalizedVehicleSlug, standardize it
+      let href = route.href;
+      if (href && !href.endsWith(normalizedVehicleSlug)) {
+        const baseRoute = href
+          .replace(/-taxi$/, "")
+          .replace(/-(tempo-traveller|urbania|innova-crysta|sedan|suv)$/, "");
+        href = `${baseRoute}-${normalizedVehicleSlug}`;
+      }
+
+      return {
+        ...route,
+        href,
+      };
+    });
+  }, [rawRoutes, normalizedVehicleSlug]);
+
+  // 6. Filter by live search query
   const filteredRoutes = useMemo(() => {
     if (!searchQuery.trim()) return routes;
     const q = searchQuery.toLowerCase().trim();
@@ -205,7 +253,7 @@ export default function RelatedCityRoutes({
             </a>
             <a
               href={`https://wa.me/918377809809?text=${encodeURIComponent(
-                `Hello NoidaCab, I want to book a ${vehicleName} cab from Noida to ${selectedRegion}. Please share availability and best fare.`
+                `Hello NoidaCab, I want to book a ${vehicleName} cab from Noida to${selectedRegion}. Please share availability and best fare.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -313,7 +361,9 @@ export default function RelatedCityRoutes({
               onClick={() => setVisibleLimit((prev) => prev + 24)}
               className="inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-white px-6 py-2.5 text-xs sm:text-sm font-bold text-amber-800 shadow-2xs hover:bg-amber-50 hover:border-amber-400 transition"
             >
-              <span>View More {selectedRegion} Routes ({filteredRoutes.length - visibleLimit} remaining)</span>
+              <span>
+                View More {selectedRegion} Routes ({filteredRoutes.length - visibleLimit} remaining)
+              </span>
               <ArrowRight className="h-4 w-4 text-amber-600" />
             </button>
           </div>

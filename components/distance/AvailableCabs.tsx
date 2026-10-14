@@ -83,7 +83,7 @@ export default function AvailableCabs({
   const toSlug = cleanSlug(to?.slug) || cleanSlug(to?.name) || "delhi";
 
   return (
-    <section className="border-b border-gray-200 bg-white px-4 py-12 sm:px-6 sm:py-16">
+    <section className="border-b border-gray-200 bg-white/95 px-4 py-12 sm:px-6 sm:py-12">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-600">

@@ -32,7 +32,7 @@ import VehicleTemplate from "@/components/taxi/VehicleTemplate";
 import NoidaTaxiContactPage from "@/components/templates/NoidaTaxiContactPage";
 import RouteFareTemplate from "@/components/routes/fare-template/RouteFareTemplate";
 import TaxiServiceNoidaTemplate from "@/components/routes/TaxiServiceNoida/TaxiServiceNoidaTemplate";
-import { getCityDetails } from "@/lib/cityData";
+import { citiesData, getCityDetails } from "@/lib/cityData";
 import DynamicTaxiServicePage from "@/components/cab-routes/DynamicTaxiServicePage";
 import DynamicTaxiFarePage from "@/components/cab-routes/DynamicTaxiFarePage";
 import DynamicAirportServicePage from "@/components/cab-routes/DynamicAirportServicePage";
@@ -41,6 +41,7 @@ import DynamicOneWayTaxiPage from "@/components/cab-routes/DynamicOneWayTaxiPage
 import DynamicCityContactPage from "@/components/cab-routes/DynamicCityContactPage";
 import DynamicCityVehiclePage from "@/components/cab-routes/DynamicCityVehiclePage";
 import { parseDynamicRouteSlug } from "@/data/popularRoutesData";
+import { noidaRoutes } from "@/data/routes/noidaRoutes";
 
 export function generateStaticParams() {
   return getAllUrlSlugs();
@@ -257,19 +258,38 @@ export async function generateMetadata({
   // DYNAMIC CITY VEHICLE METADATA (Dzire, Sedan, Innova, etc.)
   // ============================================
   const dynamicCityVehicle = parseDynamicCityVehicleUrl(url);
-  if (dynamicCityVehicle) {
-    const { vehicle, cityInfo } = dynamicCityVehicle;
+if (dynamicCityVehicle) {
+  const { vehicle, cityInfo } = dynamicCityVehicle;
+
+  // Tempo Traveller / Urbania (incl. seater variants like "12 Seater Tempo
+  // Traveller") are rented, not hailed as a taxi/cab — keep "Taxi"/"Cab"
+  // out of their copy so it matches how people actually search for these.
+  const isTravellerType = /tempo traveller|urbania|traveller/i.test(vehicle.name);
+
+  if (isTravellerType) {
     return {
-      title: `${vehicle.name} Taxi in ${cityInfo.name} | Reliable Cabs @ ${vehicle.price} - NoidaCab`,
-      description: `Book ${vehicle.name} cab in ${cityInfo.name} for local sightseeing, airport transfers, and outstation trips. Clean AC vehicles, verified chauffeurs, and 24/7 on-time pickup.`,
+      title: `${vehicle.name} in ${cityInfo.name} | Starting @ ${vehicle.price} - NoidaCab`,
+      description: `Book ${vehicle.name} in ${cityInfo.name} for group tours, family trips, weddings, and outstation journeys. Clean, well-maintained vehicles with verified drivers and 24/7 support.`,
       alternates: { canonical: `https://www.noidacab.com${url}` },
       openGraph: {
-        title: `${vehicle.name} Taxi in ${cityInfo.name} | NoidaCab`,
+        title: `${vehicle.name} in ${cityInfo.name} | NoidaCab`,
         description: `Book ${vehicle.name} in ${cityInfo.name} starting from ${vehicle.price}.`,
         url: `https://www.noidacab.com${url}`,
       },
     };
   }
+
+  return {
+    title: `${vehicle.name} Taxi in ${cityInfo.name} | Reliable Cabs @ ${vehicle.price} - NoidaCab`,
+    description: `Book ${vehicle.name} cab in ${cityInfo.name} for local sightseeing, airport transfers, and outstation trips. Clean AC vehicles, verified chauffeurs, and 24/7 on-time pickup.`,
+    alternates: { canonical: `https://www.noidacab.com${url}` },
+    openGraph: {
+      title: `${vehicle.name} Taxi in ${cityInfo.name} | NoidaCab`,
+      description: `Book ${vehicle.name} in ${cityInfo.name} starting from ${vehicle.price}.`,
+      url: `https://www.noidacab.com${url}`,
+    },
+  };
+}
 
   /* ====================================
   local cabs outstation corportate
@@ -629,6 +649,7 @@ export default async function CabPage({
 
   const url = "/" + slug.join("/");
   const cleanPath = url.replace(/^\/|\/$/g, "").toLowerCase();
+  const rawSlug = slug.join("-").toLowerCase();
 
   // ============================================
   // DYNAMIC INTERCITY ROUTE REDIRECT
@@ -801,6 +822,35 @@ export default async function CabPage({
   // ============================================
   // DISTANCE & TRAVEL TIME
   // ============================================
+if (rawSlug.startsWith("distance-travel-time-in-")) {
+    const rawCity = rawSlug.replace("distance-travel-time-in-", "");
+    const cityKey = Object.keys(citiesData).find(
+      (k) =>
+        k.toLowerCase() === rawCity ||
+        citiesData[k]?.slug?.toLowerCase() === rawCity
+    );
+    const cityName =
+      cityKey ? citiesData[cityKey].name : rawCity.charAt(0).toUpperCase() + rawCity.slice(1);
+
+    const baseline = noidaRoutes["noida-to-delhi"] || Object.values(noidaRoutes)[0];
+    const numericDistance =
+      typeof baseline?.distance === "number"
+        ? baseline.distance
+        : parseFloat(String(baseline?.distance || "25").replace(/[^0-9.]/g, "")) || 25;
+
+    const cityRoute = {
+      ...baseline,
+      slug: rawSlug,
+      from: { name: cityName, slug: rawCity },
+      to: { name: cityName, slug: rawCity },
+      distance: numericDistance,
+      travelTime: baseline?.travelTime || "45 min",
+      routes: baseline?.routes || [],
+      template: "distance" as const,
+    };
+
+    return <DistanceRoute route={cityRoute} />;
+  }
 
   const distanceRoute =
     parseDistanceRouteUrl(url);

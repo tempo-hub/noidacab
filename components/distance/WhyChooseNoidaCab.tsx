@@ -56,11 +56,11 @@ export default function WhyChooseNoidaCab({
   ];
 
   return (
-    <section className="bg-white/95 border-b border-gray-300 px-4 py-16 sm:py-20">
+    <section className="bg-white/95 border-b border-gray-300 px-4 py-12 sm:py-12">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-7xl text-center">
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-10 bg-orange-500" />
 

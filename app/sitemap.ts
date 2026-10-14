@@ -14,10 +14,7 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, "");
 }
 
-// The sitemap protocol requires these 5 characters to be escaped as XML
-// entities inside <loc>. Next.js does NOT do this for you — if any raw
-// "&", "<", ">", "'" or '"' reaches the output, the XML becomes invalid
-// from that point on and every entry after it silently disappears.
+// Escapes special characters for XML compliance
 function escapeXml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -30,7 +27,6 @@ function escapeXml(value: string): string {
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   const seenUrls = new Set<string>();
-
   const now = new Date();
 
   function addUrl(
@@ -43,8 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const cleanPath = path.startsWith("/") ? path : `/${path}`;
     const fullUrl = `${BASE_URL}${cleanPath}`;
 
-    // Dedup on the canonical (unescaped) URL so escaped/unescaped
-    // variants of the same URL are never treated as different entries.
     if (seenUrls.has(fullUrl)) return;
     seenUrls.add(fullUrl);
 
@@ -63,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addUrl("/cab", 0.9, "daily");
   addUrl("/booking", 0.85, "daily");
 
-  // Routes directory pages
+  // Route directories
   addUrl("/routes", 0.95, "daily");
   addUrl("/taxi-routes", 0.9, "weekly");
   addUrl("/taxi-service-routes", 0.9, "weekly");
@@ -73,6 +67,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addUrl("/distance", 0.85, "weekly");
   addUrl("/local-cab", 0.85, "weekly");
   addUrl("/airport-transfer", 0.85, "weekly");
+  addUrl("/outstation-cab", 0.9, "weekly");
+  addUrl("/corporate-cab", 0.8, "weekly");
+  addUrl("/hourly-rental", 0.8, "weekly");
+  addUrl("/chauffeur-service", 0.8, "weekly");
   addUrl("/blog", 0.7, "weekly");
 
   // Noida dedicated hub pages
@@ -85,6 +83,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addUrl("/noida-to-delhi-sedan-taxi", 0.8, "weekly");
   addUrl("/noida-taxi-contact-number", 0.95, "daily");
 
+  // Airport transfer landing hubs
+  addUrl("/noida-to-delhi-airport", 0.9, "weekly");
+  addUrl("/delhi-airport-to-noida", 0.9, "weekly");
+  addUrl("/airport-to-noida", 0.85, "weekly");
+  addUrl("/airport-drop-taxi", 0.85, "weekly");
+  addUrl("/airport-taxi-noida", 0.85, "weekly");
+
   // Company info
   addUrl("/about-us", 0.6, "monthly");
   addUrl("/contact", 0.6, "monthly");
@@ -92,7 +97,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addUrl("/terms-and-conditions", 0.3, "monthly");
 
   // =========================================================================
-  // 2. City Route Directories (/taxi-service-routes/[city], etc.)
+  // 2. City Route Directories
   // =========================================================================
   for (const city of Object.values(citiesData)) {
     addUrl(`/taxi-service-routes/${city.slug}`, 0.85, "weekly");
@@ -101,15 +106,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // =========================================================================
-  // 3. Cab Services from cityCabServicesData (Configured City Hubs)
+  // 3. Cab Services from cityCabServicesData
   // =========================================================================
   for (const group of cityCabServicesData) {
     for (const item of group.items) {
       if (!item.isPhone && item.href && item.href.startsWith("/")) {
         const priority =
           item.href.includes("taxi-service") ||
-            item.href.includes("one-way-taxi") ||
-            item.href.includes("taxi-fare")
+          item.href.includes("one-way-taxi") ||
+          item.href.includes("taxi-fare")
             ? 0.9
             : 0.8;
         addUrl(item.href, priority, "weekly");
@@ -118,7 +123,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // =========================================================================
-  // 4. Dynamic City Cab Landing Pages for all supported cities in citiesData
+  // 4. Dynamic City Cab Landing Pages
   // =========================================================================
   const cityVehicleVariants = [
     "taxi-service-in",
@@ -161,19 +166,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // =========================================================================
-  // 5. Intercity Master Routes from masterRoutesRegistry (/route/[slug] & /routes/[slug])
+  // 5. Intercity Master Routes (Haryana, Punjab, Uttarakhand, UP, Rajasthan)
   // =========================================================================
   const routeVehicleSlugs = [
+    // Standard vehicle types
     "one-way-taxi",
     "taxi-fare",
+    "cab-fare",
+    "fare",
     "taxi",
+    "outstation-taxi",
     "sedan-taxi",
+    "dzire-taxi",
     "etios-taxi",
     "amaze-taxi",
+    "suv-taxi",
     "ertiga-taxi",
     "innova-crysta-taxi",
-    "dzire-taxi",
-    "suv-taxi",
     "tempo-traveller",
     "12-seater-tempo-traveller",
     "16-seater-tempo-traveller",
@@ -183,27 +192,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "urbania-rental",
     "urbania",
     "distance-travel-time",
-    "contact-number",
   ];
 
   for (const route of masterRoutesRegistry) {
     const fSlug = slugify(route.from);
     const tSlug = slugify(route.to);
 
-    // Both forward and reverse corridors
+    // Forward and Reverse corridors (e.g., Noida-to-Chandigarh & Chandigarh-to-Noida)
     const pairs = [
       { from: fSlug, to: tSlug },
       { from: tSlug, to: fSlug },
     ];
 
     for (const pair of pairs) {
+      const baseCorridor = `${pair.from}-to-${pair.to}`;
+
+      // 1. Root level fare/taxi URLs (e.g., /noida-to-chandigarh-taxi-fare, /noida-to-haridwar-taxi)
+      addUrl(`/${baseCorridor}-taxi`, 0.9, "weekly");
+      addUrl(`/${baseCorridor}-taxi-fare`, 0.9, "weekly");
+      addUrl(`/${baseCorridor}-cab-fare`, 0.85, "weekly");
+      addUrl(`/${baseCorridor}-one-way-taxi`, 0.9, "weekly");
+      addUrl(`/${baseCorridor}-tempo-traveller`, 0.85, "weekly");
+      addUrl(`/${baseCorridor}-distance-travel-time`, 0.8, "weekly");
+
+      // 2. /route/ prefixed URLs for all vehicle variants
       for (const vSlug of routeVehicleSlugs) {
-        const routeSlug = `/route/${pair.from}-to-${pair.to}-${vSlug}`;
+        const routeSlug = `/route/${baseCorridor}-${vSlug}`;
 
         const priority =
-          vSlug === "one-way-taxi" || vSlug === "taxi-fare"
+          vSlug === "one-way-taxi" || vSlug === "taxi-fare" || vSlug === "taxi"
             ? 0.9
-            : vSlug === "taxi" || vSlug === "ertiga-taxi" || vSlug === "sedan-taxi"
+            : vSlug === "ertiga-taxi" || vSlug === "sedan-taxi" || vSlug === "innova-crysta-taxi"
               ? 0.85
               : 0.8;
 
@@ -213,13 +232,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // =========================================================================
-  // 6. Local Sector and Highway URLs from urlroute.json (urlRoutes)
+  // 6. Local Sectors, Highways & Static JSON Paths (urlroute.json)
   // =========================================================================
-  // NOTE: these come straight from JSON data, not through slugify(), so
-  // they are the most likely source of a raw "&" or other unsafe character
-  // breaking the XML. escapeXml() inside addUrl() now guards against that,
-  // but it's worth auditing urlroute.json itself for entries with "&",
-  // spaces, or other non-slug characters and cleaning them at the source.
   for (const r of urlRoutes) {
     if (r && typeof r.url === "string") {
       const trimmed = r.url.trim();

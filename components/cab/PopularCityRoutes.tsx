@@ -257,7 +257,7 @@ export default function PopularCityRoutes({
   };
 
   return (
-    <section id="popular-city-routes" className="bg-white/95 py-14 sm:py-20 border-b border-gray-200">
+    <section id="popular-city-routes" className="bg-white/95 py-12 sm:py-20 border-b border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -308,7 +308,7 @@ export default function PopularCityRoutes({
         ) : (
           <>
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {displayedRoutes.map((item) => {
+              {displayedRoutes.map((  item) => {
                 const isContactCard =
                   isContactMode ||
                   item.vehicleSlug === "contact-number" ||
