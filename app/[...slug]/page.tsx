@@ -21,7 +21,7 @@ import { cabTemplates } from "@/components/templates/cab";
 import { OneWayRoutePage } from "@/components/routes/one-way/OneWayRoutePage";
 import { SUVRoutePage } from "@/components/routes/suv/SUVRoutePage";
 import RouteVehicleTemplate from "@/components/routes/taxi-routes/RouteVehicleTemplate";
-import DistanceRoute from "@/components/distance/DistanceRoute";
+import DynamicDistanceTravelPage from "@/components/cab-routes/DynamicDistanceTravelPage";
 import NoidaNearbyTemplate from "@/components/routes/noida-nearby/NoidaNearbyTemplate";
 
 import {
@@ -849,7 +849,7 @@ if (rawSlug.startsWith("distance-travel-time-in-")) {
       template: "distance" as const,
     };
 
-    return <DistanceRoute route={cityRoute} />;
+    return <DynamicDistanceTravelPage route={cityRoute} />;
   }
 
   const distanceRoute =
@@ -857,7 +857,7 @@ if (rawSlug.startsWith("distance-travel-time-in-")) {
 
   if (distanceRoute) {
     return (
-      <DistanceRoute
+      <DynamicDistanceTravelPage
         route={distanceRoute}
       />
     );

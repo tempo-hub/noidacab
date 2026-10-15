@@ -92,7 +92,7 @@ export default function ContactPage() {
               <div className="mt-8 space-y-5">
 
                 {/* Address */}
-                <ContactItem
+                {/* <ContactItem
                   icon={<MapPin className="h-5 w-5" />}
                   title="Office Address"
                 >
@@ -101,7 +101,7 @@ export default function ContactPage() {
                     <br />
                     Noida, Uttar Pradesh - 201301
                   </p>
-                </ContactItem>
+                </ContactItem> */}
 
                 {/* Phone */}
                 <ContactItem

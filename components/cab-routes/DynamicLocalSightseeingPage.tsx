@@ -87,7 +87,12 @@ export default function DynamicLocalSightseeingPage({ city }: Props) {
       <OurServicesGrid currentServiceSlug="local-sightseeing-routes" />
 
       {/* 4. Popular Routes Section (Matching reference image) */}
-      <PopularCityRoutes cityName={city.name} vehicleSlug="taxi" vehicleName="Sightseeing Taxi" />
+      <PopularCityRoutes
+        cityName={city.name}
+        vehicleSlug="taxi"
+        vehicleName="Sightseeing Taxi"
+        allowFallback={false}
+      />
 
       {/* 4b. All City Routes Section */}
       <AllCityRoutes

@@ -23,7 +23,7 @@ import {
 import { CityInfo } from "@/lib/cityData";
 import { vehicles } from "@/data/vehicles";
 import AvailableVehicles from "@/components/routes/one-way/AvailableVehicles";
-import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 import WhyChooseCards from "@/components/home/WhyChooseCards";
 import Testimonials from "@/components/home/Testimonials";
 import CTASection from "@/components/home/CTA";
@@ -694,16 +694,12 @@ export default function DynamicOneWayTaxiPage({ city }: Props) {
         </div>
       </section>
 
-      {/* =====================================================
-          6. POPULAR CITY ROUTES SECTION (USER REQUESTED)
-      ====================================================== */}
-      <PopularCityRoutes
-        cityName={city.name}
-        vehicleSlug="one-way-taxi"
+      {/* Regional Routes matched to this city */}
+      <RelatedCityRoutes
+        destinationCity={city.name}
+        vehicleSlug="taxi"
         vehicleName="One Way Taxi"
-        title={`Popular One Way Routes from ${city.name}`}
-        subtitle={`Explore top-rated one-way routes from ${city.name} with transparent per-km billing and verified drivers.`}
-        badgeText={`${city.name.toUpperCase()} ONE WAY CORRIDORS`}
+        oneWayTaxi
       />
 
       {/* =====================================================

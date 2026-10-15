@@ -70,7 +70,7 @@ export default function AllCityRoutes({
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* City Pills */}
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 w-full sm:w-auto">
-              {cities.slice(0, 6).map((city) => (
+              {cities.map((city) => (
                 <button
                   key={city}
                   type="button"
@@ -115,7 +115,7 @@ export default function AllCityRoutes({
             })();
 
             const cleanCitySlug = (city: string) => {
-              const primary = city.split("(")[0].split("&")[0].trim();
+              const primary = city.split("(")[0].split("&")[0].split("/")[0].trim();
               return primary
                 .toLowerCase()
                 .replace(/^route[-_ ]+/, "")

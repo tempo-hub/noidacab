@@ -23,7 +23,7 @@ export default function HomeClosing() {
           <div className="mt-9 flex flex-col gap-4 border-t border-white/15 pt-6 text-sm text-slate-300 sm:flex-row sm:flex-wrap sm:gap-x-8">
             <a className="inline-flex items-center gap-2 hover:text-white" href="tel:+918377809809"><Phone size={16} /> +91 83778 09809</a>
             <a className="inline-flex items-center gap-2 hover:text-white" href="mailto:info@noidacab.com"><Mail size={16} /> info@noidacab.com</a>
-            <span className="inline-flex items-center gap-2"><MapPin size={16} /> Sector 2, Noida, Uttar Pradesh</span>
+            {/* <span className="inline-flex items-center gap-2"><MapPin size={16} /> Sector 2, Noida, Uttar Pradesh</span> */}
           </div>
         </div>
       </section>

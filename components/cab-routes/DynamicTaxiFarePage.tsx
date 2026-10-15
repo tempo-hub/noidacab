@@ -11,7 +11,7 @@ import WhyChooseUs from "@/components/routes/taxi-fare-in-noida/WhyChooseUs";
 import PopularPickupLocations from "@/components/routes/taxi-fare-in-noida/PopularPickupLocations";
 import TaxiFareFAQ from "@/components/routes/taxi-fare-in-noida/TaxiFareFAQ";
 import BookingCTA from "@/components/routes/taxi-fare-in-noida/BookingCTA";
-import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 
 interface Props {
   city: CityInfo;
@@ -175,13 +175,15 @@ export default function DynamicTaxiFarePage({ city }: Props) {
           title={`Available Taxi Options in ${city.name}`}
           description={`Choose from comfortable cabs with transparent fares and flexible options for your journey in and from ${city.name}.`}
         />
+        
+        
 
-        {/* 3. Popular City Fare Routes (e.g. /route/lucknow-to-manali-taxi-fare) */}
-        <PopularCityRoutes
-          cityName={city.name}
-          vehicleSlug="taxi-fare"
-          vehicleName="Taxi Fare"
-          limit={12}
+        {/* 3. Regional Routes matched to this city */}
+        <RelatedCityRoutes
+          destinationCity={city.name}
+          vehicleSlug="taxi"
+          vehicleName="Taxi"
+          taxiFare
         />
 
         {/* 4. One-Way & Round-Trip Comparison */}

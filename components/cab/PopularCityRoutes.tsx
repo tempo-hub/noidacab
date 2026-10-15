@@ -18,6 +18,7 @@ interface Props {
   vehicleName?: string;
   customRoutes?: PopularRouteCardItem[];
   limit?: number;
+  allowFallback?: boolean;
   title?: string;
   subtitle?: string;
   badgeText?: string;
@@ -54,7 +55,8 @@ export function getRoutesFromMasterRoutes(
   cityName?: string,
   vehicleSlug?: string,
   limit?: number,
-  vehicleName?: string
+  vehicleName?: string,
+  allowFallback = true
 ): PopularRouteCardItem[] {
   const targetCityNorm = normalizeCity(cityName);
   const isAllCities =
@@ -137,7 +139,7 @@ export function getRoutesFromMasterRoutes(
   }
 
   // Graceful fallback if city has no routes yet in masterRoutes
-  if (cards.length === 0 && !isAllCities) {
+  if (cards.length === 0 && !isAllCities && allowFallback) {
     const fallbackList = [
       "Delhi",
       "Gurugram",
@@ -192,12 +194,13 @@ export default function PopularCityRoutes({
   vehicleName,
   customRoutes,
   limit,
+  allowFallback = true,
   title,
   subtitle,
   badgeText,
   buttonText,
 }: Props) {
-  const routes = customRoutes || getRoutesFromMasterRoutes(cityName, vehicleSlug, limit, vehicleName);
+  const routes = customRoutes || getRoutesFromMasterRoutes(cityName, vehicleSlug, limit, vehicleName, allowFallback);
 
   const isContactMode =
     vehicleSlug === "contact-number" ||

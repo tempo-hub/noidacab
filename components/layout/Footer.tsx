@@ -157,14 +157,14 @@ export default function Footer() {
                 </span>
               </div>
 
-              <div className="flex gap-3">
+              {/* <div className="flex gap-3">
                 <MapPin className="mt-1 text-amber-500" size={18} />
                 <span className="text-gray-400">
                   Sector 2, Noida,
                   <br />
                   Uttar Pradesh
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

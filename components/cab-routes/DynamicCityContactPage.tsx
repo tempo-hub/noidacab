@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { CityInfo } from "@/lib/cityData";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 
 const PHONE_NUMBER = "8377809809";
 const DISPLAY_PHONE = "+91-8377809809";
@@ -58,6 +59,9 @@ interface Props {
 }
 
 export default function DynamicCityContactPage({ city }: Props) {
+  const isRegionalContactPage = ["punjab", "uttarakhand"].includes(
+    city.slug.toLowerCase()
+  );
   const whatsappUrl = `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(
     `Hi NoidaCab, I need an immediate taxi booking / assistance in ${city.name}. Please share vehicle availability and fares.`
   )}`;
@@ -450,15 +454,26 @@ export default function DynamicCityContactPage({ city }: Props) {
       </section>
 
       {/* 4. POPULAR ROUTES HELPLINES - Configured to point directly to route contact pages */}
-      <PopularCityRoutes
-        cityName={city.name}
-        vehicleSlug="contact-number"
-        vehicleName="Taxi Contact Number"
-        title={`Popular Taxi Contact Numbers from ${city.name}`}
-        subtitle={`Direct 24/7 driver dispatch and helpline contact numbers for top routes originating from ${city.name}. Click to view route contact and dispatch details.`}
-        badgeText={`${city.name.toUpperCase()} TAXI HELPLINES`}
-        buttonText="CONTACT"
-      />
+      {isRegionalContactPage ? (
+        <RelatedCityRoutes
+          destinationCity={city.name}
+          vehicleSlug="contact-number"
+          vehicleName="Taxi Contact Number"
+          title={`Popular Taxi Contact Numbers in ${city.name}`}
+          subtitle={`Browse regional routes with direct 24/7 driver dispatch and taxi contact details for ${city.name}.`}
+          buttonText="CONTACT"
+        />
+      ) : (
+        <PopularCityRoutes
+          cityName={city.name}
+          vehicleSlug="contact-number"
+          vehicleName="Taxi Contact Number"
+          title={`Popular Taxi Contact Numbers from ${city.name}`}
+          subtitle={`Direct 24/7 driver dispatch and helpline contact numbers for top routes originating from ${city.name}. Click to view route contact and dispatch details.`}
+          badgeText={`${city.name.toUpperCase()} TAXI HELPLINES`}
+          buttonText="CONTACT"
+        />
+      )}
 
       {/* 5. OTHER CITIES TAXI CONTACT NUMBERS */}
       <section className="bg-white py-12 sm:py-16 border-b border-slate-200">

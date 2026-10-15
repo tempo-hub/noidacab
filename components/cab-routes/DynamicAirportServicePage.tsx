@@ -19,17 +19,6 @@ interface Props {
 }
 
 export default function DynamicAirportServicePage({ city }: Props) {
-  // Filter or prioritize airport routes for this city
-  const cityRoutes = airportServiceRoutes.filter(
-    (r) =>
-      r.from.toLowerCase().includes(city.slug) ||
-      r.to.toLowerCase().includes(city.slug) ||
-      r.from.toLowerCase().includes(city.name.toLowerCase()) ||
-      r.to.toLowerCase().includes(city.name.toLowerCase())
-  );
-
-  const displayRoutes = cityRoutes.length > 0 ? cityRoutes : airportServiceRoutes;
-
   return (
     <main className="min-h-screen bg-white">
       {/* 1. Dynamic Hero Section */}
@@ -87,11 +76,11 @@ export default function DynamicAirportServicePage({ city }: Props) {
       <OurServicesGrid currentServiceSlug="airport-service-routes" />
 
       {/* 4. Popular Routes Section (Matching reference image) */}
-      <PopularCityRoutes cityName={city.name} vehicleSlug="taxi" vehicleName="Airport Taxi" />
+      {/* <PopularCityRoutes cityName={city.name} vehicleSlug="taxi" vehicleName="Airport Taxi" /> */}
 
       {/* 4b. All City Routes Section */}
       <AllCityRoutes
-        routes={displayRoutes}
+        routes={airportServiceRoutes}
         title={`Airport Transfer Routes for ${city.name}`}
         subtitle={`Flat rates from ${city.name} localities and outstation connecting corridors directly to airport terminals.`}
         badge="Airport Express"

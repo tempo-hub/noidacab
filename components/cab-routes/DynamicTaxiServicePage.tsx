@@ -92,7 +92,7 @@ export default function DynamicTaxiServicePage({ city }: Props) {
       <OurServicesGrid currentServiceSlug="taxi-service-routes" />
 
       {/* 4. Popular Routes Section (Matching reference image) */}
-      <PopularCityRoutes cityName={city.name} vehicleSlug="taxi" vehicleName="Taxi" />
+      {/* <PopularCityRoutes cityName={city.name} vehicleSlug="taxi" vehicleName="Taxi" /> */}
 
       {/* 4b. Related Regional Routes */}
       <RelatedCityRoutes destinationCity={city.name} vehicleSlug="taxi" vehicleName="Taxi" />

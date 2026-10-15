@@ -24,3 +24,4 @@ export { default as DynamicUrbaniaRentalPage } from "./DynamicUrbaniaRentalPage"
 
 // Shared Base Engine
 export { default as DynamicCityVehiclePage } from "./DynamicCityVehiclePage";
+export { default as DynamicDistanceTravelPage } from "./DynamicDistanceTravelPage";

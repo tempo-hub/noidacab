@@ -458,14 +458,7 @@ Please share instant driver allocation and fare quote.`;
         </div>
       </section>
 
-      {/* 4. Popular Routes Section (Connected to this city & vehicle) */}
-      <PopularCityRoutes
-        cityName={city.name}
-        vehicleSlug={vehicle.slug}
-        vehicleName={vehicle.name}
-        title={`Popular ${vehicle.name} Routes from ${city.name}`}
-        subtitle={`Top outstation routes from ${city.name} booked with ${vehicle.name} at flat per-km tariffs.`}
-      />
+      
 
       {/* 4b. Regional Routes matched to this city */}
       <RelatedCityRoutes
@@ -565,6 +558,15 @@ Please share instant driver allocation and fare quote.`;
           </div>
         </div>
       </section>
+
+      {/* 4. Popular Routes Section (Connected to this city & vehicle) */}
+      <PopularCityRoutes
+        cityName={city.name}
+        vehicleSlug={vehicle.slug}
+        vehicleName={vehicle.name}
+        title={`Popular ${vehicle.name} Routes from ${city.name}`}
+        subtitle={`Top outstation routes from ${city.name} booked with ${vehicle.name} at flat per-km tariffs.`}
+      />
 
       {/* 12. Bottom CTA */}
       <CabCTA />

@@ -1714,16 +1714,13 @@ export default function DynamicTaxiRoutePage({ route }: DynamicTaxiRoutePageProp
                     { title: `Taxi service in Gurgaon`, href: `/gurgaon-taxi-service` },
                     { title: `Taxi service in Greater Noida`, href: `/greater-noida-taxi-service` },
                     { title: `Taxi service in Ghaziabad`, href: `/ghaziabad-taxi-service` },
-                  ].map((link) => (
-                    <li key={link.title}>
-                      <Link
-                        href={link.href}
-                        className="block py-3 text-sm text-slate-700 transition hover:text-amber-600 hover:underline"
-                      >
-                        {link.title}
-                      </Link>
-                    </li>
-                  ))}
+                  ].map((link, index) => (
+  <li key={`${link.href}-${index}`}>
+    <span className="block py-3 text-sm text-slate-700">
+      {link.title}
+    </span>
+  </li>
+))}
                 </ul>
               </div>
             </div>
@@ -1741,16 +1738,13 @@ export default function DynamicTaxiRoutePage({ route }: DynamicTaxiRoutePageProp
                     { title: `${fromCity} to Dehradun Cab`, href: `/route/${fromSlug}-to-dehradun-taxi` },
                     { title: `${fromCity} to Chandigarh Cab`, href: `/route/${fromSlug}-to-chandigarh-taxi` },
                     { title: `${fromCity} to Mathura Vrindavan Cab`, href: `/route/${fromSlug}-to-mathura-taxi` },
-                  ].map((link) => (
-                    <li key={link.title}>
-                      <Link
-                        href={link.href}
-                        className="block py-3 text-sm text-slate-700 transition hover:text-amber-600 hover:underline"
-                      >
-                        {link.title}
-                      </Link>
-                    </li>
-                  ))}
+                  ].map((link, index) => (
+  <li key={`${link.href}-${index}`}>
+    <span className="block py-3 text-sm text-slate-700">
+      {link.title}
+    </span>
+  </li>
+))}
                 </ul>
               </div>
             </div>

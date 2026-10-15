@@ -27,6 +27,10 @@ interface Props {
   destinationCity?: string;
   vehicleSlug?: string;
   vehicleName?: string;
+  distanceTravelTime?: boolean;
+  taxiFare?: boolean;
+  oneWayTaxi?: boolean;
+  buttonText?: string;
   title?: string;
   subtitle?: string;
 }
@@ -58,6 +62,10 @@ export default function RelatedCityRoutes({
   destinationCity = "",
   vehicleSlug = "taxi",
   vehicleName = "Cab",
+  distanceTravelTime = false,
+  taxiFare = false,
+  oneWayTaxi = false,
+  buttonText = "Book Cab",
   title,
   subtitle,
 }: Props) {
@@ -102,12 +110,36 @@ export default function RelatedCityRoutes({
         href = `${baseRoute}-${normalizedVehicleSlug}`;
       }
 
+      if (distanceTravelTime && href) {
+        const baseRoute = href.replace(
+          new RegExp(`-${normalizedVehicleSlug}$`),
+          ""
+        );
+        href = `${baseRoute}-distance-travel-time`;
+      }
+
+      if (taxiFare && href) {
+        const baseRoute = href.replace(
+          new RegExp(`-${normalizedVehicleSlug}$`),
+          ""
+        );
+        href = `${baseRoute}-taxi-fare`;
+      }
+
+      if (oneWayTaxi && href) {
+        const baseRoute = href.replace(
+          new RegExp(`-${normalizedVehicleSlug}$`),
+          ""
+        );
+        href = `${baseRoute}-one-way-taxi`;
+      }
+
       return {
         ...route,
         href,
       };
     });
-  }, [rawRoutes, normalizedVehicleSlug]);
+  }, [rawRoutes, normalizedVehicleSlug, distanceTravelTime, taxiFare, oneWayTaxi]);
 
   // 6. Filter by live search query
   const filteredRoutes = useMemo(() => {
@@ -326,7 +358,7 @@ export default function RelatedCityRoutes({
                     </div>
 
                     <span className="inline-flex items-center gap-1 text-xs font-bold text-gray-700 group-hover:text-amber-600 group-hover:translate-x-0.5 transition">
-                      <span>Book Cab</span>
+                      <span>{buttonText}</span>
                       <ChevronRight className="h-3.5 w-3.5" />
                     </span>
                   </div>
