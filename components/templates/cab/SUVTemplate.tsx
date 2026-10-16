@@ -42,7 +42,7 @@ export function SUVTemplate({ location, vehicle, url }: CabTemplateProps) {
       <WhatsIncluded location={location} vehicle={vehicle} />
       <BookingProcess location={location} vehicle={vehicle} />
       <TravelTips location={location} vehicle={vehicle} />
-      <TravelPlanning location={location} vehicle={vehicle} />
+      {/* <TravelPlanning location={location} vehicle={vehicle} /> */}
       <FAQSection location={location} vehicle={vehicle} />
       <BookingCTA location={location} vehicle={vehicle} url={url} />
     </>

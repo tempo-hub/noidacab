@@ -61,10 +61,10 @@ export function EtiosTemplate({ location, vehicle, url }: CabTemplateProps) {
       location={location}
         vehicle={vehicle}
     />
-      <TravelPlanning
+      {/* <TravelPlanning
          location={location}
         vehicle={vehicle}
-        />
+        /> */}
       {/* <StructuredData
       route={{
         fromName: route.fromName,

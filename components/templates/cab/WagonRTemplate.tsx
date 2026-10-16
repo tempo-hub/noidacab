@@ -57,7 +57,7 @@ export function WagonRTemplate({ location, vehicle, url }: CabTemplateProps) {
       /> */}
 
       <TravelTips location={location} vehicle={vehicle} />
-      <TravelPlanning location={location} vehicle={vehicle} />
+      {/* <TravelPlanning location={location} vehicle={vehicle} /> */}
 
       {/* <StructuredData
         route={{
