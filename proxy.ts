@@ -9,7 +9,7 @@ const JWT_SECRET = new TextEncoder().encode(
 export async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
-  // Protect all /admin routes except /admin/login
+  // Protect all /admin routes except /admin/login changes proxt to middleware
   if (path.startsWith("/admin") && path !== "/admin/login") {
     const token = req.cookies.get("admin_token")?.value;
 
