@@ -15,11 +15,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.noidacab.com"),
+
   title: "Noida Cab",
-  description: "Book premium and affordable Taxi in Noida. Safe local taxis, outstation rides, and airport transfers available 24/7. Best rates guaranteed.",
+  description:
+    "Book premium and affordable Taxi in Noida. Safe local taxis, outstation rides, and airport transfers available 24/7. Best rates guaranteed.",
 
   verification: {
     google: "xQOGS92C0fwHkjIAKLSmyEpLriRTVmmrJydUxb9O6cs",
+  },
+
+  openGraph: {
+    title: "Noida Cab",
+    description:
+      "Book premium and affordable taxis in Noida for local travel, outstation rides, and airport transfers.",
+    url: "https://www.noidacab.com",
+    siteName: "Noida Cab",
+    type: "website",
+    images: ["/og-image.jpg"],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Noida Cab",
+    description:
+      "Book affordable taxis in Noida for local travel, outstation trips, and airport transfers.",
+    images: ["/og-image.jpg"],
   },
 };
 
