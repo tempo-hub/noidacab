@@ -139,4 +139,36 @@ export const cityCabServicesData: CityCabServiceGroup[] = [
       { name: "Punjab Taxi Contact Number", href: "/punjab-taxi-contact-number" },
     ],
   },
+  {
+    city: "Uttar Pradesh",
+    tagline: "Explore Uttar Pradesh's Heritage, Pilgrimage & Express Corridors",
+    items: [
+      // Column 1
+      { name: "Taxi Service in Uttar Pradesh", href: "/taxi-service-in-uttar-pradesh" },
+      { name: "One Way Taxi in Uttar Pradesh", href: "/one-way-taxi-in-uttar-pradesh" },
+      { name: "Taxi Fare in Uttar Pradesh", href: "/taxi-fare-in-uttar-pradesh" },
+      { name: "Distance Travel Time in Uttar Pradesh", href: "/distance-travel-time-in-uttar-pradesh" },
+      { name: "Sedan Taxi in Uttar Pradesh", href: "/sedan-taxi-in-uttar-pradesh" },
+      { name: "Dzire Taxi in Uttar Pradesh", href: "/dzire-taxi-in-uttar-pradesh" },
+      { name: "Innova Crysta in Uttar Pradesh", href: "/innova-crysta-in-uttar-pradesh" },
+      { name: "12-Seater Tempo Traveller", href: "/12-seater-tempo-traveller-in-uttar-pradesh" },
+      { name: "24-Seater Tempo Traveller", href: "/24-seater-tempo-traveller-in-uttar-pradesh" },
+
+      // Column 2
+      { name: "Airport Service in Uttar Pradesh", href: "/airport-service-in-uttar-pradesh" },
+      { name: "SUV Taxi in Uttar Pradesh", href: "/suv-taxi-in-uttar-pradesh" },
+      { name: "Etios Taxi in Uttar Pradesh", href: "/etios-taxi-in-uttar-pradesh" },
+      { name: "Tempo Traveller in Uttar Pradesh", href: "/tempo-traveller-in-uttar-pradesh" },
+      { name: "16-Seater Tempo Traveller", href: "/16-seater-tempo-traveller-in-uttar-pradesh" },
+      { name: "Luxury Tempo Traveller", href: "/luxury-tempo-traveller-in-uttar-pradesh" },
+
+      // Column 3
+      { name: "Local Sightseeing in Uttar Pradesh", href: "/local-sightseeing-in-uttar-pradesh" },
+      { name: "Amaze Taxi in Uttar Pradesh", href: "/amaze-taxi-in-uttar-pradesh" },
+      { name: "Ertiga Taxi in Uttar Pradesh", href: "/ertiga-taxi-in-uttar-pradesh" },
+      { name: "Urbania Rental in Uttar Pradesh", href: "/urbania-rental-in-uttar-pradesh" },
+      { name: "20-Seater Tempo Traveller", href: "/20-seater-tempo-traveller-in-uttar-pradesh" },
+      { name: "Uttar Pradesh Taxi Contact Number", href: "/uttar-pradesh-taxi-contact-number" },
+    ],
+  },
 ];

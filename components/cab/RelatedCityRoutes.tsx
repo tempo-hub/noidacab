@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   MapPin,
   Search,
@@ -58,6 +59,29 @@ function resolveVehicleSlug(slug?: string): string {
   return clean;
 }
 
+/**
+ * Safely extracts destination city from text or URL pathname
+ */
+function extractTargetCity(input?: string): string {
+  if (!input) return "";
+  let clean = input.toLowerCase().trim();
+  clean = clean.replace(/^https?:\/\/[^/]+/, "");
+  clean = clean.replace(/^\/route\//, "").replace(/^\//, "");
+  clean = clean.replace(
+    /^(taxi-service-in-|airport-service-in-|local-sightseeing-in-|taxi-fare-in-|one-way-taxi-in-|one-way-cab-in-|distance-travel-time-in-)/,
+    ""
+  );
+  if (clean.includes("-to-")) {
+    const parts = clean.split("-to-");
+    clean = parts[parts.length - 1];
+  }
+  clean = clean.replace(
+    /-(taxi-service|taxi-fare|distance-travel-time|one-way-taxi|contact-number|tempo-traveller|urbania-rental|luxury-tempo-traveller|urbania|innova-crysta|innova|ertiga|amaze|etios|dzire|sedan|suv|taxi|cab)$/,
+    ""
+  );
+  return clean.replace(/[^a-z0-9]/g, "");
+}
+
 export default function RelatedCityRoutes({
   destinationCity = "",
   vehicleSlug = "taxi",
@@ -69,6 +93,8 @@ export default function RelatedCityRoutes({
   title,
   subtitle,
 }: Props) {
+  const pathname = usePathname();
+
   // 1. Resolve vehicle slug based on the rule
   const normalizedVehicleSlug = useMemo(() => {
     return resolveVehicleSlug(vehicleSlug);
@@ -76,21 +102,31 @@ export default function RelatedCityRoutes({
 
   // 2. Detect matching region based on URL / destination city
   const detectedRegion = useMemo(() => {
-    return getRegionByCityName(destinationCity);
-  }, [destinationCity]);
+    if (destinationCity && destinationCity.trim()) {
+      const region = getRegionByCityName(destinationCity);
+      if (region) return region;
+    }
+    if (pathname && pathname.trim()) {
+      const region = getRegionByCityName(pathname);
+      if (region) return region;
+    }
+    return "Uttar Pradesh";
+  }, [destinationCity, pathname]);
 
-  // 3. Active Tab State (defaults to detected region, e.g. "Punjab")
+  // 3. Active Tab State (defaults to detected region, e.g. "Uttar Pradesh")
   const [selectedRegion, setSelectedRegion] = useState<string>(detectedRegion);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [visibleLimit, setVisibleLimit] = useState<number>(24);
+  const [visibleLimit, setVisibleLimit] = useState<number>(36);
 
   useEffect(() => {
-    setSelectedRegion(detectedRegion);
-    setVisibleLimit(24);
+    if (detectedRegion) {
+      setSelectedRegion(detectedRegion);
+      setVisibleLimit(36);
+    }
   }, [detectedRegion]);
 
-  // Available region tabs
-  const regionTabs = ["Punjab", "Haryana", "Uttarakhand", "Uttar Pradesh", "Rajasthan", "All"];
+  // Available region tabs with Uttar Pradesh first
+  const regionTabs = ["Uttar Pradesh", "Punjab", "Haryana", "Uttarakhand", "Rajasthan", "All"];
 
   // 4. Fetch routes from masterRoutes for current active tab & vehicle
   const rawRoutes: CityCabRouteItem[] = useMemo(() => {
@@ -101,7 +137,6 @@ export default function RelatedCityRoutes({
   // e.g. /route/noida-to-amritsar-dzire-taxi OR /route/noida-to-amritsar-tempo-traveller
   const routes = useMemo(() => {
     return rawRoutes.map((route) => {
-      // If href doesn't already end with normalizedVehicleSlug, standardize it
       let href = route.href;
       if (href && !href.endsWith(normalizedVehicleSlug)) {
         const baseRoute = href
@@ -153,9 +188,16 @@ export default function RelatedCityRoutes({
     );
   }, [routes, searchQuery]);
 
-  // Current display slice
-  const displayedRoutes = filteredRoutes.slice(0, visibleLimit);
-  const hasMore = filteredRoutes.length > visibleLimit;
+  // Current display slice: show all matching search results when searching, otherwise paginate
+  const isSearching = searchQuery.trim().length > 0;
+  const displayedRoutes = isSearching ? filteredRoutes : filteredRoutes.slice(0, visibleLimit);
+  const hasMore = !isSearching && filteredRoutes.length > visibleLimit;
+  const isExpanded = !isSearching && visibleLimit >= filteredRoutes.length && filteredRoutes.length > 36;
+
+  // Normalized destination city for active card highlighting
+  const currentTargetClean = useMemo(() => {
+    return extractTargetCity(destinationCity || pathname);
+  }, [destinationCity, pathname]);
 
   // Metadata for current active region
   const regionMeta = REGIONAL_METADATA[selectedRegion] || {
@@ -220,7 +262,7 @@ export default function RelatedCityRoutes({
                   type="button"
                   onClick={() => {
                     setSelectedRegion(tab);
-                    setVisibleLimit(24);
+                    setVisibleLimit(36);
                   }}
                   className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                     isActive
@@ -243,7 +285,9 @@ export default function RelatedCityRoutes({
             <input
               type="text"
               placeholder={`Search ${selectedRegion} city (e.g. ${
-                selectedRegion === "Punjab"
+                selectedRegion === "Uttar Pradesh"
+                  ? "Agra, Aligarh, Ayodhya..."
+                  : selectedRegion === "Punjab"
                   ? "Amritsar, Patiala..."
                   : selectedRegion === "Haryana"
                   ? "Ambala, Panipat..."
@@ -252,7 +296,6 @@ export default function RelatedCityRoutes({
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
-                setVisibleLimit(24);
               }}
               className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm text-gray-700 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 bg-white"
             />
@@ -267,7 +310,7 @@ export default function RelatedCityRoutes({
                 {selectedRegion} Route Corridor
               </span>
               <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
-                {filteredRoutes.length} Connected Cities
+                {filteredRoutes.length} Connected Routes
               </span>
             </div>
             <p className="text-xs sm:text-sm text-gray-600 mt-1">
@@ -285,7 +328,7 @@ export default function RelatedCityRoutes({
             </a>
             <a
               href={`https://wa.me/918377809809?text=${encodeURIComponent(
-                `Hello NoidaCab, I want to book a ${vehicleName} cab from Noida to${selectedRegion}. Please share availability and best fare.`
+                `Hello NoidaCab, I want to book a ${vehicleName} cab from Noida to ${selectedRegion}. Please share availability and best fare.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -301,10 +344,9 @@ export default function RelatedCityRoutes({
         {displayedRoutes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {displayedRoutes.map((route) => {
+              const routeToClean = route.to.toLowerCase().replace(/[^a-z0-9]/g, "");
               const isCurrentDestination =
-                destinationCity &&
-                route.to.toLowerCase().replace(/[^a-z0-9]/g, "") ===
-                  destinationCity.toLowerCase().replace(/[^a-z0-9]/g, "");
+                currentTargetClean.length > 0 && routeToClean === currentTargetClean;
 
               return (
                 <Link
@@ -385,21 +427,43 @@ export default function RelatedCityRoutes({
           </div>
         )}
 
-        {/* View More Button */}
-        {hasMore && (
-          <div className="mt-8 text-center">
+        {/* Pagination & Show All Buttons */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          {hasMore && (
+            <>
+              <button
+                type="button"
+                onClick={() => setVisibleLimit((prev) => prev + 24)}
+                className="inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-white px-5 py-2.5 text-xs sm:text-sm font-bold text-amber-800 shadow-2xs hover:bg-amber-50 hover:border-amber-400 transition"
+              >
+                <span>
+                  View More (+24) • {filteredRoutes.length - visibleLimit} remaining
+                </span>
+                <ChevronRight className="h-4 w-4 text-amber-600" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setVisibleLimit(filteredRoutes.length)}
+                className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-amber-500 transition"
+              >
+                <span>
+                  Show All ({filteredRoutes.length}) Routes
+                </span>
+                <ArrowRight className="h-4 w-4 text-white" />
+              </button>
+            </>
+          )}
+
+          {isExpanded && (
             <button
               type="button"
-              onClick={() => setVisibleLimit((prev) => prev + 24)}
-              className="inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-white px-6 py-2.5 text-xs sm:text-sm font-bold text-amber-800 shadow-2xs hover:bg-amber-50 hover:border-amber-400 transition"
+              onClick={() => setVisibleLimit(36)}
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-xs sm:text-sm font-bold text-slate-700 shadow-2xs hover:bg-slate-50 transition"
             >
-              <span>
-                View More {selectedRegion} Routes ({filteredRoutes.length - visibleLimit} remaining)
-              </span>
-              <ArrowRight className="h-4 w-4 text-amber-600" />
+              <span>Show Less (Collapse)</span>
             </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );

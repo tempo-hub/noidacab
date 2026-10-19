@@ -93,9 +93,79 @@ export const UTTARAKHAND_CITIES: string[] = [
 ];
 
 export const UTTAR_PRADESH_CITIES: string[] = [
-  "Agra", "Mathura", "Vrindavan", "Lucknow", "Ayodhya", "Prayagraj", "Varanasi",
-  "Kanpur", "Gorakhpur", "Bareilly", "Aligarh", "Meerut", "Ghaziabad", "Moradabad",
-  "Jhansi", "Muzaffarnagar", "Saharanpur", "Noida", "Greater Noida",
+  "Agra", "Kiraoli", "Fatehabad", "Bah", "Etmadpur", "Khandauli",
+  "Aligarh", "Khair", "Atrauli", "Iglas", "Gabhana",
+  "Prayagraj", "Soraon", "Karchana", "Meja", "Phulpur", "Koraon", "Handia", "Bara",
+  "Akbarpur", "Tanda", "Jalalpur", "Bhiti",
+  "Amethi", "Gauriganj", "Jagdishpur", "Musafirkhana",
+  "Amroha", "Hasanpur", "Dhanaura", "Naugawan Sadat",
+  "Auraiya", "Bidhuna",
+  "Azamgarh", "Sagri", "Mehnagar", "Nizamabad",
+  "Baghpat", "Baraut", "Khekada",
+  "Bahraich", "Nanpara", "Payagpur", "Mahasi",
+  "Ballia", "Bansdih", "Rasra", "Belthara Road",
+  "Balrampur", "Tulsipur", "Utraula",
+  "Banda", "Naraini", "Atarra", "Baberu",
+  "Barabanki", "Fatehpur", "Haidergarh", "Ramnagar", "Nawabganj",
+  "Bareilly", "Baheri", "Aonla", "Meerganj",
+  "Basti", "Harraiya", "Rudhauli", "Bhanpur",
+  "Bijnor", "Najibabad", "Nagina", "Dhampur",
+  "Bulandshahr", "Anupshahr", "Syana", "Khurja", "Shikarpur",
+  "Chandauli", "Sakaldiha", "Chakia", "Naugarh",
+  "Chitrakoot", "Karwi", "Mau", "Rajapur",
+  "Deoria", "Rudrapur", "Barhaj", "Salempur",
+  "Etah", "Aliganj", "Jalesar",
+  "Etawah", "Jaswantnagar", "Bharthana", "Saifai",
+  "Farrukhabad", "Kaimganj", "Amritpur",
+  "Bindki", "Khaga", "Husainganj",
+  "Firozabad", "Jasrana", "Shikohabad", "Tundla",
+  "Noida", "Greater Noida", "Dadri", "Jewar", "Bisrakh",
+  "Ghaziabad", "Loni", "Modinagar", "Muradnagar",
+  "Ghazipur", "Zamania", "Saidpur", "Mohammadabad",
+  "Gonda", "Colonelganj", "Tarabganj", "Mankapur",
+  "Gorakhpur", "Campierganj", "Bansgaon", "Sahjanwa", "Khajni",
+  "Hamirpur", "Rath", "Maudaha", "Sarila",
+  "Hapur", "Garhmukteshwar", "Dhaulana",
+  "Hardoi", "Shahabad", "Sandila", "Bilgram", "Sawayajpur",
+  "Hathras", "Sadabad", "Sikandra Rao", "Sasni",
+  "Jalaun", "Orai", "Kalpi", "Madhogarh",
+  "Jaunpur", "Shahganj", "Machhlishahr", "Kerakat", "Badlapur",
+  "Jhansi", "Mauranipur", "Garautha", "Moth",
+  "Kannauj", "Tirwa", "Chhibramau",
+  "Bhognipur", "Derapur", "Rasoolabad",
+  "Kanpur", "Kalyanpur", "Bilhaur", "Ghatampur",
+  "Kasganj", "Patiali",
+  "Manjhanpur", "Sirathu", "Chail",
+  "Padrauna", "Khadda", "Kaptanganj", "Hata",
+  "Lakhimpur", "Palia", "Dhaurahra", "Mohammadi", "Nighasan",
+  "Lalitpur", "Talbehat", "Mahroni",
+  "Lucknow", "Malihabad", "Mohanlalganj", "Bakshi Ka Talab",
+  "Maharajganj", "Paniyara", "Pharenda", "Nautanwa",
+  "Mahoba", "Charkhari", "Kulpahar",
+  "Mainpuri", "Bhongaon", "Karhal", "Ghiror",
+  "Mathura", "Vrindavan", "Chhata", "Mahavan", "Govardhan",
+  "Maunath Bhanjan", "Ghosi", "Muhammadabad",
+  "Meerut", "Sardhana", "Mawana", "Daurala",
+  "Mirzapur", "Chunar", "Lalganj", "Marihan",
+  "Moradabad", "Thakurdwara", "Bilari", "Kanth",
+  "Muzaffarnagar", "Jansath", "Khatauli", "Budhana",
+  "Pilibhit", "Bisalpur", "Puranpur", "Kalinagar",
+  "Pratapgarh", "Kunda", "Raniganj", "Patti",
+  "Rae Bareli", "Salon", "Unchahar", "Dalmau",
+  "Rampur", "Bilaspur", "Suar",
+  "Saharanpur", "Deoband", "Nakur", "Gangoh",
+  "Sambhal", "Chandausi", "Gunnaur",
+  "Khalilabad", "Mehdawal", "Hariharpur",
+  "Shahjahanpur", "Powayan", "Tilhar", "Jalalabad",
+  "Shamli", "Thana Bhawan", "Kairana",
+  "Bhinga", "Shravasti", "Ikauna",
+  "Itwa", "Bansi", "Shohratgarh",
+  "Sitapur", "Misrikh", "Mahmudabad", "Laharpur", "Biswan",
+  "Robertsganj", "Dudhi", "Obra", "Ghorawal",
+  "Sultanpur", "Kadipur", "Lambhua",
+  "Unnao", "Safipur", "Purwa", "Hasanganj",
+  "Varanasi", "Pindra", "Rajatalab", "Sewarai",
+  "Ayodhya", "Faizabad", "Milkipur", "Rudauli", "Sohawal",
 ];
 
 export const RAJASTHAN_CITIES: string[] = [
@@ -121,8 +191,8 @@ export const REGIONAL_METADATA: Record<string, { tagline: string; badge: string;
   },
   "Uttar Pradesh": {
     tagline: "Heritage Cities, Pilgrimages & Express Corridors",
-    badge: "Uttar Pradesh Corridor • Heritage & Shrines",
-    description: "Premium doorstep cabs from Noida to Agra, Mathura, Lucknow, Ayodhya, Varanasi, and Prayagraj via Yamuna & Agra Expressways.",
+    badge: "Uttar Pradesh Corridor • 220+ Direct Routes",
+    description: "Premium doorstep cabs from Noida to all Uttar Pradesh district headquarters and major tehsils via Yamuna, Agra-Lucknow & Purvanchal Expressways.",
   },
   Rajasthan: {
     tagline: "Royal Heritage Gateways & Desert Expressways",
@@ -152,62 +222,119 @@ function cleanCity(name: string): string {
 // 3. Resolve Region from City or URL
 // -------------------------------------------------------------
 export function getRegionByCityName(cityNameOrUrl?: string): string {
-  if (!cityNameOrUrl) return "Punjab";
+  if (!cityNameOrUrl || !cityNameOrUrl.trim()) return "Uttar Pradesh";
 
   const raw = cityNameOrUrl.toLowerCase().trim();
-  const cleaned = cleanCity(raw);
 
-  // Direct Keyword checks
+  // 1. Explicit State Keyword checks
+  if (
+    raw.includes("uttar-pradesh") ||
+    raw.includes("uttar pradesh") ||
+    raw.includes("uttarpradesh") ||
+    raw.includes("uttar") ||
+    raw.includes("pradesh") ||
+    raw === "up"
+  ) {
+    return "Uttar Pradesh";
+  }
   if (raw.includes("punjab")) return "Punjab";
   if (raw.includes("haryana")) return "Haryana";
   if (raw.includes("uttarakh") || raw.includes("uttrakh")) return "Uttarakhand";
   if (raw.includes("rajasthan")) return "Rajasthan";
-  if (raw.includes("lucknow") || raw.includes("agra") || raw.includes("mathura") || raw.includes("varanasi") || raw.includes("ayodhya") || raw.includes("prayagraj")) {
-    return "Uttar Pradesh";
+
+  // 2. Extract city slug from full URL or route slug if present
+  let cleanSlug = raw
+    .replace(/^https?:\/\/[^/]+/, "")
+    .replace(/^\/route\//, "")
+    .replace(/^\//, "")
+    .replace(/^(taxi-service-in-|airport-service-in-|local-sightseeing-in-|taxi-fare-in-|one-way-taxi-in-|one-way-cab-in-|distance-travel-time-in-)/, "");
+
+  if (cleanSlug.includes("-to-")) {
+    const parts = cleanSlug.split("-to-");
+    cleanSlug = parts[parts.length - 1];
   }
 
-  // Punjab match
-  for (const c of PUNJAB_CITIES) {
-    const cClean = cleanCity(c);
-    if (cleaned === cClean || cleaned.includes(cClean) || cClean.includes(cleaned)) {
-      return "Punjab";
-    }
-  }
+  // Strip vehicle & service suffixes from slug
+  cleanSlug = cleanSlug.replace(
+    /-(taxi-service|taxi-fare|distance-travel-time|one-way-taxi|contact-number|tempo-traveller|urbania-rental|luxury-tempo-traveller|urbania|innova-crysta|innova|ertiga|amaze|etios|dzire|sedan|suv|taxi|cab)$/,
+    ""
+  );
 
-  // Haryana match
-  for (const c of HARYANA_CITIES) {
-    const cClean = cleanCity(c);
-    if (cleaned === cClean || cleaned.includes(cClean) || cClean.includes(cleaned)) {
-      return "Haryana";
-    }
-  }
+  const cleaned = cleanCity(cleanSlug);
+  const rawCleaned = cleanCity(raw);
 
-  // Uttarakhand match
-  for (const c of UTTARAKHAND_CITIES) {
-    const cClean = cleanCity(c);
-    if (cleaned === cClean || cleaned.includes(cClean) || cClean.includes(cleaned)) {
-      return "Uttarakhand";
-    }
-  }
-
-  // Uttar Pradesh match
+  // 3. Priority Exact Match against state city sets (Check UP first)
   for (const c of UTTAR_PRADESH_CITIES) {
     const cClean = cleanCity(c);
-    if (cleaned === cClean || cleaned.includes(cClean) || cClean.includes(cleaned)) {
+    if (cleaned === cClean || rawCleaned === cClean) {
       return "Uttar Pradesh";
     }
   }
 
-  // Rajasthan match
+  for (const c of PUNJAB_CITIES) {
+    const cClean = cleanCity(c);
+    if (cleaned === cClean || rawCleaned === cClean) {
+      return "Punjab";
+    }
+  }
+
+  for (const c of HARYANA_CITIES) {
+    const cClean = cleanCity(c);
+    if (cleaned === cClean || rawCleaned === cClean) {
+      return "Haryana";
+    }
+  }
+
+  for (const c of UTTARAKHAND_CITIES) {
+    const cClean = cleanCity(c);
+    if (cleaned === cClean || rawCleaned === cClean) {
+      return "Uttarakhand";
+    }
+  }
+
   for (const c of RAJASTHAN_CITIES) {
     const cClean = cleanCity(c);
-    if (cleaned === cClean || cleaned.includes(cClean) || cClean.includes(cleaned)) {
+    if (cleaned === cClean || rawCleaned === cClean) {
       return "Rajasthan";
     }
   }
 
-  // Fallback default
-  return "Punjab";
+  // 4. Substring Match with safe boundary length (>= 4 chars to prevent false positives like 'bah', 'mau')
+  if (cleaned.length >= 4) {
+    for (const c of UTTAR_PRADESH_CITIES) {
+      const cClean = cleanCity(c);
+      if (cleaned.includes(cClean) || cClean.includes(cleaned)) {
+        return "Uttar Pradesh";
+      }
+    }
+    for (const c of PUNJAB_CITIES) {
+      const cClean = cleanCity(c);
+      if (cleaned.includes(cClean) || cClean.includes(cleaned)) {
+        return "Punjab";
+      }
+    }
+    for (const c of HARYANA_CITIES) {
+      const cClean = cleanCity(c);
+      if (cleaned.includes(cClean) || cClean.includes(cleaned)) {
+        return "Haryana";
+      }
+    }
+    for (const c of UTTARAKHAND_CITIES) {
+      const cClean = cleanCity(c);
+      if (cleaned.includes(cClean) || cClean.includes(cleaned)) {
+        return "Uttarakhand";
+      }
+    }
+    for (const c of RAJASTHAN_CITIES) {
+      const cClean = cleanCity(c);
+      if (cleaned.includes(cClean) || cClean.includes(cleaned)) {
+        return "Rajasthan";
+      }
+    }
+  }
+
+  // Fallback default is Uttar Pradesh
+  return "Uttar Pradesh";
 }
 
 // -------------------------------------------------------------
@@ -218,28 +345,59 @@ export function getRegionalRoutesFromMaster(
   vehicleSlug: string = "taxi"
 ): CityCabRouteItem[] {
   let targetCities: string[] = [];
+  const norm = (regionName || "").toLowerCase().replace(/[^a-z]/g, "");
 
-  if (regionName === "Punjab") targetCities = PUNJAB_CITIES;
-  else if (regionName === "Haryana") targetCities = HARYANA_CITIES;
-  else if (regionName === "Uttarakhand") targetCities = UTTARAKHAND_CITIES;
-  else if (regionName === "Uttar Pradesh") targetCities = UTTAR_PRADESH_CITIES;
-  else if (regionName === "Rajasthan") targetCities = RAJASTHAN_CITIES;
-  else {
-    targetCities = [...PUNJAB_CITIES, ...HARYANA_CITIES, ...UTTARAKHAND_CITIES];
+  if (norm.includes("uttar") || norm.includes("pradesh") || norm === "up") {
+    targetCities = UTTAR_PRADESH_CITIES;
+  } else if (norm.includes("punjab")) {
+    targetCities = PUNJAB_CITIES;
+  } else if (norm.includes("haryana")) {
+    targetCities = HARYANA_CITIES;
+  } else if (norm.includes("uttarakh") || norm.includes("uttrakh")) {
+    targetCities = UTTARAKHAND_CITIES;
+  } else if (norm.includes("rajasthan")) {
+    targetCities = RAJASTHAN_CITIES;
+  } else {
+    // "All" or fallback -> include all regions with Uttar Pradesh first
+    targetCities = [
+      ...UTTAR_PRADESH_CITIES,
+      ...PUNJAB_CITIES,
+      ...HARYANA_CITIES,
+      ...UTTARAKHAND_CITIES,
+      ...RAJASTHAN_CITIES,
+    ];
   }
 
   const targetCleanSet = new Set(targetCities.map((c) => cleanCity(c)));
 
-  // Filter from masterRoutes
-  const filtered = masterRoutes.filter((r) => {
-    const toClean = cleanCity(r.to);
-    return targetCleanSet.has(toClean);
-  });
+  // Filter from masterRoutes and deduplicate
+  const seenPairs = new Set<string>();
+  const uniqueMasterRoutes: typeof masterRoutes = [];
+
+  // Prioritize "Noida" origin routes first
+  const noidaRoutes = masterRoutes.filter(
+    (r) => cleanCity(r.from) === "noida" && targetCleanSet.has(cleanCity(r.to))
+  );
+  const otherRoutes = masterRoutes.filter(
+    (r) => cleanCity(r.from) !== "noida" && targetCleanSet.has(cleanCity(r.to))
+  );
+
+  for (const r of [...noidaRoutes, ...otherRoutes]) {
+    // Skip self-routes
+    if (cleanCity(r.from) === cleanCity(r.to)) continue;
+    const pairKey = `${cleanCity(r.from)}->${cleanCity(r.to)}`;
+    if (seenPairs.has(pairKey)) continue;
+    seenPairs.add(pairKey);
+    uniqueMasterRoutes.push(r);
+  }
 
   const vNorm = normalizeVehicleKey(vehicleSlug);
 
-  return filtered.map((r) => {
-    const numDist = typeof r.distance === "number" ? r.distance : parseInt(String(r.distance).replace(/[^0-9]/g, "")) || 200;
+  return uniqueMasterRoutes.map((r) => {
+    const numDist =
+      typeof r.distance === "number"
+        ? r.distance
+        : parseInt(String(r.distance).replace(/[^0-9]/g, "")) || 200;
     const fare = calculateStartingFare(numDist, vNorm);
     const toSlug = slugify(r.to);
     const fromSlug = slugify(r.from);
@@ -270,6 +428,14 @@ export function getRegionalRoutesFromMaster(
 // -------------------------------------------------------------
 export const cityCabRoutesData: CityCabRouteGroup[] = [
   {
+    region: "Uttar Pradesh",
+    tagline: REGIONAL_METADATA["Uttar Pradesh"].tagline,
+    badge: REGIONAL_METADATA["Uttar Pradesh"].badge,
+    description: REGIONAL_METADATA["Uttar Pradesh"].description,
+    cities: UTTAR_PRADESH_CITIES,
+    items: getRegionalRoutesFromMaster("Uttar Pradesh", "taxi"),
+  },
+  {
     region: "Punjab",
     tagline: REGIONAL_METADATA["Punjab"].tagline,
     badge: REGIONAL_METADATA["Punjab"].badge,
@@ -292,14 +458,6 @@ export const cityCabRoutesData: CityCabRouteGroup[] = [
     description: REGIONAL_METADATA["Uttarakhand"].description,
     cities: UTTARAKHAND_CITIES,
     items: getRegionalRoutesFromMaster("Uttarakhand", "taxi"),
-  },
-  {
-    region: "Uttar Pradesh",
-    tagline: REGIONAL_METADATA["Uttar Pradesh"].tagline,
-    badge: REGIONAL_METADATA["Uttar Pradesh"].badge,
-    description: REGIONAL_METADATA["Uttar Pradesh"].description,
-    cities: UTTAR_PRADESH_CITIES,
-    items: getRegionalRoutesFromMaster("Uttar Pradesh", "taxi"),
   },
   {
     region: "Rajasthan",

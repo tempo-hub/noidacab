@@ -59,9 +59,29 @@ interface Props {
 }
 
 export default function DynamicCityContactPage({ city }: Props) {
-  const isRegionalContactPage = ["punjab", "uttarakhand"].includes(
-    city.slug.toLowerCase()
-  );
+  const cleanSlug = city.slug.toLowerCase().trim();
+  const cleanName = city.name.toLowerCase().trim();
+  const isRegionalContactPage =
+    city.name.toLowerCase() === city.state.toLowerCase() ||
+    [
+      "punjab",
+      "uttarakhand",
+      "uttrakhand",
+      "uttar-pradesh",
+      "uttarpradesh",
+      "haryana",
+      "rajasthan",
+    ].includes(cleanSlug) ||
+    [
+      "punjab",
+      "uttarakhand",
+      "uttar pradesh",
+      "haryana",
+      "rajasthan",
+    ].includes(cleanName) ||
+    cleanSlug.includes("uttar-pradesh") ||
+    cleanSlug.includes("uttarpradesh") ||
+    cleanName.includes("uttar pradesh");
   const whatsappUrl = `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(
     `Hi NoidaCab, I need an immediate taxi booking / assistance in ${city.name}. Please share vehicle availability and fares.`
   )}`;

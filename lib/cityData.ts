@@ -229,6 +229,28 @@ export const citiesData: Record<string, CityInfo> = {
     popularOutstation: ["Delhi", "Noida", "Gurgaon", "Chandigarh", "Shimla", "Manali", "Dharamshala", "Jammu", "Katra", "Jaipur"],
     tagline: "Explore Punjab's Historic Cities, Gurudwaras & Vibrant Corridors with Reliable Cabs",
   },
+  "uttar-pradesh": {
+    name: "Uttar Pradesh",
+    slug: "uttar-pradesh",
+    state: "Uttar Pradesh",
+    airportName: "Lucknow (LKO), Varanasi (VNS), Ayodhya (AYJ) & Noida Jewar (DXN)",
+    airportCode: "LKO",
+    localities: ["Lucknow", "Varanasi", "Ayodhya", "Prayagraj", "Agra", "Mathura", "Noida", "Kanpur", "Gorakhpur", "Bareilly", "Meerut"],
+    attractions: ["Kashi Vishwanath Temple", "Ram Janmabhoomi Mandir", "Taj Mahal Agra", "Triveni Sangam Prayagraj", "Prem Mandir Vrindavan", "Bara Imambara Lucknow"],
+    popularOutstation: ["Delhi", "Noida", "Gurgaon", "Haridwar", "Dehradun", "Jaipur", "Chandigarh"],
+    tagline: "Explore Uttar Pradesh's Heritage, Pilgrimage & Express Corridors with Reliable Cabs",
+  },
+  uttarpradesh: {
+    name: "Uttar Pradesh",
+    slug: "uttar-pradesh",
+    state: "Uttar Pradesh",
+    airportName: "Lucknow (LKO), Varanasi (VNS), Ayodhya (AYJ) & Noida Jewar (DXN)",
+    airportCode: "LKO",
+    localities: ["Lucknow", "Varanasi", "Ayodhya", "Prayagraj", "Agra", "Mathura", "Noida", "Kanpur", "Gorakhpur", "Bareilly", "Meerut"],
+    attractions: ["Kashi Vishwanath Temple", "Ram Janmabhoomi Mandir", "Taj Mahal Agra", "Triveni Sangam Prayagraj", "Prem Mandir Vrindavan", "Bara Imambara Lucknow"],
+    popularOutstation: ["Delhi", "Noida", "Gurgaon", "Haridwar", "Dehradun", "Jaipur", "Chandigarh"],
+    tagline: "Explore Uttar Pradesh's Heritage, Pilgrimage & Express Corridors with Reliable Cabs",
+  },
 };
 
 export function getCityDetails(citySlugOrName?: string): CityInfo {
