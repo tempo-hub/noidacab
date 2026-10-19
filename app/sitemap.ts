@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     seenUrls.add(fullUrl);
 
     entries.push({
-      url: escapeXml(fullUrl),
+      url: fullUrl,
       lastModified: now,
       changeFrequency,
       priority,
