@@ -225,7 +225,7 @@ export default function DynamicCityContactPage({ city }: Props) {
         </div>
       </section>
 
-      {/* 2. CONTACT CONTENT - Exact 2-Column layout matching ContactPage.tsx */}
+      {/* 2. CONTACT CONTENT - Exact 2-Column layout matching ContactPage.tsx file */}
       <section className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
