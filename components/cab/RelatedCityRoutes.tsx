@@ -327,7 +327,7 @@ export default function RelatedCityRoutes({
               <span>Call 8377809809</span>
             </a>
             <a
-              href={`https://wa.me/918377809809?text=${encodeURIComponent(
+              href={`https://wa.me/919818022687?text=${encodeURIComponent(
                 `Hello NoidaCab, I want to book a ${vehicleName} cab from Noida to ${selectedRegion}. Please share availability and best fare.`
               )}`}
               target="_blank"

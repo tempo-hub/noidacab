@@ -232,7 +232,7 @@ export default function DynamicOneWayTaxiPage({ city }: Props) {
             {/* Buttons */}
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href={`https://wa.me/918377809809?text=${encodeURIComponent(
+                href={`https://wa.me/919818022687?text=${encodeURIComponent(
                   `Hello NoidaCab, I want to book a one-way cab from ${city.name}. Please confirm route availability and fare details.`
                 )}`}
                 target="_blank"

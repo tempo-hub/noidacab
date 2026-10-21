@@ -17,7 +17,7 @@ interface FareHeroProps {
 }
 
 export default function FareHero({ cityName = "Noida", tagline }: FareHeroProps) {
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I would like to book a taxi in ${cityName}. Please confirm rates and driver dispatch.`
   )}`;
 

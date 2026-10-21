@@ -16,7 +16,8 @@ import VehicleTrust from "../taxi/VehicleTrust";
 export default function NoidaTaxiContactPage() {
   const phone = "8377809809";
   const displayPhone = "+91 8377809809";
-  const whatsappUrl = `https://wa.me/91${phone}?text=${encodeURIComponent(
+  const whatsappNumber = "919818022687"; // WhatsApp number for instant booking
+  const whatsappUrl = `https://wa.me/91${whatsappNumber}?text=${encodeURIComponent(
     "Hi NoidaCab, I need an urgent taxi booking in Noida. Please share vehicle availability."
   )}`;
 

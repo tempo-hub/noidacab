@@ -34,7 +34,7 @@ export function JourneyInfo({ location, vehicle }: Props) {
 
   const vehicleTypeLabel = isTempo ? "rental" : "cab";
 
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${vehicle.name} ${vehicleTypeLabel} for pickup in ${location.name}. Please confirm dispatch.`
   )}`;
 

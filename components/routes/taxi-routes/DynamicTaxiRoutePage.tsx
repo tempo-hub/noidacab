@@ -411,7 +411,7 @@ export default function DynamicTaxiRoutePage({ route }: DynamicTaxiRoutePageProp
     ],
   };
 
-  const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a taxi from ${fromCity} to ${toCity} (${route.distance}, Starting ${route.fare}). Please confirm fare & availability.`
   )}`;
 

@@ -65,7 +65,7 @@ export default function VehicleRouteBase({ route, config }: Props) {
   const fromSlug = route.from.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
   const toSlug = route.to.toLowerCase().replace(/^route-/, "").replace(/[^a-z0-9]+/g, "-");
 
-  const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${config.vehicleName} for route: ${route.from} to ${route.to} (${route.distance}, Estimated ₹${oneWayFare.toLocaleString("en-IN")}). Please confirm availability & driver dispatch.`
   )}`;
 

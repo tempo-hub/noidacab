@@ -63,7 +63,7 @@ export default function RouteFAQs({ route }: RouteFAQsProps) {
     },
   ];
 
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${vehicle} from ${from} to ${to}. Please confirm the fare and availability.`
   )}`;
 

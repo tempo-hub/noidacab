@@ -108,7 +108,7 @@ export default function VehicleBooking({
               {/* Action Buttons Box */}
               <div className="flex flex-col sm:flex-row lg:flex-col gap-3.5 justify-center">
                 <a
-                  href={`https://wa.me/918377809809?text=${waMessage}`}
+                  href={`https://wa.me/919818022687?text=${waMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 rounded-xl bg-amber-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-amber-500 active:scale-[0.99]"

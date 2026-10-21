@@ -66,7 +66,7 @@ export default function VehicleCTA({
           {/* Dual Action CTAs */}
           <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
             <a
-              href={`https://wa.me/918377809809?text=${waMessage}`}
+              href={`https://wa.me/919818022687?text=${waMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-slate-950 px-7 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-slate-900 active:scale-[0.98]"

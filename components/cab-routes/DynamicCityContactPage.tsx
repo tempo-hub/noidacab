@@ -18,6 +18,7 @@ import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 
 const PHONE_NUMBER = "8377809809";
 const DISPLAY_PHONE = "+91-8377809809";
+const WHATSAPP_NUMBER = "9818022687";
 
 const socialLinks = [
   {
@@ -82,7 +83,7 @@ export default function DynamicCityContactPage({ city }: Props) {
     cleanSlug.includes("uttar-pradesh") ||
     cleanSlug.includes("uttarpradesh") ||
     cleanName.includes("uttar pradesh");
-  const whatsappUrl = `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/91${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     `Hi NoidaCab, I need an immediate taxi booking / assistance in ${city.name}. Please share vehicle availability and fares.`
   )}`;
 
@@ -94,7 +95,7 @@ export default function DynamicCityContactPage({ city }: Props) {
         "@id": `https://www.noidacab.com/${city.slug}-taxi-contact-number#webpage`,
         url: `https://www.noidacab.com/${city.slug}-taxi-contact-number`,
         name: `${city.name} Taxi Contact Number | 24/7 Helpline`,
-        description: `24x7 Cab booking helpline and customer support contact number for ${city.name}. Call +91-8377809809 for immediate driver dispatch.`,
+        description: `24x7 Cab booking helpline and customer support contact number for ${city.name}. Call +91-9818022687 for immediate driver dispatch.`,
       },
       {
         "@type": "TaxiService",
@@ -135,7 +136,7 @@ export default function DynamicCityContactPage({ city }: Props) {
             name: `Can I book a cab in ${city.name} via WhatsApp?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Yes, you can directly WhatsApp us at +91-${PHONE_NUMBER} with your pickup locality, destination, and travel date for instant fare quotations and driver allocation.`,
+              text: `Yes, you can directly WhatsApp us at +91-${WHATSAPP_NUMBER} with your pickup locality, destination, and travel date for instant fare quotations and driver allocation.`,
             },
           },
           {
@@ -225,7 +226,7 @@ export default function DynamicCityContactPage({ city }: Props) {
         </div>
       </section>
 
-      {/* 2. CONTACT CONTENT - Exact 2-Column layout matching ContactPage.tsx file */}
+      {/* 2. CONTACT CONTENT - Exact 2-Column layout matching ContactPage.tsx */}
       <section className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
@@ -554,7 +555,7 @@ export default function DynamicCityContactPage({ city }: Props) {
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 Our round-the-clock booking helpline in {city.name} is{" "}
-                <a href={`tel:+91${PHONE_NUMBER}`} className="font-bold text-amber-600 hover:underline">
+                <a href={`tel:+91${WHATSAPP_NUMBER}`} className="font-bold text-amber-600 hover:underline">
                   {DISPLAY_PHONE}
                 </a>
                 . You can call or WhatsApp anytime to receive an instant vehicle quotation and driver confirmation.

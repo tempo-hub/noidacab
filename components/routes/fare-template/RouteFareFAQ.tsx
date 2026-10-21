@@ -48,7 +48,7 @@ export default function RouteFareFAQ({ route }: { route: RouteData }) {
     },
     {
       question: `How do I confirm my ${route.from.name} to ${route.to.name} taxi booking?`,
-      answer: `You can book instantly by messaging our dispatch coordinator on WhatsApp or dialing our 24x7 helpline at 8377809809 with your pickup address, date, and preferred vehicle class.`,
+      answer: `You can book instantly by messaging our dispatch coordinator on WhatsApp or dialing our 24x7 helpline at 9818022687 with your pickup address, date, and preferred vehicle class.`,
     },
   ];
 

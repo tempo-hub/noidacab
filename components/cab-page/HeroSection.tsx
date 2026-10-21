@@ -24,6 +24,7 @@ type Props = {
   tagline?: string;
   fare?: number;
   phoneNumber?: string;
+  whatsappNumber?: string;
 };
 
 export function HeroSection({
@@ -32,6 +33,7 @@ export function HeroSection({
   tagline,
   fare,
   phoneNumber = "918377809809",
+  whatsappNumber = "919818022687",
 }: Props) {
   // Check if current vehicle is a Tempo Traveller or Force Urbania
   const isTempo =
@@ -41,7 +43,7 @@ export function HeroSection({
     vehicle.name?.toLowerCase().includes("tempo") ||
     vehicle.name?.toLowerCase().includes("urbania");
 
-  const whatsappBookingUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+  const whatsappBookingUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${vehicle.name} ${
       isTempo ? "rental" : "cab"
     } in ${location.name}. Please confirm driver arrival and pricing.`

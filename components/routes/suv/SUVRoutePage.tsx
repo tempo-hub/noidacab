@@ -139,15 +139,15 @@ export function SUVRoutePage({ route }: { route: RouteProp }) {
   };
 
   // WhatsApp Booking URLs
-  const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book an SUV Taxi (Ertiga / Innova Crysta) from ${fromName} to ${toName} (${distanceDisplay}, Est. starting fare ₹${oneWayFare.toLocaleString("en-IN")}). Please confirm availability.`
   )}`;
 
-  const ertigaBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const ertigaBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book Maruti Ertiga 6-Seater SUV from ${fromName} to ${toName} (${distanceDisplay}, Est. fare ₹${ertigaOneWayFare.toLocaleString("en-IN")}). Please confirm availability.`
   )}`;
 
-  const innovaBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const innovaBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book Toyota Innova Crysta 7-Seater SUV from ${fromName} to ${toName} (${distanceDisplay}, Est. fare ₹${innovaOneWayFare.toLocaleString("en-IN")}). Please confirm availability.`
   )}`;
 
@@ -193,7 +193,7 @@ export function SUVRoutePage({ route }: { route: RouteProp }) {
     },
     {
       q: `How can I book an urgent or early morning SUV taxi from ${fromName} to ${toName}?`,
-      a: `You can instantly book via WhatsApp or call our 24x7 booking desk at +91-8377809809. We confirm driver assignment and vehicle registration details within 15 minutes.`,
+      a: `You can instantly book via WhatsApp or call our 24x7 booking desk at +91-9818022687. We confirm driver assignment and vehicle registration details within 15 minutes.`,
     },
   ];
 

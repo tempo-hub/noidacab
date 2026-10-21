@@ -8,7 +8,7 @@ export const faqs: FAQ[] = [
   {
     question: "How do I book a taxi in Noida?",
     answer:
-      "Call or WhatsApp 8377809809 with your pickup point, drop location, date and time. Choose your cab, confirm the fare and receive driver details before pickup.",
+      "Call or WhatsApp 9818022687 with your pickup point, drop location, date and time. Choose your cab, confirm the fare and receive driver details before pickup.",
   },
   {
     question: "Is your cab service in Noida available 24x7?",
@@ -102,7 +102,7 @@ export const tempoTravellerFaqs: FAQ[] = [
     question:
       "How can I book a Noida to Delhi Tempo Traveller?",
     answer:
-      "Call us at 844-844-5504 or send a message on WhatsApp at 6280820037 with your pickup point, group size, and travel date. We confirm the seater option, fare, and driver details before your trip starts, so you know exactly what to expect.",
+      "Call us at 844-844-5504 or send a message on WhatsApp at 919818022687 with your pickup point, group size, and travel date. We confirm the seater option, fare, and driver details before your trip starts, so you know exactly what to expect.",
   },
   {
     question:

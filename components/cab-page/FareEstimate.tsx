@@ -35,7 +35,7 @@ export function FareEstimate({ location, vehicle }: Props) {
 
   const vehicleLabel = isTempo ? "rental" : "cab";
 
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want an exact fare quotation for a ${vehicle.name} ${vehicleLabel} in ${location.name}.`
   )}`;
 

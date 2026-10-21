@@ -100,7 +100,7 @@ export function OneWayVehicles() {
         {/* ================= VEHICLE CARDS GRID ================= */}
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {vehicles.map((vehicle) => {
-            const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+            const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
               `Hello NoidaCab, I want to book a one-way cab: ${vehicle.name} (${vehicle.rate}). Please share driver availability.`
             )}`;
 

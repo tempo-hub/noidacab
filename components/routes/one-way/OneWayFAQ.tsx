@@ -43,7 +43,7 @@ export function OneWayFAQ({ route }: Props) {
     },
     {
       question: `How can I confirm my ${route.from} to ${route.to} one-way cab booking?`,
-      answer: `You can confirm your booking instantly via WhatsApp or by calling our 24x7 helpline at +91-8377809809. We assign your driver and vehicle details right away.`,
+      answer: `You can confirm your booking instantly via WhatsApp or by calling our 24x7 helpline at +91-9818022687. We assign your driver and vehicle details right away.`,
     },
   ];
 

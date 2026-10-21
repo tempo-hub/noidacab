@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Noida Taxi Contact Number - 24x7 Booking Helpline",
     description:
-      "Instant cab booking in Noida. Call or WhatsApp +91-8377809809. Verified drivers, sanitized cars, fast 10-minute doorstep arrival.",
+      "Instant cab booking in Noida. Call or WhatsApp +91-9818022687. Verified drivers, sanitized cars, fast 10-minute doorstep arrival.",
     url: "https://www.noidacab.com/noida-taxi-contact-number",
     siteName: "NoidaCab",
   },

@@ -10,7 +10,7 @@ const JWT_SECRET = new TextEncoder().encode(
 export async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
-  // Protect all /admin routes except /admin/login fiexed or not
+  // Protect all /admin routes except /admin/login
   if (path.startsWith("/admin") && path !== "/admin/login") {
     const token = req.cookies.get("admin_token")?.value;
 

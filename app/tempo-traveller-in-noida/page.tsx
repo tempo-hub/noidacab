@@ -344,7 +344,7 @@ export default function TempoTravellerPage() {
                 </a>
 
                 <a
-  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+  href={`https://wa.me/919818022687?text=${encodeURIComponent(
     "Hello NoidaCab, I want to inquire and book a cab. Please share details and availability."
   )}`}
   target="_blank"
@@ -1312,7 +1312,7 @@ export default function TempoTravellerPage() {
               </a>
 
               <a
-                href="https://wa.me/918377809809"
+                href="https://wa.me/919818022687"
                 className="inline-flex items-center justify-center rounded-xl border border-slate-900/20 bg-white px-6 py-3.5 text-sm font-bold text-slate-900 transition hover:bg-slate-50"
               >
                 WhatsApp Us

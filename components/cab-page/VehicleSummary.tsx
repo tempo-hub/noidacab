@@ -22,7 +22,7 @@ type Props = {
 };
 
 export function VehicleSummary({ location, vehicle }: Props) {
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to reserve the ${vehicle.name} cab in ${location.name}. Please confirm dispatch timing.`
   )}`;
 
