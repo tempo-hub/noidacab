@@ -27,8 +27,10 @@ export default function AllCityRoutes({
   subtitle,
   badge = "Popular Routes",
 }: Props) {
+  const pageSize = 9;
   const [search, setSearch] = useState("");
   const [selectedCity, setSelectedCity] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Collect unique departure cities
   const cities = ["All", ...Array.from(new Set(routes.map((r) => r.from.split(" ")[0].replace(",", ""))))];
@@ -50,6 +52,11 @@ export default function AllCityRoutes({
       item.recommendedVehicle.toLowerCase().includes(q)
     );
   });
+  const totalPages = Math.ceil(filteredRoutes.length / pageSize);
+  const visibleRoutes = filteredRoutes.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
   return (
     <section id="routes" className="bg-white/95 py-12 sm:py-12 border-b border-gray-200">
@@ -74,7 +81,10 @@ export default function AllCityRoutes({
                 <button
                   key={city}
                   type="button"
-                  onClick={() => setSelectedCity(city)}
+                  onClick={() => {
+                    setSelectedCity(city);
+                    setCurrentPage(1);
+                  }}
                   className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                     selectedCity === city
                       ? "bg-amber-600 text-white shadow-sm"
@@ -93,8 +103,11 @@ export default function AllCityRoutes({
                 type="text"
                 placeholder="Search route or landmark..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 bg-white"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="w-full pl-10 pr-4 py-2 text-sm text-slate-800 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 bg-white"
               />
             </div>
           </div>
@@ -102,7 +115,7 @@ export default function AllCityRoutes({
 
         {/* Routes Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredRoutes.map((route) => {
+          {visibleRoutes.map((route) => {
             const calculatedFare = (() => {
               const distMatch = route.distance.match(/\d+(\.\d+)?/);
               const rateMatch = (route.perKmRate || "₹10/km").match(/\d+(\.\d+)?/);
@@ -325,6 +338,40 @@ export default function AllCityRoutes({
             );
           })}
         </div>
+
+        {totalPages > 1 && (
+          <nav
+            aria-label="Route pages"
+            className="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row"
+          >
+            <p className="text-sm text-gray-600" aria-live="polite">
+              Showing {(currentPage - 1) * pageSize + 1}–
+              {Math.min(currentPage * pageSize, filteredRoutes.length)} of{" "}
+              {filteredRoutes.length} routes
+            </p>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setCurrentPage((page) => page - 1)}
+                disabled={currentPage === 1}
+                className="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-amber-300 hover:text-amber-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Previous
+              </button>
+              <span className="text-sm font-semibold text-gray-700" aria-current="page">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                type="button"
+                onClick={() => setCurrentPage((page) => page + 1)}
+                disabled={currentPage === totalPages}
+                className="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-amber-300 hover:text-amber-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Next
+              </button>
+            </div>
+          </nav>
+        )}
 
         {filteredRoutes.length === 0 && (
           <div className="text-center py-16 bg-white rounded-3xl border border-gray-200 mt-6">
