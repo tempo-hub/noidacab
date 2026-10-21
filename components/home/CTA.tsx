@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 
 const PHONE_NUMBER = "+918377809809";
-const WHATSAPP_NUMBER = "+918377809809";
+const WHATSAPP_NUMBER = "+919818022687";
 
 export default function CTASection() {
   return (

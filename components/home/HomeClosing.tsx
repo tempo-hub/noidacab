@@ -12,7 +12,7 @@ export default function HomeClosing() {
               <p className="mt-4 leading-7 text-slate-300">Whether you are heading to the airport, going to Delhi for a meeting or planning a family trip, your cab is one call away.</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <a href="https://wa.me/918377809809" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 bg-amber-400 px-5 font-bold text-slate-950 hover:bg-amber-300">
+              <a href="https://wa.me/919818022687" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 bg-amber-400 px-5 font-bold text-slate-950 hover:bg-amber-300">
                 Book on WhatsApp
               </a>
               <a href="tel:+918377809809" className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/40 px-5 font-bold text-white hover:bg-white/10">

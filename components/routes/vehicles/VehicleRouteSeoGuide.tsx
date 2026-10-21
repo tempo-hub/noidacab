@@ -64,7 +64,7 @@ export default function VehicleRouteSeoGuide({ route, vehicleSlug, vehicleName }
     `Key tourist landmarks, heritage sights & holy shrines in ${route.to}`,
   ];
 
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book ${displayName} from ${route.from} to ${route.to} (~${distanceText}). Please share instant quote & driver details.`
   )}`;
 

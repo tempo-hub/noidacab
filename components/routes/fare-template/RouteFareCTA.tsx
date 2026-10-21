@@ -35,7 +35,7 @@ export default function RouteFareCTA({ route }: { route: RouteData }) {
             {/* Action Buttons */}
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <Link
-                href={`https://wa.me/918377809809?text=${waMessage}`}
+                href={`https://wa.me/919818022687?text=${waMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-xs sm:text-sm font-extrabold text-amber-700 shadow-md transition-all hover:bg-amber-50 active:scale-[0.98] sm:w-auto"

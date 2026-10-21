@@ -115,7 +115,7 @@ export default function HowToBook() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
             <a
-              href="https://wa.me/918377809809?text=Hi%2C%20I%20would%20like%20to%20book%20a%20cab%20now."
+              href="https://wa.me/919818022687?text=Hi%2C%20I%20would%20like%20to%20book%20a%20cab%20now."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm sm:text-base font-bold text-amber-700 shadow-md hover:bg-amber-50 transition"

@@ -67,7 +67,7 @@ export function PickupDropLocations({ location, vehicle }: Props) {
     isRoute = false;
   }
 
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     isRoute
       ? `Hello NoidaCab, I need to schedule a doorstep pickup in ${fromCity} for a drop in ${toCity} with a ${vehicle.name} ${vehicleLabel}. Please confirm availability.`
       : `Hello NoidaCab, I need to schedule a doorstep pickup in ${fromCity} for a ${vehicle.name} ${vehicleLabel}.`

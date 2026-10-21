@@ -29,8 +29,9 @@ interface Props {
 export default function RouteContactTemplate({ route }: Props) {
   const phone = "8377809809";
   const displayPhone = "+91 8377809809";
+  const whatsappNumber = "91818022687";
 
-  const whatsappUrl = `https://wa.me/91${phone}?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/91${whatsappNumber}?text=${encodeURIComponent(
     `Hello NoidaCab, I need an urgent taxi booking from ${route.from} to ${route.to}. Please confirm cab availability and fare.`
   )}`;
 
@@ -99,7 +100,7 @@ export default function RouteContactTemplate({ route }: Props) {
             name: `What is the taxi contact number for ${route.from} to ${route.to}?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `The 24/7 taxi booking contact number for ${route.from} to ${route.to} is +91-8377809809. You can call or WhatsApp anytime for immediate vehicle dispatch.`,
+              text: `The 24/7 taxi booking contact number for ${route.from} to ${route.to} is +91-9818022687. You can call or WhatsApp anytime for immediate vehicle dispatch.`,
             },
           },
           {
@@ -175,11 +176,11 @@ export default function RouteContactTemplate({ route }: Props) {
   const faqs = [
     {
       q: `What is the 24x7 cab booking contact number for ${route.from} to ${route.to}?`,
-      a: `You can reach our round-the-clock booking coordinator at +91-8377809809. We accept both instant phone bookings and WhatsApp reservations with immediate driver allocation.`,
+      a: `You can reach our round-the-clock booking coordinator at +91-9818022687. We accept both instant phone bookings and WhatsApp reservations with immediate driver allocation.`,
     },
     {
       q: `Can I book an emergency or early morning flight cab between ${route.from} and ${route.to}?`,
-      a: `Yes! Our dispatch desk operates 24/7/365. For early morning flight pickups or emergency late-night travel, dial +91-8377809809 or WhatsApp us. A confirmed cab will arrive at your doorstep within 20–30 minutes.`,
+      a: `Yes! Our dispatch desk operates 24/7/365. For early morning flight pickups or emergency late-night travel, dial +91-9818022687 or WhatsApp us. A confirmed cab will arrive at your doorstep within 20–30 minutes.`,
     },
     {
       q: `What is the distance and travel time from ${route.from} to ${route.to}?`,

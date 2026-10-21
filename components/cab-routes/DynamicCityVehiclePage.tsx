@@ -36,6 +36,7 @@ import CabCTA from "@/components/cab/CabCTA";
 
 const PHONE_NUMBER = "8377809809";
 const DISPLAY_PHONE = "+91 8377809809";
+const WHATSAPP_NUMBER = "9818022687";
 
 interface Props {
   city: CityInfo;
@@ -74,7 +75,7 @@ export default function DynamicCityVehiclePage({
     customSubtitle ||
     `Book a reliable, clean, and sanitized ${vehicle.name} ${vehicleServiceType.toLowerCase()} in ${city.name} (${city.state}). Features ${vehicle.seats} pushback seats, dual AC, space for ${vehicle.luggage} bags, verified commercial drivers, and flat per-km tariffs starting at ${vehicle.price}. Doorstep pickup across ${city.localities.slice(0, 4).join(", ")}.`;
 
-  const whatsappHeroUrl = `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(
+  const whatsappHeroUrl = `https://wa.me/91${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     `Hi NoidaCab, I want to book a ${vehicle.name} in ${city.name}. Please confirm vehicle availability and fare quotation.`
   )}`;
 
@@ -93,7 +94,7 @@ export default function DynamicCityVehiclePage({
 Please share instant driver allocation and fare quote.`;
 
     window.open(
-      `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(text)}`,
+      `https://wa.me/91${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
       "_blank"
     );
   };

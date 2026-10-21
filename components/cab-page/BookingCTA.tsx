@@ -35,7 +35,7 @@ export function BookingCTA({ location, vehicle, url }: Props) {
 
   const vehicleLabel = isTempo ? "rental" : "cab";
 
-  const defaultWhatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const defaultWhatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${vehicle.name} ${vehicleLabel} in ${location.name}. Please confirm availability and rates.`
   )}`;
 

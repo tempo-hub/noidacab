@@ -84,7 +84,7 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
     name: `${route.from.replace(/^Route\s+/i, "")} to ${route.to}`,
   };
 
-  const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book Maruti Ertiga from ${route.from} to ${route.to} (${distanceDisplay}, Est fare ₹${oneWayFare}). Please confirm availability.`
   )}`;
 

@@ -134,7 +134,7 @@ export default function RouteFareHero({ route, vehicle }: RouteFareHeroProps) {
             {/* Action Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href={`https://wa.me/918377809809?text=${waMessage}`}
+                href={`https://wa.me/919818022687?text=${waMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 rounded-xl bg-slate-950 px-7 py-3.5 text-sm font-black text-white shadow-xl shadow-slate-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"

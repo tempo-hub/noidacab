@@ -120,7 +120,7 @@ export default function RouteFareTable({ route }: { route: RouteData }) {
                       {/* Book / WhatsApp Button */}
                       <td className="px-6 py-4.5 text-center">
                         <a
-                          href={`https://wa.me/918377809809?text=${waMessage}`}
+                          href={`https://wa.me/919818022687?text=${waMessage}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 rounded-xl bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-2xs transition hover:bg-amber-700 active:scale-[0.98]"

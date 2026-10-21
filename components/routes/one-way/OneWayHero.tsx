@@ -23,7 +23,7 @@ type Props = {
 };
 
 export function OneWayHero({ route }: Props) {
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a one-way cab from ${route.from} to ${route.to} (${route.distance}, ${route.travelTime}). Please confirm availability and fare details.`
   )}`;
 

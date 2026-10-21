@@ -258,38 +258,38 @@ export async function generateMetadata({
   // DYNAMIC CITY VEHICLE METADATA (Dzire, Sedan, Innova, etc.)
   // ============================================
   const dynamicCityVehicle = parseDynamicCityVehicleUrl(url);
-if (dynamicCityVehicle) {
-  const { vehicle, cityInfo } = dynamicCityVehicle;
+  if (dynamicCityVehicle) {
+    const { vehicle, cityInfo } = dynamicCityVehicle;
 
-  // Tempo Traveller / Urbania (incl. seater variants like "12 Seater Tempo
-  // Traveller") are rented, not hailed as a taxi/cab — keep "Taxi"/"Cab"
-  // out of their copy so it matches how people actually search for these.
-  const isTravellerType = /tempo traveller|urbania|traveller/i.test(vehicle.name);
+    // Tempo Traveller / Urbania (incl. seater variants like "12 Seater Tempo
+    // Traveller") are rented, not hailed as a taxi/cab — keep "Taxi"/"Cab"
+    // out of their copy so it matches how people actually search for these.
+    const isTravellerType = /tempo traveller|urbania|traveller/i.test(vehicle.name);
 
-  if (isTravellerType) {
+    if (isTravellerType) {
+      return {
+        title: `${vehicle.name} in ${cityInfo.name} | Starting @ ${vehicle.price} - NoidaCab`,
+        description: `Book ${vehicle.name} in ${cityInfo.name} for group tours, family trips, weddings, and outstation journeys. Clean, well-maintained vehicles with verified drivers and 24/7 support.`,
+        alternates: { canonical: `https://www.noidacab.com${url}` },
+        openGraph: {
+          title: `${vehicle.name} in ${cityInfo.name} | NoidaCab`,
+          description: `Book ${vehicle.name} in ${cityInfo.name} starting from ${vehicle.price}.`,
+          url: `https://www.noidacab.com${url}`,
+        },
+      };
+    }
+
     return {
-      title: `${vehicle.name} in ${cityInfo.name} | Starting @ ${vehicle.price} - NoidaCab`,
-      description: `Book ${vehicle.name} in ${cityInfo.name} for group tours, family trips, weddings, and outstation journeys. Clean, well-maintained vehicles with verified drivers and 24/7 support.`,
+      title: `${vehicle.name} Taxi in ${cityInfo.name} | Reliable Cabs @ ${vehicle.price} - NoidaCab`,
+      description: `Book ${vehicle.name} cab in ${cityInfo.name} for local sightseeing, airport transfers, and outstation trips. Clean AC vehicles, verified chauffeurs, and 24/7 on-time pickup.`,
       alternates: { canonical: `https://www.noidacab.com${url}` },
       openGraph: {
-        title: `${vehicle.name} in ${cityInfo.name} | NoidaCab`,
+        title: `${vehicle.name} Taxi in ${cityInfo.name} | NoidaCab`,
         description: `Book ${vehicle.name} in ${cityInfo.name} starting from ${vehicle.price}.`,
         url: `https://www.noidacab.com${url}`,
       },
     };
   }
-
-  return {
-    title: `${vehicle.name} Taxi in ${cityInfo.name} | Reliable Cabs @ ${vehicle.price} - NoidaCab`,
-    description: `Book ${vehicle.name} cab in ${cityInfo.name} for local sightseeing, airport transfers, and outstation trips. Clean AC vehicles, verified chauffeurs, and 24/7 on-time pickup.`,
-    alternates: { canonical: `https://www.noidacab.com${url}` },
-    openGraph: {
-      title: `${vehicle.name} Taxi in ${cityInfo.name} | NoidaCab`,
-      description: `Book ${vehicle.name} in ${cityInfo.name} starting from ${vehicle.price}.`,
-      url: `https://www.noidacab.com${url}`,
-    },
-  };
-}
 
   /* ====================================
   local cabs outstation corportate
@@ -467,7 +467,7 @@ if (dynamicCityVehicle) {
       },
       openGraph: {
         title: `${cityInfo.name} Taxi Contact Number - 24x7 Booking Helpline`,
-        description: `Instant cab booking in ${cityInfo.name}. Call or WhatsApp +91-8377809809. Verified drivers, sanitized cars, fast doorstep arrival.`,
+        description: `Instant cab booking in ${cityInfo.name}. Call or WhatsApp +91-9818022687. Verified drivers, sanitized cars, fast doorstep arrival.`,
         url: `https://www.noidacab.com${url}`,
         siteName: "NoidaCab",
         type: "website",
@@ -822,7 +822,7 @@ export default async function CabPage({
   // ============================================
   // DISTANCE & TRAVEL TIME
   // ============================================
-if (rawSlug.startsWith("distance-travel-time-in-")) {
+  if (rawSlug.startsWith("distance-travel-time-in-")) {
     const rawCity = rawSlug.replace("distance-travel-time-in-", "");
     const cityKey = Object.keys(citiesData).find(
       (k) =>

@@ -292,7 +292,7 @@ export default function AllCityRoutes({
                   </Link>
 
                   <a
-                    href={`https://wa.me/918377809809?text=${encodeURIComponent(bookingText)}`}
+                    href={`https://wa.me/919818022687?text=${encodeURIComponent(bookingText)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="WhatsApp Booking"

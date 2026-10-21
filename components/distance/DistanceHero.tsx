@@ -24,14 +24,16 @@ interface DistanceHeroProps {
   };
   bookingUrl?: string;
   phoneNumber?: string;
+  whatsappNumber?: string;
 }
 
 export default function DistanceHero({
   route,
   bookingUrl,
   phoneNumber = "918377809809",
+  whatsappNumber = "919818022687",
 }: DistanceHeroProps) {
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     `Hello NoidaCab, I want to inquire about distance, routes, and cab fares from ${route.from.name} to ${route.to.name} (${route.distance} km). Please share details.`
   )}`;
 

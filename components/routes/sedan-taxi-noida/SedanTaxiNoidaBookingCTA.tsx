@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 const PHONE = "8377809809";
-const WHATSAPP_NUMBER = "918377809809";
+const WHATSAPP_NUMBER = "919818022687";
 
 export default function SedanTaxiNoidaBookingCTA() {
   const whatsappMessage = encodeURIComponent(

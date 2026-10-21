@@ -111,7 +111,7 @@ export default function VehicleFAQ({ vehicle }: { vehicle: Vehicle }) {
               8377809809
             </a>
             <a
-              href={`https://wa.me/918377809809?text=Hi,%20I%20have%20a%20question%20about%20booking%20a%20${encodeURIComponent(vehicle.name)}.`}
+              href={`https://wa.me/919818022687?text=Hi,%20I%20have%20a%20question%20about%20booking%20a%20${encodeURIComponent(vehicle.name)}.`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-xl bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-amber-700 transition"

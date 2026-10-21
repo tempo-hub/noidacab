@@ -59,7 +59,7 @@ const suvVehicles = vehicles.filter(
 );
 
 export default function SUVPage() {
-  const whatsappUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     "Hello NoidaCab, I want to book an SUV taxi (Ertiga / Innova) in Noida. Please share immediate availability and fare details."
   )}`;
 
@@ -283,7 +283,7 @@ export default function SUVPage() {
 
               <div className="mt-8 flex flex-wrap items-center gap-3.5">
                 <a
-                  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+                  href={`https://wa.me/919818022687?text=${encodeURIComponent(
                     "Hello NoidaCab, I want to book a Noida to Delhi SUV Taxi. Please share availability."
                   )}`}
                   target="_blank"
@@ -447,7 +447,7 @@ export default function SUVPage() {
 
                   {/* Route CTA */}
                   <a
-                    href={`https://wa.me/918377809809?text=${encodeURIComponent(
+                    href={`https://wa.me/919818022687?text=${encodeURIComponent(
                       `Hello NoidaCab, I want to book an SUV taxi from ${locationName}.`
                     )}`}
                     target="_blank"
@@ -652,7 +652,7 @@ function SUVCard({
 }: {
   vehicle: (typeof suvVehicles)[number];
 }) {
-  const whatsappBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+  const whatsappBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${vehicle.name} SUV in Noida. Please share immediate availability and fare.`
   )}`;
 

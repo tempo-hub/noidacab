@@ -14,7 +14,7 @@ import {
   Send,
 } from "lucide-react";
 
-const WHATSAPP_NUMBER = "918377809809";
+const WHATSAPP_NUMBER = "919818022687";
 const PHONE_NUMBER = "+918377809809";
 
 interface Props {
