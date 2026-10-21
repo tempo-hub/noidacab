@@ -84,7 +84,7 @@ export default function Hero() {
 </p>
               <div className="mt-4 flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/918377809809"
+                  href="https://wa.me/919818022687"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-xl bg-amber-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-600/25 transition hover:bg-amber-500"
