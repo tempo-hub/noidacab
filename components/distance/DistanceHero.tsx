@@ -37,9 +37,13 @@ export default function DistanceHero({
     `Hello NoidaCab, I want to inquire about distance, routes, and cab fares from ${route.from.name} to ${route.to.name} (${route.distance} km). Please share details.`
   )}`;
 
+  const fromSlug = route.from.name.toLowerCase().replace(/\s+/g, "-");
+  const toSlug = route.to.name.toLowerCase().replace(/\s+/g, "-");
   const targetBookingHref =
     bookingUrl ||
-    `/${route.from.name.toLowerCase().replace(/\s+/g, "-")}-to-${route.to.name.toLowerCase().replace(/\s+/g, "-")}-taxi`;
+    (fromSlug === toSlug
+      ? `/taxi-service-in-${toSlug}`
+      : `/${fromSlug}-to-${toSlug}-taxi`);
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-amber-500 via-amber-300 to-white/95 py-16 text-slate-900 border-b border-slate-300 sm:py-20 lg:py-24">

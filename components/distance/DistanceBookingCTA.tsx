@@ -94,15 +94,22 @@ export default function DistanceBookingCTA({
 
             {/* CTA */}
             <div className="lg:min-w-[230px]">
+              {(() => {
+                const isSelf = (route.from?.slug || "").toLowerCase() === (route.to?.slug || "").toLowerCase();
+                const targetHref = isSelf
+                  ? `/taxi-service-in-${route.to.slug}`
+                  : `/noida-to-${route.to.slug}-taxi`;
 
-              <Link
-                href={`/noida-to-${route.to.slug}-taxi`}
-                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-4 text-base font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/30 sm:w-auto"
-              >
-                Book Your Cab
-
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+                return (
+                  <Link
+                    href={targetHref}
+                    className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-4 text-base font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/30 sm:w-auto"
+                  >
+                    Book Your Cab
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                );
+              })()}
 
               <div className="mt-4 flex items-center justify-center gap-2 text-xs text-zinc-500">
                 <CheckCircle2 className="h-3.5 w-3.5 text-orange-500" />

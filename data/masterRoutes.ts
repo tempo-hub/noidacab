@@ -103,6 +103,10 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Vrindavan", distance: 145, duration: "2 hr 10 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Dehradun", distance: 255, duration: "4 hr 30 min", highway: "Delhi-Dehradun Expressway", defaultVehicle: "tempo-traveller" },
   { from: "Noida", to: "Chandigarh", distance: 260, duration: "4 hr 30 min", highway: "NH 44", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Uttarakhand", distance: 235, duration: "4 hr 15 min", highway: "Delhi-Meerut & Delhi-Dehradun Expressway", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Haryana", distance: 65, duration: "1 hr 30 min", highway: "Eastern Peripheral Expressway & NH 44", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Punjab", distance: 280, duration: "4 hr 45 min", highway: "NH 44", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Uttar Pradesh", distance: 180, duration: "3 hr 00 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Uttarakhand", to: "Rohtak", distance: 240, duration: "4 hr 30 min", highway: "NH 334 & Eastern Peripheral Expressway", defaultVehicle: "suv-taxi", isPopular: true },
 
   // --- Haryana Corridors (from Noida) ---

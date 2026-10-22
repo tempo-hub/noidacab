@@ -12,23 +12,19 @@ import {
 const socialLinks = [
   {
     name: "Facebook",
-    href: "https://www.facebook.com/chikucabs/",
+    href: "https://www.facebook.com/noidacab/",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/chikucabs1/",
+    href: "https://www.instagram.com/noida_cabs/",
   },
   {
     name: "X",
-    href: "https://x.com/chiku_cabs",
+    href: "https://x.com/noidacabs/",
   },
   {
-    name: "YouTube",
-    href: "https://www.youtube.com/@chikucabs",
-  },
-  {
-    name: "Pinterest",
-    href: "https://in.pinterest.com/chikucabs/",
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/noidacab/",
   },
 ];
 
