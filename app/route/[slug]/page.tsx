@@ -65,6 +65,16 @@ type Params = Promise<{ slug: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
   const cleanSlug = (slug || "").toLowerCase().replace(/^(route[-/])+/g, "");
+  if (cleanSlug.includes("-to-")) {
+    const parts = cleanSlug.split("-to-");
+    const origin = parts[0];
+    const destinationPart = parts[parts.length - 1];
+    const destCity = destinationPart.replace(/-(taxi|cab|wagonr|dzire|etios|amaze|sedan|ertiga|innova|urbania|tempo|traveller).*$/, "");
+    if (origin === destCity || destinationPart.startsWith(`${origin}-`)) {
+      redirect(`/taxi-service-in-${origin}`);
+    }
+  }
+
   const route = parseDynamicRouteSlug(cleanSlug);
 
   if (!route) {
@@ -668,6 +678,18 @@ export default async function DynamicRouteDetailPage({ params }: { params: Param
   if (slug.toLowerCase().startsWith("route-")) {
     const cleanSlug = slug.toLowerCase().replace(/^(route[-/])+/g, "");
     redirect(`/route/${cleanSlug}`);
+  }
+
+  // Self-route redirect (e.g. /route/haryana-to-haryana-wagonr-taxi -> /taxi-service-in-haryana)
+  const normalizedSlug = (slug || "").toLowerCase().trim().replace(/^(route[-/])+/g, "");
+  if (normalizedSlug.includes("-to-")) {
+    const parts = normalizedSlug.split("-to-");
+    const origin = parts[0];
+    const destinationPart = parts[parts.length - 1];
+    const destCity = destinationPart.replace(/-(taxi|cab|wagonr|dzire|etios|amaze|sedan|ertiga|innova|urbania|tempo|traveller).*$/, "");
+    if (origin === destCity || destinationPart.startsWith(`${origin}-`)) {
+      redirect(`/taxi-service-in-${origin}`);
+    }
   }
 
   const route = parseDynamicRouteSlug(slug);

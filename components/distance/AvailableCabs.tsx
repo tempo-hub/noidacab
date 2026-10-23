@@ -72,6 +72,9 @@ function getCabUrl(
   vehicle: Vehicle,
 ): string {
   const vSlug = getVehicleRouteSlug(vehicle);
+  if (fromSlug && toSlug && fromSlug === toSlug) {
+    return fromSlug === "noida" ? `/taxi/${vehicle.slug}` : `/${vSlug}-in-${toSlug}`;
+  }
   return `/route/${fromSlug}-to-${toSlug}-${vSlug}`;
 }
 

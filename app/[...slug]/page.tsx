@@ -40,6 +40,7 @@ import DynamicLocalSightseeingPage from "@/components/cab-routes/DynamicLocalSig
 import DynamicOneWayTaxiPage from "@/components/cab-routes/DynamicOneWayTaxiPage";
 import DynamicCityContactPage from "@/components/cab-routes/DynamicCityContactPage";
 import DynamicCityVehiclePage from "@/components/cab-routes/DynamicCityVehiclePage";
+import DynamicCityDistancePage from "@/components/cab-routes/DynamicCityDistancePage";
 import { parseDynamicRouteSlug } from "@/data/popularRoutesData";
 import { noidaRoutes } from "@/data/routes/noidaRoutes";
 
@@ -200,6 +201,23 @@ export async function generateMetadata({
       title: `Taxi Fare in ${cityInfo.name} | Transparent Cabs Starting @ ₹10/km - NoidaCab`,
       description: `Check affordable taxi fares in ${cityInfo.name}. Flat per-km fares starting from ₹10/km for Sedans, ₹13/km for Ertiga, and ₹16/km for Innova Crysta. Doorstep pickup across ${cityInfo.localities.slice(0, 3).join(", ")}. Call 8377809809.`,
       alternates: { canonical: `https://www.noidacab.com/taxi-fare-in-${cityInfo.slug}` },
+    };
+  }
+
+  if (url.startsWith("/distance-travel-time-in-")) {
+    const citySlug = url.replace("/distance-travel-time-in-", "").toLowerCase();
+    const cityInfo = getCityDetails(citySlug);
+    return {
+      title: `${cityInfo.name} Distance & Travel Time | Highway Route Matrix - NoidaCab`,
+      description: `Check road distance, estimated travel time and cab fares for ${cityInfo.name}. Compare Sedan, SUV, Innova Crysta, and Tempo Traveller options with transparent per-km pricing. Call 8377809809.`,
+      alternates: {
+        canonical: `https://www.noidacab.com/distance-travel-time-in-${cityInfo.slug}`,
+      },
+      openGraph: {
+        title: `${cityInfo.name} Distance & Travel Time - NoidaCab`,
+        description: `Accurate road distances, driving times and outstation cab booking for ${cityInfo.name}.`,
+        url: `https://www.noidacab.com/distance-travel-time-in-${cityInfo.slug}`,
+      },
     };
   }
 
@@ -651,6 +669,17 @@ export default async function CabPage({
   const cleanPath = url.replace(/^\/|\/$/g, "").toLowerCase();
   const rawSlug = slug.join("-").toLowerCase();
 
+  // Self-route redirect (e.g. /haryana-to-haryana-taxi or /uttarakhand-to-uttarakhand-taxi)
+  if (cleanPath.includes("-to-")) {
+    const parts = cleanPath.split("-to-");
+    const origin = parts[0];
+    const destinationPart = parts[parts.length - 1];
+    const destCity = destinationPart.replace(/-(taxi|cab|wagonr|dzire|etios|amaze|sedan|ertiga|innova|urbania|tempo|traveller).*$/, "");
+    if (origin === destCity || destinationPart.startsWith(`${origin}-`)) {
+      redirect(`/taxi-service-in-${origin}`);
+    }
+  }
+
   // ============================================
   // DYNAMIC INTERCITY ROUTE REDIRECT
   // Handles routes like:
@@ -820,36 +849,12 @@ export default async function CabPage({
   }
 
   // ============================================
-  // DISTANCE & TRAVEL TIME
+  // DISTANCE & TRAVEL TIME IN CITY / REGION
   // ============================================
   if (rawSlug.startsWith("distance-travel-time-in-")) {
-    const rawCity = rawSlug.replace("distance-travel-time-in-", "");
-    const cityKey = Object.keys(citiesData).find(
-      (k) =>
-        k.toLowerCase() === rawCity ||
-        citiesData[k]?.slug?.toLowerCase() === rawCity
-    );
-    const cityName =
-      cityKey ? citiesData[cityKey].name : rawCity.charAt(0).toUpperCase() + rawCity.slice(1);
-
-    const baseline = noidaRoutes["noida-to-delhi"] || Object.values(noidaRoutes)[0];
-    const numericDistance =
-      typeof baseline?.distance === "number"
-        ? baseline.distance
-        : parseFloat(String(baseline?.distance || "25").replace(/[^0-9.]/g, "")) || 25;
-
-    const cityRoute = {
-      ...baseline,
-      slug: rawSlug,
-      from: { name: cityName, slug: rawCity },
-      to: { name: cityName, slug: rawCity },
-      distance: numericDistance,
-      travelTime: baseline?.travelTime || "45 min",
-      routes: baseline?.routes || [],
-      template: "distance" as const,
-    };
-
-    return <DynamicDistanceTravelPage route={cityRoute} />;
+    const rawCity = rawSlug.replace("distance-travel-time-in-", "").toLowerCase();
+    const cityInfo = getCityDetails(rawCity);
+    return <DynamicCityDistancePage city={cityInfo} />;
   }
 
   const distanceRoute =
