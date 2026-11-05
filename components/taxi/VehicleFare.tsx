@@ -73,7 +73,7 @@ export default function VehicleFare({ vehicle }: { vehicle: Vehicle }) {
               </ul>
             </div>
             <a
-              href={`https://wa.me/918377809809?text=Hi,%20I%20want%20to%20book%20an%20outstation%20trip%20with%20${encodeURIComponent(vehicle.name)}.`}
+              href={`https://wa.me/919818022687?text=Hi,%20I%20want%20to%20book%20an%20outstation%20trip%20with%20${encodeURIComponent(vehicle.name)}.`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 py-2.5 text-xs font-bold text-white transition hover:bg-amber-700"
@@ -110,7 +110,7 @@ export default function VehicleFare({ vehicle }: { vehicle: Vehicle }) {
               </ul>
             </div>
             <a
-              href={`https://wa.me/918377809809?text=Hi,%20I%20want%20to%20book%20an%208hr/80km%20rental%20for%20${encodeURIComponent(vehicle.name)}.`}
+              href={`https://wa.me/919818022687?text=Hi,%20I%20want%20to%20book%20an%208hr/80km%20rental%20for%20${encodeURIComponent(vehicle.name)}.`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-800 transition hover:border-amber-600 hover:text-amber-600"
@@ -147,7 +147,7 @@ export default function VehicleFare({ vehicle }: { vehicle: Vehicle }) {
               </ul>
             </div>
             <a
-              href={`https://wa.me/918377809809?text=Hi,%20I%20want%20an%20Airport%20drop/pickup%20in%20${encodeURIComponent(vehicle.name)}.`}
+              href={`https://wa.me/919818022687?text=Hi,%20I%20want%20an%20Airport%20drop/pickup%20in%20${encodeURIComponent(vehicle.name)}.`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-800 transition hover:border-amber-600 hover:text-amber-600"

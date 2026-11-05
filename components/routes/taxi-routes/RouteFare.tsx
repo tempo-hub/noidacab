@@ -169,7 +169,7 @@ export default function RouteFare({
             </div>
 
             <a
-              href={`https://wa.me/918377809809?text=${encodeURIComponent(
+              href={`https://wa.me/919818022687?text=${encodeURIComponent(
                 `Hi, I want to know the fare for ${vehicle.name}. Please share the details.`
               )}`}
               target="_blank"

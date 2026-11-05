@@ -36,7 +36,7 @@ export default function VehicleEstimatePrice({ vehicle }: VehicleEstimatePricePr
 --------------------------------`;
 
     const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/918377809809?text=${encoded}`, "_blank");
+    window.open(`https://wa.me/919818022687?text=${encoded}`, "_blank");
   };
 
   return (

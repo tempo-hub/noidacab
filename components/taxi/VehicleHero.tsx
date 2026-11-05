@@ -61,7 +61,7 @@ export default function VehicleHero({ vehicle, cityName = "Noida" }: { vehicle: 
 --------------------------------`;
 
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "918377809809";
+    const phoneNumber = "919818022687";
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
   };
 

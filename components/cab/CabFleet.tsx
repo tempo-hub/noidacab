@@ -173,7 +173,7 @@ export default function CabFleet() {
                 {/* Footer Buttons */}
                 <div className="p-6 pt-0 space-y-2.5">
                   <a
-                    href={`https://wa.me/918377809809?text=${encodeURIComponent(
+                    href={`https://wa.me/919818022687?text=${encodeURIComponent(
                       `Hello NoidaCab, I want to book a ${vehicle.name} (${vehicle.price}). Please provide fare and availability.`
                     )}`}
                     target="_blank"

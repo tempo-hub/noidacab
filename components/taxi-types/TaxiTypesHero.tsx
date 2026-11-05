@@ -92,7 +92,7 @@ const featuredVehicles = taxiCategories
             {/* Buttons */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="https://wa.me/918377809809"
+                href="https://wa.me/919818022687"
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-amber-950/20 transition hover:bg-amber-400"
               >
                 Book a Taxi

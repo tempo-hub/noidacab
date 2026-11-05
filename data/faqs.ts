@@ -102,7 +102,7 @@ export const tempoTravellerFaqs: FAQ[] = [
     question:
       "How can I book a Noida to Delhi Tempo Traveller?",
     answer:
-      "Call us at 844-844-5504 or send a message on WhatsApp at 919818022687 with your pickup point, group size, and travel date. We confirm the seater option, fare, and driver details before your trip starts, so you know exactly what to expect.",
+      "Call us at 844-844-5504 or send a message on WhatsApp at 98180 22687 with your pickup point, group size, and travel date. We confirm the seater option, fare, and driver details before your trip starts, so you know exactly what to expect.",
   },
   {
     question:
