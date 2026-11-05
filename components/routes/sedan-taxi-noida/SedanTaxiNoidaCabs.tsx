@@ -153,7 +153,7 @@ export default function SedanTaxiNoidaCabs() {
 
                 {/* CTA */}
                 <a
-  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+  href={`https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I want to book a ${vehicle.name} taxi. Please confirm availability and fare.`
   )}`}
   target="_blank"

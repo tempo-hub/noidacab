@@ -127,7 +127,7 @@ export default function NoidaDelhiTripTypes() {
                   </div>
 
                   <a
-  href={`https://wa.me/918377809809?text=${encodeURIComponent(
+  href={`https://wa.me/919818022687?text=${encodeURIComponent(
     `Hello NoidaCab, I would like to book a trip for:. Please share the fare details and availability.`
   )}`}
   target="_blank"

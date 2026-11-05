@@ -262,7 +262,7 @@ export default function CabServicesByCity() {
             </p>
           </div>
           <a
-            href="https://wa.me/918377809809?text=Hi%2C%20I%20need%20a%20custom%20cab%20package%20for%20pilgrimage%20tour."
+            href="https://wa.me/919818022687?text=Hi%2C%20I%20need%20a%20custom%20cab%20package%20for%20pilgrimage%20tour."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-5 py-2.5 text-sm font-bold text-white shadow-md hover:bg-amber-500 transition shrink-0"

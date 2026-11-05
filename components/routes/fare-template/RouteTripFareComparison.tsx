@@ -90,7 +90,7 @@ export default function RouteTripFareComparison({
         <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
           {fareOptions.map((option) => {
             const Icon = option.icon;
-            const waBookingUrl = `https://wa.me/918377809809?text=${encodeURIComponent(
+            const waBookingUrl = `https://wa.me/919818022687?text=${encodeURIComponent(
               `Hello NoidaCab, I want to book a ${option.type} from ${route.from.name} to ${route.to.name}. Quoted base: ${option.price}. Please confirm availability.`
             )}`;
 

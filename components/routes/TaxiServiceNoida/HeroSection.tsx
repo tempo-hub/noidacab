@@ -86,7 +86,7 @@ Please share the fare and booking details.`;
             {/* CTA */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
-                href="https://wa.me/918377809809"
+                href="https://wa.me/919818022687"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"

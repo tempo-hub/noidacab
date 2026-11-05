@@ -115,7 +115,7 @@ export default function RouteWhyChooseNoidaCab({
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
             <a
-              href={`https://wa.me/918377809809?text=${waMessage}`}
+              href={`https://wa.me/919818022687?text=${waMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-amber-600 px-7 py-3 text-xs sm:text-sm font-bold text-white shadow-md transition hover:bg-amber-700 active:scale-[0.98]"

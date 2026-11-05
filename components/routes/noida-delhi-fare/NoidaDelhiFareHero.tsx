@@ -79,7 +79,7 @@ export default function NoidaDelhiFareHero() {
             <div className="mt-10 flex flex-wrap gap-4">
 
               <Link
-                href="https://wa.me/918377809809"
+                href="https://wa.me/919818022687"
                 className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-7 py-3.5 font-bold text-white shadow-lg shadow-amber-500/20 transition hover:bg-amber-600 hover:shadow-amber-500/30"
               >
                 Book Your Cab

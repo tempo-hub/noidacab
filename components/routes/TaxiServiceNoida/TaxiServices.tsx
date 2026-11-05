@@ -87,7 +87,7 @@ export default function TaxiServices() {
         {/* Mobile CTA */}
         <div className="mt-7 sm:hidden">
           <a
-  href="https://wa.me/918377809809?text=Hello%20NoidaCab%2C%20I%20want%20to%20book%20a%20taxi.%20Please%20confirm%20availability%20and%20fare."
+  href="https://wa.me/919818022687?text=Hello%20NoidaCab%2C%20I%20want%20to%20book%20a%20taxi.%20Please%20confirm%20availability%20and%20fare."
   target="_blank"
   rel="noopener noreferrer"
   className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"

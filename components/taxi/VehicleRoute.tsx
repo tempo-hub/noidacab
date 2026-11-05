@@ -131,7 +131,7 @@ export default function VehicleRoute({ vehicle }: { vehicle: Vehicle }) {
 
                 {/* Direct Booking CTA */}
                 <a
-                  href={`https://wa.me/918377809809?text=Hi,%20I%20want%20to%20book%20a%20${encodeURIComponent(vehicle.name)}%20for%20${encodeURIComponent(route.title)}.`}
+                  href={`https://wa.me/919818022687?text=Hi,%20I%20want%20to%20book%20a%20${encodeURIComponent(vehicle.name)}%20for%20${encodeURIComponent(route.title)}.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 flex items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-slate-50/70 py-2.5 text-xs font-bold text-slate-800 transition hover:border-amber-600 hover:bg-amber-600 hover:text-white"
@@ -153,7 +153,7 @@ export default function VehicleRoute({ vehicle }: { vehicle: Vehicle }) {
             </p>
           </div>
           <a
-            href="https://wa.me/918377809809?text=Hello,%20I%20need%20a%20custom%20route%20package%20for%20Noida%20cab%20service."
+            href="https://wa.me/919818022687?text=Hello,%20I%20need%20a%20custom%20route%20package%20for%20Noida%20cab%20service."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-amber-700 transition shrink-0"

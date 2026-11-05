@@ -166,7 +166,7 @@ export default function RouteHero({
 
               {/* Main CTA */}
               <a
-                href={`https://wa.me/918377809809?text=${encodeURIComponent(
+                href={`https://wa.me/919818022687?text=${encodeURIComponent(
                   `Hi, I want to book a ${vehicle.name}. Please share the details and fare.`
                 )}`}
                 target="_blank"

@@ -54,7 +54,7 @@ export default function NoidaDelhiFareCTA() {
               {/* Buttons */}
               <div className="mt-9 flex flex-wrap gap-4">
                 <Link
-                  href="https://wa.me/918377809809"
+                  href="https://wa.me/919818022687"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-bold text-gray-900 transition hover:bg-gray-100"
                 >
                   Book Your Cab

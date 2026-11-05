@@ -143,7 +143,7 @@ export default function VehicleUseCases({
 
                 {/* Direct Action Link */}
                 <a
-                  href={`https://wa.me/918377809809?text=Hi,%20I%20want%20to%20book%20a%20${encodeURIComponent(vehicle.name)}%20for%20${encodeURIComponent(item.title)}.`}
+                  href={`https://wa.me/919818022687?text=Hi,%20I%20want%20to%20book%20a%20${encodeURIComponent(vehicle.name)}%20for%20${encodeURIComponent(item.title)}.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 flex items-center justify-center rounded-xl bg-slate-50 border border-slate-200 py-2.5 text-xs font-bold text-slate-800 transition hover:bg-amber-600 hover:text-white hover:border-amber-600"

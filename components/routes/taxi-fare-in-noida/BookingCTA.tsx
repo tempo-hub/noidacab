@@ -43,7 +43,7 @@ export default function BookingCTA({ cityName = "Noida" }: BookingCTAProps) {
             {/* Button */}
             <div className="mt-7 flex justify-center">
               <a
-                href={`https://wa.me/918377809809?text=${waMessage}`}
+                href={`https://wa.me/919818022687?text=${waMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3.5 text-sm font-bold text-amber-600 shadow-sm transition hover:bg-amber-50 sm:w-auto"
