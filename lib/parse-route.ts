@@ -964,7 +964,7 @@ export function parseContactRouteUrl(url: string): ParsedContactRoute | null {
       .toLowerCase();
 
   // Pattern: /[city]-taxi-contact-number or /[city]-cab-contact-number or /[city]-contact-number
-  const match = normalizedUrl.match(/^\/([a-z0-9-]+)-(?:taxi-|cab-)?contact-number$/);
+  const match = normalizedUrl.match(/^\/([a-z0-9-]+?)-(?:taxi-|cab-)?contact-number$/);
   if (match) {
     const citySlug = match[1];
     // Exclude route pairs like "noida-to-delhi"
