@@ -27,7 +27,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (!path || typeof path !== "string") return;
 
     const cleanPath = path.startsWith("/") ? path : `/${path}`;
-    const fullUrl = `${BASE_URL}${cleanPath}`;
+    const lowerPath = cleanPath.toLowerCase();
+    const canonicalPath =
+      lowerPath.includes("-to-") &&
+      lowerPath.endsWith("-urbania")
+        ? `${cleanPath}-rental`
+        : cleanPath;
+    const excludedNonRouteSuffixes = [
+      "-taxi",
+      "-taxi-fare",
+      "-one-way-taxi",
+      "-tempo-traveller",
+      "-distance-travel-time",
+    ];
+    if (
+      !lowerPath.startsWith("/route/") &&
+      excludedNonRouteSuffixes.some((suffix) => lowerPath.endsWith(suffix))
+    ) {
+      return;
+    }
+
+    if (
+      lowerPath.startsWith("/route/") &&
+      lowerPath.includes("-to-") &&
+      (lowerPath.endsWith("-cab-fare") ||
+        (lowerPath.endsWith("-fare") && !lowerPath.endsWith("-taxi-fare")))
+    ) {
+      return;
+    }
+
+    const fullUrl = `${BASE_URL}${canonicalPath}`;
 
     if (seenUrls.has(fullUrl)) return;
     seenUrls.add(fullUrl);
@@ -161,10 +190,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routeVehicleSlugs = [
     // Standard vehicle types
     "one-way-taxi",
-    "taxi-fare",
-    "cab-fare",
-    "fare",
     "taxi",
+    "taxi-fare",
     "outstation-taxi",
     "sedan-taxi",
     "dzire-taxi",
@@ -180,7 +207,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "24-seater-tempo-traveller",
     "luxury-tempo-traveller",
     "urbania-rental",
-    "urbania",
     "distance-travel-time",
   ];
 
@@ -199,8 +225,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       // 1. Root level fare/taxi URLs (e.g., /noida-to-chandigarh-taxi-fare, /noida-to-haridwar-taxi)
       addUrl(`/${baseCorridor}-taxi`, 0.9, "weekly");
-      addUrl(`/${baseCorridor}-taxi-fare`, 0.9, "weekly");
-      addUrl(`/${baseCorridor}-cab-fare`, 0.85, "weekly");
       addUrl(`/${baseCorridor}-one-way-taxi`, 0.9, "weekly");
       addUrl(`/${baseCorridor}-tempo-traveller`, 0.85, "weekly");
       addUrl(`/${baseCorridor}-distance-travel-time`, 0.8, "weekly");
@@ -210,7 +234,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         const routeSlug = `/route/${baseCorridor}-${vSlug}`;
 
         const priority =
-          vSlug === "one-way-taxi" || vSlug === "taxi-fare" || vSlug === "taxi"
+          vSlug === "one-way-taxi" || vSlug === "taxi"
             ? 0.9
             : vSlug === "ertiga-taxi" || vSlug === "sedan-taxi" || vSlug === "innova-crysta-taxi"
               ? 0.85
