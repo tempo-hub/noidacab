@@ -32,7 +32,7 @@ import VehicleTemplate from "@/components/taxi/VehicleTemplate";
 import NoidaTaxiContactPage from "@/components/templates/NoidaTaxiContactPage";
 import RouteFareTemplate from "@/components/routes/fare-template/RouteFareTemplate";
 import TaxiServiceNoidaTemplate from "@/components/routes/TaxiServiceNoida/TaxiServiceNoidaTemplate";
-import { citiesData, getCityDetails } from "@/lib/cityData";
+import { getCityDetails, hasCityDetails } from "@/lib/cityData";
 import DynamicTaxiServicePage from "@/components/cab-routes/DynamicTaxiServicePage";
 import DynamicTaxiFarePage from "@/components/cab-routes/DynamicTaxiFarePage";
 import DynamicAirportServicePage from "@/components/cab-routes/DynamicAirportServicePage";
@@ -93,6 +93,7 @@ function parseDynamicCityVehicleUrl(url: string) {
     const match = cleanPath.match(rule.pattern);
     if (match) {
       const citySlug = match[1];
+      if (!hasCityDetails(citySlug)) return null;
       const cityInfo = getCityDetails(citySlug);
       const matched = vehicles.find((v) => v.slug === rule.vehicleSlug) || vehicles[0];
       const vehicle = { ...matched };
@@ -669,17 +670,6 @@ export default async function CabPage({
   const cleanPath = url.replace(/^\/|\/$/g, "").toLowerCase();
   const rawSlug = slug.join("-").toLowerCase();
 
-  // Self-route redirect (e.g. /haryana-to-haryana-taxi or /uttarakhand-to-uttarakhand-taxi)
-  if (cleanPath.includes("-to-")) {
-    const parts = cleanPath.split("-to-");
-    const origin = parts[0];
-    const destinationPart = parts[parts.length - 1];
-    const destCity = destinationPart.replace(/-(taxi|cab|wagonr|dzire|etios|amaze|sedan|ertiga|innova|urbania|tempo|traveller).*$/, "");
-    if (origin === destCity || destinationPart.startsWith(`${origin}-`)) {
-      redirect(`/taxi-service-in-${origin}`);
-    }
-  }
-
   // ============================================
   // DYNAMIC INTERCITY ROUTE REDIRECT
   // Handles routes like:
@@ -713,6 +703,7 @@ export default async function CabPage({
   // ============================================
   if (url.startsWith("/taxi-fare-in-")) {
     const citySlug = url.replace("/taxi-fare-in-", "").toLowerCase();
+    if (!hasCityDetails(citySlug)) notFound();
     if (citySlug === "noida") {
       redirect("/noida-taxi-fare");
     }
@@ -722,6 +713,7 @@ export default async function CabPage({
 
   if (url.endsWith("-taxi-fare") && !url.includes("-to-")) {
     const citySlug = url.replace(/^\/|\/$/g, "").replace(/-taxi-fare$/, "").toLowerCase();
+    if (!hasCityDetails(citySlug)) notFound();
     if (citySlug === "noida") {
       redirect("/noida-taxi-fare");
     }
@@ -731,6 +723,7 @@ export default async function CabPage({
 
   if (url.startsWith("/taxi-service-in-")) {
     const citySlug = url.replace("/taxi-service-in-", "").toLowerCase();
+    if (!hasCityDetails(citySlug)) notFound();
     const cityInfo = getCityDetails(citySlug);
     return <DynamicTaxiServicePage city={cityInfo} />;
   }
@@ -743,18 +736,21 @@ export default async function CabPage({
     const citySlug = url
       .replace(/^(\/airport-service-in-|\/airport-taxi-in-|\/airport-taxi-service-in-)/, "")
       .toLowerCase();
+    if (!hasCityDetails(citySlug)) notFound();
     const cityInfo = getCityDetails(citySlug);
     return <DynamicAirportServicePage city={cityInfo} />;
   }
 
   if (url.startsWith("/local-sightseeing-in-") || url.startsWith("/local-sightseeing-routes-in-")) {
     const citySlug = url.replace(/^(\/local-sightseeing-in-|\/local-sightseeing-routes-in-)/, "").toLowerCase();
+    if (!hasCityDetails(citySlug)) notFound();
     const cityInfo = getCityDetails(citySlug);
     return <DynamicLocalSightseeingPage city={cityInfo} />;
   }
 
   if (url.startsWith("/one-way-taxi-in-") || url.startsWith("/one-way-cab-in-")) {
     const citySlug = url.replace(/^(\/one-way-taxi-in-|\/one-way-cab-in-)/, "").toLowerCase();
+    if (!hasCityDetails(citySlug)) notFound();
     if (citySlug === "noida" && url !== "/one-way-taxi-in-noida") {
       redirect("/one-way-taxi-in-noida");
     }
@@ -822,6 +818,7 @@ export default async function CabPage({
   ========================================================= */
   const contactRoute = parseContactRouteUrl(url);
   if (contactRoute) {
+    if (!hasCityDetails(contactRoute.citySlug)) notFound();
     const cityInfo = getCityDetails(contactRoute.citySlug);
     return <DynamicCityContactPage city={cityInfo} />;
   }
@@ -853,6 +850,7 @@ export default async function CabPage({
   // ============================================
   if (rawSlug.startsWith("distance-travel-time-in-")) {
     const rawCity = rawSlug.replace("distance-travel-time-in-", "").toLowerCase();
+    if (!hasCityDetails(rawCity)) notFound();
     const cityInfo = getCityDetails(rawCity);
     return <DynamicCityDistancePage city={cityInfo} />;
   }

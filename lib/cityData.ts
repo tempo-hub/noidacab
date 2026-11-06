@@ -253,6 +253,17 @@ export const citiesData: Record<string, CityInfo> = {
   },
 };
 
+export function hasCityDetails(citySlugOrName?: string): boolean {
+  if (!citySlugOrName) return false;
+
+  const clean = citySlugOrName
+    .toLowerCase()
+    .trim()
+    .replace(/^(taxi-service-in-|airport-service-in-|local-sightseeing-in-)/, "");
+
+  return Object.prototype.hasOwnProperty.call(citiesData, clean);
+}
+
 export function getCityDetails(citySlugOrName?: string): CityInfo {
   if (!citySlugOrName) return citiesData["lucknow"];
 

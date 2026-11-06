@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { getCityDetails, citiesData } from "@/lib/cityData";
+import { notFound } from "next/navigation";
+import { getCityDetails, citiesData, hasCityDetails } from "@/lib/cityData";
 import DynamicTaxiServicePage from "@/components/cab-routes/DynamicTaxiServicePage";
 
 type Params = Promise<{ city: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { city } = await params;
+  if (!hasCityDetails(city)) notFound();
   const cityInfo = getCityDetails(city);
 
   return {
@@ -29,6 +31,7 @@ export function generateStaticParams() {
 
 export default async function CityTaxiRoutePage({ params }: { params: Params }) {
   const { city } = await params;
+  if (!hasCityDetails(city)) notFound();
   const cityInfo = getCityDetails(city);
 
   const jsonLd = {
