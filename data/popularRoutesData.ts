@@ -88,7 +88,7 @@ export const vehicleRules: Record<string, VehiclePricingRule> = {
   "innova-crysta-taxi": { name: "Innova Crysta Taxi", slug: "innova-crysta-taxi", perKm: 16, fixedBase: 0 },
   "innova": { name: "Innova Crysta Taxi", slug: "innova-crysta-taxi", perKm: 16, fixedBase: 0 },
   "innova-taxi": { name: "Innova Crysta Taxi", slug: "innova-crysta-taxi", perKm: 16, fixedBase: 0 },
-  "urbania": { name: "Force Urbania", slug: "urbania", perKm: 20, fixedBase: 0 },
+  "urbania": { name: "Force Urbania", slug: "urbania-rental", perKm: 20, fixedBase: 0 },
   "urbania-rental": { name: "Force Urbania Rental", slug: "urbania-rental", perKm: 25, fixedBase: 0 },
   "contact-number": { name: "Taxi Contact Number", slug: "contact-number", perKm: 10, fixedBase: 0 },
   "taxi-contact-number": { name: "Taxi Contact Number", slug: "contact-number", perKm: 10, fixedBase: 0 },
@@ -111,8 +111,7 @@ export function normalizeVehicleKey(vehicleSlug?: string): string {
   if (clean.includes("distance")) return "distance-travel-time";
   if (clean.includes("one-way") || clean.includes("oneway")) return "one-way-taxi";
   if (clean.includes("innova")) return "innova-crysta";
-  if (clean.includes("urbania-rental")) return "urbania-rental";
-  if (clean.includes("urbania")) return "urbania";
+  if (clean.includes("urbania")) return "urbania-rental";
   if (clean.includes("luxury-tempo") || clean.includes("luxury")) return "luxury-tempo-traveller";
   if (clean.includes("12-seater")) return "12-seater-tempo-traveller";
   if (clean.includes("16-seater")) return "16-seater-tempo-traveller";
@@ -457,8 +456,17 @@ export interface ParsedRouteDetail {
 
 export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
   // Strip any accidental leading "route-" or "route/" prefix (e.g. "route-noida-to-delhi-dzire-taxi")
-  const clean = (slug || "").toLowerCase().trim().replace(/^(route[-/])+/g, "");
+  const requestedSlug = (slug || "").toLowerCase().trim().replace(/^(route[-/])+/g, "");
+  const clean = requestedSlug.endsWith("-urbania")
+    ? `${requestedSlug}-rental`
+    : requestedSlug;
   if (!clean || !clean.includes("-to-")) return null;
+  if (
+    clean.endsWith("-cab-fare") ||
+    (clean.endsWith("-fare") && !clean.endsWith("-taxi-fare"))
+  ) {
+    return null;
+  }
 
   let from = "";
   let to = "";

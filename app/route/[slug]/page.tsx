@@ -65,6 +65,21 @@ type Params = Promise<{ slug: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
   const cleanSlug = (slug || "").toLowerCase().replace(/^(route[-/])+/g, "");
+  if (cleanSlug.includes("-to-") && cleanSlug.endsWith("-urbania")) {
+    redirect(`/route/${cleanSlug}-rental`);
+  }
+
+  const isUnsupportedIntercitySlug =
+    cleanSlug.includes("-to-") &&
+    (cleanSlug.endsWith("-cab-fare") ||
+      (cleanSlug.endsWith("-fare") && !cleanSlug.endsWith("-taxi-fare")));
+  if (isUnsupportedIntercitySlug) {
+    return {
+      title: "Route Not Found - 404 | NoidaCab",
+      description: "The requested route does not exist.",
+    };
+  }
+
   if (cleanSlug.includes("-to-")) {
     const parts = cleanSlug.split("-to-");
     const origin = parts[0];
@@ -672,6 +687,19 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function DynamicRouteDetailPage({ params }: { params: Params }) {
   const { slug } = await params;
+  const normalizedSlug = (slug || "").toLowerCase().trim().replace(/^(route[-/])+/g, "");
+
+  if (normalizedSlug.includes("-to-") && normalizedSlug.endsWith("-urbania")) {
+    redirect(`/route/${normalizedSlug}-rental`);
+  }
+
+  if (
+    normalizedSlug.includes("-to-") &&
+    (normalizedSlug.endsWith("-cab-fare") ||
+      (normalizedSlug.endsWith("-fare") && !normalizedSlug.endsWith("-taxi-fare")))
+  ) {
+    notFound();
+  }
 
   // Immediate permanent redirect if URL has redundant "route-" prefix
   // e.g. /route/route-noida-to-delhi-dzire-taxi -> /route/noida-to-delhi-dzire-taxi
@@ -681,7 +709,6 @@ export default async function DynamicRouteDetailPage({ params }: { params: Param
   }
 
   // Self-route redirect (e.g. /route/haryana-to-haryana-wagonr-taxi -> /taxi-service-in-haryana)
-  const normalizedSlug = (slug || "").toLowerCase().trim().replace(/^(route[-/])+/g, "");
   if (normalizedSlug.includes("-to-")) {
     const parts = normalizedSlug.split("-to-");
     const origin = parts[0];

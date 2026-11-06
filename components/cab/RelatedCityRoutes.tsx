@@ -39,7 +39,7 @@ interface Props {
 /**
  * Ensures ONLY specific cabs get "-taxi" appended:
  * dzire -> dzire-taxi, etios -> etios-taxi, amaze -> amaze-taxi, ertiga -> ertiga-taxi.
- * All other vehicle types (tempo-traveller, urbania, innova-crysta, etc.) keep their exact slug.
+ * Rental vehicles use their canonical URL slug, while other types keep their exact slug.
  */
 function resolveVehicleSlug(slug?: string): string {
   if (!slug) return "taxi";
@@ -55,7 +55,11 @@ function resolveVehicleSlug(slug?: string): string {
     return "taxi";
   }
 
-  // Else, return the clean slug as-is (e.g., tempo-traveller, urbania, innova-crysta)
+  if (clean === "urbania") {
+    return "urbania-rental";
+  }
+
+  // Else, return the clean slug as-is (e.g., tempo-traveller, innova-crysta)
   return clean;
 }
 
