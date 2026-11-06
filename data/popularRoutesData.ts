@@ -472,8 +472,17 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
   let to = "";
   let vehicleKey = "";
   let matchedRegistry = false;
+  let invalidVehicle = false;
   let matchedAirportRoute: (typeof airportServiceRoutes)[number] | null = null;
   let matchedSightseeingRoute: (typeof sightseeingRoutes)[number] | null = null;
+  const parseVehiclePart = (vehiclePart: string, defaultVehicle: string) => {
+    if (!vehiclePart) return defaultVehicle;
+    if (!Object.prototype.hasOwnProperty.call(vehicleRules, vehiclePart)) {
+      invalidVehicle = true;
+      return "";
+    }
+    return normalizeVehicleKey(vehiclePart);
+  };
 
   const airportCitySlug = (value: string) =>
     value
@@ -505,7 +514,8 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
       from = r.from;
       to = r.to;
       const vPart = clean.slice(forwardPrefix.length).replace(/^-/, "");
-      vehicleKey = vPart ? normalizeVehicleKey(vPart) : (r.defaultVehicle || "tempo-traveller");
+      vehicleKey = parseVehiclePart(vPart, r.defaultVehicle || "tempo-traveller");
+      if (invalidVehicle) break;
       matchedRegistry = true;
       break;
     }
@@ -516,7 +526,8 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
       from = r.to;
       to = r.from;
       const vPart = clean.slice(reversePrefix.length).replace(/^-/, "");
-      vehicleKey = vPart ? normalizeVehicleKey(vPart) : (r.defaultVehicle || "tempo-traveller");
+      vehicleKey = parseVehiclePart(vPart, r.defaultVehicle || "tempo-traveller");
+      if (invalidVehicle) break;
       matchedRegistry = true;
       break;
     }
@@ -534,7 +545,8 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
         from = r.from.name;
         to = r.to.name;
         const vPart = clean.slice(forwardPrefix.length).replace(/^-/, "");
-        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        vehicleKey = parseVehiclePart(vPart, "taxi");
+        if (invalidVehicle) break;
         matchedRegistry = true;
         break;
       }
@@ -544,7 +556,8 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
         from = r.to.name;
         to = r.from.name;
         const vPart = clean.slice(reversePrefix.length).replace(/^-/, "");
-        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        vehicleKey = parseVehiclePart(vPart, "taxi");
+        if (invalidVehicle) break;
         matchedRegistry = true;
         break;
       }
@@ -563,7 +576,8 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
         from = r.from.name;
         to = r.to.name;
         const vPart = clean.slice(forwardPrefix.length).replace(/^-/, "");
-        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        vehicleKey = parseVehiclePart(vPart, "taxi");
+        if (invalidVehicle) break;
         matchedRegistry = true;
         break;
       }
@@ -573,7 +587,8 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
         from = r.to.name;
         to = r.from.name;
         const vPart = clean.slice(reversePrefix.length).replace(/^-/, "");
-        vehicleKey = vPart ? normalizeVehicleKey(vPart) : "taxi";
+        vehicleKey = parseVehiclePart(vPart, "taxi");
+        if (invalidVehicle) break;
         matchedRegistry = true;
         break;
       }
@@ -594,9 +609,11 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
 
       from = matchedPrefix === forwardPrefix ? route.from : route.to;
       to = matchedPrefix === forwardPrefix ? route.to : route.from;
-      vehicleKey = normalizeVehicleKey(
-        clean.slice(matchedPrefix.length).replace(/^-/, "")
+      vehicleKey = parseVehiclePart(
+        clean.slice(matchedPrefix.length).replace(/^-/, ""),
+        "tempo-traveller"
       );
+      if (invalidVehicle) break;
       matchedAirportRoute = route;
       matchedRegistry = true;
       break;
@@ -622,16 +639,18 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
     to = matchedPrefix === forwardPrefix
       ? route.to
       : route.from.split(/[(&\/]/)[0].trim();
-    vehicleKey = normalizeVehicleKey(
-      clean.slice(matchedPrefix.length).replace(/^-/, "")
+    vehicleKey = parseVehiclePart(
+      clean.slice(matchedPrefix.length).replace(/^-/, ""),
+      "tempo-traveller"
     );
+    if (invalidVehicle) break;
     matchedSightseeingRoute = route;
     matchedRegistry = true;
     break;
   }
 
   // If route is not found in our catalogs, return null (404 error - do NOT auto-generate or switch to another page)
-  if (!matchedRegistry || !from || !to) {
+  if (invalidVehicle || !matchedRegistry || !from || !to) {
     return null;
   }
 
