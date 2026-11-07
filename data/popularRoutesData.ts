@@ -1,5 +1,10 @@
 import { getCityDetails } from "@/lib/cityData";
-import { airportServiceRoutes, sightseeingRoutes } from "./allRoutesData";
+import {
+  airportServiceRoutes,
+  createCitySlug,
+  intercityTaxiRoutes,
+  sightseeingRoutes,
+} from "./allRoutesData";
 
 export interface PopularRouteCardItem {
   id: string;
@@ -473,6 +478,11 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
   let vehicleKey = "";
   let matchedRegistry = false;
   let invalidVehicle = false;
+  let matchedCardRoute:
+    | (typeof intercityTaxiRoutes)[number]
+    | (typeof airportServiceRoutes)[number]
+    | (typeof sightseeingRoutes)[number]
+    | null = null;
   let matchedAirportRoute: (typeof airportServiceRoutes)[number] | null = null;
   let matchedSightseeingRoute: (typeof sightseeingRoutes)[number] | null = null;
   const parseVehiclePart = (vehiclePart: string, defaultVehicle: string) => {
@@ -503,8 +513,42 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
 
+  const cardRoutes = [
+    ...intercityTaxiRoutes,
+    ...airportServiceRoutes,
+    ...sightseeingRoutes,
+  ];
+
+  // Resolve links from AllCityRoutes against the same catalogs and slug
+  // normalization used when those links are generated.
+  for (const route of cardRoutes) {
+    const forwardPrefix = `${createCitySlug(route.from)}-to-${createCitySlug(route.to)}`;
+    const reversePrefix = `${createCitySlug(route.to)}-to-${createCitySlug(route.from)}`;
+    const matchedPrefix = clean.startsWith(`${forwardPrefix}-`)
+      ? forwardPrefix
+      : clean.startsWith(`${reversePrefix}-`)
+        ? reversePrefix
+        : null;
+
+    if (!matchedPrefix) continue;
+
+    const vehiclePart = clean.slice(matchedPrefix.length).replace(/^-/, "");
+    if (!Object.prototype.hasOwnProperty.call(vehicleRules, vehiclePart)) continue;
+
+    const isForward = matchedPrefix === forwardPrefix;
+    from = isForward ? route.from : route.to;
+    to = isForward ? route.to : route.from;
+    vehicleKey = parseVehiclePart(vehiclePart, "taxi");
+    matchedRegistry = true;
+    matchedCardRoute = route;
+    if (route.category === "airport") matchedAirportRoute = route;
+    if (route.category === "sightseeing") matchedSightseeingRoute = route;
+    break;
+  }
+
   // 1. Direct match against masterRoutesRegistry (both directions)
   for (const r of masterRoutesRegistry) {
+    if (matchedRegistry) break;
     const fSlug = r.from.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
     const tSlug = r.to.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-");
 
@@ -620,33 +664,35 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
     }
   }
 
-  for (const route of sightseeingRoutes) {
-    const fromSlug = sightseeingRouteSlug(route.from);
-    const toSlug = sightseeingRouteSlug(route.to);
-    const forwardPrefix = `${fromSlug}-to-${toSlug}`;
-    const reversePrefix = `${toSlug}-to-${fromSlug}`;
-    const matchedPrefix = clean.startsWith(`${forwardPrefix}-`)
-      ? forwardPrefix
-      : clean.startsWith(`${reversePrefix}-`)
-        ? reversePrefix
-        : null;
+  if (!matchedRegistry) {
+    for (const route of sightseeingRoutes) {
+      const fromSlug = sightseeingRouteSlug(route.from);
+      const toSlug = sightseeingRouteSlug(route.to);
+      const forwardPrefix = `${fromSlug}-to-${toSlug}`;
+      const reversePrefix = `${toSlug}-to-${fromSlug}`;
+      const matchedPrefix = clean.startsWith(`${forwardPrefix}-`)
+        ? forwardPrefix
+        : clean.startsWith(`${reversePrefix}-`)
+          ? reversePrefix
+          : null;
 
-    if (!matchedPrefix) continue;
+      if (!matchedPrefix) continue;
 
-    from = matchedPrefix === forwardPrefix
-      ? route.from.split(/[(&\/]/)[0].trim()
-      : route.to;
-    to = matchedPrefix === forwardPrefix
-      ? route.to
-      : route.from.split(/[(&\/]/)[0].trim();
-    vehicleKey = parseVehiclePart(
-      clean.slice(matchedPrefix.length).replace(/^-/, ""),
-      "tempo-traveller"
-    );
-    if (invalidVehicle) break;
-    matchedSightseeingRoute = route;
-    matchedRegistry = true;
-    break;
+      from = matchedPrefix === forwardPrefix
+        ? route.from.split(/[(&\/]/)[0].trim()
+        : route.to;
+      to = matchedPrefix === forwardPrefix
+        ? route.to
+        : route.from.split(/[(&\/]/)[0].trim();
+      vehicleKey = parseVehiclePart(
+        clean.slice(matchedPrefix.length).replace(/^-/, ""),
+        "tempo-traveller"
+      );
+      if (invalidVehicle) break;
+      matchedSightseeingRoute = route;
+      matchedRegistry = true;
+      break;
+    }
   }
 
   // If route is not found in our catalogs, return null (404 error - do NOT auto-generate or switch to another page)
@@ -658,18 +704,28 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
   const cap = (s: string) => s.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
   const fromCap = cap(from);
   const toCap = cap(to);
-  const fromSlug = matchedSightseeingRoute
+  const fromSlug = matchedCardRoute
+    ? createCitySlug(fromCap)
+    : matchedSightseeingRoute
     ? sightseeingRouteSlug(matchedSightseeingRoute.from)
     : matchedAirportRoute
     ? airportCitySlug(fromCap)
     : fromCap.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const toSlug = matchedSightseeingRoute
+  const toSlug = matchedCardRoute
+    ? createCitySlug(toCap)
+    : matchedSightseeingRoute
     ? sightseeingRouteSlug(matchedSightseeingRoute.to)
     : matchedAirportRoute
     ? airportCitySlug(toCap)
     : toCap.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
-  const pairInfo = matchedSightseeingRoute
+  const pairInfo = matchedCardRoute
+    ? {
+        distanceKm: parseDistanceKm(matchedCardRoute.distance),
+        duration: matchedCardRoute.duration,
+        highway: matchedCardRoute.highlights.join(", "),
+      }
+    : matchedSightseeingRoute
     ? {
         distanceKm: parseDistanceKm(matchedSightseeingRoute.distance),
         duration: matchedSightseeingRoute.duration,
@@ -685,7 +741,9 @@ export function parseDynamicRouteSlug(slug: string): ParsedRouteDetail | null {
   const vRule = vehicleRules[vehicleKey] || vehicleRules[normalizeVehicleKey(vehicleKey)] || vehicleRules["tempo-traveller"];
   const fare = calculateStartingFare(pairInfo.distanceKm, vehicleKey);
   const baseKm = pairInfo.distanceKm;
-  const canonicalSlug = matchedSightseeingRoute || matchedAirportRoute
+  const canonicalSlug = matchedCardRoute
+    ? `${fromSlug}-to-${toSlug}-${vRule.slug}`
+    : matchedSightseeingRoute || matchedAirportRoute
     ? clean
     : `${fromSlug}-to-${toSlug}-${vRule.slug}`;
 

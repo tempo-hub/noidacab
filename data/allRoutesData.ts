@@ -15,6 +15,15 @@ export interface RouteItem {
   description: string;
 }
 
+export function createCitySlug(city: string): string {
+  const primary = city.split("(")[0].split("&")[0].split("/")[0].trim();
+  return primary
+    .toLowerCase()
+    .replace(/^route[-_ ]+/, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 /**
  * Global pricing formula: (distance * 1.5 * cabprice) + 500
  */
