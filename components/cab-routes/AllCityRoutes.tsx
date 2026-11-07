@@ -12,7 +12,7 @@ import {
   Phone,
   Sparkles,
 } from "lucide-react";
-import { RouteItem } from "@/data/allRoutesData";
+import { createCitySlug, type RouteItem } from "@/data/allRoutesData";
 
 interface Props {
   routes: RouteItem[];
@@ -127,15 +127,6 @@ export default function AllCityRoutes({
               return route.startingFare;
             })();
 
-            const cleanCitySlug = (city: string) => {
-              const primary = city.split("(")[0].split("&")[0].split("/")[0].trim();
-              return primary
-                .toLowerCase()
-                .replace(/^route[-_ ]+/, "")
-                .replace(/[^a-z0-9]+/g, "-")
-                .replace(/^-|-$/g, "");
-            };
-
             const getRouteTypeSlug = (vehicle?: string) => {
               if (!vehicle) return "taxi";
               const lower = vehicle.toLowerCase();
@@ -151,8 +142,8 @@ export default function AllCityRoutes({
               return "taxi";
             };
 
-            const cleanFrom = cleanCitySlug(route.from);
-            const cleanTo = cleanCitySlug(route.to);
+            const cleanFrom = createCitySlug(route.from);
+            const cleanTo = createCitySlug(route.to);
             const primaryRouteType = getRouteTypeSlug(route.recommendedVehicle);
             const primaryRouteUrl = `/route/${cleanFrom}-to-${cleanTo}-${primaryRouteType}`;
 
