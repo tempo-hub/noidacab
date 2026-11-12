@@ -54,7 +54,7 @@ export const intercityTaxiRoutes: RouteItem[] = [
   {
     id: "noida-gurgaon",
     from: "Noida",
-    to: "Gurgaon (Gurugram)",
+    to: "Gurgaon",
     category: "intercity",
     distance: "55 km",
     duration: "1 hr 30 mins",
@@ -68,7 +68,7 @@ export const intercityTaxiRoutes: RouteItem[] = [
   {
     id: "noida-agra",
     from: "Noida",
-    to: "Agra (Taj Mahal)",
+    to: "Agra",
     category: "intercity",
     distance: "180 km",
     duration: "2.5 - 3 hrs",
@@ -82,7 +82,7 @@ export const intercityTaxiRoutes: RouteItem[] = [
   {
     id: "noida-jaipur",
     from: "Noida",
-    to: "Jaipur (Pink City)",
+    to: "Jaipur",
     category: "intercity",
     distance: "290 km",
     duration: "4.5 hrs",
@@ -96,7 +96,7 @@ export const intercityTaxiRoutes: RouteItem[] = [
   {
     id: "noida-haridwar",
     from: "Noida",
-    to: "Haridwar & Rishikesh",
+    to: "Haridwar",
     category: "intercity",
     distance: "220 km",
     duration: "3.5 - 4 hrs",
@@ -124,7 +124,7 @@ export const intercityTaxiRoutes: RouteItem[] = [
   {
     id: "noida-mathura",
     from: "Noida",
-    to: "Mathura & Vrindavan",
+    to: "Mathura",
     category: "intercity",
     distance: "140 km",
     duration: "2 hrs",
@@ -138,7 +138,7 @@ export const intercityTaxiRoutes: RouteItem[] = [
   {
     id: "noida-dehradun",
     from: "Noida",
-    to: "Dehradun & Mussoorie",
+    to: "Dehradun",
     category: "intercity",
     distance: "250 km",
     duration: "4.5 hrs",
@@ -152,7 +152,7 @@ export const intercityTaxiRoutes: RouteItem[] = [
   {
     id: "lucknow-ayodhya",
     from: "Lucknow",
-    to: "Ayodhya Dham",
+    to: "Ayodhya",
     category: "intercity",
     distance: "135 km",
     duration: "2.5 hrs",
