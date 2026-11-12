@@ -21,21 +21,14 @@ import {
 } from "lucide-react";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
-import { masterRoutes } from "@/data/masterRoutes";
+import { masterRoutes, getComprehensiveRouteData } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
-import { RouteInfo } from "@/components/cab-page/RouteInfo";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -71,6 +64,14 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
   const durationDisplay = masterRoute?.duration || route.duration || "3 hr 30 min";
   const highwayDisplay = masterRoute?.highway || "National Highway Expressway";
 
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "dzire",
+    "Maruti Dzire"
+  );
+
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 10;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
@@ -95,24 +96,44 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
 
   const faqs = [
     {
-      q: `How many passengers can travel in Maruti Dzire from ${route.from} to ${route.to}?`,
-      a: "Maruti Dzire accommodates up to 4 passengers plus 1 driver with generous legroom and rear AC vents.",
+      q: `How many passengers can comfortably travel in Maruti Dzire from ${route.from} to ${route.to}?`,
+      a: `Maruti Dzire comfortably seats up to 4 adult passengers plus 1 professional chauffeur. It features contoured ergonomic seats, ample legroom, and dedicated rear AC vents for a relaxed journey.`,
     },
     {
-      q: `What is the outstation fare for Dzire Taxi from ${route.from} to ${route.to}?`,
-      a: `Dzire is billed at flat ${vehicleData.price} for outstation travel, making it the most cost-effective sedan in India. Estimated one-way trip fare is ₹${oneWayFare.toLocaleString("en-IN")}.`,
+      q: `What is the outstation taxi fare for Maruti Dzire from ${route.from} to ${route.to}?`,
+      a: `Maruti Dzire is billed at a flat base rate of ${vehicleData.price} for outstation travel. The estimated one-way trip fare is approximately ₹${oneWayFare.toLocaleString("en-IN")} based on ~${distanceDisplay} distance. No hidden charges are added.`,
     },
     {
-      q: "How much luggage can fit into the boot of Maruti Dzire?",
-      a: `Maruti Dzire features a 378-litre enclosed boot that easily accommodates ${vehicleData.luggage} large trolley suitcases and 2 duffle bags.`,
+      q: `How much luggage can fit into the boot of Maruti Dzire?`,
+      a: `Maruti Dzire is equipped with a wide 378-litre enclosed boot that easily holds ${vehicleData.luggage} large trolley suitcases along with 2 soft duffle bags, keeping your luggage secure and weatherproof.`,
     },
     {
-      q: "Is Dzire Taxi available for one-way outstation drop?",
-      a: "Yes! We provide one-way point-to-point drops with zero return fare charges.",
+      q: `Can I book a one-way Maruti Dzire taxi from ${route.from} to ${route.to} without paying return fare?`,
+      a: `Yes! We provide dedicated point-to-point one-way outstation drops from ${route.from} to ${route.to}. You only pay for the one-way distance travelled with zero return-trip surcharge.`,
     },
     {
-      q: "Are toll taxes and state taxes included in the fare?",
-      a: "Vehicle rental, fuel, and driver allowances are included. Highway tolls and state border permits are paid at actuals.",
+      q: `How is round-trip pricing calculated if I keep the Dzire for sightseeing in ${route.to}?`,
+      a: `Round-trip bookings are billed at ${vehicleData.price} with a standard 250 km daily running minimum. The car remains exclusively at your disposal for local sightseeing, meetings, and outstation excursions in and around ${route.to}.`,
+    },
+    {
+      q: `Are highway toll taxes and state border permits included in the Dzire tariff?`,
+      a: `Your fare includes vehicle rental, fuel charges, and driver allowances. Expressway tolls (FASTag) and inter-state commercial road taxes are billed at actual government toll booth receipts.`,
+    },
+    {
+      q: `Is the air conditioning kept active during the entire highway drive?`,
+      a: `Yes, 100% chilled air conditioning is guaranteed throughout the drive from ${route.from} to ${route.to}. Rear AC louvers ensure fast cabin cooling even during peak summer months.`,
+    },
+    {
+      q: `Can I schedule an early morning (5:00 AM) or late-night pickup in ${route.from}?`,
+      a: `Yes, our cab service operates 24x7. You can book guaranteed doorstep pickups at any hour from your residence, society gate, hotel, or office in ${route.from}.`,
+    },
+    {
+      q: `What is the cancellation policy and free waiting time for Dzire bookings?`,
+      a: `We offer a 100% zero-cancellation fee policy if you cancel before vehicle dispatch. Additionally, we provide complimentary 45-minute waiting time at your pickup address in ${route.from}.`,
+    },
+    {
+      q: `Are the chauffeurs verified and experienced on the ${route.from} to ${route.to} corridor?`,
+      a: `All our chauffeurs hold commercial driving badges, pass thorough background checks, and possess 5+ years of highway driving experience with knowledge of route landmarks, rest plazas, and bypasses.`,
     },
   ];
 
@@ -281,10 +302,6 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
        {/* VEHICLE SUMMARY (from DzireTemplate) */}
       <VehicleSummary location={location} vehicle={vehicleData} />
 
-
-      {/* ROUTE INFO (from DzireTemplate) */}
-      <RouteInfo location={location} vehicle={vehicleData} />
-
       {/* 4. WHY CHOOSE DZIRE FOR THIS ROUTE */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -376,26 +393,11 @@ export function RouteDzirePage({ route }: { route: ParsedRouteDetail }) {
       </section>
 
      
-      {/* JOURNEY INFO (from DzireTemplate) */}
-      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
-
-      {/* PICKUP & DROP LOCATIONS (from DzireTemplate) */}
-      {/* <PickupDropLocations location={location} vehicle={vehicleData} /> */}
-
-      {/* WHY CHOOSE US (from DzireTemplate) */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* WHAT'S INCLUDED (from DzireTemplate) */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* BOOKING PROCESS (from DzireTemplate) */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL TIPS (from DzireTemplate) */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL PLANNING (from DzireTemplate) */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="dzire"
+      />
 
       <RouteTripPlanning
         from={route.from}

@@ -24,19 +24,13 @@ import {
 import type { ParsedRoute } from "@/lib/parse-route";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
-import { masterRoutes } from "@/data/masterRoutes";
+import { masterRoutes, getComprehensiveRouteData } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "@/components/cab/RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "@/components/routes/vehicles/VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
-import { RouteInfo } from "@/components/cab-page/RouteInfo";
-import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
+import RouteComprehensiveDetails from "@/components/routes/vehicles/RouteComprehensiveDetails";
 
 type RouteProp = ParsedRoute | ParsedRouteDetail | any;
 
@@ -75,6 +69,14 @@ export function SUVRoutePage({ route }: { route: RouteProp }) {
 
   const durationDisplay = masterRoute?.duration || route.travelTime || route.duration || "4 hr 30 min";
   const highwayDisplay = masterRoute?.highway || "National Highway & Expressway Corridor";
+
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    fromName,
+    toName,
+    "suv",
+    "SUV Taxi"
+  );
 
   // Vehicle data lookup
   const ertigaData = vehicles.find((v) => v.slug === "ertiga") || {
@@ -635,22 +637,12 @@ export function SUVRoutePage({ route }: { route: RouteProp }) {
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="suv"
+      />
 
-      {/* WHAT'S INCLUDED */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* BOOKING PROCESS */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL TIPS */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL PLANNING */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
-
-      {/* ROUTE TRIP PLANNING */}
       <RouteTripPlanning
         from={fromName}
         to={toName}

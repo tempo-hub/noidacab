@@ -41,6 +41,8 @@ import {
 } from "lucide-react";
 
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RouteComprehensiveDetails from "@/components/routes/vehicles/RouteComprehensiveDetails";
+import { getComprehensiveRouteData } from "@/data/masterRoutes";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { parseDistanceKm } from "@/data/popularRoutesData";
 
@@ -93,6 +95,11 @@ export default function DynamicTaxiRoutePage({ route }: DynamicTaxiRoutePageProp
   const fromSlug = fromCity.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const toSlug = toCity.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const distKm = parseDistanceKm(route.distance, 45);
+
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = useMemo(() => {
+    return getComprehensiveRouteData(fromCity, toCity, "taxi", "Taxi");
+  }, [fromCity, toCity]);
 
   // --------------------------------------------------------------------------
   // Dynamic Cab Catalog calculation
@@ -1693,6 +1700,12 @@ export default function DynamicTaxiRoutePage({ route }: DynamicTaxiRoutePageProp
         cityName={fromCity}
         vehicleSlug="taxi"
         vehicleName="Taxi"
+      />
+
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="taxi"
       />
 
       {/* ========================================================================= */}

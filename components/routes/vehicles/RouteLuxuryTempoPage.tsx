@@ -1,30 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import {
   HeroSection,
   FareEstimate,
   VehicleFeatures,
-  RouteInfo,
-  FAQSection,
   BookingCTA,
 } from "@/components/cab-page";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
-import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
+import { getComprehensiveRouteData } from "@/data/masterRoutes";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles, type Vehicle } from "@/data/vehicles";
 
 export function RouteLuxuryTempoPage({ route }: { route: ParsedRouteDetail }) {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   // Fetch Luxury Tempo vehicle data from data/vehicles.ts
   const rawVehicle =
     vehicles.find((v) => v.slug === "luxury-tempo-traveller") ||
@@ -61,6 +57,57 @@ export function RouteLuxuryTempoPage({ route }: { route: ParsedRouteDetail }) {
 
   const cleanSlug = (route.canonicalSlug || route.slug).replace(/^(route[-/])+/g, "");
   const url = `https://www.noidacab.com/route/${cleanSlug}`;
+
+  const faqs = [
+    {
+      q: `What features distinguish a Luxury Tempo Traveller on the ${route.from} to ${route.to} route?`,
+      a: `Our Maharaja Luxury Tempo Travellers feature plush 1x1 and 2x1 leather captain recliners with calf support, ambient LED starlight ceiling, faux-wood interior trims, individual AC louvers, and motorized curtains for supreme privacy.`,
+    },
+    {
+      q: `How many passenger seats are available in the Luxury Tempo Traveller?`,
+      a: `Depending on your group size, our luxury fleet offers 9-seater, 10-seater, and 12-seater Maharaja recliner layouts, engineered to ensure massive legroom and zero shoulder-crowding.`,
+    },
+    {
+      q: `What is the per-km billing rate for a Luxury Tempo Traveller from ${route.from} to ${route.to}?`,
+      a: `Luxury Tempo Travellers are billed at ${vehicleData.price} for outstation itineraries with a 250 km daily minimum billing. The base quotation includes vehicle hire, fuel costs, and chauffeur allowances.`,
+    },
+    {
+      q: `How much luggage can be carried in the Luxury Tempo Traveller?`,
+      a: `The vehicle features an integrated rear luggage section accommodating ${vehicleData.luggage} large trolley suitcases and bags, keeping the passenger salon completely clutter-free.`,
+    },
+    {
+      q: `Can we book the Luxury Tempo Traveller for a one-way transfer to ${route.to}?`,
+      a: `Yes, premium one-way outstation transfers from ${route.from} to ${route.to} are available without empty return trip penalties.`,
+    },
+    {
+      q: `Is this vehicle suitable for corporate delegations, VIP guests, and destination weddings?`,
+      a: `Yes, it is our top-requested vehicle for corporate executives, wedding bride & groom family transfers, and VIP delegations seeking business-class road comfort.`,
+    },
+    {
+      q: `What onboard entertainment and power amenities are provided?`,
+      a: `Equipped with an overhead HD LED TV screen, Bluetooth stereo music system, individual 220V/USB charging sockets beside each seat, and reading lamps.`,
+    },
+    {
+      q: `How are highway tolls, state passenger taxes, and parking fees handled?`,
+      a: `Base rent and fuel are covered. Inter-state passenger commercial taxes, FASTag expressway tolls, and destination parking receipts are billed transparently at actual cost.`,
+    },
+    {
+      q: `Can customized door-to-door pickups and mid-way restaurant breaks be arranged?`,
+      a: `Yes, door-to-door pickups across ${route.from} sectors and flexible stopovers at top highway food courts en route to ${route.to} can be customized to your group's schedule.`,
+    },
+    {
+      q: `What safety protocols and chauffeur background checks are in place?`,
+      a: `Every Luxury Tempo Traveller is fitted with speed limiters, ABS, GPS tracking, and a first-aid kit. Drivers are certified senior chauffeurs with proven highway etiquette and spotless safety records.`,
+    },
+  ];
+
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "luxury-tempo-traveller",
+    "Luxury Tempo Traveller"
+  );
 
   return (
     <main className="min-h-screen bg-white">
@@ -103,32 +150,11 @@ export function RouteLuxuryTempoPage({ route }: { route: ParsedRouteDetail }) {
         ]}
       />
 
-      {/* 5. ROUTE INFO */}
-      <RouteInfo location={location} vehicle={vehicleData} />
-
-      {/* 6. VEHICLE SUMMARY */}
-      {/* <VehicleSummary location={location} vehicle={vehicleData} /> */}
-
-      {/* 7. JOURNEY INFO */}
-      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
-
-      {/* 8. PICKUP & DROP LOCATIONS */}
-      <PickupDropLocations location={location} vehicle={vehicleData} />
-
-      {/* 9. WHY CHOOSE US */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* 10. WHAT'S INCLUDED */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* 11. BOOKING PROCESS */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* 12. TRAVEL TIPS */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* 13. TRAVEL PLANNING */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="luxury-tempo-traveller"
+      />
 
       {/* 14. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
       <VehicleRouteSeoGuide
@@ -150,7 +176,39 @@ export function RouteLuxuryTempoPage({ route }: { route: ParsedRouteDetail }) {
       <CabTestimonials />
 
       {/* 16. FAQ SECTION */}
-      <FAQSection location={location} vehicle={vehicleData} />
+      <section className="bg-white/95 py-12 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FREQUENTLY ASKED QUESTIONS</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
+              Luxury Tempo Traveller FAQs ({route.from} to {route.to})
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={i} className="rounded-2xl border border-gray-200 bg-white overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between p-5 text-left text-sm sm:text-base font-bold text-gray-900 hover:text-amber-600"
+                  >
+                    <span>{faq.q}</span>
+                    <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${isOpen ? "rotate-180 text-amber-600" : ""}`} />
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-600 border-t border-gray-100">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* 15. POPULAR CITY ROUTES */}
       <PopularCityRoutes

@@ -38,7 +38,7 @@ export default function PopularNoidaRoutes() {
         {/* Route Grid */}
         <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {routes.slice(0, 8).map((route, index) => {
-            const href = `/${route.slug}-taxi`;
+            const href = `/route/${route.slug}-taxi`;
 
             const calculatedPrice = (route.distance * 1.5 * 10) + 500;
 

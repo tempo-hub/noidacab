@@ -21,22 +21,15 @@ import {
 } from "lucide-react";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
-import { masterRoutes } from "@/data/masterRoutes";
+import { masterRoutes, getComprehensiveRouteData } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
 import { SedanFleetSection } from "@/components/cab-page/SedanFleetSection";
-import { RouteInfo } from "@/components/cab-page/RouteInfo";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -72,6 +65,14 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
   const durationDisplay = masterRoute?.duration || route.duration || "3 hr 30 min";
   const highwayDisplay = masterRoute?.highway || "National Highway Expressway";
 
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "sedan",
+    "Sedan Taxi"
+  );
+
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 10;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
@@ -97,23 +98,43 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
   const faqs = [
     {
       q: `Which cars are included in the Prime Sedan fleet from ${route.from} to ${route.to}?`,
-      a: "Our prime sedan fleet consists of clean, commercial-registered Maruti Dzire, Toyota Etios, and Honda Amaze sedans with verified drivers.",
+      a: `Our Prime Sedan fleet includes modern, commercial-plated Maruti Suzuki Dzire, Honda Amaze, and Toyota Etios sedans equipped with dual airbags, plush interiors, and verified chauffeurs.`,
     },
     {
-      q: `What is the tariff for Sedan Taxi from ${route.from} to ${route.to}?`,
-      a: `Sedan cabs are billed at flat ${vehicleData.price} for outstation travel, providing executive comfort at the lowest market rates. Estimated one-way trip fare is ₹${oneWayFare.toLocaleString("en-IN")}.`,
+      q: `What is the outstation tariff for Prime Sedan Taxi from ${route.from} to ${route.to}?`,
+      a: `Prime Sedans are billed at flat ${vehicleData.price} for outstation travel. Estimated one-way trip fare is approximately ₹${oneWayFare.toLocaleString("en-IN")} based on ~${distanceDisplay} distance. No surge pricing or hidden convenience fees.`,
     },
     {
-      q: "How many passengers and luggage bags can fit in a sedan?",
-      a: `It accommodates 4 passengers plus 1 driver and ${vehicleData.luggage} large trolley suitcases comfortably in the enclosed boot.`,
+      q: `How many passengers and luggage bags can fit in a Prime Sedan?`,
+      a: `A Prime Sedan comfortably accommodates up to 4 passengers plus 1 driver, and the enclosed boot holds ${vehicleData.luggage} large trolley suitcases and 2 duffle bags.`,
     },
     {
-      q: "Is AC active throughout the journey?",
-      a: "Yes, 100% chilled air conditioning is guaranteed throughout the ride with zero extra AC charges.",
+      q: `Can I book a one-way sedan cab from ${route.from} to ${route.to}?`,
+      a: `Yes! We specialize in point-to-point one-way outstation drops with zero return fare charges. You only pay for the one-way distance to your drop location.`,
     },
     {
-      q: "Can I book a one-way sedan cab?",
-      a: "Yes! We specialize in point-to-point one-way outstation drops with zero return fare charges.",
+      q: `How is round-trip pricing calculated for same-day or multi-day tours?`,
+      a: `Round-trip sedan travel is billed at ${vehicleData.price} with a 250 km daily running minimum. The assigned sedan stays exclusively with your group for local travel in ${route.to} and the return journey.`,
+    },
+    {
+      q: `Are highway toll taxes and state border fees included in the fare?`,
+      a: `Base fare covers the car rental, fuel, and driver allowances. FASTag toll taxes and state road permits are paid as per actual electronic government receipts.`,
+    },
+    {
+      q: `Is air conditioning guaranteed on expressways and during hot weather?`,
+      a: `Yes, 100% chilled air conditioning is guaranteed throughout your ride from ${route.from} to ${route.to} with zero extra AC surcharges.`,
+    },
+    {
+      q: `Can I schedule early morning or late-night doorstep pickups in ${route.from}?`,
+      a: `Yes! Our operations run 24x7. You can schedule a guaranteed pickup at any hour from any sector, gated community, apartment complex, or transit hub in ${route.from}.`,
+    },
+    {
+      q: `What are the cancellation rules and free waiting time?`,
+      a: `We offer a 100% zero cancellation fee policy if cancelled before the driver leaves for pickup. You also receive 45 minutes of complimentary waiting time at your boarding address.`,
+    },
+    {
+      q: `Can corporate clients obtain a valid GST tax invoice?`,
+      a: `Yes, we provide instant GST-compliant tax invoices with vehicle registration numbers, route breakdown, and company GSTIN for official corporate expense claims.`,
     },
   ];
 
@@ -282,9 +303,6 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
       {/* VEHICLE SUMMARY (from SedanTemplate) */}
       <VehicleSummary location={location} vehicle={vehicleData} />
 
-      {/* ROUTE INFO (from SedanTemplate) */}
-      <RouteInfo location={location} vehicle={vehicleData} />
-
 
       {/* 4. WHY CHOOSE SEDAN FOR THIS ROUTE */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
@@ -378,26 +396,11 @@ export function RouteSedanPage({ route }: { route: ParsedRouteDetail }) {
 
 
 
-      {/* JOURNEY INFO (from SedanTemplate) */}
-      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
-
-      {/* PICKUP & DROP LOCATIONS (from SedanTemplate) */}
-      {/* <PickupDropLocations location={location} vehicle={vehicleData} /> */}
-
-      {/* WHY CHOOSE US (from SedanTemplate) */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* WHAT'S INCLUDED (from SedanTemplate) */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* BOOKING PROCESS (from SedanTemplate) */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL TIPS (from SedanTemplate) */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL PLANNING (from SedanTemplate) */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="sedan"
+      />
 
       <RouteTripPlanning
         from={route.from}

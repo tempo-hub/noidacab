@@ -19,6 +19,106 @@
  * =========================================================================================
  */
 
+export interface RouteStop {
+  name: string;
+  type: string;
+  distanceFromOrigin?: string;
+  description: string;
+}
+
+export interface RouteDestinationPoint {
+  name: string;
+  category: string;
+  distanceFromCity?: string;
+  description: string;
+}
+
+export interface RouteDetailSpec {
+  tollEstimate: string;
+  roadCondition: string;
+  expressway: string;
+  fastag: string;
+  bestTimeToTravel: string;
+  speedLimit: string;
+  petrolPumpsEvChangers?: string;
+}
+
+export interface RouteFareOption {
+  category: string;
+  model: string;
+  ratePerKm: number;
+  seats: number;
+  luggage: string;
+  oneWayFare: number;
+  roundTripFare: number;
+  slug: string;
+}
+
+export interface RoutePurpose {
+  title: string;
+  desc: string;
+  highlight: string;
+}
+
+export interface RouteBookingPolicy {
+  cancellationPolicy: string;
+  waitingCharges: string;
+  luggageGuidelines: string;
+  bookingProcess: { step: number; title: string; desc: string }[];
+  paymentModes: string[];
+}
+
+export interface ComprehensiveRouteData {
+  from: string;
+  to: string;
+  distance: string;
+  distanceKm: number;
+  duration: string;
+  highway: string;
+  vehicleName: string;
+  vehicleSlug: string;
+  hero: {
+    heading: string;
+    subheading: string;
+    tagline: string;
+    pickupCity: string;
+    dropCity: string;
+  };
+  overview: {
+    distanceKm: number;
+    duration: string;
+    bestTimeToTravel: string;
+    trafficExpectation: string;
+    routeSummary: string;
+  };
+  routeMap: {
+    title: string;
+    pathSteps: string[];
+    highways: string[];
+    majorInterchanges: string[];
+  };
+  fareCalculator: {
+    vehicleFares: RouteFareOption[];
+  };
+  popularDestinations: RouteDestinationPoint[];
+  majorStops: RouteStop[];
+  routeDetails: RouteDetailSpec;
+  cabOptions: {
+    title: string;
+    models: string;
+    seats: string;
+    luggage: string;
+    ratePerKm: string;
+    oneWayEstimate: string;
+    recommendedFor: string;
+    slug: string;
+  }[];
+  travelPurposes: RoutePurpose[];
+  pickupAreas: string[];
+  dropAreas: string[];
+  bookingInfo: RouteBookingPolicy;
+}
+
 export interface MasterRouteItem {
   from: string;
   to: string;
@@ -28,6 +128,14 @@ export interface MasterRouteItem {
   highway?: string;          // e.g. "NH 44"
   defaultVehicle?: string;   // e.g. "taxi" | "tempo-traveller" | "innova-crysta"
   isPopular?: boolean;
+
+  // Enriched route-specific fields for Google indexing
+  popularDestinations?: RouteDestinationPoint[] | string[];
+  majorStops?: RouteStop[];
+  routeDetails?: Partial<RouteDetailSpec>;
+  nearbyPickupAreas?: string[];
+  travelPurposes?: RoutePurpose[];
+  routePathSteps?: string[];
 }
 
 export type PopularRouteDefinition = MasterRouteItem;
@@ -1017,4 +1125,332 @@ export const masterRoutes: MasterRouteItem[] = [
 ];
 
 export const masterRoutesRegistry = masterRoutes;
-export default masterRoutes;
+
+/**
+ * =========================================================================================
+ * 🗺️ CORRIDOR INTELLIGENCE & GOOGLE INDEXING KNOWLEDGE BASE
+ * =========================================================================================
+ */
+
+const destinationAttractionsDb: Record<string, RouteDestinationPoint[]> = {
+  agra: [
+    { name: "Taj Mahal", category: "UNESCO World Heritage Site", distanceFromCity: "4 km from City Center", description: "Iconic white marble mausoleum and universal symbol of love on the banks of Yamuna." },
+    { name: "Agra Fort", category: "Historical Fort & Palace", distanceFromCity: "3 km from City Center", description: "Massive 16th-century Mughal red sandstone fortress housing Jahangiri Mahal and Khas Mahal." },
+    { name: "Fatehpur Sikri", category: "Mughal Capital Ruins", distanceFromCity: "36 km via NH 21", description: "Emperor Akbar's fortified ancient city with Buland Darwaza and Jama Masjid." },
+    { name: "Mehtab Bagh", category: "Riverfront Sunset Garden", distanceFromCity: "7 km across Yamuna", description: "Charbagh complex offering stunning sunset views of Taj Mahal away from crowds." },
+    { name: "Tomb of I'timad-ud-Daulah", category: "Baby Taj Heritage", distanceFromCity: "6 km from Center", description: "Exquisite marble jewel-box tomb preceding the Taj Mahal architecture." },
+    { name: "Sikandra (Akbar's Tomb)", category: "Imperial Mausoleum", distanceFromCity: "12 km on NH 19", description: "Sprawling red sandstone tomb complex set amidst tranquil deer gardens." },
+  ],
+  jaipur: [
+    { name: "Amber Palace & Fort", category: "Hilltop Rajput Fortress", distanceFromCity: "11 km from Center", description: "Magnificent fortress overlooking Maota Lake with Sheesh Mahal and elephant courtyard." },
+    { name: "Hawa Mahal", category: "Palace of Winds", distanceFromCity: "Heart of Old City", description: "Five-storey pink sandstone facade featuring 953 intricately carved jharokhas." },
+    { name: "City Palace", category: "Royal Residence & Museum", distanceFromCity: "City Center", description: "Royal palace complex blending Rajasthani and Mughal architecture with Chandra Mahal." },
+    { name: "Nahargarh Fort", category: "Sunset Point & Viewpoint", distanceFromCity: "15 km along Aravallis", description: "Perched high on the Aravalli hills delivering panoramic sunset views of the Pink City." },
+    { name: "Jal Mahal", category: "Water Palace", distanceFromCity: "5 km on Amer Road", description: "Architectural wonder sitting serenely in the middle of Man Sagar Lake." },
+    { name: "Chokhi Dhani", category: "Rajasthani Cultural Village", distanceFromCity: "18 km on Tonk Road", description: "Traditional Rajasthani folk dances, camel rides, and lavish thali dining experience." },
+  ],
+  haridwar: [
+    { name: "Har Ki Pauri", category: "Sacred Holy Ghat", distanceFromCity: "City Center", description: "World-famous ghat renowned for the sacred evening Ganga Aarti and footprints of Lord Vishnu." },
+    { name: "Mansa Devi Temple", category: "Siddhapeeth Shrine", distanceFromCity: "3 km via Ropeway", description: "Hilltop temple dedicated to Goddess Mansa Devi offering panoramic valley views." },
+    { name: "Chandi Devi Temple", category: "Neel Parvat Pilgrimage", distanceFromCity: "5 km via Cable Car", description: "Ancient temple atop Neel Parvat established by Adi Shankaracharya in 8th century." },
+    { name: "Shantikunj Ashram", category: "Spiritual & Yoga Academy", distanceFromCity: "6 km on Rishikesh Hwy", description: "Global headquarters of All World Gayatri Pariwar promoting moral and spiritual regeneration." },
+    { name: "Bharat Mata Mandir", category: "National Patriotic Shrine", distanceFromCity: "5 km from Station", description: "Unique 8-storey temple dedicated to Mother India and freedom fighters." },
+    { name: "Rajaji National Park (Chilla)", category: "Wildlife & Safari Sanctuary", distanceFromCity: "12 km", description: "Picturesque sanctuary home to wild Asian elephants, leopards, and 300+ bird species." },
+  ],
+  rishikesh: [
+    { name: "Ram Jhula & Laxman Jhula", category: "Iconic Suspension Bridges", distanceFromCity: "Swargashram Area", description: "Pedestrian suspension bridges spanning Ganga surrounded by spiritual markets." },
+    { name: "Triveni Ghat", category: "Sangam Ghat & Maha Aarti", distanceFromCity: "City Center", description: "Confluence of holy Ganga, Yamuna, and Saraswati with stirring daily dusk Aarti." },
+    { name: "Parmarth Niketan Ashram", category: "Yoga & Spiritual Center", distanceFromCity: "Swargashram", description: "Sprawling riverside ashram renowned for international yoga festivals and evening prayer." },
+    { name: "Neelkanth Mahadev Temple", category: "Sacred Shiva Shrine", distanceFromCity: "32 km scenic hill drive", description: "Revered shrine in Manikoot mountain where Lord Shiva consumed the Samudra Manthan poison." },
+    { name: "Beatles Ashram (Chaurasi Kutia)", category: "Cultural Heritage & Art", distanceFromCity: "Swargashram Forest", description: "Historic ashram where The Beatles composed their White Album amidst graffiti walls." },
+    { name: "Shivpuri River Rafting Camp", category: "White Water Rafting & Camping", distanceFromCity: "16 km upstream", description: "Premier starting launchpad for Grade III and IV rapids along emerald Ganga waters." },
+  ],
+  mathura: [
+    { name: "Shri Krishna Janmabhoomi", category: "Birthplace of Lord Krishna", distanceFromCity: "City Center", description: "Historic prison cell courtyard (Garbha Griha) marking the divine birth of Lord Krishna." },
+    { name: "Dwarkadhish Temple", category: "Ancient Vaishnav Shrine", distanceFromCity: "Near Vishram Ghat", description: "Famous Rajasthani-styled temple pulsating with joyful jhoola celebrations and aartis." },
+    { name: "Vishram Ghat", category: "Yamuna Riverfront Ghat", distanceFromCity: "Old Mathura", description: "Primary bathing ghat where Lord Krishna rested after vanquishing tyrant Kansa." },
+    { name: "Gita Mandir (Birla Mandir)", category: "Cultural Marble Temple", distanceFromCity: "5 km on Vrindavan Rd", description: "Magnificent temple featuring all 18 chapters of Bhagavad Gita inscribed on stone pillars." },
+    { name: "Govardhan Hill (Parikrama)", category: "Sacred Pilgrimage Route", distanceFromCity: "22 km from Mathura", description: "21-km sacred parikrama hill lifted by Lord Krishna to protect Vrajvasis from Indra's storm." },
+  ],
+  vrindavan: [
+    { name: "Banke Bihari Mandir", category: "Revered Krishna Temple", distanceFromCity: "Old Vrindavan", description: "Most famous temple where Lord Krishna appears in the Tribhanga posture with parda darshan." },
+    { name: "Prem Mandir", category: "Italian White Marble Monument", distanceFromCity: "Chatikara Road", description: "Stunning 54-acre temple featuring life-size dioramas and synchronized musical fountain light shows." },
+    { name: "ISKCON Krishna Balaram Temple", category: "International Spiritual Center", distanceFromCity: "Raman Reti", description: "Vibrant global temple resonating with continuous 24-hour Hare Krishna sankirtan." },
+    { name: "Nidhivan", category: "Mystical Sacred Grove", distanceFromCity: "Vrindavan Core", description: "Sacred grove of entangled tulsi trees where divine Raas Leela is believed to occur every night." },
+    { name: "Radha Raman Temple", category: "Ancient Swayambhu Deity", distanceFromCity: "Near Seva Kunj", description: "500-year-old temple preserving the self-manifested saligram shila deity of Lord Krishna." },
+  ],
+  dehradun: [
+    { name: "Robber's Cave (Guchhupani)", category: "Natural Limestone Gorge", distanceFromCity: "8 km from Center", description: "Natural 600m river cave formation where disappearing stream flows between high limestone cliffs." },
+    { name: "Sahastradhara", category: "Sulphur Springs & Waterfalls", distanceFromCity: "14 km from Station", description: "Thousand-fold therapeutic mineral spring waterfalls cascading amidst stalactite caves." },
+    { name: "Forest Research Institute (FRI)", category: "Greco-Roman Architecture", distanceFromCity: "5 km on Chakrata Rd", description: "Colonial architectural marvel set amidst 450 hectares of botanical gardens and forestry museums." },
+    { name: "Tapkeshwar Mahadev Temple", category: "Natural Cave Shiva Shrine", distanceFromCity: "6.5 km from Center", description: "Ancient cave temple on Asan river where water drops continuously trickle over the Shivalinga." },
+    { name: "Mindrolling Monastery", category: "Tibetan Buddhist Monument", distanceFromCity: "Clement Town", description: "Magnificent 185-foot Great Stupa adorned with vivid Tibetan Buddhist murals and gardens." },
+  ],
+  mussoorie: [
+    { name: "Kempty Falls", category: "Cascading Mountain Falls", distanceFromCity: "15 km from Mall Road", description: "Famous 40-foot mountain waterfall cascading down into pools ideal for summer splashes." },
+    { name: "The Mall Road", category: "Colonial Promenade & Shopping", distanceFromCity: "Town Center", description: "Historic pedestrian promenade lined with Victorian lampposts, cafes, and bakeries." },
+    { name: "Gun Hill Point", category: "Second Highest Mussoorie Peak", distanceFromCity: "Accessible via Cable Car", description: "Historic vantage point offering breath-taking 360-degree views of Himalayan peaks and Doon Valley." },
+    { name: "George Everest's House", category: "Scenic Cliff Estate & Observatory", distanceFromCity: "6 km from Library Chowk", description: "Colonial estate of the Surveyor General of India offering panoramic Aglar river views." },
+    { name: "Camel's Back Road", category: "Tranquil Nature Walking Trail", distanceFromCity: "3 km stretch", description: "Peaceful 3km sunset road flanked by natural rock formations resembling a resting camel." },
+  ],
+  chandigarh: [
+    { name: "Rock Garden of Chandigarh", category: "Sculptural Recycled Art", distanceFromCity: "Sector 1", description: "Nek Chand's visionary 40-acre wonderland built entirely from industrial waste and broken ceramics." },
+    { name: "Sukhna Lake", category: "Himalayan Foothill Reservoir", distanceFromCity: "Sector 1", description: "Picturesque 3 sq km pristine rainfed lake against Shivalik hills with boating and walking tracks." },
+    { name: "Zakir Hussain Rose Garden", category: "Asia's Largest Rose Park", distanceFromCity: "Sector 16", description: "Expansive 30-acre garden boasting 50,000 rose bushes spanning 1,600 distinct floral varieties." },
+    { name: "Sector 17 Commercial Plaza", category: "Pedestrian City Heart", distanceFromCity: "Sector 17", description: "Le Corbusier-planned open-air pedestrian shopping paradise with dancing musical fountains." },
+  ],
+  lucknow: [
+    { name: "Bara Imambara & Bhool Bhulaiya", category: "Architectural Marvel & Labyrinth", distanceFromCity: "Old Lucknow", description: "18th-century monument with an arched central hall unsupported by pillars and intriguing maze." },
+    { name: "Chota Imambara", category: "Palace of Lights", distanceFromCity: "Husainabad", description: "Ornate mausoleum adorned with Belgian glass chandeliers, calligraphy, and gilded dome." },
+    { name: "Rumi Darwaza", category: "Awadhi Gateway to Lucknow", distanceFromCity: "Near Bara Imambara", description: "Majestic 60-foot archway modeled after the Sublime Porte gateway of Istanbul." },
+    { name: "Hazratganj Shopping Street", category: "Heritage Boulevard & Dining", distanceFromCity: "City Center", description: "Victorian-style shopping district renowned for Royal Cafe basket chaat and authentic Chikankari." },
+  ],
+  ayodhya: [
+    { name: "Shri Ram Janmabhoomi Mandir", category: "Grand Sacred Temple", distanceFromCity: "Ramkot", description: "Majestic traditional Nagara-style temple constructed with pink Bansi Paharpur sandstone." },
+    { name: "Hanuman Garhi", category: "Fortified Guardian Temple", distanceFromCity: "1 km from Ram Mandir", description: "10th-century cave temple atop 76 steps where Lord Hanuman guards the holy city of Ayodhya." },
+    { name: "Kanak Bhavan", category: "Palace of Sita & Rama", distanceFromCity: "Near Hanuman Garhi", description: "Intricately ornamented palace temple gifted to Sita by Queen Kaikeyi with gold-crowned deities." },
+    { name: "Saryu River Ghats (Ram Ki Paidi)", category: "Holy River Promenade & Deepotsav", distanceFromCity: "Riverfront", description: "Revered riverside promenade famous for evening Maha Aarti and Guinness record Deepotsav." },
+  ],
+  varanasi: [
+    { name: "Shri Kashi Vishwanath Temple", category: "Jyotirlinga Golden Temple", distanceFromCity: "Vishwanath Gali", description: "One of the 12 holiest Shiva Jyotirlingas linked to the sacred Ganga through Vishwanath Corridor." },
+    { name: "Dashashwamedh Ghat", category: "Epicenter of Maha Ganga Aarti", distanceFromCity: "Riverfront", description: "Varanasi's liveliest ghat where seven priests perform synchronized choreographed evening Aarti." },
+    { name: "Assi Ghat", category: "Subah-e-Banaras Morning Ghat", distanceFromCity: "Southern Varanasi", description: "Peaceful ghat renowned for early morning sunrise chants, classical music, and boat rides." },
+    { name: "Sarnath Deer Park", category: "Buddha's First Sermon Site", distanceFromCity: "10 km northeast", description: "Sacred Buddhist heritage park housing Dhamek Stupa and the Ashoka Lion Capital." },
+  ],
+};
+
+const highwayStopsDb: Record<string, RouteStop[]> = {
+  yamuna: [
+    { name: "Jewar Plaza Rest Area (KM 38)", type: "Highway Expressway Plaza", distanceFromOrigin: "38 km", description: "Food court with McDonald's, Costa Coffee, KFC, clean air-conditioned washrooms & EV charging." },
+    { name: "Yamuna Expressway Mile 65 Midway", type: "Midway Food Lounge", distanceFromOrigin: "65 km", description: "Spacious multi-brand plaza with Subway, Haldiram's, Bikanervala, and 24x7 fuel station." },
+    { name: "Mathura Toll Cut Plaza (KM 115)", type: "Highway Refreshment Hub", distanceFromOrigin: "115 km", description: "Clean highway stop with traditional hot tea, snacks, Mathura peda, and fuel facilities." },
+  ],
+  delhijaipur: [
+    { name: "Highway King Bilaspur (NH 48)", type: "Premium Highway Resort & Food Court", distanceFromOrigin: "55 km", description: "Iconic family stop with extensive North Indian buffet, fast food counters, and clean restrooms." },
+    { name: "Hotel Highway Xpress Behror", type: "Midway Food Court & Fuel Hub", distanceFromOrigin: "125 km", description: "Comprehensive highway complex with McDonald's, Sagar Ratna, Bikanervala, and lush lawns." },
+    { name: "Old Rao Hotel Dharuhera", type: "Authentic Highway Dhaba", distanceFromOrigin: "72 km", description: "Famous for legendary stuffed tandoori paranthas, homemade white butter, and kulhad tea." },
+  ],
+  delhimeerut: [
+    { name: "Namaste Midway Mansurpur (NH 334)", type: "Premium Highway Mall & Food Court", distanceFromOrigin: "95 km", description: "Massive air-conditioned food hub housing Starbucks, McDonald's, Haldiram's, and kids play zone." },
+    { name: "Cheetal Grand Khatauli", type: "Historic Highway Garden Restaurant", distanceFromOrigin: "105 km", description: "Legendary restaurant nestled amidst green foliage serving fresh cutlets, omelettes, and south Indian dishes." },
+    { name: "Shiva Tourist Dhaba (Bypass)", type: "24x7 Highway Dhaba", distanceFromOrigin: "140 km", description: "Popular spot for piping hot dal makhani, paneer kulchas, and fresh sugarcane juice." },
+  ],
+  nh44north: [
+    { name: "Amrik Sukhdev Dhaba Murthal", type: "Legendary Parantha Destination", distanceFromOrigin: "50 km", description: "World-renowned 24x7 multi-cuisine hub famous for tandoori paranthas with overflowing white butter." },
+    { name: "Haveli Karnal (GT Road)", type: "Heritage Punjabi Themed Village & Food", distanceFromOrigin: "130 km", description: "Spectacular Punjabi cultural decor, folk performances, authentic Amritsari kulchas, and lassi." },
+    { name: "Savoy Greens Midway Karnal", type: "Express Food Court & Fuel Complex", distanceFromOrigin: "135 km", description: "Clean modern food plaza with Subway, Domino's, Costa Coffee, McDonald's, and EV superchargers." },
+  ],
+  agralucknow: [
+    { name: "Agra-Lucknow Expressway KM 102 Plaza", type: "Expressway Rest Hub (Kannauj)", distanceFromOrigin: "102 km on Expressway", description: "Government certified rest zone with cafeteria, baby care room, clean washrooms, and fuel pumps." },
+    { name: "Expressway KM 220 Rest Stop (Etawah)", type: "Midway Food Complex", distanceFromOrigin: "220 km on Expressway", description: "Dedicated rest area with hot snacks, tea stalls, parking, and 24x7 highway safety patrol." },
+  ],
+};
+
+/**
+ * Derives comprehensive route data for all 12 SEO sections.
+ */
+export function getComprehensiveRouteData(
+  from: string,
+  to: string,
+  vehicleSlug: string = "dzire",
+  vehicleName: string = "Maruti Dzire"
+): ComprehensiveRouteData {
+  const normFrom = from.trim();
+  const normTo = to.trim();
+  const fLower = normFrom.toLowerCase();
+  const tLower = normTo.toLowerCase();
+
+  // Search masterRoutes for exact distance, duration & highway
+  const matched = masterRoutes.find(
+    (r) =>
+      (r.from.toLowerCase() === fLower && r.to.toLowerCase() === tLower) ||
+      (r.to.toLowerCase() === fLower && r.from.toLowerCase() === tLower)
+  );
+
+  const rawDist = matched?.distance || 180;
+  const distNum = typeof rawDist === "number" ? rawDist : parseInt(String(rawDist).replace(/[^0-9]/g, "")) || 180;
+  const durationStr = matched?.duration || `${Math.floor(distNum / 55)} hr ${Math.round((distNum % 55) * 1.09)} min`;
+  const highwayStr = matched?.highway || "National Highway & Access-Controlled Expressway";
+
+  // Identify destination category
+  let destKey = "";
+  if (tLower.includes("agra")) destKey = "agra";
+  else if (tLower.includes("jaipur")) destKey = "jaipur";
+  else if (tLower.includes("haridwar")) destKey = "haridwar";
+  else if (tLower.includes("rishikesh")) destKey = "rishikesh";
+  else if (tLower.includes("mathura")) destKey = "mathura";
+  else if (tLower.includes("vrindavan")) destKey = "vrindavan";
+  else if (tLower.includes("dehradun")) destKey = "dehradun";
+  else if (tLower.includes("mussoorie")) destKey = "mussoorie";
+  else if (tLower.includes("chandigarh")) destKey = "chandigarh";
+  else if (tLower.includes("lucknow")) destKey = "lucknow";
+  else if (tLower.includes("ayodhya") || tLower.includes("faizabad")) destKey = "ayodhya";
+  else if (tLower.includes("varanasi") || tLower.includes("kashi") || tLower.includes("banaras")) destKey = "varanasi";
+
+  // Fallback destination points
+  const popularDestinations: RouteDestinationPoint[] =
+    (destKey && destinationAttractionsDb[destKey]) || [
+      { name: `${normTo} City Center & Clock Tower`, category: "Central Landmark", distanceFromCity: "City Center", description: `Major commercial and cultural hub of ${normTo} featuring local markets and traditional eateries.` },
+      { name: `${normTo} Heritage Old Quarter`, category: "Historic Heritage Area", distanceFromCity: "2 km from Center", description: `Historic bazaars and architectural monuments preserving the timeless traditions of ${normTo}.` },
+      { name: `${normTo} Riverfront / Scenic Promenade`, category: "Scenic Leisure Promenade", distanceFromCity: "4 km from Station", description: `Peaceful natural recreational spot popular with families for evening strolls and sunset views.` },
+      { name: `${normTo} Famous Pilgrimage Temple`, category: "Sacred Religious Shrine", distanceFromCity: "5 km from Hub", description: `Revered spiritual temple attracting devotees across the region for blessings and peace.` },
+      { name: `${normTo} Shopping Corridor & Crafts Bazaar`, category: "Local Handloom & Market", distanceFromCity: "City Heart", description: `Vibrant retail market famous for indigenous handicrafts, textiles, and local food delicacies.` },
+    ];
+
+  // Identify highway stops
+  let stopsKey = "";
+  if (highwayStr.toLowerCase().includes("yamuna") || destKey === "agra" || destKey === "mathura" || destKey === "vrindavan") stopsKey = "yamuna";
+  else if (highwayStr.toLowerCase().includes("jaipur") || highwayStr.toLowerCase().includes("nh 48") || destKey === "jaipur") stopsKey = "delhijaipur";
+  else if (highwayStr.toLowerCase().includes("meerut") || highwayStr.toLowerCase().includes("334") || destKey === "haridwar" || destKey === "rishikesh" || destKey === "dehradun") stopsKey = "delhimeerut";
+  else if (highwayStr.toLowerCase().includes("nh 44") || destKey === "chandigarh") stopsKey = "nh44north";
+  else if (highwayStr.toLowerCase().includes("lucknow") || destKey === "lucknow" || destKey === "ayodhya") stopsKey = "agralucknow";
+
+  const majorStops: RouteStop[] =
+    (stopsKey && highwayStopsDb[stopsKey]) || [
+      { name: `${highwayStr.split("&")[0].trim()} Highway Food Court`, type: "Air-Conditioned Food Plaza", distanceFromOrigin: `~${Math.round(distNum * 0.35)} km`, description: `Family-friendly highway rest area with hygienic multi-cuisine food counters, tea stalls, and clean washrooms.` },
+      { name: `Midway Highway Dhaba & Refuel Hub`, type: "24x7 Highway Dhaba & Fuel Station", distanceFromOrigin: `~${Math.round(distNum * 0.6)} km`, description: `Popular stop for freshly prepared paranthas, hot kulhad chai, bottled beverages, and vehicle fuel.` },
+      { name: `Toll Plaza Bypass Rest Zone`, type: "Fast Break & Rest Facility", distanceFromOrigin: `~${Math.round(distNum * 0.8)} km`, description: `Convenient highway stop near toll intersection for quick stretches, vehicle check, and snacks.` },
+    ];
+
+  // Calculate vehicle fares
+  const calcOneWay = (rate: number) => Math.round(distNum * 1.5 * rate + 500);
+  const calcRoundTrip = (rate: number) => Math.round(distNum * 2 * rate + 1000);
+
+  const vehicleFares: RouteFareOption[] = [
+    { category: "Prime Sedan", model: "Dzire / Amaze / Etios", ratePerKm: 10, seats: 4, luggage: "2 Large Bags (378L)", oneWayFare: calcOneWay(10), roundTripFare: calcRoundTrip(10), slug: "dzire-taxi" },
+    { category: "Compact SUV", model: "Maruti Ertiga", ratePerKm: 13, seats: 6, luggage: "3 Large Bags (550L)", oneWayFare: calcOneWay(13), roundTripFare: calcRoundTrip(13), slug: "ertiga-taxi" },
+    { category: "Premium SUV", model: "Toyota Innova Crysta", ratePerKm: 16, seats: 7, luggage: "4 Large Bags (600L)", oneWayFare: calcOneWay(16), roundTripFare: calcRoundTrip(16), slug: "innova-crysta-taxi" },
+    { category: "Tempo Traveller", model: "12-Seater Tempo Traveller", ratePerKm: 20, seats: 12, luggage: "8-10 Bags + Carrier", oneWayFare: calcOneWay(20), roundTripFare: calcRoundTrip(20), slug: "12-seater-tempo-traveller" },
+    { category: "Large Tempo", model: "16-Seater Force Traveller", ratePerKm: 25, seats: 16, luggage: "12-14 Bags + Roof Carrier", oneWayFare: calcOneWay(25), roundTripFare: calcRoundTrip(25), slug: "16-seater-tempo-traveller" },
+    { category: "Luxury Mini Bus", model: "20-Seater Tempo Traveller", ratePerKm: 27, seats: 20, luggage: "15-18 Bags + Carrier", oneWayFare: calcOneWay(27), roundTripFare: calcRoundTrip(27), slug: "20-seater-tempo-traveller" },
+    { category: "VIP Luxury", model: "Force Urbania / Maharaja 12-Seater", ratePerKm: 25, seats: 12, luggage: "10 Bags + Cargo Boot", oneWayFare: calcOneWay(25), roundTripFare: calcRoundTrip(25), slug: "urbania-rental" },
+  ];
+
+  // Route details
+  const tollEstimatedCost =
+    distNum > 500 ? "₹750 - ₹1,150 (Multiple FASTag Expressways)" :
+    distNum > 250 ? "₹350 - ₹580 (FASTag Highway Tolls)" :
+    distNum > 150 ? "₹240 - ₹435 (Yamuna / Meerut / Highway Expressways)" :
+    "₹90 - ₹180 (State Border / Highway Toll)";
+
+  const routeDetails: RouteDetailSpec = {
+    tollEstimate: tollEstimatedCost,
+    expressway: highwayStr,
+    roadCondition: "Smooth multi-lane asphalt surface with dedicated FASTag electronic lanes and physical lane dividers.",
+    fastag: "100% FASTag enabled electronic tolling. No cash queues or physical ticket delays.",
+    bestTimeToTravel: "Early Morning (5:30 AM - 7:00 AM) or Post-Lunch (2:00 PM) to avoid city bottleneck traffic.",
+    speedLimit: "100 km/h for private/commercial cars on expressways; 80 km/h on national highway sections.",
+    petrolPumpsEvChangers: "High-density petrol, diesel, CNG and fast EV charging stations available every 25-35 km.",
+  };
+
+  // Route Map steps
+  const routeMap = {
+    title: `${normFrom} to ${normTo} Corridor Navigation`,
+    pathSteps: [
+      `Doorstep Chauffeur Pickup at your residence, office, or hotel in ${normFrom}`,
+      `Seamless transition onto ${highwayStr.split("&")[0].trim()} via dedicated bypass corridors`,
+      `Scheduled refreshment break at highway food plazas with clean washrooms`,
+      `Smooth expressway cruising past intermediate bypasses and electronic FASTag gates`,
+      `Direct doorstep drop-off at your hotel, home, or office address anywhere in ${normTo}`,
+    ],
+    highways: [highwayStr, "Connected State Ring Roads", "City Radial Corridors"],
+    majorInterchanges: [
+      `${normFrom} City Exit Toll Corridor`,
+      `Highway Midway Junction Plaza (~KM ${Math.round(distNum * 0.5)})`,
+      `${normTo} Entry Ring Road & City Center Interchange`,
+    ],
+  };
+
+  // Pickup localities
+  const isFromNcr = fLower.includes("noida") || fLower.includes("delhi") || fLower.includes("greater noida") || fLower.includes("ghaziabad");
+  const pickupAreas: string[] = isFromNcr ? [
+    "Sector 18, Sector 27 & Sector 37 (Atta Market Hub)",
+    "Sector 50, Sector 62 & Sector 76 (Metro Corridor)",
+    "Noida Expressway (Sectors 128, 135, 137, 142 & 168)",
+    "Greater Noida (Pari Chowk, Alpha, Beta, Delta & Gamma)",
+    "Noida Extension / Greater Noida West (Gaur City, Char Murti)",
+    "Botanical Garden, City Centre & Electronic City Metro stations",
+    "Delhi NCR (Connaught Place, South Delhi, IGI Airport T3/T1)",
+    "Indirapuram, Vaishali & Vasundhara (Ghaziabad NCR)",
+  ] : [
+    `All residential colonies & apartments across ${normFrom}`,
+    `${normFrom} Railway Station & Satellite Junctions`,
+    `${normFrom} Domestic & International Airport Terminals`,
+    `Central Business Districts & Technology Parks in ${normFrom}`,
+    `All major hotels, resorts & convention centers in ${normFrom}`,
+  ];
+
+  const dropAreas: string[] = [
+    `Doorstep drop at any private home, apartment or bungalow in ${normTo}`,
+    `All luxury hotels, resorts, homestays and heritage havelis in ${normTo}`,
+    `${normTo} Junction Railway Station, Bus Terminus & Airport`,
+    `Major tourist landmarks, temples, ghats and monuments in ${normTo}`,
+    `Key industrial parks, government offices and commercial complexes in ${normTo}`,
+  ];
+
+  // Travel purposes
+  const travelPurposes: RoutePurpose[] = [
+    { title: "Direct Airport Transfers", desc: `Doorstep pickup from ${normFrom} straight to IGI Airport T3/T1 or upcoming Jewar Noida International Airport with zero luggage hassle.`, highlight: "Punctual Flight Departure" },
+    { title: "Outstation Family Vacations", desc: `Travel comfortably with kids and seniors in air-conditioned Sedans, SUVs, or spacious Tempo Travellers along ${highwayStr}.`, highlight: "Zero Driver Fatigue" },
+    { title: "Corporate & Business Travel", desc: `Arrive refreshed for business meetings and client conferences with dedicated chauffeurs, laptop charging ports, and GST invoices.`, highlight: "100% Tax Deductible" },
+    { title: "Religious Pilgrimages & Darshan", desc: `Peaceful darshan tours to sacred shrines with flexible halts for elderly family members and custom sightseeing schedules.`, highlight: "Flexible Temple Stops" },
+    { title: "Weddings & Group Celebrations", desc: `Coordinate wedding guest logistics, baraat transit, and weekend celebration caravans with multiple vehicles dispatched in tandem.`, highlight: "Fleet Dispatch" },
+  ];
+
+  // Cab options comparison
+  const cabOptions = [
+    { title: "Prime Sedan", models: "Dzire / Amaze / Etios", seats: "4 Passengers", luggage: "2 Large Trolley Bags", ratePerKm: "₹10/km", oneWayEstimate: `₹${calcOneWay(10).toLocaleString("en-IN")}`, recommendedFor: "Solo travelers, couples, or small families seeking maximum tariff economy.", slug: "dzire-taxi" },
+    { title: "Comfort SUV", models: "Maruti Ertiga", seats: "6 Passengers", luggage: "3 Large Bags", ratePerKm: "₹13/km", oneWayEstimate: `₹${calcOneWay(13).toLocaleString("en-IN")}`, recommendedFor: "Families with extra luggage or groups of up to 6 adults needing high roof clearance.", slug: "ertiga-taxi" },
+    { title: "Executive Luxury SUV", models: "Toyota Innova Crysta", seats: "7 Passengers", luggage: "4-5 Large Bags", ratePerKm: "₹16/km", oneWayEstimate: `₹${calcOneWay(16).toLocaleString("en-IN")}`, recommendedFor: "Executive corporate travelers, long-distance road trips, and VIP family travel.", slug: "innova-crysta-taxi" },
+    { title: "Group Tempo Traveller", models: "12 / 16 / 20 / 24 Seater Pushback", seats: "12 to 24 Passengers", luggage: "10-20 Bags + Carrier", ratePerKm: "₹20 - ₹29/km", oneWayEstimate: `₹${calcOneWay(20).toLocaleString("en-IN")}`, recommendedFor: "Wedding parties, office offsites, pilgrimage yatras, and large family getaways.", slug: "12-seater-tempo-traveller" },
+  ];
+
+  // Booking information
+  const bookingInfo: RouteBookingPolicy = {
+    cancellationPolicy: "100% Free Cancellation up to 2 hours before the scheduled pickup time. Zero penalty or hidden deductions.",
+    waitingCharges: "First 45 minutes of waiting at pickup address or airport arrivals is completely free of charge. Nominal hourly charges apply thereafter.",
+    luggageGuidelines: "Generous boot space plus rear luggage provision. Sedan carries 2 large suitcases; SUV carries 4; Tempo Travellers feature dedicated rear compartments and rooftop luggage carriers with waterproof tarpaulin.",
+    bookingProcess: [
+      { step: 1, title: "Select Route & Cab", desc: `Choose your preferred pickup date, time in ${normFrom}, destination in ${normTo}, and vehicle class.` },
+      { step: 2, title: "Instant Quote & Confirmation", desc: "Receive immediate transparent quote on WhatsApp or phone call without advance down payments for local dispatches." },
+      { step: 3, title: "Chauffeur at Your Doorstep", desc: "Your verified chauffeur arrives 10 minutes prior to departure in a clean, sanitized, air-conditioned vehicle." },
+    ],
+    paymentModes: ["UPI (Google Pay, PhonePe, Paytm)", "Credit / Debit Cards", "Net Banking", "Cash directly to Chauffeur at trip end"],
+  };
+
+  return {
+    from: normFrom,
+    to: normTo,
+    distance: `${distNum} km`,
+    distanceKm: distNum,
+    duration: durationStr,
+    highway: highwayStr,
+    vehicleName,
+    vehicleSlug,
+    hero: {
+      heading: `${normFrom} to ${normTo} ${vehicleName} Taxi`,
+      subheading: `Book comfortable and sanitized ${vehicleName} cab from ${normFrom} to ${normTo} via ${highwayStr}.`,
+      tagline: `Reliable doorstep pickup across ${normFrom}, transparent per-km billing, zero surge, and verified commercial chauffeurs for a smooth ${distNum} km journey.`,
+      pickupCity: normFrom,
+      dropCity: normTo,
+    },
+    overview: {
+      distanceKm: distNum,
+      duration: durationStr,
+      bestTimeToTravel: routeDetails.bestTimeToTravel,
+      trafficExpectation: "Low to moderate on access-controlled expressways; peak traffic expected near city periphery during morning & evening rush hours.",
+      routeSummary: `The ${normFrom} to ${normTo} road corridor spans approximately ${distNum} km with a typical driving time of ${durationStr} along ${highwayStr}. The road features high-speed paved lanes, regular food courts, FASTag toll plazas, and round-the-clock emergency assistance.`,
+    },
+    routeMap,
+    fareCalculator: { vehicleFares },
+    popularDestinations,
+    majorStops,
+    routeDetails,
+    cabOptions,
+    travelPurposes,
+    pickupAreas,
+    dropAreas,
+    bookingInfo,
+  };
+}
+

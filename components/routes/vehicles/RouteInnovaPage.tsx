@@ -21,21 +21,14 @@ import {
 } from "lucide-react";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
-import { masterRoutes } from "@/data/masterRoutes";
+import { masterRoutes, getComprehensiveRouteData } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
-import { RouteInfo } from "@/components/cab-page/RouteInfo";
-import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
+import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
 
 export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -71,6 +64,14 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
   const durationDisplay = masterRoute?.duration || route.duration || "3 hr 30 min";
   const highwayDisplay = masterRoute?.highway || "National Highway Expressway";
 
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "innova-crysta",
+    "Toyota Innova Crysta"
+  );
+
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 16;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
@@ -99,23 +100,43 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
   const faqs = [
     {
       q: `How many passengers can travel in Toyota Innova Crysta from ${route.from} to ${route.to}?`,
-      a: "Our Toyota Innova Crysta comfortably seats 6 passengers plus 1 chauffeur, with plush captain recliner seats in the middle row.",
+      a: `Our Toyota Innova Crysta comfortably accommodates 6 passengers plus 1 professional chauffeur. It features luxurious captain recliner seats in the middle row and split reclining seats in the third row.`,
     },
     {
-      q: `What is the outstation per-km rate for Innova Crysta from ${route.from} to ${route.to}?`,
-      a: `Innova Crysta is billed at flat ${vehicleData.price} for outstation travel, covering vehicle rental, fuel, and chauffeur allowances. Estimated one-way trip fare is ₹${oneWayFare.toLocaleString("en-IN")}.`,
+      q: `What is the outstation tariff for Innova Crysta taxi from ${route.from} to ${route.to}?`,
+      a: `Toyota Innova Crysta is billed at flat ${vehicleData.price} for outstation routes. The estimated one-way trip fare is approximately ₹${oneWayFare.toLocaleString("en-IN")} based on ~${distanceDisplay} distance. No hidden booking surcharges.`,
     },
     {
-      q: "Can Innova Crysta accommodate heavy luggage?",
-      a: `Yes, the boot easily accommodates ${vehicleData.luggage} large trolley suitcases. The rear row can also be folded for excess baggage.`,
+      q: `How much luggage can fit into Toyota Innova Crysta?`,
+      a: `Innova Crysta easily carries ${vehicleData.luggage} large trolley suitcases in the rear cargo area. If extra luggage capacity is required for family tours or airport transfers, the third row folds 50:50. Top carriers are available on request.`,
     },
     {
-      q: "Is Innova Crysta available for one-way point-to-point drop?",
-      a: "Yes! We offer point-to-point one-way Innova drops with zero return travel charges.",
+      q: `Why is Innova Crysta considered the gold standard for long-distance highway travel?`,
+      a: `Built on a robust ladder-frame chassis with double wishbone suspension, high ground clearance, and superior soundproofing, the Innova Crysta eliminates road bumps and passenger fatigue on 400+ km highway corridors.`,
     },
     {
-      q: "Are the vehicles clean and sanitized before departure?",
-      a: "Every Innova Crysta undergoes vacuum cleaning, upholstery sanitization, and AC filter inspection before every dispatch.",
+      q: `Can I book an Innova Crysta for a dedicated one-way outstation drop?`,
+      a: `Yes! We provide point-to-point one-way outstation transfers from ${route.from} to ${route.to} with zero return kilometer charges.`,
+    },
+    {
+      q: `How does multi-day round-trip billing work for Innova Crysta?`,
+      a: `Round-trip journeys are calculated at ${vehicleData.price} with a standard 250 km daily running minimum. The chauffeur remains with your party for local sightseeing, meetings, and return travel.`,
+    },
+    {
+      q: `Are highway tolls, parking receipts, and inter-state permit fees included?`,
+      a: `Vehicle rental, fuel, and chauffeur daily allowances are included in the quote. FASTag highway tolls and inter-state commercial taxes are billed as per actual electronic receipts.`,
+    },
+    {
+      q: `Does the Innova Crysta have separate digital climate control for rear passengers?`,
+      a: `Yes, Innova Crysta is equipped with dual digital climate control and individual ceiling-mounted air conditioning vents for both the 2nd and 3rd passenger rows.`,
+    },
+    {
+      q: `What are the vehicle hygiene and sanitization standards?`,
+      a: `Every vehicle undergoes complete interior vacuuming, leather upholstery sanitization, and AC duct cleaning before dispatch to guarantee a fresh, sanitized cabin.`,
+    },
+    {
+      q: `Can corporate travelers obtain an official GST invoice for business reimbursement?`,
+      a: `Yes, we issue instant GST-compliant tax invoices with company GSTIN, trip breakdown, and vehicle registration numbers for seamless corporate tax filing.`,
     },
   ];
 
@@ -380,23 +401,11 @@ export function RouteInnovaPage({ route }: { route: ParsedRouteDetail }) {
 
       
 
-      {/* JOURNEY INFO (from InnovaTemplate) */}
-      <JourneyInfo location={location} vehicle={vehicleData} />
-
-      {/* PICKUP & DROP LOCATIONS (from InnovaTemplate) */}
-      <PickupDropLocations location={location} vehicle={vehicleData} />
-
-      {/* WHY CHOOSE US */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* WHAT'S INCLUDED (from InnovaTemplate) */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* BOOKING PROCESS (from InnovaTemplate) */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL TIPS (from InnovaTemplate) */}
-      <TravelTips location={location} vehicle={vehicleData} />
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="innova-crysta"
+      />
 
       {/* ROUTE TRIP PLANNING */}
       <RouteTripPlanning

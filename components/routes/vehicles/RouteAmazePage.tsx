@@ -21,22 +21,14 @@ import {
 } from "lucide-react";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
-import { masterRoutes } from "@/data/masterRoutes";
+import { masterRoutes, getComprehensiveRouteData } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
-
-import { RouteInfo } from "@/components/cab-page/RouteInfo";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -72,6 +64,14 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
   const durationDisplay = masterRoute?.duration || route.duration || "3 hr 30 min";
   const highwayDisplay = masterRoute?.highway || "National Highway Expressway";
 
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "amaze",
+    "Honda Amaze"
+  );
+
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 10;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
@@ -97,23 +97,43 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
   const faqs = [
     {
       q: `How many passengers can travel in Honda Amaze from ${route.from} to ${route.to}?`,
-      a: "Honda Amaze seats 4 passengers plus 1 driver with generous shoulder room and wide contoured rear seats.",
+      a: `Honda Amaze comfortably seats 4 passengers plus 1 driver with generous shoulder room, contoured rear seats, and wide leg space designed for long-distance highway travel.`,
     },
     {
       q: `What is the tariff for Honda Amaze taxi from ${route.from} to ${route.to}?`,
-      a: `Amaze is billed at flat ${vehicleData.price} for outstation trips, offering Japanese sedan refinement at the lowest market rate. Estimated one-way trip fare is ₹${oneWayFare.toLocaleString("en-IN")}.`,
+      a: `Honda Amaze is billed at flat ${vehicleData.price} for outstation travel. Estimated one-way trip fare is approximately ₹${oneWayFare.toLocaleString("en-IN")} for ~${distanceDisplay} distance. No hidden charges or surge multipliers.`,
     },
     {
-      q: "How much luggage can fit in the boot of Honda Amaze?",
-      a: `Honda Amaze has a massive 420-litre boot—the largest in its category—accommodating ${vehicleData.luggage} large suitcases with room to spare.`,
+      q: `How much luggage can fit in the boot of Honda Amaze?`,
+      a: `Honda Amaze boasts an expansive 420-litre boot—the largest in the compact sedan category. It easily accommodates ${vehicleData.luggage} large hard-top suitcases plus 2 soft bags with room to spare.`,
     },
     {
-      q: "Is Honda Amaze comfortable on highway expressways?",
-      a: "Yes, Honda's advanced suspension damping and acoustic sound insulation deliver a serene highway ride on Yamuna Expressway and national corridors.",
+      q: `Why is Honda Amaze preferred for long highway journeys on ${highwayDisplay}?`,
+      a: `Honda's refined i-VTEC engine, advanced suspension damping, and acoustic insulation deliver a whisper-quiet cabin and smooth high-speed stability across expressways.`,
     },
     {
-      q: "Can I book Honda Amaze for airport drops and one-way outstation trips?",
-      a: "Yes! We specialize in point-to-point one-way outstation and airport drops with transparent billing and zero return fare charges.",
+      q: `Can I book Honda Amaze for a one-way outstation transfer from ${route.from} to ${route.to}?`,
+      a: `Yes! We provide direct one-way doorstep drops with zero return fare charges. You only pay for the distance travelled to your destination in ${route.to}.`,
+    },
+    {
+      q: `How does round-trip billing work for a multi-day trip to ${route.to}?`,
+      a: `Round-trip bookings are billed at ${vehicleData.price} with a 250 km daily running allowance. The car remains exclusively with your family or business group for local sightseeing and return travel.`,
+    },
+    {
+      q: `Are highway toll taxes and state road permits included in the quote?`,
+      a: `Vehicle rental, fuel charges, and chauffeur allowances are included in the quote. FASTag highway tolls and inter-state permit fees are paid at actuals with electronic receipts provided.`,
+    },
+    {
+      q: `Is air conditioning guaranteed throughout the journey?`,
+      a: `Yes, high-capacity climate control AC is active throughout the journey without extra surcharges, ensuring passenger comfort in all weather conditions.`,
+    },
+    {
+      q: `What is the cancellation policy and waiting time allowance for Honda Amaze?`,
+      a: `We provide 100% free cancellation if cancelled prior to chauffeur dispatch. You also get 45 minutes of complimentary waiting time at your pickup address in ${route.from}.`,
+    },
+    {
+      q: `How do I book and pay for Honda Amaze taxi from ${route.from} to ${route.to}?`,
+      a: `You can book instantly via WhatsApp or phone call with zero upfront payment. We accept UPI, NetBanking, credit/debit cards, and cash upon journey completion.`,
     },
   ];
 
@@ -282,9 +302,6 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
       {/* VEHICLE SUMMARY (from AmazeTemplate) */}
       <VehicleSummary location={location} vehicle={vehicleData} />
 
-      {/* ROUTE INFO (from AmazeTemplate) */}
-      <RouteInfo location={location} vehicle={vehicleData} />
-
       {/* 4. WHY CHOOSE AMAZE FOR THIS ROUTE */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -375,26 +392,11 @@ export function RouteAmazePage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      {/* JOURNEY INFO (from AmazeTemplate) */}
-      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
-
-      {/* PICKUP & DROP LOCATIONS (from AmazeTemplate) */}
-      {/* <PickupDropLocations location={location} vehicle={vehicleData} /> */}
-
-      {/* WHY CHOOSE US (from AmazeTemplate) */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* WHAT'S INCLUDED (from AmazeTemplate) */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* BOOKING PROCESS (from AmazeTemplate) */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL TIPS (from AmazeTemplate) */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL PLANNING (from AmazeTemplate) */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="amaze"
+      />
 
       <RouteTripPlanning
         from={route.from}

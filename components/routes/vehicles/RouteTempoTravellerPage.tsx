@@ -1,30 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import {
   HeroSection,
   FareEstimate,
   VehicleFeatures,
-  RouteInfo,
-  FAQSection,
   BookingCTA,
 } from "@/components/cab-page";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
-import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
+import { getComprehensiveRouteData } from "@/data/masterRoutes";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles, type Vehicle } from "@/data/vehicles";
 
 export function RouteTempoTravellerPage({ route }: { route: ParsedRouteDetail }) {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   // Fetch tempo traveller vehicle data from data/vehicles.ts
   const rawVehicle =
     vehicles.find((v) => v.slug === route.vehicleSlug && v.slug !== "luxury-tempo-traveller") ||
@@ -62,6 +58,57 @@ export function RouteTempoTravellerPage({ route }: { route: ParsedRouteDetail })
 
   const cleanSlug = (route.canonicalSlug || route.slug).replace(/^(route[-/])+/g, "");
   const url = `https://www.noidacab.com/route/${cleanSlug}`;
+
+  const faqs = [
+    {
+      q: `What Tempo Traveller seating configurations are available for ${route.from} to ${route.to}?`,
+      a: `We provide 9, 12, 16, 20, and 24-seater standard Tempo Travellers as well as Maharaja luxury editions and 12-16 seater Force Urbania vans, tailored to your group size.`,
+    },
+    {
+      q: `What is the per-kilometer outstation rental rate from ${route.from} to ${route.to}?`,
+      a: `Standard Tempo Traveller rentals start from ${vehicleData.price} for outstation trips, with a 250 km daily running minimum. The rate covers vehicle rent, fuel, and chauffeur allowances.`,
+    },
+    {
+      q: `How much luggage can fit into the Tempo Traveller?`,
+      a: `It includes a generous rear boot holding up to ${vehicleData.luggage} bags, interior overhead baggage racks, and an exterior rooftop luggage carrier with rainproof tarpaulin.`,
+    },
+    {
+      q: `Is the Tempo Traveller fitted with effective air conditioning?`,
+      a: `Yes, all Tempo Travellers are equipped with heavy-duty dual AC blowers and separate roof-mounted cooling vents above each passenger seat.`,
+    },
+    {
+      q: `Can we book a Tempo Traveller for a one-way trip to ${route.to}?`,
+      a: `Yes, point-to-point one-way outstation transfers from ${route.from} to ${route.to} are available without paying for return dead-mileage.`,
+    },
+    {
+      q: `How does round-trip or weekend tour rental work?`,
+      a: `On round-trip rentals, the vehicle remains exclusively with your group for local travel, hotel transfers, and sightseeing across ${route.to} billed at ${vehicleData.price} with standard 250 km/day minimums.`,
+    },
+    {
+      q: `Are interstate permit taxes, FASTag tolls, and parking included in the quotation?`,
+      a: `Base rent and fuel are covered. Inter-state commercial permits, state border entry taxes, and FASTag expressway toll charges are billed at actuals with receipts.`,
+    },
+    {
+      q: `Are the drivers experienced with highway routes and hill terrain?`,
+      a: `Yes, our drivers possess heavy passenger commercial vehicle licenses and have 8+ years of highway driving experience with zero-accident safety track records.`,
+    },
+    {
+      q: `Can multiple passenger pickups be scheduled in ${route.from}?`,
+      a: `Yes, we coordinate convenient pickups across residential sectors, corporate offices, or transit junctions across ${route.from} before heading toward ${route.to}.`,
+    },
+    {
+      q: `What is the cancellation and itinerary modification policy?`,
+      a: `Bookings can be rescheduled or cancelled free of charge up to 24 hours prior to scheduled departure time with no hidden penalty fees.`,
+    },
+  ];
+
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "tempo-traveller",
+    "Tempo Traveller"
+  );
 
   return (
     <main className="min-h-screen bg-white">
@@ -104,32 +151,11 @@ export function RouteTempoTravellerPage({ route }: { route: ParsedRouteDetail })
         ]}
       />
 
-      {/* 5. ROUTE INFO */}
-      <RouteInfo location={location} vehicle={vehicleData} />
-
-      {/* 6. VEHICLE SUMMARY */}
-      {/* <VehicleSummary location={location} vehicle={vehicleData} /> */}
-
-      {/* 7. JOURNEY INFO */}
-      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
-
-      {/* 8. PICKUP & DROP LOCATIONS */}
-      <PickupDropLocations location={location} vehicle={vehicleData} />
-
-      {/* 9. WHY CHOOSE US */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* 10. WHAT'S INCLUDED */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* 11. BOOKING PROCESS */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* 12. TRAVEL TIPS */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* 13. TRAVEL PLANNING */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="tempo-traveller"
+      />
 
       {/* 14. ROUTE & FLEET INTELLIGENCE SEO GUIDE */}
       <VehicleRouteSeoGuide
@@ -151,7 +177,39 @@ export function RouteTempoTravellerPage({ route }: { route: ParsedRouteDetail })
       <CabTestimonials />
 
       {/* 16. FAQ SECTION */}
-      <FAQSection location={location} vehicle={vehicleData} />
+      <section className="bg-white/95 py-12 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">FREQUENTLY ASKED QUESTIONS</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
+              Tempo Traveller FAQs ({route.from} to {route.to})
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={i} className="rounded-2xl border border-gray-200 bg-white overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between p-5 text-left text-sm sm:text-base font-bold text-gray-900 hover:text-amber-600"
+                  >
+                    <span>{faq.q}</span>
+                    <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${isOpen ? "rotate-180 text-amber-600" : ""}`} />
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-600 border-t border-gray-100">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* 15. POPULAR CITY ROUTES */}
       <PopularCityRoutes
