@@ -21,21 +21,13 @@ import {
 } from "lucide-react";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
-import { masterRoutes } from "@/data/masterRoutes";
+import { masterRoutes, getComprehensiveRouteData } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
-import { RouteInfo } from "@/components/cab-page/RouteInfo";
-import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
 
 export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -71,6 +63,14 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
   const durationDisplay = masterRoute?.duration || route.duration || "3 hr 30 min";
   const highwayDisplay = masterRoute?.highway || "National Highway Expressway";
 
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "ertiga",
+    "Maruti Ertiga"
+  );
+
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 13;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
@@ -96,23 +96,43 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
   const faqs = [
     {
       q: `How many passengers can sit in Maruti Ertiga from ${route.from} to ${route.to}?`,
-      a: "Maruti Ertiga accommodates up to 6 passengers plus 1 driver, with flexible second and third row split seating.",
+      a: `Maruti Ertiga comfortably seats up to 6 passengers plus 1 driver. It features 3 rows of seating: front captain seats, a sliding and reclining second row, and a 50:50 split folding third row.`,
     },
     {
-      q: `What is the outstation fare for Maruti Ertiga from ${route.from} to ${route.to}?`,
-      a: `Ertiga is billed at flat ${vehicleData.price} for outstation travel, making it India's most budget-friendly 6-seater family SUV. Estimated one-way trip fare is ₹${oneWayFare.toLocaleString("en-IN")}.`,
+      q: `What is the outstation tariff for Maruti Ertiga from ${route.from} to ${route.to}?`,
+      a: `Maruti Ertiga is billed at flat ${vehicleData.price} for outstation travel, making it India's most economical 6-seater family SUV. The estimated one-way trip fare is approximately ₹${oneWayFare.toLocaleString("en-IN")} based on ~${distanceDisplay} distance.`,
     },
     {
-      q: "How much luggage can an Ertiga carry?",
-      a: `With all seats up, it holds 2-3 duffels. By folding the third-row 50:50 split seats, it holds ${vehicleData.luggage} large trolley suitcases easily.`,
+      q: `How much luggage can an Ertiga carry on this route?`,
+      a: `With all 3 rows occupied, Ertiga carries 2-3 medium duffle bags in the rear trunk. For groups of 4-5 passengers with the 3rd row folded, it accommodates ${vehicleData.luggage} large trolley suitcases with ease. Rooftop luggage carriers are available on prior request.`,
     },
     {
-      q: "Does Ertiga have roof-mounted AC for rear passengers?",
-      a: "Yes, our Ertiga cabs are equipped with roof-mounted 2nd-row AC blowers with 3-speed fan control to ensure all rows remain cool.",
+      q: `Does the Ertiga have dedicated roof AC blowers for rear passengers?`,
+      a: `Yes! Our Ertiga fleet is fitted with roof-mounted secondary AC cooling units with independent multi-speed blower controls, ensuring passenger comfort in all three rows even in peak summer.`,
     },
     {
-      q: "Can we hire Ertiga for outstation round trips with family?",
-      a: "Yes, Ertiga is our most popular family outstation car for weekend getaways, weddings, and hill stations.",
+      q: `Can I book Maruti Ertiga for a one-way outstation drop to ${route.to}?`,
+      a: `Yes! We provide point-to-point one-way outstation transfers from ${route.from} to ${route.to} with zero return kilometer charges.`,
+    },
+    {
+      q: `How does round-trip billing work for family weekend trips to ${route.to}?`,
+      a: `Round-trip travel is billed at ${vehicleData.price} with a 250 km daily running minimum. The Ertiga stays exclusively with your family for hotel transfers, sightseeing in ${route.to}, and the return trip.`,
+    },
+    {
+      q: `Are highway tolls, parking, and state entry permits included in the Ertiga fare?`,
+      a: `Vehicle rental, fuel costs, and driver allowances are included. Highway toll taxes (FASTag) and inter-state permit charges are paid at actuals based on official receipts.`,
+    },
+    {
+      q: `Is Maruti Ertiga suitable for long highway expressways and hill driving?`,
+      a: `Yes, Ertiga's lightweight Heartect chassis, 1.5L K15 Smart Hybrid petrol engine, and high ground clearance ensure effortless cruising along expressways and stable climbing on hilly roads.`,
+    },
+    {
+      q: `Does NoidaCab provide sector-wise doorstep pickups across ${route.from}?`,
+      a: `Yes, we provide 100% doorstep pickups across all sectors, colonies, residential societies, and metro stations in ${route.from} with 24x7 phone coordinator tracking.`,
+    },
+    {
+      q: `What is the cancellation policy and waiting time allowance for Ertiga?`,
+      a: `You enjoy a zero cancellation fee policy prior to driver departure, and 45 minutes of complimentary waiting time at your boarding address in ${route.from}.`,
     },
   ];
 
@@ -281,9 +301,6 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
 
       {/* ROUTE INFO (from ErtigaTemplate) */}
       {/* <RouteInfo location={location} vehicle={vehicleData} /> */}
-
-      {/* JOURNEY INFO (from ErtigaTemplate) */}
-      <JourneyInfo location={location} vehicle={vehicleData} />
       
 
       
@@ -441,27 +458,11 @@ export function RouteErtigaPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      {/* VEHICLE SUMMARY (from ErtigaTemplate) */}
-      {/* <VehicleSummary location={location} vehicle={vehicleData} /> */}
-
-
-      {/* PICKUP & DROP LOCATIONS (from ErtigaTemplate) */}
-      <PickupDropLocations location={location} vehicle={vehicleData} />
-
-      {/* WHY CHOOSE US (from ErtigaTemplate) */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* WHAT'S INCLUDED (from ErtigaTemplate) */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* BOOKING PROCESS (from ErtigaTemplate) */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL TIPS (from ErtigaTemplate) */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL PLANNING (from ErtigaTemplate) */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="ertiga"
+      />
 
       <RouteTripPlanning
         from={route.from}

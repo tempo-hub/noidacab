@@ -10,6 +10,8 @@ import RouteFAQs from "./RouteFAQs";
 import RouteVehicleOptions from "./RouteVehicleOptions";
 import RouteBenefits from "./RouteBenefits";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RouteComprehensiveDetails from "@/components/routes/vehicles/RouteComprehensiveDetails";
+import { getComprehensiveRouteData } from "@/data/masterRoutes";
 
 export default function RouteVehicleTemplate({
   route,
@@ -19,6 +21,13 @@ export default function RouteVehicleTemplate({
   if (!vehicle) {
     return null;
   }
+
+  const routeIntelligence = getComprehensiveRouteData(
+    route.fromName,
+    route.toName,
+    vehicle.slug,
+    vehicle.name
+  );
 
   return (
     <main>
@@ -39,6 +48,12 @@ export default function RouteVehicleTemplate({
 
       <RouteBookingOptions route={route} />
       <RouteBenefits route = {route} />
+
+      {/* Comprehensive Route Corridor Intelligence */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug={vehicle.slug}
+      />
 
       {/* Popular City Routes */}
       <PopularCityRoutes

@@ -21,22 +21,14 @@ import {
 } from "lucide-react";
 import type { ParsedRouteDetail } from "@/data/popularRoutesData";
 import { vehicles } from "@/data/vehicles";
-import { masterRoutes } from "@/data/masterRoutes";
+import { masterRoutes, getComprehensiveRouteData } from "@/data/masterRoutes";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import RelatedCityRoutes from "./RelatedCityRoutes";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import VehicleRouteSeoGuide from "./VehicleRouteSeoGuide";
 import RouteTripPlanning from "@/components/routes/vehicles/RouteTripPlanning";
-
-import { RouteInfo } from "@/components/cab-page/RouteInfo";
+import RouteComprehensiveDetails from "./RouteComprehensiveDetails";
 import { VehicleSummary } from "@/components/cab-page/VehicleSummary";
-import { JourneyInfo } from "@/components/cab-page/JourneyInfo";
-import { PickupDropLocations } from "@/components/cab-page/PickupDropLocations";
-import { WhyChooseUs } from "@/components/cab-page/WhyChooseUs";
-import { WhatsIncluded } from "@/components/cab-page/WhatsIncluded";
-import { BookingProcess } from "@/components/cab-page/BookingProcess";
-import { TravelTips } from "@/components/cab-page/TravelTips";
-import { TravelPlanning } from "@/components/cab-page/TravelPlanning";
 
 export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -72,6 +64,14 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
   const durationDisplay = masterRoute?.duration || route.duration || "3 hr 30 min";
   const highwayDisplay = masterRoute?.highway || "National Highway Expressway";
 
+  // Comprehensive corridor intelligence for route indexing
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from,
+    route.to,
+    "etios",
+    "Toyota Etios"
+  );
+
   const ratePerKm = parseFloat(vehicleData.price.replace(/[^0-9.]/g, "")) || 10;
   const distNum = parseFloat(String(distanceDisplay).replace(/[^0-9.]/g, "")) || 180;
   const oneWayFare = Math.round(distNum * 1.5 * ratePerKm + 500);
@@ -97,23 +97,43 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
   const faqs = [
     {
       q: `How many passengers can travel in Toyota Etios from ${route.from} to ${route.to}?`,
-      a: "Toyota Etios seats 4 passengers plus 1 driver with an exceptionally wide rear bench seat and flat rear floor.",
+      a: `Toyota Etios seats 4 passengers plus 1 driver with an exceptionally wide rear bench seat and a completely flat rear floorboard, providing superior legroom for three adults in the back.`,
     },
     {
       q: `What is the tariff for Toyota Etios outstation cab from ${route.from} to ${route.to}?`,
-      a: `Toyota Etios is billed at flat ${vehicleData.price} for outstation routes, offering unmatched value and Toyota durability. Estimated one-way trip fare is ₹${oneWayFare.toLocaleString("en-IN")}.`,
+      a: `Toyota Etios is billed at a flat rate of ${vehicleData.price} for outstation travel. Estimated one-way trip fare is approximately ₹${oneWayFare.toLocaleString("en-IN")} based on ~${distanceDisplay} distance. Transparent billing with zero return kilometer fees.`,
     },
     {
-      q: "How large is the boot space of Toyota Etios?",
-      a: `Toyota Etios features an industry-leading 592-litre boot—large enough to carry ${vehicleData.luggage} large suitcases and additional duffels with ease.`,
+      q: `How large is the boot space of Toyota Etios compared to other sedans?`,
+      a: `Toyota Etios features an industry-leading 592-litre boot—the largest trunk in any passenger sedan in India. It easily carries ${vehicleData.luggage} large airport trolley suitcases and multiple duffels without needing a roof carrier.`,
     },
     {
-      q: "Is Toyota Etios comfortable for long 400+ km road trips?",
-      a: "Yes! Etios is celebrated for its soft suspension, flat floorboard, and relaxed seating posture, making it a favorite for long highway journeys.",
+      q: `Is Toyota Etios comfortable for long 300+ km highway road trips?`,
+      a: `Yes! Celebrated for its soft long-travel suspension, low NVH levels, and relaxed seating posture, the Etios glides smoothly over expressway joints and uneven surfaces.`,
     },
     {
-      q: "Can I book Toyota Etios for one-way outstation travel?",
-      a: "Yes! We offer point-to-point one-way outstation drops with zero return fare charges and transparent per-km billing.",
+      q: `Can I book Toyota Etios for a dedicated one-way outstation drop?`,
+      a: `Yes! We provide point-to-point one-way outstation transfers from ${route.from} to ${route.to} with zero return charges.`,
+    },
+    {
+      q: `How does multi-day round-trip booking work for ${route.to}?`,
+      a: `Round-trip travel is calculated at ${vehicleData.price} with a 250 km daily running minimum. The chauffeur and vehicle stay with your party for local sightseeing, hotel transfers, and excursions.`,
+    },
+    {
+      q: `Are highway toll taxes and state commercial taxes included in the fare?`,
+      a: `Vehicle hire, fuel expenses, and driver daily allowances are included. Highway tolls (deducted digitally via FASTag) and state border permits are paid at actuals against valid receipts.`,
+    },
+    {
+      q: `Are Toyota Etios cabs thoroughly sanitized and air-conditioned?`,
+      a: `Yes, every Etios vehicle undergoes interior vacuuming and sanitization before dispatch. Chilled air conditioning remains active throughout the entire route.`,
+    },
+    {
+      q: `What is the cancellation and waiting policy for Toyota Etios bookings?`,
+      a: `Enjoy a 100% zero-cancellation fee policy up until driver dispatch. Additionally, we provide 45 minutes of free waiting time at your pickup locality in ${route.from}.`,
+    },
+    {
+      q: `Can I get an official GST tax invoice for business reimbursement?`,
+      a: `Yes, we provide computer-generated GST invoices with complete trip details, vehicle number, and GSTIN for corporate accounting and tax claims.`,
     },
   ];
 
@@ -282,9 +302,6 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
       {/* VEHICLE SUMMARY (from EtiosTemplate) */}
       <VehicleSummary location={location} vehicle={vehicleData} />
 
-      {/* ROUTE INFO (from EtiosTemplate) */}
-      <RouteInfo location={location} vehicle={vehicleData} />
-
       {/* 4. WHY CHOOSE ETIOS FOR THIS ROUTE */}
       <section className="bg-white/95 py-12 border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -375,26 +392,11 @@ export function RouteEtiosPage({ route }: { route: ParsedRouteDetail }) {
         </div>
       </section>
 
-      {/* JOURNEY INFO (from EtiosTemplate) */}
-      {/* <JourneyInfo location={location} vehicle={vehicleData} /> */}
-
-      {/* PICKUP & DROP LOCATIONS (from EtiosTemplate) */}
-      {/* <PickupDropLocations location={location} vehicle={vehicleData} /> */}
-
-      {/* WHY CHOOSE US (from EtiosTemplate) */}
-      <WhyChooseUs location={location} vehicle={vehicleData} />
-
-      {/* WHAT'S INCLUDED (from EtiosTemplate) */}
-      <WhatsIncluded location={location} vehicle={vehicleData} />
-
-      {/* BOOKING PROCESS (from EtiosTemplate) */}
-      <BookingProcess location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL TIPS (from EtiosTemplate) */}
-      <TravelTips location={location} vehicle={vehicleData} />
-
-      {/* TRAVEL PLANNING (from EtiosTemplate) */}
-      {/* <TravelPlanning location={location} vehicle={vehicleData} /> */}
+      {/* COMPREHENSIVE ROUTE DETAILS (Overview, Milestones, Major Stops, Road Condition, Cab Comparison, Localities, Policies) */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="etios"
+      />
 
       <RouteTripPlanning
         from={route.from}

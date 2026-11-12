@@ -13,6 +13,7 @@ export { RouteLuxuryTempoPage } from "./RouteLuxuryTempoPage";
 export { RouteTempoTravellerPage } from "./RouteTempoTravellerPage";
 export { RouteUrbaniaPage } from "./RouteUrbaniaPage";
 
+export { default as RouteComprehensiveDetails } from "./RouteComprehensiveDetails";
 export { default as VehicleRouteBase } from "./VehicleRouteBase";
 export type { VehicleRouteConfig } from "./VehicleRouteBase";
 
