@@ -6,16 +6,21 @@ import RouteFareTable from "./RouteFareTable";
 import VehicleTrust from "@/components/taxi/VehicleTrust";
 import { vehicles } from "@/data/vehicles";
 import RouteFareInclusions from "./RouteFareInclusions";
-import RouteDistanceTravelTime from "./RouteDistanceTravelTime";
 import RouteFareBreakdown from "./RouteFareBreakdown";
-import RouteWhyChooseNoidaCab from "./RouteWhyChooseNoidaCab";
-import RoutePickupLocations from "./RoutePickupLocations";
 import RouteFareFAQ from "./RouteFareFAQ";
 import RouteFareCTA from "./RouteFareCTA";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
-
+import RouteComprehensiveDetails from "@/components/routes/vehicles/RouteComprehensiveDetails";
+import { getComprehensiveRouteData } from "@/data/masterRoutes";
 
 export default function RouteFareTemplate({ route }: { route: RouteData }) {
+  const routeIntelligence = getComprehensiveRouteData(
+    route.from.name,
+    route.to.name,
+    "taxi-fare",
+    "Taxi Fare"
+  );
+
   // Schema for Route Fare / Service SEO
   const routeSchema = {
     "@context": "https://schema.org",
@@ -49,37 +54,32 @@ export default function RouteFareTemplate({ route }: { route: RouteData }) {
       {/* 4. Complete Fleet Fare Comparison Table */}
       <RouteFareTable route={route} />
 
-      {/*7,*/}
+      {/* 5. Fare Inclusions */}
       <RouteFareInclusions route={route} />
 
-     
-{/*5,*/}
-      <RouteDistanceTravelTime route={route} />
-{/*6,*/}
+      {/* 6. Fare Breakdown */}
       <RouteFareBreakdown route={route} />
 
-       <RouteWhyChooseNoidaCab route={route} />
+      {/* 7. Comprehensive Route Corridor Intelligence */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="taxi-fare"
+      />
 
-      <RoutePickupLocations route={route} />
-      
-
-
-      
-
-      {/* Popular City Routes */}
+      {/* 8. Popular City Routes */}
       <PopularCityRoutes
         cityName={route.from.name}
         vehicleSlug="taxi-fare"
         vehicleName="Taxi Fare"
       />
 
-      {/* 11. Route-Specific FAQs + Schema.org */}
+      {/* 9. Route-Specific FAQs + Schema.org */}
       <RouteFareFAQ route={route} />
 
-      {/* 8. Trust & Reliability Section */}
+      {/* 10. Trust & Reliability Section */}
       <VehicleTrust vehicle={vehicles[0]} />
 
-      {/* 12. Final Booking CTA Bar */}
+      {/* 11. Final Booking CTA Bar */}
       <RouteFareCTA route={route} />
     </main>
   );

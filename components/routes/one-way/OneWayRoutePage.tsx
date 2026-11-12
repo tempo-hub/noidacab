@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { OneWayHero } from "./OneWayHero";
 import { OneWayBookingBar } from "./OneWayBookingBar";
-import { OneWayRouteOverview } from "./OneWayRouteOverview";
 import { OneWayVehicles } from "./OneWayVehicles";
-import { OneWayFareHighlights } from "./OneWayFareHighlights";
-import { OneWayRouteDetails } from "./OneWayRouteDetails";
-import { OneWayTravelInfo } from "./OneWayTravelInfo";
-import { OneWayPickupAreas } from "./OneWayPickupAreas";
-import { OneWayWhyChoose } from "./OneWayWhyChoose";
 import CabTestimonials from "@/components/cab/CabTestimonials";
 import { OneWayFAQ } from "./OneWayFAQ";
 import { OneWayCTA } from "./OneWayCTA";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
+import RouteComprehensiveDetails from "@/components/routes/vehicles/RouteComprehensiveDetails";
+import { getComprehensiveRouteData } from "@/data/masterRoutes";
 
 type Props = {
   route: {
@@ -27,6 +23,16 @@ type Props = {
 };
 
 export function OneWayRoutePage({ route }: Props) {
+  const fromCity = route.from || "Noida";
+  const toCity = route.to || "Destination";
+
+  const routeIntelligence = getComprehensiveRouteData(
+    fromCity,
+    toCity,
+    "one-way-taxi",
+    "One Way Taxi"
+  );
+
   const schemaBreadcrumbs = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -99,34 +105,22 @@ export function OneWayRoutePage({ route }: Props) {
       {/* 3. Quick booking / route summary strip */}
       <OneWayBookingBar route={route} />
 
-      {/* 4. SEO route introduction */}
-      <OneWayRouteOverview route={route} />
-
-      {/* 5. Fleet / Available Vehicles */}
+      {/* 4. Fleet / Available Vehicles */}
       <OneWayVehicles />
 
-      {/* 6. Fare information */}
-      <OneWayFareHighlights route={route} />
+      {/* 5. Comprehensive Route Corridor Intelligence */}
+      <RouteComprehensiveDetails
+        details={routeIntelligence}
+        activeVehicleSlug="one-way-taxi"
+      />
 
-      {/* 7. Detailed route information */}
-      <OneWayRouteDetails route={route} />
-
-      {/* 8. Travel information */}
-      <OneWayTravelInfo route={route} />
-
-      {/* 9. Pickup & Drop locations */}
-      <OneWayPickupAreas route={route} />
-
-      {/* 10. Why choose NoidaCab */}
-      <OneWayWhyChoose />
-
-      {/* 11. Customer Reviews */}
+      {/* 6. Customer Reviews */}
       <CabTestimonials />
 
-      {/* 12. FAQ Section */}
+      {/* 7. FAQ Section */}
       <OneWayFAQ route={route} />
 
-      {/* 13. Popular City Routes Section (PLACED BEFORE CTA AS USER REQUESTED) */}
+      {/* 8. Popular City Routes Section */}
       <PopularCityRoutes
         cityName={route.from || "Noida"}
         vehicleSlug="one-way-taxi"
@@ -136,7 +130,7 @@ export function OneWayRoutePage({ route }: Props) {
         badgeText={`${(route.from || "NOIDA").toUpperCase()} ONE WAY CORRIDORS`}
       />
 
-      {/* 14. Final conversion CTA section */}
+      {/* 9. Final conversion CTA section */}
       <OneWayCTA route={route} />
     </main>
   );
