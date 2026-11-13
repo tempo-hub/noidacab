@@ -337,13 +337,13 @@ export default function RouteComprehensiveDetails({ details, activeVehicleSlug }
           <div className="max-w-3xl mb-10">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-800">
               <Utensils className="h-3.5 w-3.5 text-amber-700" />
-              Highway Food Courts & Refreshment Breaks
+              Famous Highway Dhabas & Food Breaks
             </span>
             <h2 className="mt-2 text-2xl sm:text-3xl font-black text-gray-950 tracking-tight">
-              Recommended Stops & Food Breaks ({details.from} to {details.to})
+              Popular Highway Dhabas & Food Stops ({details.from} to {details.to})
             </h2>
             <p className="mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">
-              Travel comfortably with planned halts at hygienic food courts, highway dhabas, and modern fuel complexes along the route.
+              Travel comfortably with planned halts at verified authentic highway dhabas, iconic food plazas, and hygienic multi-cuisine family restaurants along the {details.highway} corridor. Chauffeurs gladly pause for tea, snacks, and meal breaks per your schedule.
             </p>
           </div>
 
@@ -351,34 +351,46 @@ export default function RouteComprehensiveDetails({ details, activeVehicleSlug }
             {details.majorStops.map((stop, i) => (
               <div
                 key={i}
-                className="rounded-3xl border border-gray-200 bg-white p-6 shadow-xs hover:border-amber-300 hover:shadow-md transition"
+                className="flex flex-col justify-between rounded-3xl border border-gray-200 bg-white p-6 shadow-xs hover:border-amber-300 hover:shadow-md transition"
               >
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-amber-100 text-amber-800 font-black text-sm">
-                    0{i + 1}
-                  </span>
-                  {stop.distanceFromOrigin && (
-                    <span className="rounded-full bg-slate-50 px-2.5 py-0.5 text-xs font-bold text-gray-700 border border-gray-200">
-                      {stop.distanceFromOrigin} mark
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-amber-100 text-amber-800 font-black text-sm">
+                      0{i + 1}
                     </span>
+                    {stop.distanceFromOrigin && (
+                      <span className="rounded-full bg-slate-50 px-2.5 py-0.5 text-xs font-bold text-gray-700 border border-gray-200">
+                        {stop.distanceFromOrigin} mark
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="mt-4 text-base sm:text-lg font-black text-gray-900">
+                    {stop.name}
+                  </h3>
+
+                  <span className="mt-1 inline-block text-[11px] font-bold text-amber-700 uppercase tracking-wider">
+                    {stop.type}
+                  </span>
+
+                  <p className="mt-2.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    {stop.description}
+                  </p>
+
+                  {stop.famousFor && (
+                    <div className="mt-3.5 rounded-xl bg-amber-50/80 p-3 border border-amber-200/60 text-xs text-amber-950 flex items-start gap-2">
+                      <Utensils className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-bold text-amber-800">Must Try: </span>
+                        <span className="font-semibold text-gray-800">{stop.famousFor}</span>
+                      </div>
+                    </div>
                   )}
                 </div>
 
-                <h3 className="mt-4 text-base font-black text-gray-900">
-                  {stop.name}
-                </h3>
-
-                <span className="mt-1 inline-block text-[11px] font-bold text-amber-700 uppercase tracking-wider">
-                  {stop.type}
-                </span>
-
-                <p className="mt-2 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  {stop.description}
-                </p>
-
                 <div className="mt-4 flex items-center gap-2 text-[11px] font-semibold text-emerald-700 border-t border-gray-100 pt-3">
                   <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                  <span>Hygienic restrooms, dining & fuel available</span>
+                  <span>Hygienic family washrooms, parking & fresh meals</span>
                 </div>
               </div>
             ))}

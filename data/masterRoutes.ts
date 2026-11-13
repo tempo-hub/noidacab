@@ -24,6 +24,7 @@ export interface RouteStop {
   type: string;
   distanceFromOrigin?: string;
   description: string;
+  famousFor?: string;
 }
 
 export interface RouteDestinationPoint {
@@ -1221,28 +1222,248 @@ const destinationAttractionsDb: Record<string, RouteDestinationPoint[]> = {
 
 const highwayStopsDb: Record<string, RouteStop[]> = {
   yamuna: [
-    { name: "Jewar Plaza Rest Area (KM 38)", type: "Highway Expressway Plaza", distanceFromOrigin: "38 km", description: "Food court with McDonald's, Costa Coffee, KFC, clean air-conditioned washrooms & EV charging." },
-    { name: "Yamuna Expressway Mile 65 Midway", type: "Midway Food Lounge", distanceFromOrigin: "65 km", description: "Spacious multi-brand plaza with Subway, Haldiram's, Bikanervala, and 24x7 fuel station." },
-    { name: "Mathura Toll Cut Plaza (KM 115)", type: "Highway Refreshment Hub", distanceFromOrigin: "115 km", description: "Clean highway stop with traditional hot tea, snacks, Mathura peda, and fuel facilities." },
+    {
+      name: "Jewar Plaza Rest Area (KM 38, Yamuna Expressway)",
+      type: "Modern Highway Food Court & EV Plaza",
+      distanceFromOrigin: "38 km",
+      description: "Air-conditioned multi-brand food plaza featuring Subway, McDonald's, Costa Coffee, Vaango, clean baby care rooms, and EV fast chargers.",
+      famousFor: "South Indian Dosas, Filter Coffee & Fast Food Combos",
+    },
+    {
+      name: "Yamuna Expressway Mile 65 Food Lounge",
+      type: "Midway Highway Food Court & Lounge",
+      distanceFromOrigin: "65 km",
+      description: "Spacious midway plaza with Haldiram's, Bikanervala, Domino's Pizza, 24x7 fuel station, and spotless restrooms.",
+      famousFor: "Chole Bhature, Raj Kachori, Hot Jalebi & Lassi",
+    },
+    {
+      name: "Brijwasi Royal Dhaba (Mathura Cut, KM 115)",
+      type: "Authentic Braj Heritage Dhaba",
+      distanceFromOrigin: "115 km",
+      description: "Renowned traditional highway stop famous for pure vegetarian Braj cuisine, hot hing kachoris, and authentic Mathura peda.",
+      famousFor: "Mathura Peda, Khasta Kachori with Aloo Sabzi & Rabdi Jalebi",
+    },
+    {
+      name: "Old Rao Hotel & Shiva Dhaba (Tappal Cut)",
+      type: "24x7 Authentic Highway Dhaba",
+      distanceFromOrigin: "78 km",
+      description: "Popular drivers and families stop for piping hot tandoori paranthas served with fresh white butter and spicy green mint chutney.",
+      famousFor: "Tandoori Aloo Pyaz Parantha, Desi Ghee Dal Makhani & Kulhad Chai",
+    },
   ],
   delhijaipur: [
-    { name: "Highway King Bilaspur (NH 48)", type: "Premium Highway Resort & Food Court", distanceFromOrigin: "55 km", description: "Iconic family stop with extensive North Indian buffet, fast food counters, and clean restrooms." },
-    { name: "Hotel Highway Xpress Behror", type: "Midway Food Court & Fuel Hub", distanceFromOrigin: "125 km", description: "Comprehensive highway complex with McDonald's, Sagar Ratna, Bikanervala, and lush lawns." },
-    { name: "Old Rao Hotel Dharuhera", type: "Authentic Highway Dhaba", distanceFromOrigin: "72 km", description: "Famous for legendary stuffed tandoori paranthas, homemade white butter, and kulhad tea." },
+    {
+      name: "Old Rao Hotel (Dharuhera / Manesar, NH 48)",
+      type: "Legendary 24x7 Highway Dhaba",
+      distanceFromOrigin: "72 km",
+      description: "World-famous highway landmark celebrated for delicious tandoori stuffed paranthas loaded with homemade white makhan, dal tadka, and chilled spiced chaach.",
+      famousFor: "Stuffed Tandoori Paranthas with Safed Makhan, Dal Fry & Masala Chaach",
+    },
+    {
+      name: "Hotel Highway King (Bilaspur & Shahpura, NH 48)",
+      type: "Premium Highway Resort & Food Court",
+      distanceFromOrigin: "55 km",
+      description: "Sprawling family stop with extensive North Indian & Rajasthani thali options, fast food counters, kids play park, and pristine washrooms.",
+      famousFor: "Rajasthani Dal Baati Churma, Paneer Butter Masala & Thali",
+    },
+    {
+      name: "Hotel Highway Xpress (Behror Midway, NH 48)",
+      type: "Midway Express Food Plaza & Fuel Hub",
+      distanceFromOrigin: "125 km",
+      description: "Comprehensive highway complex housing McDonald's, Sagar Ratna, Bikanervala, and 24x7 petrol pumps amidst lush lawns.",
+      famousFor: "South Indian Filter Coffee, Dosa, Thalis & Fresh Snacks",
+    },
+    {
+      name: "Mannat Haveli (Dharuhera, NH 48)",
+      type: "Heritage Punjabi Themed Family Dhaba",
+      distanceFromOrigin: "68 km",
+      description: "Royal Punjabi haveli decor serving authentic Amritsari kulchas, rich paneer gravies, and hot kesari jalebi.",
+      famousFor: "Amritsari Naan Thali, Paneer Tikka & Kesari Jalebi",
+    },
   ],
   delhimeerut: [
-    { name: "Namaste Midway Mansurpur (NH 334)", type: "Premium Highway Mall & Food Court", distanceFromOrigin: "95 km", description: "Massive air-conditioned food hub housing Starbucks, McDonald's, Haldiram's, and kids play zone." },
-    { name: "Cheetal Grand Khatauli", type: "Historic Highway Garden Restaurant", distanceFromOrigin: "105 km", description: "Legendary restaurant nestled amidst green foliage serving fresh cutlets, omelettes, and south Indian dishes." },
-    { name: "Shiva Tourist Dhaba (Bypass)", type: "24x7 Highway Dhaba", distanceFromOrigin: "140 km", description: "Popular spot for piping hot dal makhani, paneer kulchas, and fresh sugarcane juice." },
+    {
+      name: "Cheetal Grand (Khatauli, NH 334)",
+      type: "Historic Highway Garden Restaurant",
+      distanceFromOrigin: "105 km",
+      description: "Legendary 1970s highway establishment surrounded by green foliage, celebrated for vegetable cutlets, grilled sandwiches, and South Indian fare.",
+      famousFor: "Crispy Vegetable Cutlets, Grilled Sandwiches, Dosas & Filter Coffee",
+    },
+    {
+      name: "Namaste Midway (Mansurpur, NH 334)",
+      type: "Premier Highway Food Mall & Plaza",
+      distanceFromOrigin: "95 km",
+      description: "State-of-the-art highway plaza with Starbucks, McDonald's, Haldiram's, Naivedyam, Costa Coffee, and immaculate family washrooms.",
+      famousFor: "Multi-Cuisine Food Courts, Artisanal Coffee & Traditional Thalis",
+    },
+    {
+      name: "Shiva Tourist Dhaba (Babugarh / Khatauli Bypass)",
+      type: "24x7 Authentic Highway Dhaba",
+      distanceFromOrigin: "140 km",
+      description: "Famous for rich slow-cooked dal makhani, paneer kulchas, tandoori rotis, and refreshing fresh sugarcane juice.",
+      famousFor: "Slow-Cooked Dal Makhani, Paneer Do Pyaza & Kulhad Tea",
+    },
+    {
+      name: "Pappu Dhaba & Bikanervala (Muradnagar / Meerut Bypass)",
+      type: "Highway Breakfast & Snack Destination",
+      distanceFromOrigin: "45 km",
+      description: "Beloved breakfast stop for hot desi ghee chole bhature, samosas, and fresh tandoori aloo paranthas.",
+      famousFor: "Desi Ghee Chole Bhature, Hot Jalebi & Aloo Pyaaz Parantha",
+    },
   ],
   nh44north: [
-    { name: "Amrik Sukhdev Dhaba Murthal", type: "Legendary Parantha Destination", distanceFromOrigin: "50 km", description: "World-renowned 24x7 multi-cuisine hub famous for tandoori paranthas with overflowing white butter." },
-    { name: "Haveli Karnal (GT Road)", type: "Heritage Punjabi Themed Village & Food", distanceFromOrigin: "130 km", description: "Spectacular Punjabi cultural decor, folk performances, authentic Amritsari kulchas, and lassi." },
-    { name: "Savoy Greens Midway Karnal", type: "Express Food Court & Fuel Complex", distanceFromOrigin: "135 km", description: "Clean modern food plaza with Subway, Domino's, Costa Coffee, McDonald's, and EV superchargers." },
+    {
+      name: "Amrik Sukhdev Dhaba (Murthal, NH 44)",
+      type: "World-Renowned Iconic Highway Dhaba",
+      distanceFromOrigin: "50 km",
+      description: "India's most iconic 24x7 highway dining destination, serving legendary tandoori stuffed paranthas drenched in overflowing white homemade butter.",
+      famousFor: "Aloo Pyaaz & Gobhi Paranthas with Safed Makhan, Gulab Jamun & Sweet Lassi",
+    },
+    {
+      name: "Haveli Karnal (GT Road, NH 44)",
+      type: "Heritage Punjabi Themed Village & Dining",
+      distanceFromOrigin: "130 km",
+      description: "Magnificent Punjabi cultural village setting featuring live folk music, authentic clay oven tandoori breads, sarson ka saag, and makki di roti.",
+      famousFor: "Authentic Amritsari Chole Kulche, Sarson Ka Saag & Matka Lassi",
+    },
+    {
+      name: "Savoy Greens Midway (Karnal, NH 44)",
+      type: "Express Multi-Brand Food Court & EV Station",
+      distanceFromOrigin: "135 km",
+      description: "Clean modern food plaza housing Subway, Domino's Pizza, Costa Coffee, McDonald's, and high-speed EV chargers.",
+      famousFor: "Subway Sandwiches, Domino's, Costa Coffee & Quick Highway Meals",
+    },
+    {
+      name: "Garam Dharam Dhaba & Pahalwan Dhaba (Murthal)",
+      type: "Rustic North Indian Dhaba",
+      distanceFromOrigin: "52 km",
+      description: "Celebrity-themed rustic dhaba with energetic ambiance, serving pure desi ghee curries and piping hot tandoori breads.",
+      famousFor: "Desi Ghee Dal Tadka, Paneer Bhurji & Tandoori Chai",
+    },
   ],
   agralucknow: [
-    { name: "Agra-Lucknow Expressway KM 102 Plaza", type: "Expressway Rest Hub (Kannauj)", distanceFromOrigin: "102 km on Expressway", description: "Government certified rest zone with cafeteria, baby care room, clean washrooms, and fuel pumps." },
-    { name: "Expressway KM 220 Rest Stop (Etawah)", type: "Midway Food Complex", distanceFromOrigin: "220 km on Expressway", description: "Dedicated rest area with hot snacks, tea stalls, parking, and 24x7 highway safety patrol." },
+    {
+      name: "Agra-Lucknow Expressway KM 102 Plaza (Kannauj)",
+      type: "Government-Certified Rest Plaza & Cafeteria",
+      distanceFromOrigin: "102 km on Expressway",
+      description: "Modern expressway wayside amenities plaza featuring clean cafeteria, Costa Coffee, air-conditioned dining, baby care rooms, and fuel station.",
+      famousFor: "Fresh Highway Thalis, Hot Tea, Coffee & Clean Rest Stop",
+    },
+    {
+      name: "Expressway KM 220 Rest Stop (Etawah / Mainpuri)",
+      type: "Midway Food Complex & Fuel Hub",
+      distanceFromOrigin: "220 km on Expressway",
+      description: "24x7 highway complex offering hot meals, stuffed paranthas, beverages, secure car parking, and highway security assistance.",
+      famousFor: "Hot Stuffed Paranthas, Chai, Snacks & Refuel Facility",
+    },
+    {
+      name: "Chaudhary Dhaba & Highway Treat (Lucknow Bypass Cut)",
+      type: "Authentic Awadhi & North Indian Dhaba",
+      distanceFromOrigin: "Near Expressway Exit",
+      description: "Popular dining stop serving traditional Awadhi delicacies, fragrant biryani, dal tadka, and tandoori breads.",
+      famousFor: "Awadhi Biryani, Dal Fry, Paneer Tikka & Tandoori Roti",
+    },
+  ],
+  nh9nh24: [
+    {
+      name: "Bhajan Dhaba (Gajraula, NH 9)",
+      type: "Legendary Desi Ghee Highway Dhaba",
+      distanceFromOrigin: "105 km",
+      description: "Famed highway institution operating since decades, celebrated for pure desi ghee preparations, paneer paranthas, and heavenly rabdi kheer.",
+      famousFor: "Pure Desi Ghee Paneer Parantha, Dal Makhani & Shahi Rabdi Kheer",
+    },
+    {
+      name: "Tadka Dhaba & Bikaner Highway Plaza (Gajraula, NH 9)",
+      type: "Family Food Court & Rest Complex",
+      distanceFromOrigin: "108 km",
+      description: "Spacious AC dining complex with Bikanervala, Haldiram's, fast food counters, spotless restrooms, and secure parking.",
+      famousFor: "North Indian Thali, Raj Kachori, Chole Bhature & Kulfi",
+    },
+    {
+      name: "Shiva Tourist Dhaba (Babugarh / Hapur Bypass, NH 9)",
+      type: "24x7 Highway Dhaba & Tea Lounge",
+      distanceFromOrigin: "60 km",
+      description: "Crowd favorite stop for quick highway refuel, hot ginger kulhad chai, dal fry with jeera rice, and fresh butter tandoori rotis.",
+      famousFor: "Adrak Wali Kulhad Chai, Dal Fry, Shahi Paneer & Tandoori Roti",
+    },
+    {
+      name: "Udupi Grand & Sagar Ratna (Moradabad Bypass)",
+      type: "Vegetarian Multi-Cuisine Food Hub",
+      distanceFromOrigin: "155 km",
+      description: "Popular rest stop for authentic South Indian breakfast, crisp masala dosas, filter coffee, and clean highway amenities.",
+      famousFor: "Crispy Masala Dosa, Idli Vada Combo & South Indian Filter Coffee",
+    },
+  ],
+  nh9haryana: [
+    {
+      name: "Mannat Dhaba (Rohtak Bypass, NH 9)",
+      type: "Popular Family Highway Dhaba",
+      distanceFromOrigin: "75 km",
+      description: "Family-favorite destination along NH 9 for tandoori stuffed paranthas with fresh butter, dal tadka, and thick sweet lassi.",
+      famousFor: "Aloo Pyaaz Tandoori Parantha, Dal Tadka & Sweet Lassi",
+    },
+    {
+      name: "Gulshan Dhaba (Bahadurgarh-Rohtak Road)",
+      type: "Traditional Punjabi Dhaba",
+      distanceFromOrigin: "45 km",
+      description: "Known for quick service, piping hot rotis, chole paneer, and authentic roadside highway dhaba charm.",
+      famousFor: "Chole Paneer, Missi Roti & Hot Kulhad Tea",
+    },
+    {
+      name: "Rao Dhaba & Food Court (Hisar Bypass, NH 9)",
+      type: "Midway Highway Food Hub",
+      distanceFromOrigin: "165 km",
+      description: "Clean vegetarian restaurant with expansive parking, North Indian thalis, fast snacks, and fuel pump access.",
+      famousFor: "Haryanvi Thali, Kadhi Pakora, Jeera Rice & Chaach",
+    },
+  ],
+  nh34gtroad: [
+    {
+      name: "Pandit Ji Dhaba (Bulandshahr Bypass, NH 34)",
+      type: "Authentic UP Highway Dhaba",
+      distanceFromOrigin: "65 km",
+      description: "Famous for traditional North Indian vegetarian food cooked with desi ghee, dal fry, missi roti, and hot tea.",
+      famousFor: "Desi Ghee Dal Fry, Missi Roti, Shahi Paneer & Kheer",
+    },
+    {
+      name: "Highway Tadka Family Dhaba (Aligarh Bypass)",
+      type: "Multi-Cuisine Highway Restaurant",
+      distanceFromOrigin: "125 km",
+      description: "Hygienic family dining destination offering Punjabi thalis, Chinese fast food, clean washrooms, and beverages.",
+      famousFor: "Paneer Lababdar, Butter Naan & Cold Beverages",
+    },
+  ],
+  nh19purvanchal: [
+    {
+      name: "Shri Radha Krishna Dhaba (Kosi Kalan, NH 19)",
+      type: "Famous Braj Dhaba & Dairy Stop",
+      distanceFromOrigin: "98 km",
+      description: "Legendary dairy and highway food stop renowned for creamy thick lassi, rabdi, kachoris, and aloo paranthas.",
+      famousFor: "Malai Rabdi, Thick Sweet Lassi, Bedmi Puri & Kachori",
+    },
+    {
+      name: "Shiva Family Dhaba & Midway Plaza (Fatehpur / Kanpur)",
+      type: "24x7 Highway Food Complex",
+      distanceFromOrigin: "Midway on NH 19",
+      description: "Clean multi-brand food stop offering full meals, thalis, tea stalls, parking, and 24x7 fuel station.",
+      famousFor: "Deluxe Thali, Dal Makhani, Paneer Kulcha & Chai",
+    },
+  ],
+  himalayan: [
+    {
+      name: "Giani Da Dhaba (Dharampur, Kalka-Shimla NH 5)",
+      type: "Iconic Mountain Highway Dhaba (Est. 1976)",
+      distanceFromOrigin: "Kalka-Shimla Highway",
+      description: "Historic hill dhaba renowned across generations for mouth-watering tandoori chicken, butter paneer, and lemon chicken in crisp mountain air.",
+      famousFor: "Tandoori Chicken, Butter Paneer Masala, Daal Fry & Hot Chai",
+    },
+    {
+      name: "Modern Dhaba (Dharampur, Solan)",
+      type: "Famous Hill Station Highway Dhaba",
+      distanceFromOrigin: "Solan Valley Corridor",
+      description: "Traditional dhaba serving comforting hot dal makhani, stuffed paranthas, and hot ginger tea amid pine-covered hills.",
+      famousFor: "Aloo Parantha with Butter, Dal Makhani & Adrak Chai",
+    },
   ],
 };
 
@@ -1299,17 +1520,119 @@ export function getComprehensiveRouteData(
 
   // Identify highway stops
   let stopsKey = "";
-  if (highwayStr.toLowerCase().includes("yamuna") || destKey === "agra" || destKey === "mathura" || destKey === "vrindavan") stopsKey = "yamuna";
-  else if (highwayStr.toLowerCase().includes("jaipur") || highwayStr.toLowerCase().includes("nh 48") || destKey === "jaipur") stopsKey = "delhijaipur";
-  else if (highwayStr.toLowerCase().includes("meerut") || highwayStr.toLowerCase().includes("334") || destKey === "haridwar" || destKey === "rishikesh" || destKey === "dehradun") stopsKey = "delhimeerut";
-  else if (highwayStr.toLowerCase().includes("nh 44") || destKey === "chandigarh") stopsKey = "nh44north";
-  else if (highwayStr.toLowerCase().includes("lucknow") || destKey === "lucknow" || destKey === "ayodhya") stopsKey = "agralucknow";
+  if (
+    highwayStr.toLowerCase().includes("yamuna") ||
+    destKey === "agra" ||
+    destKey === "mathura" ||
+    destKey === "vrindavan"
+  ) {
+    stopsKey = "yamuna";
+  } else if (
+    highwayStr.toLowerCase().includes("jaipur") ||
+    highwayStr.toLowerCase().includes("nh 48") ||
+    destKey === "jaipur"
+  ) {
+    stopsKey = "delhijaipur";
+  } else if (
+    highwayStr.toLowerCase().includes("meerut") ||
+    highwayStr.toLowerCase().includes("334") ||
+    destKey === "haridwar" ||
+    destKey === "rishikesh" ||
+    destKey === "dehradun" ||
+    destKey === "mussoorie"
+  ) {
+    stopsKey = "delhimeerut";
+  } else if (
+    highwayStr.toLowerCase().includes("nh 44") ||
+    destKey === "chandigarh" ||
+    tLower.includes("karnal") ||
+    tLower.includes("panipat") ||
+    tLower.includes("ambala") ||
+    tLower.includes("kurukshetra") ||
+    tLower.includes("ludhiana") ||
+    tLower.includes("amritsar")
+  ) {
+    stopsKey = "nh44north";
+  } else if (
+    highwayStr.toLowerCase().includes("lucknow") ||
+    destKey === "lucknow" ||
+    destKey === "ayodhya" ||
+    tLower.includes("kanpur") ||
+    tLower.includes("etawah") ||
+    tLower.includes("kannauj")
+  ) {
+    stopsKey = "agralucknow";
+  } else if (
+    highwayStr.toLowerCase().includes("nh 9") ||
+    highwayStr.toLowerCase().includes("nh 24") ||
+    tLower.includes("moradabad") ||
+    tLower.includes("bareilly") ||
+    tLower.includes("nainital") ||
+    tLower.includes("haldwani") ||
+    tLower.includes("corbett") ||
+    tLower.includes("rampur") ||
+    tLower.includes("rudrapur") ||
+    tLower.includes("hapur") ||
+    tLower.includes("gajraula")
+  ) {
+    stopsKey = "nh9nh24";
+  } else if (
+    tLower.includes("rohtak") ||
+    tLower.includes("hisar") ||
+    tLower.includes("sirsa") ||
+    tLower.includes("fatehabad") ||
+    tLower.includes("jind") ||
+    tLower.includes("bhiwani")
+  ) {
+    stopsKey = "nh9haryana";
+  } else if (
+    tLower.includes("aligarh") ||
+    tLower.includes("bulandshahr") ||
+    tLower.includes("hathras") ||
+    tLower.includes("kasganj") ||
+    tLower.includes("etah")
+  ) {
+    stopsKey = "nh34gtroad";
+  } else if (
+    destKey === "varanasi" ||
+    tLower.includes("prayagraj") ||
+    tLower.includes("mirzapur")
+  ) {
+    stopsKey = "nh19purvanchal";
+  } else if (
+    tLower.includes("shimla") ||
+    tLower.includes("solan") ||
+    tLower.includes("kalka") ||
+    tLower.includes("manali") ||
+    tLower.includes("kullu") ||
+    tLower.includes("dharamshala")
+  ) {
+    stopsKey = "himalayan";
+  }
 
   const majorStops: RouteStop[] =
     (stopsKey && highwayStopsDb[stopsKey]) || [
-      { name: `${highwayStr.split("&")[0].trim()} Highway Food Court`, type: "Air-Conditioned Food Plaza", distanceFromOrigin: `~${Math.round(distNum * 0.35)} km`, description: `Family-friendly highway rest area with hygienic multi-cuisine food counters, tea stalls, and clean washrooms.` },
-      { name: `Midway Highway Dhaba & Refuel Hub`, type: "24x7 Highway Dhaba & Fuel Station", distanceFromOrigin: `~${Math.round(distNum * 0.6)} km`, description: `Popular stop for freshly prepared paranthas, hot kulhad chai, bottled beverages, and vehicle fuel.` },
-      { name: `Toll Plaza Bypass Rest Zone`, type: "Fast Break & Rest Facility", distanceFromOrigin: `~${Math.round(distNum * 0.8)} km`, description: `Convenient highway stop near toll intersection for quick stretches, vehicle check, and snacks.` },
+      {
+        name: "Shiva Tourist Dhaba & Highway Food Court",
+        type: "24x7 Authentic Highway Dhaba",
+        distanceFromOrigin: `~${Math.round(distNum * 0.35)} km`,
+        description: `Popular family highway dhaba known for hot tandoori paranthas with fresh butter, dal makhani, kulhad chai, and clean family restrooms along ${highwayStr.split("&")[0].trim()}.`,
+        famousFor: "Tandoori Aloo Pyaz Paranthas, Makhan & Kulhad Chai",
+      },
+      {
+        name: "Bikaner Highway Express & Food Plaza",
+        type: "Multi-Brand Air-Conditioned Food Court",
+        distanceFromOrigin: `~${Math.round(distNum * 0.6)} km`,
+        description: "Hygienic highway rest complex featuring multi-cuisine counters, South Indian dosas, hot thalis, and 24x7 clean air-conditioned restrooms.",
+        famousFor: "Pure Desi Ghee Thalis, Chole Bhature & Sweets",
+      },
+      {
+        name: "Midway Highway Service & EV Fuel Plaza",
+        type: "Highway Service Plaza & Fast Food",
+        distanceFromOrigin: `~${Math.round(distNum * 0.8)} km`,
+        description: "Modern expressway toll-side wayside plaza with fast food stalls, fresh tea, 24-hour fuel station, and EV superchargers.",
+        famousFor: "Costa Coffee, Quick Sandwiches & 24x7 EV Fast Charging",
+      },
     ];
 
   // Calculate vehicle fares
