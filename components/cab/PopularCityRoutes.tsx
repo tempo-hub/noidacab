@@ -70,8 +70,16 @@ export function getRoutesFromMasterRoutes(
 
   const cards: PopularRouteCardItem[] = [];
   const seenPairs = new Set<string>();
+  const prioritizedRoutes = masterRoutes
+    .map((item, index) => ({ item, index }))
+    .sort(
+      (a, b) =>
+        Number(b.item.isPopular === true) - Number(a.item.isPopular === true) ||
+        a.index - b.index
+    )
+    .map(({ item }) => item);
 
-  for (const item of masterRoutes) {
+  for (const item of prioritizedRoutes) {
     const fClean = item.from.trim();
     const tClean = item.to.trim();
     const fNorm = normalizeCity(fClean);

@@ -198,25 +198,16 @@ export const masterRoutes: MasterRouteItem[] = [
   // --- Noida / NCR Corridors ---
   { from: "Noida", to: "Varanasi", distance: 800, duration: "10 hr 30 min", highway: "Yamuna & Agra-Lucknow Expressways", defaultVehicle: "taxi" },
   { from: "Noida", to: "Delhi", distance: 25, duration: "45 min", highway: "DND Flyway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Greater Noida", distance: 25, duration: "40 min", highway: "Noida-Greater Noida Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Ghaziabad", distance: 20, duration: "35 min", highway: "NH 9 & Hindon Elevated Road", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Gurgaon", distance: 55, duration: "1 hr 30 min", highway: "Outer Ring Road / NH48", defaultVehicle: "taxi" },
   { from: "Noida", to: "Meerut", distance: 70, duration: "1 hr 15 min", highway: "Delhi-Meerut Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Hapur", distance: 60, duration: "1 hr 10 min", highway: "NH 9", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Bulandshahr", distance: 75, duration: "1 hr 30 min", highway: "NH 34", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Agra", distance: 180, duration: "2 hr 45 min", highway: "Yamuna Expressway", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Agra", distance: 180, duration: "2 hr 45 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Jaipur", distance: 290, duration: "4 hr 45 min", highway: "Delhi-Mumbai Expressway", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Haridwar", distance: 215, duration: "3 hr 45 min", highway: "Delhi-Meerut Expressway", defaultVehicle: "tempo-traveller" },
-  { from: "Noida", to: "Rishikesh", distance: 240, duration: "4 hr 15 min", highway: "NH334", defaultVehicle: "tempo-traveller" },
-  { from: "Noida", to: "Mathura", distance: 140, duration: "2 hr 15 min", highway: "Yamuna Expressway", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Haridwar", distance: 215, duration: "3 hr 45 min", highway: "Delhi-Meerut Expressway", defaultVehicle: "tempo-traveller", isPopular: true },
+  { from: "Noida", to: "Rishikesh", distance: 240, duration: "4 hr 15 min", highway: "NH334", defaultVehicle: "tempo-traveller", isPopular: true },
+  { from: "Noida", to: "Mathura", distance: 140, duration: "2 hr 15 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Vrindavan", distance: 145, duration: "2 hr 10 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Dehradun", distance: 255, duration: "4 hr 30 min", highway: "Delhi-Dehradun Expressway", defaultVehicle: "tempo-traveller" },
+  { from: "Noida", to: "Dehradun", distance: 255, duration: "4 hr 30 min", highway: "Delhi-Dehradun Expressway", defaultVehicle: "tempo-traveller", isPopular: true },
   { from: "Noida", to: "Chandigarh", distance: 260, duration: "4 hr 30 min", highway: "NH 44", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Uttarakhand", distance: 235, duration: "4 hr 15 min", highway: "Delhi-Meerut & Delhi-Dehradun Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Haryana", distance: 65, duration: "1 hr 30 min", highway: "Eastern Peripheral Expressway & NH 44", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Punjab", distance: 280, duration: "4 hr 45 min", highway: "NH 44", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Uttar Pradesh", distance: 180, duration: "3 hr 00 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Uttarakhand", to: "Rohtak", distance: 240, duration: "4 hr 30 min", highway: "NH 334 & Eastern Peripheral Expressway", defaultVehicle: "suv-taxi", isPopular: true },
 
   // --- Haryana Corridors (from Noida) ---
   // Ambala District
@@ -407,16 +398,13 @@ export const masterRoutes: MasterRouteItem[] = [
 
   // Dehradun District
   { from: "Noida", to: "Chakrata", distance: 325, duration: "7 hr 00 min", highway: "NH 7 & Vikasnagar-Chakrata Rd", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Dehradun", distance: 255, duration: "4 hr 30 min", highway: "Delhi-Dehradun Expressway / NH 7", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Doiwala", distance: 240, duration: "4 hr 15 min", highway: "Delhi-Dehradun Expressway", defaultVehicle: "taxi" },
   { from: "Noida", to: "Kalsi", distance: 295, duration: "6 hr 15 min", highway: "NH 7 & Kalsi Rd", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Rishikesh", distance: 240, duration: "4 hr 15 min", highway: "Delhi-Meerut Expressway & NH 334", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Tyuni", distance: 380, duration: "9 hr 00 min", highway: "NH 707", defaultVehicle: "taxi" },
   { from: "Noida", to: "Vikasnagar", distance: 280, duration: "5 hr 30 min", highway: "NH 7", defaultVehicle: "taxi" },
 
   // Haridwar District
   { from: "Noida", to: "Bhagwanpur", distance: 190, duration: "3 hr 30 min", highway: "Delhi-Meerut Expressway & NH 344", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Haridwar", distance: 215, duration: "3 hr 45 min", highway: "Delhi-Meerut Expressway & NH 334", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Laksar", distance: 200, duration: "3 hr 45 min", highway: "NH 334 & Laksar Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Roorkee", distance: 180, duration: "3 hr 15 min", highway: "Delhi-Meerut Expressway & NH 334", defaultVehicle: "taxi", isPopular: true },
 
@@ -540,7 +528,7 @@ export const masterRoutes: MasterRouteItem[] = [
   // Fazilka District
   { from: "Noida", to: "Abohar", distance: 440, duration: "7 hr 45 min", highway: "NH 7 & NH 62", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Fazilka", distance: 475, duration: "8 hr 30 min", highway: "NH 7", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Jalalabad", distance: 465, duration: "8 hr 15 min", highway: "NH 54 & Fazilka-Firozpur Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Jalalabad, Punjab", distance: 465, duration: "8 hr 15 min", highway: "NH 54 & Fazilka-Firozpur Rd", defaultVehicle: "taxi" },
 
   // Firozpur District
   { from: "Noida", to: "Firozpur", distance: 440, duration: "8 hr 00 min", highway: "NH 5 & NH 54", defaultVehicle: "taxi", isPopular: true },
@@ -553,19 +541,18 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Dina Nagar", distance: 505, duration: "8 hr 45 min", highway: "NH 54", defaultVehicle: "taxi" },
   { from: "Noida", to: "Fatehgarh Churian", distance: 500, duration: "8 hr 50 min", highway: "NH 354", defaultVehicle: "taxi" },
   { from: "Noida", to: "Gurdaspur", distance: 495, duration: "8 hr 40 min", highway: "NH 54", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Kalanaur", distance: 510, duration: "9 hr 00 min", highway: "NH 354 & SH 25", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Kalanaur, Punjab", distance: 510, duration: "9 hr 00 min", highway: "NH 354 & SH 25", defaultVehicle: "taxi" },
 
   // Hoshiarpur District
   { from: "Noida", to: "Dasua", distance: 450, duration: "7 hr 45 min", highway: "NH 44 (Jalandhar-Pathankot Hwy)", defaultVehicle: "taxi" },
   { from: "Noida", to: "Garhshankar", distance: 370, duration: "6 hr 30 min", highway: "NH 344A & Anandpur Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Hoshiarpur", distance: 405, duration: "7 hr 00 min", highway: "NH 344A & NH 503A", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Mukerian", distance: 470, duration: "8 hr 15 min", highway: "NH 44", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Tanda", distance: 435, duration: "7 hr 30 min", highway: "NH 44 & Jalandhar-Pathankot Hwy", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Tanda, Punjab", distance: 435, duration: "7 hr 30 min", highway: "NH 44 & Jalandhar-Pathankot Hwy", defaultVehicle: "taxi" },
 
   // Jalandhar District
-  { from: "Noida", to: "Adampur", distance: 410, duration: "7 hr 00 min", highway: "NH 344A & Hoshiarpur Rd", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Jalandhar-1", distance: 400, duration: "6 hr 45 min", highway: "NH 44 (Grand Trunk Rd)", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Jalandhar-2", distance: 405, duration: "6 hr 50 min", highway: "NH 44 (Grand Trunk Rd)", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Adampur, Punjab", distance: 410, duration: "7 hr 00 min", highway: "NH 344A & Hoshiarpur Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Jalandhar", distance: 400, duration: "6 hr 45 min", highway: "NH 44 (Grand Trunk Rd)", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Nakodar", distance: 395, duration: "6 hr 45 min", highway: "NH 703 & Ludhiana-Nakodar Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Phillaur", distance: 365, duration: "6 hr 15 min", highway: "NH 44 (Grand Trunk Rd)", defaultVehicle: "taxi" },
   { from: "Noida", to: "Shahkot", distance: 415, duration: "7 hr 00 min", highway: "NH 703 & Moga Rd", defaultVehicle: "taxi" },
@@ -648,7 +635,7 @@ export const masterRoutes: MasterRouteItem[] = [
   // Tarn Taran District
   { from: "Noida", to: "Bhikhiwind", distance: 505, duration: "8 hr 50 min", highway: "NH 354 & Khemkaran Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Khadur Sahib", distance: 460, duration: "8 hr 00 min", highway: "Goindwal Sahib-Khadur Sahib Rd", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Patti", distance: 490, duration: "8 hr 30 min", highway: "NH 354 & Harike Pattan Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Patti, Punjab", distance: 490, duration: "8 hr 30 min", highway: "NH 354 & Harike Pattan Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Tarn Taran", distance: 475, duration: "8 hr 15 min", highway: "NH 54 (Takht Sri Tarn Taran Sahib)", defaultVehicle: "taxi", isPopular: true },
 
   // ==========================================
@@ -656,9 +643,8 @@ export const masterRoutes: MasterRouteItem[] = [
   // ==========================================
 
   // Agra District
-  { from: "Noida", to: "Agra", distance: 180, duration: "2 hr 45 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Kiraoli", distance: 195, duration: "3 hr 00 min", highway: "Yamuna Expressway & NH 21", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Fatehabad", distance: 215, duration: "3 hr 15 min", highway: "Yamuna Expressway & Agra Inner Ring Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Fatehabad, Agra", distance: 215, duration: "3 hr 15 min", highway: "Yamuna Expressway & Agra Inner Ring Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Bah", distance: 250, duration: "4 hr 00 min", highway: "Yamuna Expressway & SH 62", defaultVehicle: "taxi" },
   { from: "Noida", to: "Etmadpur", distance: 190, duration: "2 hr 55 min", highway: "Yamuna Expressway & NH 19", defaultVehicle: "taxi" },
   { from: "Noida", to: "Khandauli", distance: 175, duration: "2 hr 40 min", highway: "Yamuna Expressway & Sadabad-Agra Rd", defaultVehicle: "taxi" },
@@ -682,7 +668,7 @@ export const masterRoutes: MasterRouteItem[] = [
 
   // Ambedkar Nagar District
   { from: "Noida", to: "Akbarpur", distance: 620, duration: "8 hr 30 min", highway: "Purvanchal Expressway & SH 5", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Tanda", distance: 640, duration: "8 hr 50 min", highway: "Purvanchal Expressway & Tanda Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Tanda, Uttar Pradesh", distance: 640, duration: "8 hr 50 min", highway: "Purvanchal Expressway & Tanda Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Jalalpur", distance: 635, duration: "8 hr 45 min", highway: "Purvanchal Expressway", defaultVehicle: "taxi" },
   { from: "Noida", to: "Bhiti", distance: 605, duration: "8 hr 15 min", highway: "Purvanchal Expressway & Akbarpur-Bhiti Rd", defaultVehicle: "taxi" },
 
@@ -738,9 +724,9 @@ export const masterRoutes: MasterRouteItem[] = [
 
   // Barabanki District
   { from: "Noida", to: "Barabanki", distance: 535, duration: "7 hr 00 min", highway: "Agra-Lucknow Expressway & NH 27", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Fatehpur", distance: 550, duration: "7 hr 20 min", highway: "NH 27 & Mahmudabad-Fatehpur Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Fatehpur, Barabanki", distance: 550, duration: "7 hr 20 min", highway: "NH 27 & Mahmudabad-Fatehpur Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Haidergarh", distance: 540, duration: "7 hr 15 min", highway: "Purvanchal Expressway", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Ramnagar", distance: 555, duration: "7 hr 30 min", highway: "NH 27 & Bahraich Highway", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Ramnagar, Barabanki", distance: 555, duration: "7 hr 30 min", highway: "NH 27 & Bahraich Highway", defaultVehicle: "taxi" },
   { from: "Noida", to: "Nawabganj", distance: 530, duration: "6 hr 55 min", highway: "Agra-Lucknow Expressway & NH 27", defaultVehicle: "taxi" },
 
   // Bareilly District
@@ -758,11 +744,10 @@ export const masterRoutes: MasterRouteItem[] = [
   // Bijnor District
   { from: "Noida", to: "Bijnor", distance: 150, duration: "3 hr 00 min", highway: "Delhi-Meerut Expressway & NH 34", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Najibabad", distance: 185, duration: "3 hr 30 min", highway: "Delhi-Meerut Expressway & NH 34", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Nagina", distance: 180, duration: "3 hr 25 min", highway: "NH 734", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Nagina, Uttar Pradesh", distance: 180, duration: "3 hr 25 min", highway: "NH 734", defaultVehicle: "taxi" },
   { from: "Noida", to: "Dhampur", distance: 170, duration: "3 hr 15 min", highway: "Delhi-Meerut Expressway & NH 734", defaultVehicle: "taxi" },
 
   // Bulandshahr District
-  { from: "Noida", to: "Bulandshahr", distance: 75, duration: "1 hr 30 min", highway: "NH 34", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Anupshahr", distance: 115, duration: "2 hr 15 min", highway: "NH 34 & Aligarh-Anupshahr Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Syana", distance: 90, duration: "1 hr 50 min", highway: "NH 34 & Garh-Syana Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Khurja", distance: 85, duration: "1 hr 40 min", highway: "NH 34 (Ceramic City Corridor)", defaultVehicle: "taxi", isPopular: true },
@@ -772,17 +757,17 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Chandauli", distance: 805, duration: "11 hr 00 min", highway: "Agra-Lucknow Expressway & NH 19", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Sakaldiha", distance: 815, duration: "11 hr 15 min", highway: "NH 19 & Chandauli-Sakaldiha Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Chakia", distance: 830, duration: "11 hr 30 min", highway: "NH 19 & Naugarh-Chakia Rd", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Naugarh", distance: 855, duration: "12 hr 00 min", highway: "NH 19 & Vindhyachal Range Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Naugarh, Chandauli", distance: 855, duration: "12 hr 00 min", highway: "NH 19 & Vindhyachal Range Rd", defaultVehicle: "taxi" },
 
   // Chitrakoot District
   { from: "Noida", to: "Chitrakoot", distance: 570, duration: "8 hr 15 min", highway: "Yamuna & Bundelkhand Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Karwi", distance: 565, duration: "8 hr 10 min", highway: "Bundelkhand Expressway & NH 35", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Mau", distance: 595, duration: "8 hr 45 min", highway: "NH 35 & Shankargarh Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Mau, Chitrakoot", distance: 595, duration: "8 hr 45 min", highway: "NH 35 & Shankargarh Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Rajapur", distance: 580, duration: "8 hr 30 min", highway: "Bundelkhand Expressway & Yamuna Bank Hwy", defaultVehicle: "taxi" },
 
   // Deoria District
   { from: "Noida", to: "Deoria", distance: 780, duration: "10 hr 45 min", highway: "Agra-Lucknow Expressway & NH 27", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Rudrapur", distance: 765, duration: "10 hr 30 min", highway: "NH 27 & Deoria-Rudrapur Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Rudrapur, Deoria", distance: 765, duration: "10 hr 30 min", highway: "NH 27 & Deoria-Rudrapur Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Barhaj", distance: 795, duration: "11 hr 00 min", highway: "NH 27 & Saryu River Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Salempur", distance: 800, duration: "11 hr 10 min", highway: "NH 27 & Bhatni Rd", defaultVehicle: "taxi" },
 
@@ -815,14 +800,11 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Tundla", distance: 200, duration: "2 hr 55 min", highway: "Yamuna Expressway & NH 19", defaultVehicle: "taxi" },
 
   // Gautam Buddha Nagar District
-  { from: "Noida", to: "Noida", distance: 20, duration: "35 min", highway: "Noida City Expressway & Master Plan Roads", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Greater Noida", distance: 25, duration: "40 min", highway: "Noida-Greater Noida Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Dadri", distance: 35, duration: "50 min", highway: "NH 34 (GT Road)", defaultVehicle: "taxi" },
   { from: "Noida", to: "Jewar", distance: 55, duration: "55 min", highway: "Yamuna Expressway (Noida International Airport Hub)", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Bisrakh", distance: 18, duration: "30 min", highway: "Noida Extension / Greater Noida West Link", defaultVehicle: "taxi" },
 
   // Ghaziabad District
-  { from: "Noida", to: "Ghaziabad", distance: 20, duration: "35 min", highway: "NH 9 & Hindon Elevated Road", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Loni", distance: 30, duration: "45 min", highway: "Eastern Peripheral Expressway & Delhi-Saharanpur Hwy", defaultVehicle: "taxi" },
   { from: "Noida", to: "Modinagar", distance: 45, duration: "55 min", highway: "Delhi-Meerut Expressway & Meerut Road", defaultVehicle: "taxi" },
   { from: "Noida", to: "Muradnagar", distance: 35, duration: "45 min", highway: "Delhi-Meerut Expressway (Gangnahar Canal Route)", defaultVehicle: "taxi" },
@@ -853,7 +835,6 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Sarila", distance: 435, duration: "6 hr 25 min", highway: "Bundelkhand Expressway", defaultVehicle: "taxi" },
 
   // Hapur District
-  { from: "Noida", to: "Hapur", distance: 60, duration: "1 hr 10 min", highway: "NH 9", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Garhmukteshwar", distance: 85, duration: "1 hr 35 min", highway: "NH 9 (Brijghat Ganga Holy Pilgrimage)", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Dhaulana", distance: 45, duration: "55 min", highway: "Eastern Peripheral Expressway & UPSIDC Industrial Rd", defaultVehicle: "taxi" },
 
@@ -957,8 +938,6 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Ghiror", distance: 235, duration: "3 hr 25 min", highway: "Yamuna Expressway & Shikohabad Rd", defaultVehicle: "taxi" },
 
   // Mathura District
-  { from: "Noida", to: "Mathura", distance: 140, duration: "2 hr 15 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Vrindavan", distance: 145, duration: "2 hr 10 min", highway: "Yamuna Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Chhata", distance: 110, duration: "1 hr 45 min", highway: "Yamuna Expressway & NH 19", defaultVehicle: "taxi" },
   { from: "Noida", to: "Mahavan", distance: 145, duration: "2 hr 20 min", highway: "Yamuna Expressway & Gokul Dham Route", defaultVehicle: "taxi" },
   { from: "Noida", to: "Govardhan", distance: 150, duration: "2 hr 25 min", highway: "Yamuna Expressway & Govardhan Parikrama Marg", defaultVehicle: "taxi", isPopular: true },
@@ -970,7 +949,6 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Muhammadabad", distance: 755, duration: "10 hr 25 min", highway: "Purvanchal Expressway & Azamgarh-Mau Hwy", defaultVehicle: "taxi" },
 
   // Meerut District
-  { from: "Noida", to: "Meerut", distance: 70, duration: "1 hr 15 min", highway: "Delhi-Meerut Expressway", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Sardhana", distance: 85, duration: "1 hr 35 min", highway: "Delhi-Meerut Expressway & Sardhana Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Mawana", distance: 90, duration: "1 hr 40 min", highway: "Delhi-Meerut Expressway & Bijnor Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Daurala", distance: 80, duration: "1 hr 25 min", highway: "Delhi-Meerut Expressway & NH 58", defaultVehicle: "taxi" },
@@ -1003,7 +981,7 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Pratapgarh", distance: 610, duration: "8 hr 15 min", highway: "Agra-Lucknow Expressway & Purvanchal / NH 330", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Kunda", distance: 565, duration: "7 hr 40 min", highway: "Yamuna Expressway & Lucknow-Prayagraj Hwy (NH 30)", defaultVehicle: "taxi" },
   { from: "Noida", to: "Raniganj", distance: 630, duration: "8 hr 35 min", highway: "Purvanchal Expressway & Varanasi-Pratapgarh Rd", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Patti", distance: 645, duration: "8 hr 50 min", highway: "Purvanchal Expressway & Sultanpur-Patti Rd", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Patti, Pratapgarh", distance: 645, duration: "8 hr 50 min", highway: "Purvanchal Expressway & Sultanpur-Patti Rd", defaultVehicle: "taxi" },
 
   // Rae Bareli District
   { from: "Noida", to: "Rae Bareli", distance: 535, duration: "7 hr 15 min", highway: "Agra-Lucknow Expressway & NH 30", defaultVehicle: "taxi", isPopular: true },
@@ -1013,7 +991,7 @@ export const masterRoutes: MasterRouteItem[] = [
 
   // Rampur District
   { from: "Noida", to: "Rampur", distance: 190, duration: "3 hr 15 min", highway: "Delhi-Meerut Expressway & NH 9", defaultVehicle: "taxi", isPopular: true },
-  { from: "Noida", to: "Bilaspur", distance: 220, duration: "3 hr 45 min", highway: "NH 9 & Nainital Highway", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Bilaspur, Uttar Pradesh", distance: 220, duration: "3 hr 45 min", highway: "NH 9 & Nainital Highway", defaultVehicle: "taxi" },
   { from: "Noida", to: "Suar", distance: 205, duration: "3 hr 30 min", highway: "NH 9 & Bazpur Rd", defaultVehicle: "taxi" },
 
   // Saharanpur District
@@ -1036,7 +1014,7 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Shahjahanpur", distance: 325, duration: "5 hr 15 min", highway: "Delhi-Meerut Expressway & NH 9 / NH 30", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Powayan", distance: 355, duration: "5 hr 45 min", highway: "NH 730", defaultVehicle: "taxi" },
   { from: "Noida", to: "Tilhar", distance: 305, duration: "4 hr 55 min", highway: "NH 30 (Delhi-Lucknow Highway)", defaultVehicle: "taxi" },
-  { from: "Noida", to: "Jalalabad", distance: 315, duration: "5 hr 05 min", highway: "Bareilly-Etawah Highway (SH 29)", defaultVehicle: "taxi" },
+  { from: "Noida", to: "Jalalabad, Uttar Pradesh", distance: 315, duration: "5 hr 05 min", highway: "Bareilly-Etawah Highway (SH 29)", defaultVehicle: "taxi" },
 
   // Shamli District
   { from: "Noida", to: "Shamli", distance: 100, duration: "1 hr 45 min", highway: "Delhi-Saharanpur Highway & Eastern Peripheral", defaultVehicle: "taxi", isPopular: true },
@@ -1049,7 +1027,7 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Noida", to: "Ikauna", distance: 585, duration: "8 hr 10 min", highway: "NH 730 & Bahraich-Balrampur Rd", defaultVehicle: "taxi" },
 
   // Siddharthnagar District
-  { from: "Noida", to: "Naugarh", distance: 680, duration: "9 hr 30 min", highway: "Agra-Lucknow Expressway & NH 730 (Kapilvastu Heritage Route)", defaultVehicle: "taxi", isPopular: true },
+  { from: "Noida", to: "Naugarh, Siddharthnagar", distance: 680, duration: "9 hr 30 min", highway: "Agra-Lucknow Expressway & NH 730 (Kapilvastu Heritage Route)", defaultVehicle: "taxi", isPopular: true },
   { from: "Noida", to: "Itwa", distance: 660, duration: "9 hr 10 min", highway: "NH 730 & Domariyaganj Rd", defaultVehicle: "taxi" },
   { from: "Noida", to: "Bansi", distance: 670, duration: "9 hr 20 min", highway: "NH 28 & Rapti River Route", defaultVehicle: "taxi" },
   { from: "Noida", to: "Shohratgarh", distance: 695, duration: "9 hr 45 min", highway: "NH 730 & Indo-Nepal Border Rd", defaultVehicle: "taxi" },
@@ -1112,17 +1090,6 @@ export const masterRoutes: MasterRouteItem[] = [
   { from: "Mathura", to: "Jaipur", distance: 225, duration: "4 hr 00 min", highway: "NH21", defaultVehicle: "taxi" },
   { from: "Mathura", to: "Haridwar", distance: 310, duration: "5 hr 30 min", highway: "Expressways", defaultVehicle: "tempo-traveller" },
 
-  // --- Haryana Corridors ---
-  { from: "Haryana", to: "Delhi", distance: 60, duration: "1 hr 30 min", highway: "NH 44 & Delhi-Gurgaon Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Noida", distance: 75, duration: "1 hr 45 min", highway: "KMP Expressway & DND Flyway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Chandigarh", distance: 210, duration: "3 hr 30 min", highway: "NH 44 (Delhi-Chandigarh Hwy)", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Jaipur", distance: 240, duration: "4 hr 00 min", highway: "NH 48 (Delhi-Jaipur Hwy)", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Agra", distance: 195, duration: "3 hr 15 min", highway: "Yamuna Expressway & KMP", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Haridwar", distance: 230, duration: "4 hr 15 min", highway: "NH 334 & Delhi-Meerut Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Dehradun", distance: 260, duration: "4 hr 45 min", highway: "NH 307 & Mohand Pass Hwy", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Amritsar", distance: 410, duration: "6 hr 45 min", highway: "NH 44 & Grand Trunk Road", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Shimla", distance: 320, duration: "6 hr 30 min", highway: "NH 5 & Himalayan Expressway", defaultVehicle: "taxi", isPopular: true },
-  { from: "Haryana", to: "Manali", distance: 510, duration: "10 hr 30 min", highway: "NH 3 & Kiratpur-Nerchowk Expressway", defaultVehicle: "taxi", isPopular: true },
 ];
 
 export const masterRoutesRegistry = masterRoutes;

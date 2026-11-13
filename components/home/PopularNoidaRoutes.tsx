@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   ArrowRight,
@@ -8,10 +6,41 @@ import {
   MapPin,
 } from "lucide-react";
 
-import { noidaRoutes } from "@/data/routes/noidaRoutes";
+import { masterRoutes } from "@/data/masterRoutes";
+
+const priorityDestinations = [
+  "Delhi",
+  "Ghaziabad",
+  "Faridabad",
+  "Gurgaon",
+  "Greater Noida",
+  "Meerut",
+  "Hapur",
+  "Bulandshahr",
+  "Mathura",
+  "Agra",
+];
+
+function slugify(value: string): string {
+  return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
 
 export default function PopularNoidaRoutes() {
-  const routes = Object.values(noidaRoutes);
+  const priorityOrder = new Map(
+    priorityDestinations.map((destination, index) => [destination.toLowerCase(), index])
+  );
+  const routes = masterRoutes
+    .map((route, index) => ({ route, index }))
+    .filter(({ route }) => route.from.trim().toLowerCase() === "noida")
+    .sort((a, b) => {
+      const aPriority = priorityOrder.get(a.route.to.toLowerCase()) ?? Number.MAX_SAFE_INTEGER;
+      const bPriority = priorityOrder.get(b.route.to.toLowerCase()) ?? Number.MAX_SAFE_INTEGER;
+      if (aPriority !== bPriority) return aPriority - bPriority;
+      if (a.route.isPopular !== b.route.isPopular) return a.route.isPopular ? -1 : 1;
+      return a.index - b.index;
+    })
+    .slice(0, 40)
+    .map(({ route }) => route);
 
   return (
     <section className="border-b border-gray-300 bg-white/95 py-14 sm:py-16 lg:py-20">
@@ -37,16 +66,21 @@ export default function PopularNoidaRoutes() {
 
         {/* Route Grid */}
         <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {routes.slice(0, 8).map((route, index) => {
-            const href = `/route/${route.slug}-taxi`;
-
-            const calculatedPrice = (route.distance * 1.5 * 10) + 500;
+          {routes.map((route, index) => {
+            const fromSlug = slugify(route.from);
+            const toSlug = slugify(route.to);
+            const href = `/route/${fromSlug}-to-${toSlug}-taxi`;
+            const distanceKm =
+              typeof route.distance === "number"
+                ? route.distance
+                : Number.parseInt(String(route.distance).replace(/[^0-9]/g, ""), 10) || 0;
+            const calculatedPrice = distanceKm * 1.5 * 10 + 500;
 
             const price = `₹${calculatedPrice.toLocaleString("en-IN")}`;
 
             return (
               <Link
-                key={route.slug}
+                key={href}
                 href={href}
                 className={`group relative overflow-hidden rounded-2xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${index === 0
                     ? "border-amber-300 shadow-[0_10px_35px_rgba(245,158,11,0.12)]"
@@ -74,13 +108,13 @@ export default function PopularNoidaRoutes() {
                     {/* Route */}
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex flex-wrap items-center gap-2 text-lg font-bold text-slate-950">
-                        <span>{route.from.name}</span>
+                        <span>{route.from}</span>
 
                         <span className="text-amber-500">
                           →
                         </span>
 
-                        <span>{route.to.name}</span>
+                        <span>{route.to}</span>
                       </div>
 
                       {/* Arrow */}
@@ -97,7 +131,7 @@ export default function PopularNoidaRoutes() {
                           className="text-amber-500"
                         />
 
-                        {route.distance} km
+                        {distanceKm} km
                       </span>
 
                       <span className="inline-flex items-center gap-1.5">
@@ -106,7 +140,7 @@ export default function PopularNoidaRoutes() {
                           className="text-amber-500"
                         />
 
-                        {route.travelTime}
+                        {route.duration}
                       </span>
                     </div>
                   </div>

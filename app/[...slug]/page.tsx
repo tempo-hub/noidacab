@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 import {
   parseLocalRouteUrl,
@@ -693,7 +693,7 @@ export default async function CabPage({
       const targetSlug = dynamicRoute.canonicalSlug.replace(/^(route[-/])+/g, "");
       const targetUrl = `/route/${targetSlug}`;
       if (url.toLowerCase() !== targetUrl.toLowerCase()) {
-        redirect(targetUrl);
+        permanentRedirect(targetUrl);
       }
     }
   }
@@ -705,7 +705,7 @@ export default async function CabPage({
     const citySlug = url.replace("/taxi-fare-in-", "").toLowerCase();
     if (!hasCityDetails(citySlug)) notFound();
     if (citySlug === "noida") {
-      redirect("/noida-taxi-fare");
+      permanentRedirect("/noida-taxi-fare");
     }
     const cityInfo = getCityDetails(citySlug);
     return <DynamicTaxiFarePage city={cityInfo} />;
@@ -715,7 +715,7 @@ export default async function CabPage({
     const citySlug = url.replace(/^\/|\/$/g, "").replace(/-taxi-fare$/, "").toLowerCase();
     if (!hasCityDetails(citySlug)) notFound();
     if (citySlug === "noida") {
-      redirect("/noida-taxi-fare");
+      permanentRedirect("/noida-taxi-fare");
     }
     const cityInfo = getCityDetails(citySlug);
     return <DynamicTaxiFarePage city={cityInfo} />;
@@ -752,7 +752,7 @@ export default async function CabPage({
     const citySlug = url.replace(/^(\/one-way-taxi-in-|\/one-way-cab-in-)/, "").toLowerCase();
     if (!hasCityDetails(citySlug)) notFound();
     if (citySlug === "noida" && url !== "/one-way-taxi-in-noida") {
-      redirect("/one-way-taxi-in-noida");
+      permanentRedirect("/one-way-taxi-in-noida");
     }
     const cityInfo = getCityDetails(citySlug);
     return <DynamicOneWayTaxiPage city={cityInfo} />;
@@ -957,7 +957,7 @@ export default async function CabPage({
       const targetSlug = dynamicRoute.canonicalSlug.replace(/^(route[-/])+/g, "");
       const targetUrl = `/route/${targetSlug}`;
       if (url.toLowerCase() !== targetUrl.toLowerCase()) {
-        redirect(targetUrl);
+        permanentRedirect(targetUrl);
       }
     }
   }
