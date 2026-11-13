@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { parseDynamicRouteSlug, buildPopularRouteItem } from "@/data/popularRoutesData";
 import PopularCityRoutes from "@/components/cab/PopularCityRoutes";
 import CabFleet from "@/components/cab/CabFleet";
@@ -682,7 +682,7 @@ export default async function DynamicRouteDetailPage({ params }: { params: Param
   }
 
   if (slug.toLowerCase() !== route.canonicalSlug.toLowerCase()) {
-    redirect(`/route/${route.canonicalSlug}`);
+    permanentRedirect(`/route/${route.canonicalSlug}`);
   }
 
   if (route.vehicleSlug === "taxi-fare" || slug.toLowerCase().endsWith("-taxi-fare")) {
